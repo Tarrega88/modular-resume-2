@@ -165,7 +165,7 @@ UserInfoProps & {
             handleOnSubmit={(text: string) =>
               dispatch(editUserInfo({ text, field: "email" }))
             }
-            inputWidth="full"
+            inputWidth="char"
             divWidth="full"
             placeholderText="Enter email"
           />
@@ -181,7 +181,7 @@ UserInfoProps & {
             handleOnSubmit={(text: string) =>
               dispatch(editUserInfo({ text, field: "phoneNumber" }))
             }
-            inputWidth="full"
+            inputWidth="char"
             divWidth="full"
             placeholderText="Enter phone number"
           />
@@ -197,7 +197,7 @@ UserInfoProps & {
             handleOnSubmit={(text: string) =>
               dispatch(editUserInfo({ text, field: "location" }))
             }
-            inputWidth="full"
+            inputWidth="char"
             divWidth="full"
             placeholderText="Enter location"
           />

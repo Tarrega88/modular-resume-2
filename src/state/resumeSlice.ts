@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BulletPointProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
+import { BulletPointProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
 
 function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
     (obj as Record<K, T[K]>)[key] = value; //obj as any is an option for testing
@@ -20,8 +20,9 @@ export const bulletPointDefault: BulletPointProps = { id: "0", kind: "bulletPoin
 //NOTE: id and object key will match except in the resumes object.
 
 // /state/resumeSlice.ts
+//TODO 9/14/2025: pull this into its own file to use as a placeholder and import the initial state here.
 const initialState: ResumeState = {
-    scale: 100,              // unscaled preview
+    scale: 75,              // unscaled preview
     currentResumeId: "",         // set by setCurrentResume(...) on route mount
     dragFromIndex: -1,
     dragToIndex: -1,
@@ -30,25 +31,25 @@ const initialState: ResumeState = {
 
     data: {
         userInfo: {
-            fullName: "",
-            professionTitle: "",
-            showProfession: false,
+            fullName: "Full Name",
+            professionTitle: "Profession",
+            showProfession: true,
             showIcons: true,
             hasUnderline: true,
             kind: "userInfo",
-            email: "",
-            phoneNumber: "",
-            location: "",
+            email: "email@gmail.com",
+            phoneNumber: "(123) 456-7890",
+            location: "City, ST",
             userLink1: "0",
             userLink2: "1",
-            showLink1: false,
-            showLink2: false,
+            showLink1: true,
+            showLink2: true,
         },
 
         // keep two empty link slots so IDs referenced above exist
         userLinks: {
-            "0": { id: "0", text: "", url: "" },
-            "1": { id: "1", text: "", url: "" },
+            "0": { id: "0", text: "Link 1", url: "" },
+            "1": { id: "1", text: "Link 2", url: "" },
         },
 
         summaries: {},
@@ -166,6 +167,9 @@ const resumeSlice = createSlice({
     name: "resume",
     initialState,
     reducers: {
+        hydrate(_state, action: PayloadAction<ResumeState>) {
+            return action.payload;
+        },
         setCurrentResume(state, action: PayloadAction<string>) {
             state.currentResumeId = action.payload;
         },
@@ -323,9 +327,9 @@ const resumeSlice = createSlice({
             const { id, text, field } = action.payload;
             state.data.education[id][field] = text;
         },
-        hydrate(_state, action: PayloadAction<ResumeState>) {
-            return action.payload;
-        },
+        // editProjectString(state, action: PayloadAction<{id: string; field: "title" | "description" | "website"}>) {
+        //     const test: ProjectProps = {}
+        // }
 
 
     },

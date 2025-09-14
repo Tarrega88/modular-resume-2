@@ -62,18 +62,7 @@ function ResumeItemRenderer({
         yearStarted,
         monthEnded,
         yearEnded,
-      } = data?.prevJobs[elementId] || {
-        id: elementId,
-        companyName: "Company Name",
-        jobTitle: "Job Title",
-        kind: "prevJob",
-        location: locationDefault,
-        monthStarted: 0,
-        yearStarted: 2024,
-        monthEnded: 11,
-        yearEnded: 2025,
-      };
-
+      } = data.prevJobs[elementId];
       return (
         <JobSection
           id={id}
@@ -89,11 +78,7 @@ function ResumeItemRenderer({
         />
       );
     case "bulletPoint":
-      const bp = data?.bulletPoints[elementId] || {
-        id: elementId,
-        kind: "bulletPoint",
-        text: "Enter Bullet Point Text...",
-      };
+      const bp = data?.bulletPoints[elementId];
       return (
         <BulletPoint
           key={bp.text}
