@@ -153,8 +153,8 @@ UserInfoProps & {
           />
         ) : null}
       </div>
-      <div className="flex justify-between mt-2">
-        <div className="flex w-full">
+      <div className="flex mt-2 gap-8">
+        <div className="flex">
           {showIcons ? (
             <IconWrapper>
               <CiMail className="text-xl" />
@@ -166,11 +166,11 @@ UserInfoProps & {
               dispatch(editUserInfo({ text, field: "email" }))
             }
             inputWidth="full"
-            divWidth="full"
+            divWidth="char"
             placeholderText="Enter email"
           />
         </div>
-        <div className="flex w-full">
+        <div className="flex">
           {showIcons ? (
             <IconWrapper>
               <FaPhone />
@@ -182,11 +182,11 @@ UserInfoProps & {
               dispatch(editUserInfo({ text, field: "phoneNumber" }))
             }
             inputWidth="full"
-            divWidth="full"
+            divWidth="char"
             placeholderText="Enter phone number"
           />
         </div>
-        <div className="flex w-full">
+        <div className="flex">
           {showIcons ? (
             <IconWrapper>
               <CiLocationOn className="text-xl" />
@@ -198,7 +198,7 @@ UserInfoProps & {
               dispatch(editUserInfo({ text, field: "location" }))
             }
             inputWidth="full"
-            divWidth="full"
+            divWidth="char"
             placeholderText="Enter location"
           />
         </div>
