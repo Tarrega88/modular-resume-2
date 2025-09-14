@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import BulletSelect from "./bulletPoints/BulletSelect";
 import { setScale } from "../state/resumeSlice";
 import { RootState } from "../state/store";
 
@@ -25,7 +24,6 @@ function BuilderColumn() {
         />
         <div>{scale}%</div>
       </div>
-      <BulletSelect />
     </div>
   );
 }
