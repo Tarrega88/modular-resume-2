@@ -20,8 +20,6 @@ function DynamicTextArea({
   const [showInput, setShowInput] = useState(false);
   const [tempText, setTempText] = useState(text);
 
-  // TODO 9/11/2025: consider tying input height to div height
-
   function changeDisplay() {
     handleOnSubmit(tempText.trimEnd());
     setShowInput(false);

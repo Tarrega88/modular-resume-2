@@ -1,7 +1,6 @@
 import { db, STATE_KEY } from "./db";
 import type { ResumeState } from "../state/types";
 
-// optional: don't preserve drag indices across reloads
 function sanitizeForSave(s: ResumeState): ResumeState {
     return {
         ...s,

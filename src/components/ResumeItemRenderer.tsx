@@ -9,6 +9,7 @@ import { ResumeItemProps } from "../state/types";
 import SkillSection from "./skills/SkillSection";
 import Summary from "./summaries/Summary";
 import EducationSection from "./education/EducationSection";
+import ProjectSection from "./projects/ProjectSection";
 
 function ResumeItemRenderer({
   id,
@@ -31,14 +32,7 @@ function ResumeItemRenderer({
 
   switch (kind) {
     case "userInfo":
-      const info = data?.userInfo || {
-        // id: elementId,
-        kind: "userInfo",
-        fullName: "Full Name",
-        email: "email@email.com",
-        phoneNumber: "(123) 456-7890",
-        location: locationDefault,
-      };
+      const info = data.userInfo;
       return (
         <ResumeHeader
           kind={info.kind}
@@ -156,6 +150,17 @@ function ResumeItemRenderer({
           yearEnded={educationData.yearEnded}
         />
       );
+    case "project": {
+      const projectData = data.projects[elementId];
+      <ProjectSection
+        id={projectData.id}
+        kind={projectData.kind}
+        title={projectData.title}
+        description={projectData.description}
+        hasWebsite={projectData.hasWebsite}
+        website={projectData.website}
+      />;
+    }
     default:
       return;
   }

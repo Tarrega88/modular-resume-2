@@ -7,11 +7,10 @@ export class ResumeDB extends Dexie {
     constructor() {
         super("modular-resume-db");
         this.version(1).stores({
-            kv: "&key", // & = primary key
+            kv: "&key",
         });
     }
 }
 
 export const db = new ResumeDB();
-// bump this when your state shape changes
 export const STATE_KEY = "resume-state-v1";

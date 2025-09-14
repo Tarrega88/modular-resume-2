@@ -153,7 +153,7 @@ UserInfoProps & {
           />
         ) : null}
       </div>
-      <div className="flex mt-2 gap-8">
+      <div className="flex mt-2 gap-6">
         <div className="flex">
           {showIcons ? (
             <IconWrapper>
@@ -166,7 +166,7 @@ UserInfoProps & {
               dispatch(editUserInfo({ text, field: "email" }))
             }
             inputWidth="full"
-            divWidth="char"
+            divWidth="full"
             placeholderText="Enter email"
           />
         </div>
@@ -182,7 +182,7 @@ UserInfoProps & {
               dispatch(editUserInfo({ text, field: "phoneNumber" }))
             }
             inputWidth="full"
-            divWidth="char"
+            divWidth="full"
             placeholderText="Enter phone number"
           />
         </div>
@@ -198,7 +198,7 @@ UserInfoProps & {
               dispatch(editUserInfo({ text, field: "location" }))
             }
             inputWidth="full"
-            divWidth="char"
+            divWidth="full"
             placeholderText="Enter location"
           />
         </div>
