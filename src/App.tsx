@@ -1,12 +1,14 @@
-import MainView from "./MainView";
-import "./index.css";
+// src/App.tsx
+import { Routes, Route, Navigate } from "react-router-dom";
+import HomePage from "@/routes/HomePage";
+import BuilderPage from "@/routes/BuilderPage";
 
-function App() {
+export default function App() {
   return (
-    <>
-      <MainView />
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/builder/:resumeId" element={<BuilderPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
-
-export default App;

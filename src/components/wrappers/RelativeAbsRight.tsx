@@ -1,4 +1,4 @@
-import { pageWidth } from "../SideResumeInner";
+import { pageWidth } from "@/components/SideResumeInner";
 //Note: add the className "group" to any parent of this
 function RelativeAbsRight({
   children,
