@@ -1,0 +1,21 @@
+Look into react-to-print instead of playwright
+
+Main sections:
+
+1. ResumeHeader - Done (user contact info and, optionally a few links)
+2. Summary - Done
+3. Experience (work experience) - Done
+4. Education
+5. Skills - Done
+6. Projects
+
+additional sections to consider:
+
+1. Certifications / Licenses
+2. Awards / Honors
+3. Publications / Presentations
+4. Volunteer Experience
+5. Languages
+6. Interests
+
+
