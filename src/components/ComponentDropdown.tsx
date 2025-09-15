@@ -37,18 +37,17 @@ function ComponentDropdown({ kind, renderIndex }: Props) {
   }
 
   return (
-    <div>
+    <div tabIndex={-1} autoFocus onBlur={() => setIsExpanded(false)}>
       {isExpanded ? (
-        <div
-          className="w-[754px] bg-slate-800 overflow-scroll p-1 absolute rounded-sm"
-          // onMouseLeave={() => setIsExpanded(false)}
-        >
+        <div className="w-[754px] bg-slate-800 overflow-scroll p-1 absolute rounded-sm">
           <div className="flex justify-between pr-2 text-slate-50">
             <div className="">Select a previously made section:</div>
-            <FaRegWindowMinimize
-              className="hover:outline cursor-pointer"
+            <div
+              className="hover:outline cursor-pointer size-5 flex justify-center"
               onClick={() => setIsExpanded(false)}
-            />
+            >
+              <FaRegWindowMinimize />
+            </div>
           </div>
           <div className="flex-col bg-white h-28 overflow-scroll">
             {arr.map((e, i) => (
@@ -70,7 +69,6 @@ function ComponentDropdown({ kind, renderIndex }: Props) {
                     elementId={e}
                     renderIndex={i}
                   />
-                  {/* </div> */}
                 </div>
               </div>
             ))}
