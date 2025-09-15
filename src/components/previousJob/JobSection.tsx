@@ -24,7 +24,7 @@ PrevJobProps & { renderIndex: number }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="mt-2 mb-1">
+    <div className="my-3">
       <div className="flex justify-between">
         <div className="font-semibold pb-1 w-full">
           <DynamicInput

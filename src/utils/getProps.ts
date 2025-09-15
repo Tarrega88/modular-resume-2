@@ -11,7 +11,7 @@ export function getPrevJobProps(id: string): PrevJobProps {
 }
 
 export function getBulletPointProps(id: string): BulletPointProps {
-    return { id, kind: "bulletPoint", text: "Enter bullet point or choose from dropdown..." }
+    return { id, kind: "bulletPoint", text: "Enter bullet point..." }
 }
 
 export function getUserInfoProps(): UserInfoProps {

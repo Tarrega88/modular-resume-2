@@ -318,7 +318,7 @@ const resumeSlice = createSlice({
             const { kind, index, elementId } = action.payload;
             const id = crypto.randomUUID();
 
-            state.resumes[currentResumeId].splice(index, 0, { kind, id, elementId });
+            state.resumes[currentResumeId].splice(index + 1, 0, { kind, id, elementId });
             // state.resumes[currentResumeId] = [...state.resumes[currentResumeId]]
         },
         editUserLink(state, action: PayloadAction<{ id: string; text: string; url: string; }>) {

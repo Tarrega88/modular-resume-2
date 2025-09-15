@@ -14,8 +14,12 @@ function DropdownElement({ options, kind, id, renderIndex, field }: TempProps) {
   const dispatch = useDispatch();
 
   function onChange(e: any) {
+    const val = e.target.value;
+    if (!val.length) return;
     dispatch(changeBulletPoint({ renderIndex, id: e.target.value }));
   }
+
+  const dropdownOptions = [{ id: "", text: "" }, ...options];
 
   return (
     <select
@@ -23,7 +27,7 @@ function DropdownElement({ options, kind, id, renderIndex, field }: TempProps) {
       onChange={onChange}
       value={id}
     >
-      {options?.map((option) => (
+      {dropdownOptions?.map((option) => (
         <option key={option.id} value={option.id}>
           {option.text}
         </option>

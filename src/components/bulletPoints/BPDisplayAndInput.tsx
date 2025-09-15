@@ -41,6 +41,8 @@ function BPDisplayAndInput({
     }
   }
 
+  const hoverClass = options.length > 1 ? "group-hover:opacity-0" : "";
+
   return displayMode === "div" ? (
     <div
       className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full"
@@ -55,6 +57,7 @@ function BPDisplayAndInput({
           renderIndex={renderIndex}
         />
       </RelativeAbsLeft>
+
       <p className="flex">
         <span
           className="mx-2 group-hover:opacity-0 transition-all duration-150 pointer-events-none"
