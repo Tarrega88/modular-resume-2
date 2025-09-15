@@ -22,8 +22,8 @@ export const bulletPointDefault: BulletPointProps = { id: "0", kind: "bulletPoin
 // /state/resumeSlice.ts
 //TODO 9/14/2025: pull this into its own file to use as a placeholder and import the initial state here.
 const initialState: ResumeState = {
-    scale: 75,              // unscaled preview
-    currentResumeId: "",         // set by setCurrentResume(...) on route mount
+    scale: 75,
+    currentResumeId: "",
     dragFromIndex: -1,
     dragToIndex: -1,
     dragHigher: true,
@@ -61,7 +61,6 @@ const initialState: ResumeState = {
         skills: {},
     },
 
-    // no resumes yet; create on demand or guard when reading
     resumes: {},
 };
 

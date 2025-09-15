@@ -87,7 +87,7 @@ export type ProjectProps = {
     title: string;
     description: string;
     hasWebsite: boolean;
-    website: UserLinkData;
+    website: string;
 }
 
 export type ResumeState = {

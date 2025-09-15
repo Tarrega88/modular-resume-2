@@ -30,7 +30,7 @@ function DuplicateButton({
           addBulletData({
             id,
             kind,
-            text: "Enter bullet point text or choose from the dropdown",
+            text: "Enter bullet point or choose from dropdown...",
           })
         );
         break;
@@ -40,9 +40,9 @@ function DuplicateButton({
             id,
             kind,
             schoolName: "University Name",
-            degree: "Degree",
-            monthEnded: 4,
-            yearEnded: 2004,
+            degree: "Degree, Honors, GPA",
+            monthEnded: 0,
+            yearEnded: 2025,
           })
         );
         break;
@@ -55,8 +55,8 @@ function DuplicateButton({
             jobTitle: "Job Title",
             location: "City, ST",
             monthStarted: 0,
-            yearStarted: 2024,
-            monthEnded: 11,
+            yearStarted: 2000,
+            monthEnded: 0,
             yearEnded: 2025,
           })
         );

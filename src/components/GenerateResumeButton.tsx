@@ -62,15 +62,19 @@ export default function GenerateResumeButton() {
               jobTitle: "Job Title",
               location: location || "City, ST",
               monthStarted: 0,
-              monthEnded: 11,
-              yearStarted: 2024,
+              monthEnded: 12,
+              yearStarted: 2000,
               yearEnded: 2025,
             })
           );
           break;
         case "bulletPoint":
           dispatch(
-            addBulletData({ id, kind, text: "Enter bullet point Text..." })
+            addBulletData({
+              id,
+              kind,
+              text: "Enter bullet point or choose from dropdown...",
+            })
           );
           break;
         case "sectionHeader":
@@ -78,7 +82,7 @@ export default function GenerateResumeButton() {
             addSectionHeaderData({
               id,
               kind: "sectionHeader",
-              text: item.text || "",
+              text: item.text,
               underline: true,
             })
           );
@@ -89,10 +93,9 @@ export default function GenerateResumeButton() {
               id,
               kind: "education",
               schoolName: "University Name",
-              degree:
-                "Degree and other info (B.S. in Computer Science (GPA: 3.5))",
-              monthEnded: 5,
-              yearEnded: 2020,
+              degree: "Degree, Honors, GPA",
+              monthEnded: 0,
+              yearEnded: 2025,
             })
           );
           break;
@@ -101,7 +104,7 @@ export default function GenerateResumeButton() {
             addSkillData({
               id,
               kind,
-              list: [],
+              list: ["List skills here and separate them with commas"],
               showCategory: false,
               category: "Category",
             })
