@@ -35,6 +35,7 @@ export function getSummaryProps(id: string): SummaryProps {
 }
 
 export function getProjectProps(id: string): ProjectProps {
-    return { id, kind: "project", title: "Project Name", description: "Description of project", hasWebsite: true, website: "0" }
+    const newUserLinkId = crypto.randomUUID();
+    return { id, kind: "project", title: "Project Name", description: "Description of project", hasWebsite: true, website: newUserLinkId }
 }
 

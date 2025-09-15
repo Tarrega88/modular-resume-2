@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BulletPointProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
+import { getProjectProps } from "@/utils/getProps";
 
 function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
     (obj as Record<K, T[K]>)[key] = value; //obj as any is an option for testing
@@ -219,6 +220,14 @@ const resumeSlice = createSlice({
             const { id } = action.payload;
             state.data.summaries[id] = action.payload;
         },
+        addProjectData(state, action: PayloadAction<ProjectProps>) {
+            const { id } = action.payload;
+            // const userLinkId = crypto.randomUUID();
+            // state.data.userLinks[userLinkId] = { id: userLinkId, text: "Link Name", url: "URL" };
+            // getProjectProps(id);
+            // const newProjectData: ProjectProps = { id, kind: "project", title:   }
+            state.data.projects[id] = action.payload;
+        },
         editBulletPoint(state, action: TextEdit) {
             const { id, text } = action.payload;
             if (id in state.data.bulletPoints) {
@@ -326,9 +335,14 @@ const resumeSlice = createSlice({
             const { id, text, field } = action.payload;
             state.data.education[id][field] = text;
         },
-        // editProjectString(state, action: PayloadAction<{id: string; field: "title" | "description" | "website"}>) {
-        //     const test: ProjectProps = {}
-        // }
+        editProjectString(state, action: PayloadAction<{ id: string; field: "title" | "description"; text: string; }>) {
+            const { id, field, text } = action.payload;
+            state.data.projects[id][field] = text;
+        },
+        editProjectBool(state, action: PayloadAction<{ id: string; hasWebsite: boolean }>) {
+            const { id, hasWebsite } = action.payload;
+            state.data.projects[id].hasWebsite = hasWebsite;
+        },
         addUserLink(state, action: PayloadAction<string>) {
             state.data.userLinks[action.payload] = { id: action.payload, text: "Link Name", url: "URL" };
         },
@@ -344,5 +358,5 @@ const resumeSlice = createSlice({
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool } = resumeSlice.actions;
 export default resumeSlice.reducer;

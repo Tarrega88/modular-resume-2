@@ -3,10 +3,12 @@ import {
   addBulletData,
   addEducationData,
   addPrevJobData,
+  addProjectData,
   addResumeItem,
   addSectionHeaderData,
   addSkillData,
   addSummaryData,
+  addUserLink,
   createEmptyResume,
   setCurrentResume,
 } from "../state/resumeSlice";
@@ -17,6 +19,7 @@ import {
   getBulletPointProps,
   getEducationProps,
   getPrevJobProps,
+  getProjectProps,
   getSectionHeaderProps,
   getSkillProps,
   getSummaryProps,
@@ -40,6 +43,7 @@ const newResumeRenderItems: RenderProps[] = [
   { kind: "sectionHeader", text: "Skills" },
   { kind: "skill" },
   { kind: "sectionHeader", text: "Projects" },
+  { kind: "project" },
 ];
 
 export default function GenerateResumeButton() {
@@ -76,6 +80,12 @@ export default function GenerateResumeButton() {
           break;
         case "summary":
           dispatch(addSummaryData(getSummaryProps(id)));
+          break;
+        case "project":
+          const projectData = getProjectProps(id);
+          const userLinkId = projectData.website;
+          dispatch(addUserLink(userLinkId));
+          dispatch(addProjectData(projectData));
           break;
       }
 

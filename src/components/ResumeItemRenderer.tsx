@@ -137,14 +137,16 @@ function ResumeItemRenderer({
       );
     case "project": {
       const projectData = data.projects[elementId];
-      <ProjectSection
-        id={projectData.id}
-        kind={projectData.kind}
-        title={projectData.title}
-        description={projectData.description}
-        hasWebsite={projectData.hasWebsite}
-        website={projectData.website}
-      />;
+      return (
+        <ProjectSection
+          id={projectData.id}
+          kind={projectData.kind}
+          title={projectData.title}
+          description={projectData.description}
+          hasWebsite={projectData.hasWebsite}
+          website={projectData.website}
+        />
+      );
     }
     default:
       return;

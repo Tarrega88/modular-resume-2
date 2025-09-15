@@ -2,6 +2,7 @@ import {
   getBulletPointProps,
   getEducationProps,
   getPrevJobProps,
+  getProjectProps,
   getSectionHeaderProps,
   getSkillProps,
   getSummaryProps,
@@ -10,9 +11,11 @@ import {
   addBulletData,
   addEducationData,
   addPrevJobData,
+  addProjectData,
   addSectionHeaderData,
   addSkillData,
   addSummaryData,
+  addUserLink,
   duplicateSection,
 } from "../state/resumeSlice";
 import { Kinds } from "../state/types";
@@ -51,6 +54,11 @@ function DuplicateButton({
       case "summary":
         dispatch(addSummaryData(getSummaryProps(id)));
         break;
+      case "project":
+        const projectData = getProjectProps(id);
+        const userLinkId = projectData.website;
+        dispatch(addUserLink(userLinkId));
+        dispatch(addProjectData(projectData));
     }
 
     dispatch(
