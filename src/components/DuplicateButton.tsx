@@ -1,4 +1,12 @@
 import {
+  getBulletPointProps,
+  getEducationProps,
+  getPrevJobProps,
+  getSectionHeaderProps,
+  getSkillProps,
+  getSummaryProps,
+} from "@/utils/getProps";
+import {
   addBulletData,
   addEducationData,
   addPrevJobData,
@@ -26,65 +34,22 @@ function DuplicateButton({
 
     switch (kind) {
       case "bulletPoint":
-        dispatch(
-          addBulletData({
-            id,
-            kind,
-            text: "Enter bullet point or choose from dropdown...",
-          })
-        );
+        dispatch(addBulletData(getBulletPointProps(id)));
         break;
       case "education":
-        dispatch(
-          addEducationData({
-            id,
-            kind,
-            schoolName: "University Name",
-            degree: "Degree, Honors, GPA",
-            monthEnded: 0,
-            yearEnded: 2025,
-          })
-        );
+        dispatch(addEducationData(getEducationProps(id)));
         break;
       case "prevJob":
-        dispatch(
-          addPrevJobData({
-            id,
-            kind,
-            companyName: "Company Name",
-            jobTitle: "Job Title",
-            location: "City, ST",
-            monthStarted: 0,
-            yearStarted: 2000,
-            monthEnded: 0,
-            yearEnded: 2025,
-          })
-        );
+        dispatch(addPrevJobData(getPrevJobProps(id)));
         break;
       case "skill":
-        dispatch(
-          addSkillData({
-            id,
-            kind,
-            list: ["List skills here and separate them with commas"],
-            showCategory: true,
-            category: "Category",
-          })
-        );
+        dispatch(addSkillData(getSkillProps(id)));
         break;
-
       case "sectionHeader":
-        dispatch(
-          addSectionHeaderData({
-            id,
-            kind,
-            text: "Custom Header",
-            underline: false,
-          })
-        );
+        dispatch(addSectionHeaderData(getSectionHeaderProps(id)));
         break;
       case "summary":
-        dispatch(addSummaryData({ id, kind, text: "Enter summary text..." }));
+        dispatch(addSummaryData(getSummaryProps(id)));
         break;
     }
 

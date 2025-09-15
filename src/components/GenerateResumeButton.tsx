@@ -13,6 +13,14 @@ import {
 import { RootState } from "../state/store";
 import { Kinds } from "../state/types";
 import { useNavigate } from "react-router-dom";
+import {
+  getBulletPointProps,
+  getEducationProps,
+  getPrevJobProps,
+  getSectionHeaderProps,
+  getSkillProps,
+  getSummaryProps,
+} from "@/utils/getProps";
 
 type RenderProps = {
   kind: Kinds;
@@ -38,10 +46,6 @@ export default function GenerateResumeButton() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const state = useSelector((s: RootState) => s.resume.data);
-  const { userInfo } = state;
-  const { location } = userInfo;
-
   function handleClick() {
     const newResumeId = crypto.randomUUID();
 
@@ -54,64 +58,24 @@ export default function GenerateResumeButton() {
 
       switch (kind) {
         case "prevJob":
-          dispatch(
-            addPrevJobData({
-              id,
-              kind,
-              companyName: "Company Name",
-              jobTitle: "Job Title",
-              location: location || "City, ST",
-              monthStarted: 0,
-              monthEnded: 12,
-              yearStarted: 2000,
-              yearEnded: 2025,
-            })
-          );
+          dispatch(addPrevJobData(getPrevJobProps(id)));
           break;
         case "bulletPoint":
-          dispatch(
-            addBulletData({
-              id,
-              kind,
-              text: "Enter bullet point or choose from dropdown...",
-            })
-          );
+          dispatch(addBulletData(getBulletPointProps(id)));
           break;
         case "sectionHeader":
-          dispatch(
-            addSectionHeaderData({
-              id,
-              kind: "sectionHeader",
-              text: item.text,
-              underline: true,
-            })
-          );
+          const headerData = getSectionHeaderProps(id);
+          headerData.text = item.text;
+          dispatch(addSectionHeaderData(headerData));
           break;
         case "education":
-          dispatch(
-            addEducationData({
-              id,
-              kind: "education",
-              schoolName: "University Name",
-              degree: "Degree, Honors, GPA",
-              monthEnded: 0,
-              yearEnded: 2025,
-            })
-          );
+          dispatch(addEducationData(getEducationProps(id)));
           break;
         case "skill":
-          dispatch(
-            addSkillData({
-              id,
-              kind,
-              list: ["List skills here and separate them with commas"],
-              showCategory: false,
-              category: "Category",
-            })
-          );
+          dispatch(addSkillData(getSkillProps(id)));
           break;
         case "summary":
-          dispatch(addSummaryData({ id, kind, text: "Enter summary text..." }));
+          dispatch(addSummaryData(getSummaryProps(id)));
           break;
       }
 
