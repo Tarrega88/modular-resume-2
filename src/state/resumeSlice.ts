@@ -331,10 +331,18 @@ const resumeSlice = createSlice({
         // }
         addUserLink(state, action: PayloadAction<string>) {
             state.data.userLinks[action.payload] = { id: action.payload, text: "Link Name", url: "URL" };
+        },
+        copyResume(state, action: PayloadAction<{ originalId: string; newId: string; }>) {
+            const { originalId, newId } = action.payload;
+            state.resumes[newId] = [];
+
+            for (const item of state.resumes[originalId]) {
+                state.resumes[newId].push(item);
+            }
         }
 
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume } = resumeSlice.actions;
 export default resumeSlice.reducer;
