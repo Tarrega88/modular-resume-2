@@ -19,7 +19,7 @@ function EducationSection({
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-3">
       <div className="flex justify-between mb-1">
         <div className="w-full font-bold">
           <DynamicInput

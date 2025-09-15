@@ -12,6 +12,7 @@ import RelativeAbsRight from "./RelativeAbsRight";
 import DeleteElementButton from "../DeleteElementButton";
 import DuplicateButton from "../DuplicateButton";
 import { Kinds } from "../../state/types";
+import ComponentDropdown from "../ComponentDropdown";
 
 function Draggable({
   children,
@@ -61,24 +62,35 @@ function Draggable({
       ? "translate-y-4"
       : "";
 
+  const hasCustomDropdown =
+    kind === "education" ||
+    kind === "prevJob" ||
+    kind === "project" ||
+    kind === "summary";
+
   return (
-    <div
-      draggable
-      className={`${outerDragStyle} ${dragStyle} hover:outline-2 outline-sky-200 cursor-pointer rounded group transition-all duration-150 text-base`}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      onDragEnter={handleDragEnter}
-    >
-      <RelativeAbsLeft hPosition="normal">
-        <DuplicateButton kind={kind} renderIndex={renderIndex} />
-      </RelativeAbsLeft>
-      <RelativeAbsRight hPosition="normal">
-        <div className="flex gap-[1px]">
-          <AddBelowButton />
-          <DeleteElementButton renderIndex={renderIndex} />
-        </div>
-      </RelativeAbsRight>
-      <div>{children}</div>
+    <div className="group">
+      {hasCustomDropdown ? (
+        <ComponentDropdown kind={kind} renderIndex={renderIndex} />
+      ) : null}
+      <div
+        draggable
+        className={`${outerDragStyle} ${dragStyle} hover:outline-2 outline-sky-200 cursor-pointer rounded group transition-all duration-150 text-base`}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDragEnter={handleDragEnter}
+      >
+        <RelativeAbsLeft hPosition="normal">
+          <DuplicateButton kind={kind} renderIndex={renderIndex} />
+        </RelativeAbsLeft>
+        <RelativeAbsRight hPosition="normal">
+          <div className="flex gap-[1px]">
+            <AddBelowButton />
+            <DeleteElementButton renderIndex={renderIndex} />
+          </div>
+        </RelativeAbsRight>
+        <div>{children}</div>
+      </div>
     </div>
   );
 }

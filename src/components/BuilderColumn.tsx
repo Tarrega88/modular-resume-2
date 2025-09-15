@@ -22,7 +22,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
           max={125}
           value={scale}
           onChange={(e) => handleSetScale(Number(e.target.value))}
-          step={5}
+          step={1}
         />
         <div>{scale}%</div>
         <button

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BulletPointProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
+import { BulletPointProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
 import { getProjectProps } from "@/utils/getProps";
 
 function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
@@ -176,6 +176,11 @@ const resumeSlice = createSlice({
         createEmptyResume(state) {
             const { currentResumeId } = state;
             state.resumes[currentResumeId] = [];
+        },
+        replaceResumeItem(state, action: PayloadAction<{ renderIndex: number; data: ResumeItemProps }>) {
+            const { renderIndex, data } = action.payload;
+            const currentResume = state.currentResumeId;
+            state.resumes[currentResume].splice(renderIndex, 1, data);
         },
         addResumeItem(state, action: PayloadAction<{ kind: Kinds, elementId: string | null }>) {
             const { currentResumeId } = state;
@@ -358,5 +363,5 @@ const resumeSlice = createSlice({
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem } = resumeSlice.actions;
 export default resumeSlice.reducer;
