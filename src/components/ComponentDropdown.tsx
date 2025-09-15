@@ -53,6 +53,7 @@ function ComponentDropdown({ kind, renderIndex }: Props) {
           <div className="flex-col bg-white h-28 overflow-scroll">
             {arr.map((e, i) => (
               <div
+                key={i}
                 className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer"
                 onClick={() =>
                   handleSelectOption({
