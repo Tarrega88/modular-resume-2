@@ -1,4 +1,3 @@
-// SideResumeInner.tsx
 import { useLayoutEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
@@ -22,7 +21,8 @@ export default function SideResumeInner() {
 
   return (
     <div
-      className="resume-font text-base"
+      id="resume-root"
+      className="resume-root text-base"
       ref={ref}
       style={{
         position: "relative",

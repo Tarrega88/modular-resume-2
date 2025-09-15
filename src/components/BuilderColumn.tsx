@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setScale } from "../state/resumeSlice";
 import { RootState } from "../state/store";
+import FontPicker from "./FontPicker";
+import FontScaleButtons from "./FontScaleButton";
+import FontScaleSlider from "./FontScaleSlider";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -28,6 +31,8 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
         >
           PDF
         </button>
+        <FontPicker />
+        <FontScaleSlider />
       </div>
     </div>
   );
