@@ -52,7 +52,7 @@ function UserLink({ id, inputWidth, divWidth, textAlign }: Props) {
         <input
           ref={input1}
           autoFocus
-          className="outline-1 rounded-xs"
+          className="outline-1 rounded-xs bg-white"
           value={tempText}
           onChange={(e) => setTempText(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && changeDisplay()}
@@ -64,7 +64,7 @@ function UserLink({ id, inputWidth, divWidth, textAlign }: Props) {
         <input
           ref={input2}
           type="url"
-          className="absolute outline-1 rounded-xs"
+          className="absolute outline-1 rounded-xs bg-white"
           value={tempUrl}
           onChange={(e) => setTempUrl(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && changeDisplay()}

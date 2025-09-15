@@ -22,13 +22,14 @@ function ProjectSection({
   return (
     <div className="mb-2">
       <div className="flex mb-1 justify-between">
-        <div className="font-bold">
+        <div className="font-bold w-full">
           <DynamicInput
             text={title}
             handleOnSubmit={(text) =>
               dispatch(editProjectString({ id, field: "title", text }))
             }
             inputWidth="full"
+            divWidth="full"
           />
         </div>
         {hasWebsite ? (
