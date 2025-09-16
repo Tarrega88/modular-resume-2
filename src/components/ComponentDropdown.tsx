@@ -5,9 +5,10 @@ import { Kinds, ResumeItemProps } from "@/state/types";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
-import { addResumeItem, replaceResumeItem } from "@/state/resumeSlice";
+import { replaceResumeItem } from "@/state/resumeSlice";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { getFilterPlaceholders } from "@/utils/getProps";
 
 type Props = {
   kind: Kinds;
@@ -40,13 +41,30 @@ function ComponentDropdown({
   const dataType = kindToData[kind];
   const options = data[dataType];
   const arr = Object.keys(options);
-  // const vals = Object.values(options);
-  // console.log(vals);
 
-  // const filtered = vals.filter((e: any) => e.title)
+  const entries = Object.entries(options);
 
   function handleSelectOption(data: ResumeItemProps) {
     dispatch(replaceResumeItem({ renderIndex, data }));
+  }
+
+  const placeholders = Object.entries(getFilterPlaceholders(kind));
+
+  const renderArr: string[] = [];
+  for (const [id, item] of entries as [string, any][]) {
+    for (const [k, defVal] of placeholders) {
+      const differs =
+        k === "list"
+          ? (item.list ?? []).length !== (defVal ?? []).length ||
+            (item.list ?? []).some(
+              (v: string, i: number) => v !== (defVal ?? [])[i]
+            )
+          : item[k] !== defVal;
+      if (differs) {
+        renderArr.push(id);
+        break;
+      }
+    }
   }
 
   return (
@@ -82,7 +100,7 @@ function ComponentDropdown({
             </div>
           </div>
           <div className="flex-col bg-white h-28 overflow-y-scroll overflow-x-hidden">
-            {arr.map((e, i) => (
+            {renderArr.map((e, i) => (
               <div
                 key={i}
                 className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer"

@@ -42,3 +42,38 @@ export function getProjectProps(id: string): ProjectProps {
     return { id, kind: "project", title: "Project Name", description: "Description of project", hasWebsite: true, website: newUserLinkId }
 }
 
+
+export function getFilterPlaceholders(kind: Kinds) {
+    switch (kind) {
+        case "bulletPoint":
+            const { text } = getBulletPointProps("");
+            return { text };
+        case "education":
+            const { degree, schoolName } = getEducationProps("");
+            return { degree, schoolName };
+        case "prevJob":
+            const { companyName, jobTitle, location } = getPrevJobProps("");
+            return { companyName, jobTitle, location };
+        case "project":
+            const { description, title } = getProjectProps("");
+            return { description, title };
+        case "sectionHeader":
+            const sectionHeaderData = getSectionHeaderProps("");
+            return { text: sectionHeaderData.text };
+        case "skill":
+            const { list } = getSkillProps("");
+            return { list };
+        case "summary":
+            const summaryData = getSummaryProps("");
+            return { text: summaryData.text };
+        case "userInfo":
+            const userInfoData = getUserInfoProps("");
+            return {
+                fullName: userInfoData.fullName,
+                email: userInfoData.email,
+                location: userInfoData.location,
+                phoneNumber: userInfoData.phoneNumber,
+                professionTitle: userInfoData.professionTitle,
+            };
+    }
+}
