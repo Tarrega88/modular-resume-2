@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BulletPointProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
-import { getProjectProps } from "@/utils/getProps";
 
 function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
     (obj as Record<K, T[K]>)[key] = value; //obj as any is an option for testing
 }
 
+//TODO 9/16/2025: look into whether or not this is still needed, along with the two defaults
 function ensurePrevJob(state: ResumeState, id: ID): PrevJobProps {
     return (state.data.prevJobs[id] ??= { ...prevJobDefault, id });
 }
@@ -13,15 +13,10 @@ function ensurePrevJob(state: ResumeState, id: ID): PrevJobProps {
 export const locationDefault: string = "City, ST";
 export const prevJobDefault: PrevJobProps = { id: "0", kind: "prevJob", companyName: "Company Name", location: locationDefault, jobTitle: "Job Title", monthStarted: 0, yearStarted: 2024, monthEnded: 11, yearEnded: 2025 }
 // export const personalInfoDefault: PersonalInfoProps = { id: "0", kind: "personalInfo", fullName: "Full Name", email: "email@email.com", phoneNumber: "(123) 456-7890", location: locationDefault }
-export const bulletPointDefault: BulletPointProps = { id: "0", kind: "bulletPoint", text: "Enter Bullet Point Text Here" }
 
 //data will store all data across multiple resumes - might add a "hidden" boolean to everything,
 //which would start as false, but the user could mark anything to be hidden from not being an option to pick for that resume.
 
-//NOTE: id and object key will match except in the resumes object.
-
-// /state/resumeSlice.ts
-//TODO 9/14/2025: pull this into its own file to use as a placeholder and import the initial state here.
 const initialState: ResumeState = {
     scale: 75,
     currentResumeId: "",
@@ -31,11 +26,7 @@ const initialState: ResumeState = {
     monthType: "short",
     data: {
         userInfo: {},
-        // keep two empty link slots so IDs referenced above exist
-        userLinks: {
-            // "0": { id: "0", text: "Link 1", url: "" },
-            // "1": { id: "1", text: "Link 2", url: "" },
-        },
+        userLinks: {},
         summaries: {},
         sectionHeaders: {},
         prevJobs: {},
@@ -47,119 +38,6 @@ const initialState: ResumeState = {
 
     resumes: {},
 };
-
-{/*
-           fullName: "Full Name",
-            professionTitle: "Profession",
-            showProfession: true,
-            showIcons: true,
-            hasUnderline: true,
-            kind: "userInfo",
-            email: "email@gmail.com",
-            phoneNumber: "(123) 456-7890",
-            location: "City, ST",
-            userLink1: "0",
-            userLink2: "1",
-            showLink1: true,
-            showLink2: true,
-    */}
-
-// const initialState: ResumeState = {
-//     scale: 75,
-//     currentResumeId: "0",
-//     dragFromIndex: -1,
-//     dragToIndex: -1,
-//     dragHigher: true,
-//     monthType: "short", //TODO 9/6/2025: store monthTypes in a "per resume" type of object
-//     data: {
-//         userInfo: {
-//             fullName: "Michael",
-//             showIcons: true,
-//             professionTitle: "Software Developer",
-//             showProfession: true,
-//             hasUnderline: true,
-//             kind: "userInfo",
-//             email: "email@gmail.com",
-//             phoneNumber: "(123) 456-7890",
-//             location: "City, ST",
-//             userLink1: "0",
-//             userLink2: "1",
-//             showLink1: false,
-//             showLink2: false,
-//         },
-//         summaries: {
-//             0: {
-//                 id: "0", kind: "summary", text: `Results-driven professional with a proven ability to adapt quickly, solve problems, and contribute effectively in collaborative environments. Skilled at learning new technologies, managing multiple priorities, and delivering high-quality work under deadlines.`
-//             }
-//         },
-//         sectionHeaders: {
-//             0: { id: "0", kind: "sectionHeader", text: "EXPERIENCE", underline: true },
-//             1: { id: "1", kind: "sectionHeader", text: "SKILLS", underline: true },
-//             2: { id: "2", kind: "sectionHeader", text: "SUMMARY", underline: true },
-//             3: { id: "3", kind: "sectionHeader", text: "EDUCATION", underline: true }
-//         },
-//         prevJobs: {
-//             0: { id: "0", kind: "prevJob", companyName: "Google", location: "Anchorage, AK", jobTitle: "Software Developer", monthStarted: 6, yearStarted: 2023, monthEnded: 11, yearEnded: 2024 },
-//             1: { id: "1", kind: "prevJob", companyName: "Microsoft", location: "Los Angeles, CA", jobTitle: "UI/UX Designer", monthStarted: 0, yearStarted: 2022, monthEnded: 5, yearEnded: 2023 },
-//             // 2: { id: "2", kind: "prevJob", companyName: "Best Buy", location: "Los Angeles, CA", jobTitle: "Customer Support", monthStarted: 0, yearStarted: 2022, monthEnded: 5, yearEnded: 2023 }
-//         },
-//         bulletPoints: {
-//             0: { id: "0", kind: "bulletPoint", text: "Built software for ABC company" },
-//             1: { id: "1", kind: "bulletPoint", text: "Developed an internal application to reduce user friction" },
-//             2: { id: "2", kind: "bulletPoint", text: "Wrote and used automated tests in Jest" },
-//             3: { id: "3", kind: "bulletPoint", text: "Collaborated with cross-functional teams to launch new features" },
-//             4: { id: "4", kind: "bulletPoint", text: "Optimized React components for faster load times" },
-//             5: { id: "5", kind: "bulletPoint", text: "Created RESTful APIs to support front-end functionality" },
-//             6: { id: "6", kind: "bulletPoint", text: "Implemented Redux for scalable state management" },
-//             7: { id: "7", kind: "bulletPoint", text: "Reviewed code and mentored junior developers" },
-//             8: { id: "8", kind: "bulletPoint", text: "Integrated third-party authentication services" },
-//             9: { id: "9", kind: "bulletPoint", text: "Designed responsive UI components using Tailwind CSS" },
-
-//         },
-//         education: {
-//             0: {
-//                 id: "0", kind: "education", schoolName: "University of Alaska Anchorage", degree: "B.A. in Music Education and Classical Guitar", monthEnded: 4, yearEnded: 2016
-//             }
-//         },
-//         projects: {},
-//         skills: { 0: { id: "0", kind: "skill", list: ["JavaScript", "TypeScript", "HTML", "CSS"], showCategory: true, category: "Technology" }, 1: { id: "1", kind: "skill", list: ["Docker", "VSCode", "Excel", "Word"], showCategory: true, category: "Software" } },
-//         //Note: userLinks should remain hardcoded in with at least 0 and 1 at all times.
-//         userLinks: { 0: { id: "0", text: "", url: "" }, 1: { id: "1", text: "", url: "" } },
-//     },
-//     resumes: {
-//         0: [{ id: "99", kind: "userInfo", elementId: "" },
-//         // { id: "97", kind: "sectionHeader", elementId: "2" },
-//         { id: "96", kind: "summary", elementId: "0" },
-//         { id: "98", kind: "sectionHeader", elementId: "0" },
-//         { id: "100", kind: "prevJob", elementId: "0" },
-
-//         { id: "101", kind: "bulletPoint", elementId: "0" },
-//         { id: "102", kind: "bulletPoint", elementId: "1" },
-//         { id: "103", kind: "bulletPoint", elementId: "2" },
-
-//         { id: "104", kind: "prevJob", elementId: "1" },
-//         { id: "105", kind: "bulletPoint", elementId: "3" },
-//         { id: "106", kind: "bulletPoint", elementId: "4" },
-//         { id: "107", kind: "bulletPoint", elementId: "5" },
-//         { id: "111", kind: "sectionHeader", elementId: "3" },
-//         { id: "112", kind: "education", elementId: "0" },
-//         { id: "108", kind: "sectionHeader", elementId: "1" },
-//         { id: "109", kind: "skill", elementId: "0" },
-//         { id: "110", kind: "skill", elementId: "1" },
-
-
-//         { id: "108", kind: "prevJob", elementId: "2" },
-//         { id: "109", kind: "bulletPoint", elementId: "6" },
-//         { id: "110", kind: "bulletPoint", elementId: "7" },
-//         { id: "111", kind: "bulletPoint", elementId: "8" },
-
-//         { id: "112", kind: "prevJob", elementId: "0" },
-//         { id: "113", kind: "bulletPoint", elementId: "9" },
-//         ],
-//     },
-
-// };
-//.data.bulletPoints
 
 const resumeSlice = createSlice({
     name: "resume",
@@ -326,7 +204,6 @@ const resumeSlice = createSlice({
             const id = crypto.randomUUID();
 
             state.resumes[currentResumeId].splice(index + 1, 0, { kind, id, elementId });
-            // state.resumes[currentResumeId] = [...state.resumes[currentResumeId]]
         },
         editUserLink(state, action: PayloadAction<{ id: string; text: string; url: string; }>) {
             const { id, text, url } = action.payload;
