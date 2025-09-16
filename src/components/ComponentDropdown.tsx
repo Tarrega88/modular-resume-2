@@ -34,16 +34,10 @@ function ComponentDropdown({
   setIsExpanded,
 }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
-  // const [isExpanded, setIsExpanded] = useState(false);
-
   const [searchText, setSearchText] = useState("");
-
   const dispatch = useDispatch();
-
   const { data } = useSelector((state: RootState) => state.resume);
-
   const dataType = kindToData[kind];
-
   const options = data[dataType];
   const arr = Object.keys(options);
   // const vals = Object.values(options);
@@ -68,7 +62,7 @@ function ComponentDropdown({
       className="text-base w-[754px]"
     >
       {isExpanded ? (
-        <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute">
+        <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
           <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
             <div className="">Select a previously made section:</div>
             <div className="flex gap-2 items-center">
