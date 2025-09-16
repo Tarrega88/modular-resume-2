@@ -48,23 +48,43 @@ function ComponentDropdown({
     dispatch(replaceResumeItem({ renderIndex, data }));
   }
 
-  const placeholders = Object.entries(getFilterPlaceholders(kind));
+  const placeholderEntries = Object.entries(getFilterPlaceholders(kind)!) as [
+    string,
+    any
+  ][];
+  const q = searchText.trim().toLowerCase();
+
+  const norm = (v: unknown) => String(v ?? "").toLowerCase();
+  const arraysEqual = (a: string[], b: string[]) =>
+    a.length === b.length && a.every((v, i) => norm(v) === norm(b[i]));
+
+  function differsForKey(k: string, defVal: any, item: any) {
+    if (k === "list") {
+      const a = (item.list ?? []) as string[];
+      const b = (defVal ?? []) as string[];
+      return !arraysEqual(a, b);
+    }
+    return norm(item[k]) !== norm(defVal);
+  }
+
+  function matchesForKey(k: string, item: any, q: string) {
+    if (!q) return true;
+    if (k === "list")
+      return (item.list ?? []).some((v: string) => norm(v).includes(q));
+    return norm(item[k]).includes(q);
+  }
 
   const renderArr: string[] = [];
   for (const [id, item] of entries as [string, any][]) {
-    for (const [k, defVal] of placeholders) {
-      const differs =
-        k === "list"
-          ? (item.list ?? []).length !== (defVal ?? []).length ||
-            (item.list ?? []).some(
-              (v: string, i: number) => v !== (defVal ?? [])[i]
-            )
-          : item[k] !== defVal;
-      if (differs) {
-        renderArr.push(id);
-        break;
-      }
-    }
+    const differsAny = placeholderEntries.some(([k, defVal]) =>
+      differsForKey(k, defVal, item)
+    );
+    if (!differsAny) continue;
+
+    const matchesAny = q
+      ? placeholderEntries.some(([k]) => matchesForKey(k, item, q))
+      : true;
+    if (matchesAny) renderArr.push(id);
   }
 
   return (
