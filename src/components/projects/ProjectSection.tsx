@@ -3,7 +3,9 @@ import UserLink from "../UserLink";
 import DynamicInput from "../DynamicInput";
 import DynamicTextArea from "../DynamicTextArea";
 import { useDispatch } from "react-redux";
-import { editProjectString } from "@/state/resumeSlice";
+import { editProjectBool, editProjectString } from "@/state/resumeSlice";
+import RelativeAbsRight from "../wrappers/RelativeAbsRight";
+import SideLinkButton from "../SideLinkButton";
 
 function ProjectSection({
   id,
@@ -12,15 +14,29 @@ function ProjectSection({
   description,
   hasWebsite,
   website,
-}: ProjectProps) {
+  renderUI,
+}: ProjectProps & { renderUI: boolean }) {
   function handleOnSubmit() {
     //temp
   }
 
   const dispatch = useDispatch();
 
+  function handleShowLink(bool: boolean) {
+    dispatch(editProjectBool({ id, bool, field: "hasWebsite" }));
+  }
+
   return (
     <div className="mb-2">
+      {renderUI ? (
+        <RelativeAbsRight vPosition="med" hPosition="close">
+          <SideLinkButton
+            id={website}
+            handleOnClick={() => handleShowLink(!hasWebsite)}
+            active={hasWebsite}
+          />
+        </RelativeAbsRight>
+      ) : null}
       <div className="flex mb-1 justify-between">
         <div className="font-bold w-full">
           <DynamicInput
@@ -41,16 +57,6 @@ function ProjectSection({
           />
         ) : null}
       </div>
-      {/* {hasWebsite ? (
-        <div className="mb-2">
-          <UserLink
-            id={website}
-            inputWidth="char"
-            divWidth="char"
-            textAlign="right"
-          />
-        </div>
-      ) : null} */}
       <div className="">
         <DynamicTextArea
           text={description}
@@ -61,7 +67,6 @@ function ProjectSection({
           placeholderText="Enter project description..."
         />
       </div>
-      {/* <UserLink id={website} inputWidth="char" divWidth="char" /> */}
     </div>
   );
 }

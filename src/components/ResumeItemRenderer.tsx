@@ -20,17 +20,6 @@ function ResumeItemRenderer({
 }: ResumeItemProps & { renderIndex: number; renderUI: boolean }) {
   const { data } = useSelector((state: RootState) => state.resume);
 
-  // console.log(`RESUMES`);
-  // console.log(resumes);
-
-  // console.log("Element ID");
-  // console.log(elementId);
-  // console.log("data");
-  // console.log(data);
-
-  // const kindString = kind.toString();
-  //TODO 8/26/2025: Probably don't need kind on these - maybe remove from the Props, or if it's needed there then make a new Props type for these?
-
   switch (kind) {
     case "userInfo":
       const info = data.userInfo[elementId];
@@ -150,6 +139,7 @@ function ResumeItemRenderer({
           description={projectData.description}
           hasWebsite={projectData.hasWebsite}
           website={projectData.website}
+          renderUI={renderUI}
         />
       );
     }

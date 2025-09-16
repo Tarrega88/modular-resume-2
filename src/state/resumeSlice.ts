@@ -223,9 +223,9 @@ const resumeSlice = createSlice({
             const { id, field, text } = action.payload;
             state.data.projects[id][field] = text;
         },
-        editProjectBool(state, action: PayloadAction<{ id: string; hasWebsite: boolean }>) {
-            const { id, hasWebsite } = action.payload;
-            state.data.projects[id].hasWebsite = hasWebsite;
+        editProjectBool(state, action: PayloadAction<{ id: string; bool: boolean, field: "hasWebsite" }>) {
+            const { id, bool, field } = action.payload;
+            state.data.projects[id][field] = bool;
         },
         addUserLink(state, action: PayloadAction<string>) {
             state.data.userLinks[action.payload] = { id: action.payload, text: "Link Name", url: "URL" };

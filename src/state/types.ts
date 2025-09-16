@@ -31,7 +31,6 @@ export type ResumeItemProps = {
 export type TextEdit = PayloadAction<{ id: string; text: string; }>
 export type JobSectionTextEdit = PayloadAction<{ id: string; text: string; field: "jobTitle" | "location" | "companyName"; }>
 
-//Note 9/11/2025: Consider whether UserLinkProps should have kind prop
 export type UserLinkData = {
     id: string;
     text: string;
