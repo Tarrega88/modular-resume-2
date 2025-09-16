@@ -13,6 +13,7 @@ import DeleteElementButton from "../DeleteElementButton";
 import DuplicateButton from "../DuplicateButton";
 import { Kinds } from "../../state/types";
 import ComponentDropdown from "../ComponentDropdown";
+import { useState } from "react";
 
 function Draggable({
   children,
@@ -27,6 +28,7 @@ function Draggable({
     (state: RootState) => state.resume
   );
 
+  const [isExpanded, setIsExpanded] = useState(false);
   const dispatch = useDispatch();
 
   const dragDirection = dragHigher
@@ -62,18 +64,14 @@ function Draggable({
       ? "translate-y-4"
       : "";
 
-  // const hasCustomDropdown =
-  //   kind === "education" ||
-  //   kind === "prevJob" ||
-  //   kind === "project" ||
-  //   kind === "summary" ||
-  //   kind === "bulletPoint" ||
-  //   kind === "userInfo" ||
-  //   kind === "sectionHeader" || kind === "";
-
   return (
     <div className="group">
-      <ComponentDropdown kind={kind} renderIndex={renderIndex} />
+      <ComponentDropdown
+        kind={kind}
+        renderIndex={renderIndex}
+        isExpanded={isExpanded}
+        setIsExpanded={setIsExpanded}
+      />
       <div
         draggable
         className={`${outerDragStyle} ${dragStyle} hover:outline-2 outline-sky-200 cursor-pointer rounded group transition-all duration-150 text-base`}
@@ -90,7 +88,7 @@ function Draggable({
             <DeleteElementButton renderIndex={renderIndex} />
           </div>
         </RelativeAbsRight>
-        <div>{children}</div>
+        <div style={{ opacity: isExpanded ? 0 : 100 }}>{children}</div>
       </div>
     </div>
   );

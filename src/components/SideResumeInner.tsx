@@ -43,6 +43,7 @@ export default function SideResumeInner() {
             id={e.id}
             kind={e.kind}
             elementId={e.elementId}
+            renderUI={true}
           />
         </Draggable>
       ))}

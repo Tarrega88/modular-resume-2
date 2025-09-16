@@ -34,9 +34,11 @@ function ResumeHeader({
   userLink2,
   showLink1,
   showLink2,
+  renderUI,
 }: // children,
 UserInfoProps & {
   renderIndex: number;
+  renderUI: boolean;
 }) {
   const dispatch = useDispatch();
 
@@ -66,56 +68,64 @@ UserInfoProps & {
 
   return (
     <div className="mb-8 group">
-      <RelativeAbsRight vPosition="med" hPosition="normal">
-        <SideLinkButton
-          id={userLink1}
-          handleOnClick={() =>
-            handleShowLink({ field: "showLink1", show: !showLink1 })
-          }
-          active={showLink1}
-        />
-        <SideLinkButton
-          id={userLink2}
-          handleOnClick={() =>
-            handleShowLink({ field: "showLink2", show: !showLink2 })
-          }
-          active={showLink2}
-        />
-      </RelativeAbsRight>
-      <RelativeAbsLeft hPosition="normal" vPosition="med">
-        <MdOutlineTitle
-          className={`text-xl ${titleButtonStyle} transition-all duration-200`}
-          onClick={() =>
-            dispatch(
-              toggleUserBool({
-                id,
-                field: "showProfession",
-                show: !showProfession,
-              })
-            )
-          }
-        />
-      </RelativeAbsLeft>
-      <RelativeAbsLeft hPosition="far" vPosition="med">
-        <IoIosInformationCircle
-          onClick={() =>
-            dispatch(
-              toggleUserBool({ id, field: "showIcons", show: !showIcons })
-            )
-          }
-          className={`text-xl ${iconButtonStyle} transition-all duration-200`}
-        />
-      </RelativeAbsLeft>
-      <RelativeAbsRight hPosition="close" vPosition="low">
-        <FiUnderline
-          className={`text-xl translate-y-0.5 ${underlineButtonStyle} transition-all duration-200`}
-          onClick={() =>
-            dispatch(
-              toggleUserBool({ id, field: "hasUnderline", show: !hasUnderline })
-            )
-          }
-        />
-      </RelativeAbsRight>
+      {renderUI ? (
+        <>
+          <RelativeAbsRight vPosition="med" hPosition="normal">
+            <SideLinkButton
+              id={userLink1}
+              handleOnClick={() =>
+                handleShowLink({ field: "showLink1", show: !showLink1 })
+              }
+              active={showLink1}
+            />
+            <SideLinkButton
+              id={userLink2}
+              handleOnClick={() =>
+                handleShowLink({ field: "showLink2", show: !showLink2 })
+              }
+              active={showLink2}
+            />
+          </RelativeAbsRight>
+          <RelativeAbsLeft hPosition="normal" vPosition="med">
+            <MdOutlineTitle
+              className={`text-xl ${titleButtonStyle} transition-all duration-200`}
+              onClick={() =>
+                dispatch(
+                  toggleUserBool({
+                    id,
+                    field: "showProfession",
+                    show: !showProfession,
+                  })
+                )
+              }
+            />
+          </RelativeAbsLeft>
+          <RelativeAbsLeft hPosition="far" vPosition="med">
+            <IoIosInformationCircle
+              onClick={() =>
+                dispatch(
+                  toggleUserBool({ id, field: "showIcons", show: !showIcons })
+                )
+              }
+              className={`text-xl ${iconButtonStyle} transition-all duration-200`}
+            />
+          </RelativeAbsLeft>
+          <RelativeAbsRight hPosition="close" vPosition="low">
+            <FiUnderline
+              className={`text-xl translate-y-0.5 ${underlineButtonStyle} transition-all duration-200`}
+              onClick={() =>
+                dispatch(
+                  toggleUserBool({
+                    id,
+                    field: "hasUnderline",
+                    show: !hasUnderline,
+                  })
+                )
+              }
+            />
+          </RelativeAbsRight>
+        </>
+      ) : null}
       <div className="flex justify-between">
         <div className="text-3xl font-semibold w-full">
           <DynamicInput

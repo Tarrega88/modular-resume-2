@@ -21,8 +21,9 @@ function SkillSection({
   showCategory,
   // kind,
   list,
+  renderUI,
 }: // renderIndex,
-SkillProps & { renderIndex: number }) {
+SkillProps & { renderIndex: number; renderUI: boolean }) {
   const dispatch = useDispatch();
   function handleOnSubmit(text: string) {
     dispatch(editSkills({ id, text }));
@@ -40,18 +41,20 @@ SkillProps & { renderIndex: number }) {
 
   return (
     <div className="group w-full">
-      <RelativeAbsRight hPosition="over">
-        <div className="text-lg">
-          <button
-            className={`cursor-pointer ${labelColor} transition-all duration-150`}
-            onClick={() =>
-              dispatch(setShowCategory({ id, showCategory: !showCategory }))
-            }
-          >
-            <MdLabel />
-          </button>
-        </div>
-      </RelativeAbsRight>
+      {renderUI ? (
+        <RelativeAbsRight hPosition="over">
+          <div className="text-lg">
+            <button
+              className={`cursor-pointer ${labelColor} transition-all duration-150`}
+              onClick={() =>
+                dispatch(setShowCategory({ id, showCategory: !showCategory }))
+              }
+            >
+              <MdLabel />
+            </button>
+          </div>
+        </RelativeAbsRight>
+      ) : null}
       <div className="flex mb-1">
         {/* <span className="mx-2">•</span> */}
         {showCategory ? (

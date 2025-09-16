@@ -16,7 +16,8 @@ function ResumeItemRenderer({
   kind,
   elementId,
   renderIndex,
-}: ResumeItemProps & { renderIndex: number }) {
+  renderUI,
+}: ResumeItemProps & { renderIndex: number; renderUI: boolean }) {
   const { data } = useSelector((state: RootState) => state.resume);
 
   // console.log(`RESUMES`);
@@ -50,6 +51,7 @@ function ResumeItemRenderer({
           userLink2={info.userLink2}
           showLink1={info.showLink1}
           showLink2={info.showLink2}
+          renderUI={renderUI}
         />
       );
     case "prevJob":
@@ -98,6 +100,7 @@ function ResumeItemRenderer({
           text={sectionHeaderData.text}
           underline={sectionHeaderData.underline}
           renderIndex={renderIndex}
+          renderUI={renderUI}
         />
       );
     }
@@ -111,6 +114,7 @@ function ResumeItemRenderer({
           category={skillData.category}
           list={skillData.list}
           renderIndex={renderIndex}
+          renderUI={renderUI}
         />
       );
     }

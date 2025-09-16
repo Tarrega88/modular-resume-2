@@ -41,23 +41,11 @@ function BPDisplayAndInput({
     }
   }
 
-  const hoverClass = options.length > 1 ? "" : "";
-
   return displayMode === "div" ? (
     <div
       className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full"
       onClick={setDisplayToInput}
     >
-      {/* <RelativeAbsLeft hPosition="bullet">
-        <DropdownElement
-          key={id}
-          options={options}
-          kind={kind}
-          id={id}
-          renderIndex={renderIndex}
-        />
-      </RelativeAbsLeft> */}
-
       <p className="flex">
         <span
           className="mx-2 pointer-events-none"

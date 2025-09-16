@@ -12,6 +12,8 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 type Props = {
   kind: Kinds;
   renderIndex: number;
+  isExpanded: boolean;
+  setIsExpanded(e: boolean): void;
 };
 
 const kindToData = {
@@ -25,9 +27,14 @@ const kindToData = {
   skill: "skills",
 };
 
-function ComponentDropdown({ kind, renderIndex }: Props) {
+function ComponentDropdown({
+  kind,
+  renderIndex,
+  isExpanded,
+  setIsExpanded,
+}: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
+  // const [isExpanded, setIsExpanded] = useState(false);
 
   const [searchText, setSearchText] = useState("");
 
@@ -61,7 +68,7 @@ function ComponentDropdown({ kind, renderIndex }: Props) {
       className="text-base w-[754px]"
     >
       {isExpanded ? (
-        <div className="w-[754px] bg-slate-800 overflow-scroll p-1 absolute rounded-sm">
+        <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute">
           <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
             <div className="">Select a previously made section:</div>
             <div className="flex gap-2 items-center">
@@ -99,6 +106,7 @@ function ComponentDropdown({ kind, renderIndex }: Props) {
                     kind={kind}
                     elementId={e}
                     renderIndex={i}
+                    renderUI={false}
                   />
                 </div>
               </div>

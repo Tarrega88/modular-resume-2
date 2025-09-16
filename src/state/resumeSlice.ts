@@ -29,7 +29,6 @@ const initialState: ResumeState = {
     dragToIndex: -1,
     dragHigher: true,
     monthType: "short",
-
     data: {
         userInfo: {},
         // keep two empty link slots so IDs referenced above exist

@@ -15,7 +15,8 @@ function SectionHeader({
   id,
   underline,
   renderIndex,
-}: SectionHeaderProps & { renderIndex: number }) {
+  renderUI,
+}: SectionHeaderProps & { renderIndex: number; renderUI: boolean }) {
   const dispatch = useDispatch();
   function handleOnSubmit(text: string) {
     dispatch(editSectionHeader({ id, text }));
@@ -35,12 +36,14 @@ function SectionHeader({
     <div
       className={`text-lg font-semibold mt-4 mb-3 border-b-neutral-400 group ${underlineStyle}`}
     >
-      <RelativeAbsRight hPosition="over">
-        <FiUnderline
-          className={`text-xl translate-y-1 ${underlineButtonStyle} transition-all duration-200`}
-          onClick={handleToggleUnderline}
-        />
-      </RelativeAbsRight>
+      {renderUI ? (
+        <RelativeAbsRight hPosition="over">
+          <FiUnderline
+            className={`text-xl translate-y-1 ${underlineButtonStyle} transition-all duration-200`}
+            onClick={handleToggleUnderline}
+          />
+        </RelativeAbsRight>
+      ) : null}
       <DynamicInput
         text={text}
         handleOnSubmit={handleOnSubmit}
