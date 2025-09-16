@@ -62,17 +62,18 @@ function Draggable({
       ? "translate-y-4"
       : "";
 
-  const hasCustomDropdown =
-    kind === "education" ||
-    kind === "prevJob" ||
-    kind === "project" ||
-    kind === "summary";
+  // const hasCustomDropdown =
+  //   kind === "education" ||
+  //   kind === "prevJob" ||
+  //   kind === "project" ||
+  //   kind === "summary" ||
+  //   kind === "bulletPoint" ||
+  //   kind === "userInfo" ||
+  //   kind === "sectionHeader" || kind === "";
 
   return (
     <div className="group">
-      {hasCustomDropdown ? (
-        <ComponentDropdown kind={kind} renderIndex={renderIndex} />
-      ) : null}
+      <ComponentDropdown kind={kind} renderIndex={renderIndex} />
       <div
         draggable
         className={`${outerDragStyle} ${dragStyle} hover:outline-2 outline-sky-200 cursor-pointer rounded group transition-all duration-150 text-base`}

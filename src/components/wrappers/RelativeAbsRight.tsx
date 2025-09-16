@@ -6,17 +6,20 @@ function RelativeAbsRight({
   vPosition = "high",
 }: {
   children: React.ReactNode;
-  hPosition: "normal" | "far";
-  vPosition?: "high" | "low";
+  hPosition: "over" | "close" | "normal" | "far";
+  vPosition?: "high" | "med" | "low";
 }) {
   const hPositions = {
+    over: 104,
+    close: 70,
     normal: 50,
     far: 12,
   };
 
   const vPositions = {
     high: 0,
-    low: 32,
+    med: 32,
+    low: 60,
   };
 
   return (

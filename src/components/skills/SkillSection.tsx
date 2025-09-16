@@ -7,8 +7,8 @@ import {
   editSkills,
   setShowCategory,
 } from "../../state/resumeSlice";
-import RelativeAbsLeft from "../wrappers/RelativeAbsLeft";
 import { MdLabel } from "react-icons/md";
+import RelativeAbsRight from "../wrappers/RelativeAbsRight";
 
 //Also, I think I want to allow for creation of categories, like:
 //Technologies, Software, etc.
@@ -40,7 +40,7 @@ SkillProps & { renderIndex: number }) {
 
   return (
     <div className="group w-full">
-      <RelativeAbsLeft hPosition="far">
+      <RelativeAbsRight hPosition="over">
         <div className="text-lg">
           <button
             className={`cursor-pointer ${labelColor} transition-all duration-150`}
@@ -51,7 +51,7 @@ SkillProps & { renderIndex: number }) {
             <MdLabel />
           </button>
         </div>
-      </RelativeAbsLeft>
+      </RelativeAbsRight>
       <div className="flex mb-1">
         {/* <span className="mx-2">•</span> */}
         {showCategory ? (

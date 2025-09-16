@@ -15,8 +15,8 @@ const round2 = (n: number) => Math.round(n * 100) / 100;
 
 export default function FontScaleSlider({
   containerSelector = "#resume-root",
-  min = 0.8,
-  max = 1.2,
+  min = 0.9,
+  max = 1.1,
   step = 0.01,
   storageKey = "resume-font-scale",
 }: Props) {

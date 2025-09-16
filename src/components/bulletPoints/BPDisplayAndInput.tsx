@@ -41,14 +41,14 @@ function BPDisplayAndInput({
     }
   }
 
-  const hoverClass = options.length > 1 ? "group-hover:opacity-0" : "";
+  const hoverClass = options.length > 1 ? "" : "";
 
   return displayMode === "div" ? (
     <div
       className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full"
       onClick={setDisplayToInput}
     >
-      <RelativeAbsLeft hPosition="bullet">
+      {/* <RelativeAbsLeft hPosition="bullet">
         <DropdownElement
           key={id}
           options={options}
@@ -56,11 +56,11 @@ function BPDisplayAndInput({
           id={id}
           renderIndex={renderIndex}
         />
-      </RelativeAbsLeft>
+      </RelativeAbsLeft> */}
 
       <p className="flex">
         <span
-          className="mx-2 group-hover:opacity-0 transition-all duration-150 pointer-events-none"
+          className="mx-2 pointer-events-none"
           onClick={(e) => e.stopPropagation()}
         >
           •

@@ -65,7 +65,7 @@ UserInfoProps & {
 
   return (
     <div className="mb-8 group">
-      <RelativeAbsRight vPosition="low" hPosition="normal">
+      <RelativeAbsRight vPosition="med" hPosition="normal">
         <SideLinkButton
           id={userLink1}
           handleOnClick={() =>
@@ -81,7 +81,7 @@ UserInfoProps & {
           active={showLink2}
         />
       </RelativeAbsRight>
-      <RelativeAbsLeft hPosition="far" vPosition="high">
+      <RelativeAbsLeft hPosition="normal" vPosition="med">
         <MdOutlineTitle
           className={`text-xl ${titleButtonStyle} transition-all duration-200`}
           onClick={() =>
@@ -99,7 +99,7 @@ UserInfoProps & {
           className={`text-xl ${iconButtonStyle} transition-all duration-200`}
         />
       </RelativeAbsLeft>
-      <RelativeAbsLeft hPosition="normal" vPosition="med">
+      <RelativeAbsRight hPosition="close" vPosition="low">
         <FiUnderline
           className={`text-xl translate-y-0.5 ${underlineButtonStyle} transition-all duration-200`}
           onClick={() =>
@@ -108,7 +108,7 @@ UserInfoProps & {
             )
           }
         />
-      </RelativeAbsLeft>
+      </RelativeAbsRight>
       <div className="flex justify-between">
         <div className="text-3xl font-semibold w-full">
           <DynamicInput

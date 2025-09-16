@@ -7,6 +7,7 @@ import {
 import RelativeAbsLeft from "./wrappers/RelativeAbsLeft";
 import { FiUnderline } from "react-icons/fi";
 import { SectionHeaderProps } from "../state/types";
+import RelativeAbsRight from "./wrappers/RelativeAbsRight";
 
 function SectionHeader({
   text,
@@ -34,12 +35,12 @@ function SectionHeader({
     <div
       className={`text-lg font-semibold mt-4 mb-3 border-b-neutral-400 group ${underlineStyle}`}
     >
-      <RelativeAbsLeft hPosition="far">
+      <RelativeAbsRight hPosition="over">
         <FiUnderline
-          className={`text-xl translate-y-0.5 ${underlineButtonStyle} transition-all duration-200`}
+          className={`text-xl translate-y-1 ${underlineButtonStyle} transition-all duration-200`}
           onClick={handleToggleUnderline}
         />
-      </RelativeAbsLeft>
+      </RelativeAbsRight>
       <DynamicInput
         text={text}
         handleOnSubmit={handleOnSubmit}
