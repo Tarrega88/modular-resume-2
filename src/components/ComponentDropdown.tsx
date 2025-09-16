@@ -40,7 +40,6 @@ function ComponentDropdown({
   const { data } = useSelector((state: RootState) => state.resume);
   const dataType = kindToData[kind];
   const options = data[dataType];
-  const arr = Object.keys(options);
 
   const entries = Object.entries(options);
 
@@ -137,7 +136,7 @@ function ComponentDropdown({
                     id={crypto.randomUUID()}
                     kind={kind}
                     elementId={e}
-                    renderIndex={i}
+                    renderIndex={i + 1}
                     renderUI={false}
                   />
                 </div>

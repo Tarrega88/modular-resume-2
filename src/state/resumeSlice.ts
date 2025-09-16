@@ -58,6 +58,12 @@ const resumeSlice = createSlice({
             const currentResume = state.currentResumeId;
             state.resumes[currentResume].splice(renderIndex, 1, data);
         },
+        addResumeItemAt(state, action: PayloadAction<{ renderIndex: number; data: ResumeItemProps }>) {
+            const { renderIndex, data } = action.payload;
+            const { currentResumeId } = state;
+            state.resumes[currentResumeId].splice(renderIndex + 1, 0, data);
+
+        },
         addResumeItem(state, action: PayloadAction<{ kind: Kinds, elementId: string | null }>) {
             const { currentResumeId } = state;
             const { kind, elementId } = action.payload;
@@ -242,5 +248,5 @@ const resumeSlice = createSlice({
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt } = resumeSlice.actions;
 export default resumeSlice.reducer;

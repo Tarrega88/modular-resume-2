@@ -16,10 +16,6 @@ function ProjectSection({
   website,
   renderUI,
 }: ProjectProps & { renderUI: boolean }) {
-  function handleOnSubmit() {
-    //temp
-  }
-
   const dispatch = useDispatch();
 
   function handleShowLink(bool: boolean) {
