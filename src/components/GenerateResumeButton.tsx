@@ -8,6 +8,7 @@ import {
   addSectionHeaderData,
   addSkillData,
   addSummaryData,
+  addUserInfoData,
   addUserLink,
   createEmptyResume,
   setCurrentResume,
@@ -23,6 +24,7 @@ import {
   getSectionHeaderProps,
   getSkillProps,
   getSummaryProps,
+  getUserInfoProps,
 } from "@/utils/getProps";
 
 type RenderProps = {
@@ -61,6 +63,13 @@ export default function GenerateResumeButton() {
       const id = crypto.randomUUID();
 
       switch (kind) {
+        case "userInfo":
+          const userInfoData = getUserInfoProps(id);
+          const { userLink1, userLink2 } = userInfoData;
+          dispatch(addUserLink(userLink1));
+          dispatch(addUserLink(userLink2));
+          dispatch(addUserInfoData(userInfoData));
+          break;
         case "prevJob":
           dispatch(addPrevJobData(getPrevJobProps(id)));
           break;

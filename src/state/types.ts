@@ -6,6 +6,7 @@ export type PrevJobKey = keyof PrevJobEditable;
 export type Kinds = "prevJob" | "education" | "bulletPoint" | "skill" | "userInfo" | "sectionHeader" | "summary" | "project";
 
 export type UserInfoProps = {
+    id: string;
     fullName: string;
     showIcons: boolean;
     professionTitle: string;
@@ -98,7 +99,7 @@ export type ResumeState = {
     dragHigher: boolean;
     monthType: "short" | "long",
     data: {
-        userInfo: UserInfoProps,
+        userInfo: Record<ID, UserInfoProps>;
         userLinks: Record<ID, UserLinkData>;
         summaries: Record<ID, SummaryProps>;
         sectionHeaders: Record<ID, SectionHeaderProps>;

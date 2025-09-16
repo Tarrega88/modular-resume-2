@@ -32,9 +32,10 @@ function ResumeItemRenderer({
 
   switch (kind) {
     case "userInfo":
-      const info = data.userInfo;
+      const info = data.userInfo[elementId];
       return (
         <ResumeHeader
+          id={info.id}
           kind={info.kind}
           showIcons={info.showIcons}
           professionTitle={info.professionTitle}

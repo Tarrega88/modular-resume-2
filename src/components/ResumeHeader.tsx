@@ -20,6 +20,7 @@ import { MdOutlineTitle } from "react-icons/md";
 
 function ResumeHeader({
   kind,
+  id,
   fullName = "Full Name",
   showIcons,
   professionTitle,
@@ -46,7 +47,7 @@ UserInfoProps & {
     field: "showLink1" | "showLink2";
     show: boolean;
   }) {
-    dispatch(toggleUserBool({ field, show }));
+    dispatch(toggleUserBool({ id, field, show }));
   }
 
   const underlineStyle = hasUnderline ? "border-b" : "";
@@ -86,7 +87,11 @@ UserInfoProps & {
           className={`text-xl ${titleButtonStyle} transition-all duration-200`}
           onClick={() =>
             dispatch(
-              toggleUserBool({ field: "showProfession", show: !showProfession })
+              toggleUserBool({
+                id,
+                field: "showProfession",
+                show: !showProfession,
+              })
             )
           }
         />
@@ -94,7 +99,9 @@ UserInfoProps & {
       <RelativeAbsLeft hPosition="far" vPosition="med">
         <IoIosInformationCircle
           onClick={() =>
-            dispatch(toggleUserBool({ field: "showIcons", show: !showIcons }))
+            dispatch(
+              toggleUserBool({ id, field: "showIcons", show: !showIcons })
+            )
           }
           className={`text-xl ${iconButtonStyle} transition-all duration-200`}
         />
@@ -104,7 +111,7 @@ UserInfoProps & {
           className={`text-xl translate-y-0.5 ${underlineButtonStyle} transition-all duration-200`}
           onClick={() =>
             dispatch(
-              toggleUserBool({ field: "hasUnderline", show: !hasUnderline })
+              toggleUserBool({ id, field: "hasUnderline", show: !hasUnderline })
             )
           }
         />
@@ -114,7 +121,7 @@ UserInfoProps & {
           <DynamicInput
             text={fullName}
             handleOnSubmit={(text: string) =>
-              dispatch(editUserInfo({ text, field: "fullName" }))
+              dispatch(editUserInfo({ id, text, field: "fullName" }))
             }
             inputWidth="full"
             placeholderText="Enter name"
@@ -146,7 +153,7 @@ UserInfoProps & {
           <DynamicInput
             text={professionTitle}
             handleOnSubmit={(text: string) =>
-              dispatch(editUserInfo({ text, field: "professionTitle" }))
+              dispatch(editUserInfo({ id, text, field: "professionTitle" }))
             }
             inputWidth="full"
             placeholderText="Profession"
@@ -163,7 +170,7 @@ UserInfoProps & {
           <DynamicInput
             text={email}
             handleOnSubmit={(text: string) =>
-              dispatch(editUserInfo({ text, field: "email" }))
+              dispatch(editUserInfo({ id, text, field: "email" }))
             }
             inputWidth="char"
             divWidth="full"
@@ -179,7 +186,7 @@ UserInfoProps & {
           <DynamicInput
             text={phoneNumber}
             handleOnSubmit={(text: string) =>
-              dispatch(editUserInfo({ text, field: "phoneNumber" }))
+              dispatch(editUserInfo({ id, text, field: "phoneNumber" }))
             }
             inputWidth="char"
             divWidth="full"
@@ -195,7 +202,7 @@ UserInfoProps & {
           <DynamicInput
             text={location}
             handleOnSubmit={(text: string) =>
-              dispatch(editUserInfo({ text, field: "location" }))
+              dispatch(editUserInfo({ id, text, field: "location" }))
             }
             inputWidth="char"
             divWidth="full"

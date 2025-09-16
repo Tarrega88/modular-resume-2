@@ -6,6 +6,7 @@ import {
   getSectionHeaderProps,
   getSkillProps,
   getSummaryProps,
+  getUserInfoProps,
 } from "@/utils/getProps";
 import {
   addBulletData,
@@ -15,6 +16,7 @@ import {
   addSectionHeaderData,
   addSkillData,
   addSummaryData,
+  addUserInfoData,
   addUserLink,
   duplicateSection,
 } from "../state/resumeSlice";
@@ -36,6 +38,13 @@ function DuplicateButton({
     const id = crypto.randomUUID();
 
     switch (kind) {
+      case "userInfo":
+        const userInfoData = getUserInfoProps(id);
+        const { userLink1, userLink2 } = userInfoData;
+        dispatch(addUserLink(userLink1));
+        dispatch(addUserLink(userLink2));
+        dispatch(addUserInfoData(userInfoData));
+        break;
       case "bulletPoint":
         dispatch(addBulletData(getBulletPointProps(id)));
         break;

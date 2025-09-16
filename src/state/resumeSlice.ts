@@ -31,28 +31,12 @@ const initialState: ResumeState = {
     monthType: "short",
 
     data: {
-        userInfo: {
-            fullName: "Full Name",
-            professionTitle: "Profession",
-            showProfession: true,
-            showIcons: true,
-            hasUnderline: true,
-            kind: "userInfo",
-            email: "email@gmail.com",
-            phoneNumber: "(123) 456-7890",
-            location: "City, ST",
-            userLink1: "0",
-            userLink2: "1",
-            showLink1: true,
-            showLink2: true,
-        },
-
+        userInfo: {},
         // keep two empty link slots so IDs referenced above exist
         userLinks: {
-            "0": { id: "0", text: "Link 1", url: "" },
-            "1": { id: "1", text: "Link 2", url: "" },
+            // "0": { id: "0", text: "Link 1", url: "" },
+            // "1": { id: "1", text: "Link 2", url: "" },
         },
-
         summaries: {},
         sectionHeaders: {},
         prevJobs: {},
@@ -65,6 +49,21 @@ const initialState: ResumeState = {
     resumes: {},
 };
 
+{/*
+           fullName: "Full Name",
+            professionTitle: "Profession",
+            showProfession: true,
+            showIcons: true,
+            hasUnderline: true,
+            kind: "userInfo",
+            email: "email@gmail.com",
+            phoneNumber: "(123) 456-7890",
+            location: "City, ST",
+            userLink1: "0",
+            userLink2: "1",
+            showLink1: true,
+            showLink2: true,
+    */}
 
 // const initialState: ResumeState = {
 //     scale: 75,
@@ -193,6 +192,10 @@ const resumeSlice = createSlice({
             }
 
         },
+        addUserInfoData(state, action: PayloadAction<UserInfoProps>) {
+            const { id } = action.payload;
+            state.data.userInfo[id] = action.payload;
+        },
         addBulletData(state, action: PayloadAction<BulletPointProps>) {
             const { id } = action.payload;
             state.data.bulletPoints[id] = action.payload;
@@ -283,13 +286,13 @@ const resumeSlice = createSlice({
         setScale(state, action: PayloadAction<number>) {
             state.scale = action.payload;
         },
-        editUserInfo(state, action: PayloadAction<{ field: keyof UserInfoProps; text: string; }>) {
-            const { field, text } = action.payload;
-            if (field !== "kind" && field !== "userLink1" && field !== "userLink2" && field !== "showLink1" && field !== "showLink2" && field !== "showProfession" && field !== "hasUnderline" && field !== "showIcons") state.data.userInfo[field] = text;
+        editUserInfo(state, action: PayloadAction<{ id: string; field: keyof UserInfoProps; text: string; }>) {
+            const { id, field, text } = action.payload;
+            if (field !== "kind" && field !== "userLink1" && field !== "userLink2" && field !== "showLink1" && field !== "showLink2" && field !== "showProfession" && field !== "hasUnderline" && field !== "showIcons") state.data.userInfo[id][field] = text;
         },
-        toggleUserBool(state, action: PayloadAction<{ field: "showLink1" | "showLink2" | "hasUnderline" | "showProfession" | "showIcons", show: boolean }>) {
-            const { field, show } = action.payload;
-            state.data.userInfo[field] = show;
+        toggleUserBool(state, action: PayloadAction<{ id: string; field: "showLink1" | "showLink2" | "hasUnderline" | "showProfession" | "showIcons", show: boolean }>) {
+            const { id, field, show } = action.payload;
+            state.data.userInfo[id][field] = show;
         },
         editSkills(state, action: PayloadAction<{ id: string; text: string }>) {
             const { id, text } = action.payload;
@@ -363,5 +366,5 @@ const resumeSlice = createSlice({
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData } = resumeSlice.actions;
 export default resumeSlice.reducer;

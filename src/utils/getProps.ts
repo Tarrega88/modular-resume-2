@@ -4,6 +4,13 @@ import { Kinds } from "@/state/types";
 
 import { PrevJobProps, BulletPointProps, UserInfoProps, EducationProps, SkillProps, SectionHeaderProps, SummaryProps, ProjectProps } from "@/state/types";
 
+
+export function getUserInfoProps(id: string): UserInfoProps {
+    const userLinkId1 = crypto.randomUUID();
+    const userLinkId2 = crypto.randomUUID();
+    return { id, fullName: "Full Name", showIcons: true, professionTitle: "Profession", showProfession: true, hasUnderline: true, kind: "userInfo", email: "email@gmail.com", phoneNumber: "(123) 456-7890", location: "City, ST", userLink1: userLinkId1, userLink2: userLinkId2, showLink1: true, showLink2: true }
+}
+
 export function getPrevJobProps(id: string): PrevJobProps {
     return {
         id, kind: "prevJob", companyName: "Company Name", jobTitle: "Job Title", location: "City, St", monthStarted: 0, yearStarted: 2000, monthEnded: 0, yearEnded: 2025
@@ -12,10 +19,6 @@ export function getPrevJobProps(id: string): PrevJobProps {
 
 export function getBulletPointProps(id: string): BulletPointProps {
     return { id, kind: "bulletPoint", text: "Enter bullet point..." }
-}
-
-export function getUserInfoProps(): UserInfoProps {
-    return { fullName: "Full Name", showIcons: true, professionTitle: "Profession", showProfession: true, hasUnderline: true, kind: "userInfo", email: "email@gmail.com", phoneNumber: "(123) 456-7890", location: "City, ST", userLink1: "0", userLink2: "1", showLink1: true, showLink2: true }
 }
 
 export function getEducationProps(id: string): EducationProps {
