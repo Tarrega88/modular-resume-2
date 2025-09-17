@@ -7,10 +7,9 @@ import {
 import { RootState } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import RelativeAbsLeft from "./RelativeAbsLeft";
-import AddBelowButton from "../AddBelowButton";
 import RelativeAbsRight from "./RelativeAbsRight";
-import DeleteElementButton from "../DeleteElementButton";
-import DuplicateButton from "../DuplicateButton";
+import DeleteElementButton from "../absoluteUI/DeleteElementButton";
+import DuplicateButton from "../absoluteUI/DuplicateButton";
 import { Kinds } from "../../state/types";
 import ComponentDropdown from "../ComponentDropdown";
 import { useState } from "react";

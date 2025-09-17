@@ -1,4 +1,3 @@
-// FontPicker.tsx
 import { useEffect, useState } from "react";
 import {
   SANS_OPTIONS,
@@ -20,12 +19,10 @@ export default function FontPicker() {
       DEFAULT_SANS
   );
 
-  // apply on mount (after the resume element exists)
   useEffect(() => {
     applyToResume(sans.stack);
   }, []);
 
-  // apply on change + persist
   useEffect(() => {
     applyToResume(sans.stack);
     localStorage.setItem(STORE_SANS, sans.stack);

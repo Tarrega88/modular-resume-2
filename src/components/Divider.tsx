@@ -3,7 +3,12 @@ import { DividerProps } from "@/state/types";
 import { useDispatch } from "react-redux";
 import DynamicInput from "./DynamicInput";
 
-function Divider({ id, height, kind }: DividerProps) {
+function Divider({
+  id,
+  height,
+  kind,
+  renderUI,
+}: DividerProps & { renderUI: boolean }) {
   const dispatch = useDispatch();
   //TODO: 9/16/2025: allow the custom dropdown to see these (opacity needs to be changed in dropdown)
 
@@ -17,10 +22,13 @@ function Divider({ id, height, kind }: DividerProps) {
     dispatch(editDividerNumber({ field: "height", val: num, id }));
   }
 
+  //TODO 9/17/2025: add in builder column button to show the dividers regardless of hover
+  const renderStyle = !renderUI ? "" : "hover:opacity-100 opacity-0 bg-sky-200";
+
   return (
     <div
       style={{ height: `${height}px` }}
-      className="w-full hover:opacity-100 opacity-0 flex flex-col items-center transition-all duration-200 gap-1"
+      className={`w-full flex flex-col items-center transition-all duration-200 gap-1 ${renderStyle}`}
     >
       <DynamicInput
         text={height.toString()}

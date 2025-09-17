@@ -12,10 +12,6 @@ function EducationSection({
   monthEnded,
   yearEnded,
 }: EducationProps) {
-  function handleOnSubmit() {
-    //temp
-  }
-
   const dispatch = useDispatch();
 
   return (

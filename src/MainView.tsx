@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
-import BuilderColumn from "@/components/BuilderColumn";
+import BuilderColumn from "@/components/builderColumn/BuilderColumn";
 import SideResume from "@/components/SideResume";
 
 export default function MainView() {

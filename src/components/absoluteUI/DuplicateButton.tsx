@@ -1,5 +1,5 @@
-import { duplicateSection } from "../state/resumeSlice";
-import { Kinds } from "../state/types";
+import { duplicateSection } from "../../state/resumeSlice";
+import { Kinds } from "../../state/types";
 import { IoDuplicate } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import addDataFromKind from "@/utils/addDataFromKind";

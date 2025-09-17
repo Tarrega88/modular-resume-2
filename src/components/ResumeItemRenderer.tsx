@@ -174,6 +174,7 @@ function ResumeItemRenderer({
           id={dividerData.id}
           height={dividerData.height}
           kind={dividerData.kind}
+          renderUI={renderUI}
         />
       );
     }

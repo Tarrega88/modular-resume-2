@@ -1,5 +1,4 @@
 import { useState } from "react";
-import DropdownElement from "../DropdownElement";
 import { Kinds } from "../../state/types";
 import RelativeAbsLeft from "../wrappers/RelativeAbsLeft";
 

@@ -9,7 +9,7 @@ import {
 import DynamicInput from "./DynamicInput";
 import { useDispatch } from "react-redux";
 import RelativeAbsRight from "./wrappers/RelativeAbsRight";
-import SideLinkButton from "./SideLinkButton";
+import SideLinkButton from "./absoluteUI/SideLinkButton";
 import IconWrapper from "./wrappers/IconWrapper";
 import { FaPhone } from "react-icons/fa";
 import { IoIosInformationCircle } from "react-icons/io";

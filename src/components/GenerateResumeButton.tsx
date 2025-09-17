@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   addBulletData,
   addDividerData,
@@ -14,7 +14,6 @@ import {
   createEmptyResume,
   setCurrentResume,
 } from "../state/resumeSlice";
-import { RootState } from "../state/store";
 import { Kinds } from "../state/types";
 import { useNavigate } from "react-router-dom";
 import {

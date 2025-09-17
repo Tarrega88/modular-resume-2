@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { removeResumeItem } from "../state/resumeSlice";
+import { removeResumeItem } from "../../state/resumeSlice";
 import { IoAddCircle } from "react-icons/io5";
 
 function DeleteElementButton({ renderIndex }: { renderIndex: number }) {

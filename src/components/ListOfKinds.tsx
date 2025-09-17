@@ -2,14 +2,14 @@ import { Kinds } from "@/state/types";
 
 const sections = [
   { title: "Bullet", kind: "bulletPoint" },
-  { title: "Contact", kind: "userInfo" },
+  { title: "Divider", kind: "divider" },
   { title: "Education", kind: "education" },
   { title: "Experience", kind: "prevJob" },
   { title: "Header", kind: "sectionHeader" },
+  { title: "Info", kind: "userInfo" },
   { title: "List", kind: "skill" },
   { title: "Project", kind: "project" },
   { title: "Text", kind: "summary" },
-  { title: "Divider", kind: "divider" },
 ];
 
 type Props = {
@@ -19,7 +19,7 @@ type Props = {
 function ListOfKinds({ setKind, kind }: Props) {
   return (
     <div>
-      <div className="px-1 flex gap-3 justify-center bg-slate-400 py-2">
+      <div className="px-1 flex gap-3 justify-center bg-slate-400 py-2 flex-wrap">
         {sections.map((e: { title: string; kind: Kinds }, i) => (
           <div className="" key={i}>
             <button

@@ -5,7 +5,7 @@ import DynamicTextArea from "../DynamicTextArea";
 import { useDispatch } from "react-redux";
 import { editProjectBool, editProjectString } from "@/state/resumeSlice";
 import RelativeAbsRight from "../wrappers/RelativeAbsRight";
-import SideLinkButton from "../SideLinkButton";
+import SideLinkButton from "../absoluteUI/SideLinkButton";
 
 function ProjectSection({
   id,

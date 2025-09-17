@@ -4,7 +4,6 @@ import {
   editSectionHeader,
   toggleSectionHeaderUnderline,
 } from "../state/resumeSlice";
-import RelativeAbsLeft from "./wrappers/RelativeAbsLeft";
 import { FiUnderline } from "react-icons/fi";
 import { SectionHeaderProps } from "../state/types";
 import RelativeAbsRight from "./wrappers/RelativeAbsRight";

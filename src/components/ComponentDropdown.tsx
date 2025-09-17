@@ -40,7 +40,7 @@ const kindToData = {
 
 const sections = [
   { title: "Bullet", kind: "bulletPoint" },
-  { title: "Contact", kind: "userInfo" },
+  { title: "Info", kind: "userInfo" },
   { title: "Education", kind: "education" },
   { title: "Experience", kind: "prevJob" },
   { title: "Header", kind: "sectionHeader" },
