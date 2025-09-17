@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
 import { addResumeItemAt, replaceResumeItem } from "@/state/resumeSlice";
-import { FaRegWindowMinimize } from "react-icons/fa";
+import {
+  FaRegWindowMaximize,
+  FaRegWindowMinimize,
+  FaRegWindowRestore,
+} from "react-icons/fa";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { getFilterPlaceholders } from "@/utils/getProps";
 import ListOfKinds from "./ListOfKinds";
@@ -59,6 +63,8 @@ function ComponentDropdown({
   const [selectedKind, setSelectedKind] = useState(kind);
 
   const searchRef = useRef<HTMLInputElement>(null);
+
+  const [isMaximized, setIsMaximized] = useState(true);
 
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
@@ -118,19 +124,21 @@ function ComponentDropdown({
     if (isExpanded) searchRef.current?.focus({ preventScroll: true });
   }, [isExpanded]);
 
+  const height = isMaximized ? "h-116" : "h-38";
+
   return (
     <div
       tabIndex={-1}
-      // onBlur={(e) => {
-      //   const next = e.relatedTarget as Node | null;
-      //   if (next && e.currentTarget.contains(next)) return;
-      //   setIsExpanded(false);
-      // }}
+      onBlur={(e) => {
+        const next = e.relatedTarget as Node | null;
+        if (next && e.currentTarget.contains(next)) return;
+        setIsExpanded(false);
+      }}
       className="text-base w-[754px]"
     >
       <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
         <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
-          <div className="">{text}</div>
+          <div className="font-semibold">{text}</div>
           <div className="flex gap-12">
             <div className="flex gap-2 items-center">
               <HiMagnifyingGlass />
@@ -142,15 +150,25 @@ function ComponentDropdown({
                 placeholder="filter by keyword"
               />
             </div>
-            <div
-              className="hover:outline cursor-pointer size-5 flex justify-center"
-              onClick={() => setIsExpanded(false)}
-            >
-              <FaRegWindowMinimize />
+            <div className="flex items-end gap-4">
+              <div
+                className="hover:outline cursor-pointer size-6 flex justify-center items-center"
+                onClick={() => setIsMaximized(!isMaximized)}
+              >
+                {isMaximized ? <FaRegWindowRestore /> : <FaRegWindowMaximize />}
+              </div>
+              <div
+                className="hover:outline cursor-pointer size-6 flex justify-center"
+                onClick={() => setIsExpanded(false)}
+              >
+                <FaRegWindowMinimize />
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex-col bg-white h-38 overflow-y-scroll overflow-x-hidden">
+        <div
+          className={`flex-col bg-white ${height} overflow-y-scroll overflow-x-hidden transition-all duration-200`}
+        >
           <ListOfKinds
             renderIndex={renderIndex}
             setIsExpanded={setIsExpanded}
