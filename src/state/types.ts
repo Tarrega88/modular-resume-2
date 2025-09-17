@@ -3,7 +3,7 @@ export type ID = string;
 export type PrevJobEditable = Omit<PrevJobProps, "id" | "kind">;
 export type PrevJobKey = keyof PrevJobEditable;
 
-export type Kinds = "prevJob" | "education" | "bulletPoint" | "skill" | "userInfo" | "sectionHeader" | "summary" | "project";
+export type Kinds = "prevJob" | "education" | "bulletPoint" | "skill" | "userInfo" | "sectionHeader" | "summary" | "project" | "divider";
 
 export type UserInfoProps = {
     id: string;
@@ -90,6 +90,12 @@ export type ProjectProps = {
     website: string;
 }
 
+export type DividerProps = {
+    id: string;
+    kind: "divider";
+    height: number;
+}
+
 export type ResumeState = {
     scale: number;
     currentResumeId: string;
@@ -107,6 +113,7 @@ export type ResumeState = {
         education: Record<ID, EducationProps>;
         projects: Record<ID, ProjectProps>;
         skills: Record<ID, SkillProps>;
+        dividers: Record<ID, DividerProps>;
     };
     resumes: Record<ID, ResumeItemProps[]>;
 }

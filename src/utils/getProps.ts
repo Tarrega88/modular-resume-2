@@ -1,4 +1,4 @@
-import { Kinds } from "@/state/types";
+import { DividerProps, Kinds } from "@/state/types";
 
 //todo 9/14/2025: consider tweaking how UserLinks are handled in generation - right now there's no way to create a new one
 
@@ -42,6 +42,10 @@ export function getProjectProps(id: string): ProjectProps {
     return { id, kind: "project", title: "Project Name", description: "Description of project", hasWebsite: true, website: newUserLinkId }
 }
 
+export function getDividerProps(id: string): DividerProps {
+    return { id, kind: "divider", height: 48 }
+}
+
 
 export function getFilterPlaceholders(kind: Kinds) {
     switch (kind) {
@@ -75,5 +79,8 @@ export function getFilterPlaceholders(kind: Kinds) {
                 phoneNumber: userInfoData.phoneNumber,
                 professionTitle: userInfoData.professionTitle,
             };
+        case "divider":
+            const dividerData = getDividerProps("");
+            return { height: dividerData.height }
     }
 }

@@ -1,5 +1,6 @@
 import {
   getBulletPointProps,
+  getDividerProps,
   getEducationProps,
   getPrevJobProps,
   getProjectProps,
@@ -10,6 +11,7 @@ import {
 } from "@/utils/getProps";
 import {
   addBulletData,
+  addDividerData,
   addEducationData,
   addPrevJobData,
   addProjectData,
@@ -68,6 +70,10 @@ function DuplicateButton({
         const userLinkId = projectData.website;
         dispatch(addUserLink(userLinkId));
         dispatch(addProjectData(projectData));
+        break;
+      case "divider":
+        dispatch(addDividerData(getDividerProps(id)));
+        break;
     }
 
     dispatch(

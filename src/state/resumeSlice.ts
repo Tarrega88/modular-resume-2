@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BulletPointProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
+import { BulletPointProps, DividerProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
 
 function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
     (obj as Record<K, T[K]>)[key] = value; //obj as any is an option for testing
@@ -34,6 +34,7 @@ const initialState: ResumeState = {
         education: {},
         projects: {},
         skills: {},
+        dividers: {},
     },
 
     resumes: {},
@@ -118,6 +119,10 @@ const resumeSlice = createSlice({
             // getProjectProps(id);
             // const newProjectData: ProjectProps = { id, kind: "project", title:   }
             state.data.projects[id] = action.payload;
+        },
+        addDividerData(state, action: PayloadAction<DividerProps>) {
+            const { id } = action.payload;
+            state.data.dividers[id] = action.payload;
         },
         editBulletPoint(state, action: TextEdit) {
             const { id, text } = action.payload;
@@ -243,10 +248,14 @@ const resumeSlice = createSlice({
             for (const item of state.resumes[originalId]) {
                 state.resumes[newId].push(item);
             }
+        },
+        editDividerNumber(state, action: PayloadAction<{ id: string; field: string; val: number; }>) {
+            const { id, field, val } = action.payload;
+            state.data.dividers[id][field] = val;
         }
 
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData } = resumeSlice.actions;
 export default resumeSlice.reducer;

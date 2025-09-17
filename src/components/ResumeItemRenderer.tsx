@@ -10,6 +10,7 @@ import SkillSection from "./skills/SkillSection";
 import Summary from "./summaries/Summary";
 import EducationSection from "./education/EducationSection";
 import ProjectSection from "./projects/ProjectSection";
+import Divider from "./Divider";
 
 function ResumeItemRenderer({
   id,
@@ -140,6 +141,16 @@ function ResumeItemRenderer({
           hasWebsite={projectData.hasWebsite}
           website={projectData.website}
           renderUI={renderUI}
+        />
+      );
+    }
+    case "divider": {
+      const dividerData = data.dividers[elementId];
+      return (
+        <Divider
+          id={dividerData.id}
+          height={dividerData.height}
+          kind={dividerData.kind}
         />
       );
     }

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   addBulletData,
+  addDividerData,
   addEducationData,
   addPrevJobData,
   addProjectData,
@@ -18,6 +19,7 @@ import { Kinds } from "../state/types";
 import { useNavigate } from "react-router-dom";
 import {
   getBulletPointProps,
+  getDividerProps,
   getEducationProps,
   getPrevJobProps,
   getProjectProps,
@@ -34,6 +36,7 @@ type RenderProps = {
 
 const newResumeRenderItems: RenderProps[] = [
   { kind: "userInfo" },
+  { kind: "divider" },
   { kind: "summary" },
   { kind: "sectionHeader", text: "Experience" },
   { kind: "prevJob" },
@@ -95,6 +98,9 @@ export default function GenerateResumeButton() {
           const userLinkId = projectData.website;
           dispatch(addUserLink(userLinkId));
           dispatch(addProjectData(projectData));
+          break;
+        case "divider":
+          dispatch(addDividerData(getDividerProps(id)));
           break;
       }
 

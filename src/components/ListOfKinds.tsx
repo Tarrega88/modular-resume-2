@@ -1,5 +1,6 @@
 import {
   addBulletData,
+  addDividerData,
   addEducationData,
   addPrevJobData,
   addProjectData,
@@ -13,6 +14,7 @@ import {
 import { Kinds } from "@/state/types";
 import {
   getBulletPointProps,
+  getDividerProps,
   getEducationProps,
   getPrevJobProps,
   getProjectProps,
@@ -24,14 +26,15 @@ import {
 import { useDispatch } from "react-redux";
 
 const sections = [
-  { title: "Experience", kind: "prevJob" },
-  { title: "Education", kind: "education" },
   { title: "Bullet", kind: "bulletPoint" },
-  { title: "List", kind: "skill" },
   { title: "Contact", kind: "userInfo" },
+  { title: "Education", kind: "education" },
+  { title: "Experience", kind: "prevJob" },
   { title: "Header", kind: "sectionHeader" },
-  { title: "Text Block", kind: "summary" },
+  { title: "List", kind: "skill" },
   { title: "Project", kind: "project" },
+  { title: "Text Block", kind: "summary" },
+  { title: "Divider", kind: "divider" },
 ];
 function ListOfKinds({
   renderIndex,
@@ -81,6 +84,9 @@ function ListOfKinds({
         dispatch(addUserLink(userLinkId));
         dispatch(addProjectData(projectData));
         break;
+      case "Divider":
+        const dividerData = getDividerProps(newId);
+        dispatch(addDividerData(dividerData));
     }
 
     dispatch(

@@ -8,11 +8,14 @@ export default function MainView() {
   const handlePrint = useReactToPrint({ contentRef });
 
   return (
-    <div className="flex h-[100dvh] w-full">
-      <BuilderColumn onPrint={handlePrint} />
-      <div className="flex-1 overflow-auto w-full bg-gray-500 pt-5 px-5 grid items-start justify-items-center">
-        <SideResume contentRef={contentRef} />
+    <div>
+      <div className="flex h-[100dvh] w-full">
+        <BuilderColumn onPrint={handlePrint} />
+        <div className="overflow-auto w-full bg-gray-500 pt-5 px-5 grid items-start justify-items-center">
+          <SideResume contentRef={contentRef} />
+        </div>
       </div>
+      <div className="bg-gray-500 h-4 w-full"></div>
     </div>
   );
 }

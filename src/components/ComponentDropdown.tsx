@@ -27,6 +27,7 @@ const kindToData = {
   userInfo: "userInfo",
   sectionHeader: "sectionHeaders",
   skill: "skills",
+  divider: "dividers",
 };
 
 function ComponentDropdown({
