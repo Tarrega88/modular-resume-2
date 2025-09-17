@@ -98,6 +98,7 @@ export type DividerProps = {
 
 export type ResumeState = {
     scale: number;
+    dropdownIsReplace: boolean;
     currentResumeId: string;
     dragFromIndex: number;
     dragToIndex: number;

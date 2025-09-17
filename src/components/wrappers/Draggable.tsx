@@ -68,28 +68,15 @@ function Draggable({
 
   return (
     <div className="group" tabIndex={-1}>
-      <>
-        {isExpanded && !addIsExpanded ? (
-          <ComponentDropdown
-            kind={kind}
-            text="Replace section with..."
-            renderIndex={renderIndex}
-            setIsExpanded={setIsExpanded}
-            isExpanded={isExpanded}
-            replace={true}
-          />
-        ) : null}
-        {addIsExpanded && !isExpanded ? (
-          <ComponentDropdown
-            kind={kind}
-            text="Add new section"
-            renderIndex={renderIndex}
-            setIsExpanded={setAddIsExpanded}
-            isExpanded={addIsExpanded}
-            replace={false}
-          />
-        ) : null}
-      </>
+      {isExpanded ? (
+        <ComponentDropdown
+          kind={kind}
+          text="Replace section with..."
+          renderIndex={renderIndex}
+          setIsExpanded={setIsExpanded}
+          isExpanded={isExpanded}
+        />
+      ) : null}
       <div
         draggable
         className={`${outerDragStyle} ${dragStyle} hover:outline-2 outline-sky-200 cursor-pointer rounded group transition-all duration-150 text-base`}
@@ -115,15 +102,8 @@ function Draggable({
         <RelativeAbsLeft hPosition="normal">
           <DuplicateButton kind={kind} renderIndex={renderIndex} />
         </RelativeAbsLeft>
-        <RelativeAbsRight hPosition="normal">
-          <div className="flex gap-[1px]">
-            <AddBelowButton
-              handleOnClick={() =>
-                !isExpanded ? setAddIsExpanded(true) : setIsExpanded(false)
-              }
-            />
-            <DeleteElementButton renderIndex={renderIndex} />
-          </div>
+        <RelativeAbsRight hPosition="close">
+          <DeleteElementButton renderIndex={renderIndex} />
         </RelativeAbsRight>
         <div style={{ opacity: isExpanded ? 0 : 100 }}>{children}</div>
       </div>

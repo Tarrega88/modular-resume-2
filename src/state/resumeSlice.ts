@@ -19,6 +19,7 @@ export const prevJobDefault: PrevJobProps = { id: "0", kind: "prevJob", companyN
 
 const initialState: ResumeState = {
     scale: 75,
+    dropdownIsReplace: false,
     currentResumeId: "",
     dragFromIndex: -1,
     dragToIndex: -1,
@@ -252,10 +253,13 @@ const resumeSlice = createSlice({
         editDividerNumber(state, action: PayloadAction<{ id: string; field: string; val: number; }>) {
             const { id, field, val } = action.payload;
             state.data.dividers[id][field] = val;
+        },
+        toggleDropdownIsReplace(state, action: PayloadAction<boolean>) {
+            state.dropdownIsReplace = action.payload;
         }
 
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace } = resumeSlice.actions;
 export default resumeSlice.reducer;

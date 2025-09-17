@@ -3,7 +3,11 @@ import { Kinds, ResumeItemProps } from "@/state/types";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
-import { addResumeItemAt, replaceResumeItem } from "@/state/resumeSlice";
+import {
+  addResumeItemAt,
+  replaceResumeItem,
+  toggleDropdownIsReplace,
+} from "@/state/resumeSlice";
 import {
   FaRegWindowMaximize,
   FaRegWindowMinimize,
@@ -20,7 +24,6 @@ type Props = {
   renderIndex: number;
   setIsExpanded(e: boolean): void;
   isExpanded: boolean;
-  replace: boolean;
 };
 
 const kindToData = {
@@ -57,7 +60,6 @@ function ComponentDropdown({
   renderIndex,
   isExpanded,
   setIsExpanded,
-  replace,
 }: Props) {
   const [selectedKind, setSelectedKind] = useState(kind);
 
@@ -73,9 +75,11 @@ function ComponentDropdown({
 
   const entries = Object.entries(options);
 
+  const { dropdownIsReplace } = useSelector((state: RootState) => state.resume);
+
   function handleSelectDefault(kind: Kinds) {
     const newId = addDataFromKind(kind, dispatch);
-    if (replace) {
+    if (dropdownIsReplace) {
       dispatch(
         replaceResumeItem({
           renderIndex,
@@ -102,7 +106,7 @@ function ComponentDropdown({
   }
 
   function handleSelectOption(data: ResumeItemProps) {
-    if (replace) {
+    if (dropdownIsReplace) {
       dispatch(replaceResumeItem({ renderIndex, data }));
     } else {
       dispatch(addResumeItemAt({ renderIndex, data }));
@@ -153,19 +157,40 @@ function ComponentDropdown({
 
   const height = isMaximized ? "h-116" : "h-38";
 
+  const onStyle = "bg-green-600 hover:bg-green-700";
+  const offStyle = "bg-gray-500 opacity-50 hover:bg-green-700";
+
+  const addButtonStyle = dropdownIsReplace ? offStyle : onStyle;
+  const replaceButtonStyle = dropdownIsReplace ? onStyle : offStyle;
+
   return (
     <div
       tabIndex={-1}
-      onBlur={(e) => {
-        const next = e.relatedTarget as Node | null;
-        if (next && e.currentTarget.contains(next)) return;
-        setIsExpanded(false);
-      }}
+      // onBlur={(e) => {
+      //   const next = e.relatedTarget as Node | null;
+      //   if (next && e.currentTarget.contains(next)) return;
+      //   setIsExpanded(false);
+      // }}
       className="text-base w-[754px]"
     >
       <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
         <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
-          <div className="font-semibold">{text}</div>
+          {/* <div className="font-semibold">{text}</div> */}
+          <div className="flex gap-6">
+            <div className="font-bold">Mode:</div>
+            <button
+              onClick={() => dispatch(toggleDropdownIsReplace(false))}
+              className={`${addButtonStyle} cursor-pointer transition-all duration-200 w-20 font-semibold rounded-sm`}
+            >
+              Add
+            </button>
+            <button
+              onClick={() => dispatch(toggleDropdownIsReplace(true))}
+              className={`${replaceButtonStyle} cursor-pointer transition-all duration-200 w-20 font-semibold rounded-sm`}
+            >
+              Replace
+            </button>
+          </div>
           <div className="flex gap-12">
             <div className="flex gap-2 items-center">
               <HiMagnifyingGlass />
@@ -197,23 +222,22 @@ function ComponentDropdown({
           className={`flex-col bg-white ${height} overflow-y-scroll overflow-x-hidden transition-all duration-200`}
         >
           <ListOfKinds
-            renderIndex={renderIndex}
-            setIsExpanded={setIsExpanded}
-            replace={replace}
             kind={selectedKind}
             setKind={(e: Kinds) => setSelectedKind(e)}
-            section={kindToSection[selectedKind]}
           />
           <div className="text-lg border-b text-center">
             {/* {renderArr.length > 0
               ? `Previously Made ${kindToSection[selectedKind]} Sections:`
               : `No ${kindToSection[selectedKind]} sections found`} */}
           </div>
+          <div className="font-bold p-1 border-b bg-slate-200">
+            Default {kindToSection[selectedKind]} section:
+          </div>
           <div
-            className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer"
+            className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer overflow-auto"
             onClick={() => handleSelectDefault(selectedKind)}
           >
-            <div className="pointer-events-none">
+            <div className="pointer-events-none px-1">
               <ResumeItemRenderer
                 id={crypto.randomUUID()}
                 kind={selectedKind}
@@ -222,10 +246,13 @@ function ComponentDropdown({
               />
             </div>
           </div>
+          <div className="font-bold p-1 border-b bg-slate-200">
+            Previously made {kindToSection[selectedKind]} sections:
+          </div>
           {renderArr.map((e, i) => (
             <div
               key={i}
-              className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer"
+              className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer overflow-auto"
               onClick={() =>
                 handleSelectOption({
                   id: crypto.randomUUID(),
@@ -234,7 +261,7 @@ function ComponentDropdown({
                 })
               }
             >
-              <div className="pointer-events-none">
+              <div className="pointer-events-none px-1">
                 <ResumeItemRenderer
                   id={crypto.randomUUID()}
                   kind={selectedKind}

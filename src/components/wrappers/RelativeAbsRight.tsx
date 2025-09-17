@@ -11,7 +11,7 @@ function RelativeAbsRight({
 }) {
   const hPositions = {
     over: 104,
-    close: 70,
+    close: 69,
     normal: 50,
     far: 12,
   };
