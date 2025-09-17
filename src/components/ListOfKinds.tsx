@@ -29,7 +29,7 @@ const sections = [
   { title: "Bullet", kind: "bulletPoint" },
   { title: "List", kind: "skill" },
   { title: "Contact", kind: "userInfo" },
-  { title: "Header", kind: "userInfo" },
+  { title: "Header", kind: "sectionHeader" },
   { title: "Text Block", kind: "summary" },
   { title: "Project", kind: "project" },
 ];
