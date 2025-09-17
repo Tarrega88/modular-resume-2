@@ -7,10 +7,13 @@ function Divider({ id, height, kind }: DividerProps) {
   const dispatch = useDispatch();
   //TODO: 9/16/2025: allow the custom dropdown to see these (opacity needs to be changed in dropdown)
 
+  const min = 48;
+  const max = 550;
+
   function handleOnChange(e: string) {
     let num = Number(e);
-    if (num > 1100) num = 1100;
-    if (num < 48) num = 48;
+    if (num > max) num = max;
+    if (num < min) num = min;
     dispatch(editDividerNumber({ field: "height", val: num, id }));
   }
 
@@ -30,8 +33,8 @@ function Divider({ id, height, kind }: DividerProps) {
       <input
         type="range"
         value={height}
-        min={48}
-        max={1100}
+        min={min}
+        max={max}
         className="w-4/5"
         onChange={(e) => handleOnChange(e.target.value)}
       />

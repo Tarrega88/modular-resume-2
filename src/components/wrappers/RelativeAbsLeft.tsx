@@ -7,7 +7,7 @@ function RelativeAbsLeft({
 }: {
   children: React.ReactNode;
   hPosition: "normal" | "bullet" | "far";
-  vPosition?: "high" | "med" | "low";
+  vPosition?: "high" | "med" | "low" | "vLow";
 }) {
   const hPositions = {
     normal: 22,
@@ -19,6 +19,7 @@ function RelativeAbsLeft({
     high: 0,
     med: 32,
     low: 52,
+    vLow: 50,
   };
 
   return (

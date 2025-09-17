@@ -93,11 +93,11 @@ function ComponentDropdown({
       ref={rootRef}
       tabIndex={-1}
       autoFocus
-      onBlur={(e) => {
-        const next = e.relatedTarget as Node | null;
-        if (next && e.currentTarget.contains(next)) return;
-        setIsExpanded(false);
-      }}
+      // onBlur={(e) => {
+      //   const next = e.relatedTarget as Node | null;
+      //   if (next && e.currentTarget.contains(next)) return;
+      //   setIsExpanded(false);
+      // }}
       className="text-base w-[754px]"
     >
       {isExpanded ? (
@@ -120,7 +120,7 @@ function ComponentDropdown({
               <FaRegWindowMinimize />
             </div>
           </div>
-          <div className="flex-col bg-white h-28 overflow-y-scroll overflow-x-hidden">
+          <div className="flex-col bg-white h-36 overflow-y-scroll overflow-x-hidden">
             <ListOfKinds
               renderIndex={renderIndex}
               setIsExpanded={setIsExpanded}
@@ -151,7 +151,7 @@ function ComponentDropdown({
           </div>
         </div>
       ) : null}
-      <RelativeAbsLeft hPosition="far">
+      <RelativeAbsLeft hPosition="far" vPosition="high">
         <RxCaretDown
           className="text-xl"
           onClick={() => setIsExpanded(!isExpanded)}
