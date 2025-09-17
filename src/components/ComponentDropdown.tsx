@@ -44,7 +44,7 @@ const sections = [
   { title: "Header", kind: "sectionHeader" },
   { title: "List", kind: "skill" },
   { title: "Project", kind: "project" },
-  { title: "Text Block", kind: "summary" },
+  { title: "Text", kind: "summary" },
   { title: "Divider", kind: "divider" },
 ];
 
@@ -126,6 +126,10 @@ function ComponentDropdown({
 
   const height = isMaximized ? "h-116" : "h-38";
 
+  function handleAddNewSection() {
+    //TODO 9/17/2025: hook this up to the default section and then consider removing the add button and tying everything into one dropdown instead of two
+  }
+
   return (
     <div
       tabIndex={-1}
@@ -178,9 +182,29 @@ function ComponentDropdown({
             section={kindToSection[selectedKind]}
           />
           <div className="text-lg border-b text-center">
-            {renderArr.length > 0
+            {/* {renderArr.length > 0
               ? `Previously Made ${kindToSection[selectedKind]} Sections:`
-              : `You haven't made any ${kindToSection[selectedKind]} sections yet`}
+              : `No ${kindToSection[selectedKind]} sections found`} */}
+          </div>
+          <div
+            className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer"
+
+            // onClick={() =>
+            //   handleSelectOption({
+            //     id: crypto.randomUUID(),
+            //     kind: selectedKind,
+            //     elementId: e,
+            //   })
+            // }
+          >
+            <div className="pointer-events-none">
+              <ResumeItemRenderer
+                id={crypto.randomUUID()}
+                kind={selectedKind}
+                renderIndex={renderIndex}
+                renderUI={false}
+              />
+            </div>
           </div>
           {renderArr.map((e, i) => (
             <div

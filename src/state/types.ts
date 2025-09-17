@@ -25,7 +25,7 @@ export type UserInfoProps = {
 export type ResumeItemProps = {
     id: ID;
     kind: Kinds;
-    elementId: ID;
+    elementId?: ID;
 }
 
 export type TextEdit = PayloadAction<{ id: string; text: string; }>

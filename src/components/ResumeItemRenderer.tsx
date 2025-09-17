@@ -11,6 +11,17 @@ import Summary from "./summaries/Summary";
 import EducationSection from "./education/EducationSection";
 import ProjectSection from "./projects/ProjectSection";
 import Divider from "./Divider";
+import {
+  getBulletPointProps,
+  getDividerProps,
+  getEducationProps,
+  getPrevJobProps,
+  getProjectProps,
+  getSectionHeaderProps,
+  getSkillProps,
+  getSummaryProps,
+  getUserInfoProps,
+} from "@/utils/getProps";
 
 function ResumeItemRenderer({
   id,
@@ -23,7 +34,7 @@ function ResumeItemRenderer({
 
   switch (kind) {
     case "userInfo":
-      const info = data.userInfo[elementId];
+      const info = elementId ? data.userInfo[elementId] : getUserInfoProps("");
       return (
         <ResumeHeader
           id={info.id}
@@ -39,8 +50,8 @@ function ResumeItemRenderer({
           renderIndex={renderIndex}
           userLink1={info.userLink1}
           userLink2={info.userLink2}
-          showLink1={info.showLink1}
-          showLink2={info.showLink2}
+          showLink1={elementId ? info.showLink1 : false}
+          showLink2={elementId ? info.showLink2 : false}
           renderUI={renderUI}
         />
       );
@@ -55,7 +66,7 @@ function ResumeItemRenderer({
         yearStarted,
         monthEnded,
         yearEnded,
-      } = data.prevJobs[elementId];
+      } = elementId ? data.prevJobs[elementId] : getPrevJobProps("");
       return (
         <JobSection
           id={id}
@@ -71,7 +82,9 @@ function ResumeItemRenderer({
         />
       );
     case "bulletPoint":
-      const bp = data?.bulletPoints[elementId];
+      const bp = elementId
+        ? data?.bulletPoints[elementId]
+        : getBulletPointProps("");
       return (
         <BulletPoint
           key={bp.text}
@@ -82,7 +95,9 @@ function ResumeItemRenderer({
         />
       );
     case "sectionHeader": {
-      const sectionHeaderData = data.sectionHeaders[elementId];
+      const sectionHeaderData = elementId
+        ? data.sectionHeaders[elementId]
+        : getSectionHeaderProps("");
       return (
         <SectionHeader
           id={sectionHeaderData.id}
@@ -95,7 +110,7 @@ function ResumeItemRenderer({
       );
     }
     case "skill": {
-      const skillData = data.skills[elementId];
+      const skillData = elementId ? data.skills[elementId] : getSkillProps("");
       return (
         <SkillSection
           id={skillData.id}
@@ -109,7 +124,9 @@ function ResumeItemRenderer({
       );
     }
     case "summary": {
-      const summaryData = data.summaries[elementId];
+      const summaryData = elementId
+        ? data.summaries[elementId]
+        : getSummaryProps("");
       return (
         <Summary
           id={summaryData.id}
@@ -119,7 +136,9 @@ function ResumeItemRenderer({
       );
     }
     case "education":
-      const educationData = data.education[elementId];
+      const educationData = elementId
+        ? data.education[elementId]
+        : getEducationProps("");
       return (
         <EducationSection
           id={educationData.id}
@@ -131,21 +150,25 @@ function ResumeItemRenderer({
         />
       );
     case "project": {
-      const projectData = data.projects[elementId];
+      const projectData = elementId
+        ? data.projects[elementId]
+        : getProjectProps("");
       return (
         <ProjectSection
           id={projectData.id}
           kind={projectData.kind}
           title={projectData.title}
           description={projectData.description}
-          hasWebsite={projectData.hasWebsite}
+          hasWebsite={elementId ? projectData.hasWebsite : false}
           website={projectData.website}
           renderUI={renderUI}
         />
       );
     }
     case "divider": {
-      const dividerData = data.dividers[elementId];
+      const dividerData = elementId
+        ? data.dividers[elementId]
+        : getDividerProps("");
       return (
         <Divider
           id={dividerData.id}

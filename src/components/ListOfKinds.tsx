@@ -156,14 +156,14 @@ function ListOfKinds({
           </div>
         ))}
       </div>
-      <div className="flex flex-col items-center justify-center w-full py-2 border-b">
+      {/* <div className="flex flex-col items-center justify-center w-full py-2 border-b">
         <button
           className="bg-emerald-600 text-white hover:bg-emerald-500 px-2 cursor-pointer transition-all duration-200 h-10 w-1/2 font-bold rounded-sm"
           onClick={() => handleAddNewSection(kind)}
         >
           {replace ? `New ${section} Section` : `Add new ${section} section`}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
