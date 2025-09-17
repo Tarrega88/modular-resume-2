@@ -13,6 +13,7 @@ import ListOfKinds from "./ListOfKinds";
 
 type Props = {
   kind: Kinds;
+  text: string;
   renderIndex: number;
   setIsExpanded(e: boolean): void;
   isExpanded: boolean;
@@ -43,8 +44,13 @@ const sections = [
   { title: "Divider", kind: "divider" },
 ];
 
+const kindToSection = Object.fromEntries(
+  sections.map((e) => [e.kind, e.title])
+);
+
 function ComponentDropdown({
   kind,
+  text,
   renderIndex,
   isExpanded,
   setIsExpanded,
@@ -124,7 +130,7 @@ function ComponentDropdown({
     >
       <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
         <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
-          <div className="">Section types</div>
+          <div className="">{text}</div>
           <div className="flex gap-12">
             <div className="flex gap-2 items-center">
               <HiMagnifyingGlass />
@@ -144,14 +150,20 @@ function ComponentDropdown({
             </div>
           </div>
         </div>
-        <div className="flex-col bg-white h-36 overflow-y-scroll overflow-x-hidden">
+        <div className="flex-col bg-white h-38 overflow-y-scroll overflow-x-hidden">
           <ListOfKinds
             renderIndex={renderIndex}
             setIsExpanded={setIsExpanded}
             replace={replace}
             kind={selectedKind}
             setKind={(e: Kinds) => setSelectedKind(e)}
+            section={kindToSection[selectedKind]}
           />
+          <div className="text-lg border-b text-center">
+            {renderArr.length > 0
+              ? `Previously Made ${kindToSection[selectedKind]} Sections:`
+              : `You haven't made any ${kindToSection[selectedKind]} sections yet`}
+          </div>
           {renderArr.map((e, i) => (
             <div
               key={i}

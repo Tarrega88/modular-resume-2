@@ -38,16 +38,13 @@ const sections = [
   { title: "Divider", kind: "divider" },
 ];
 
-const kindToSection = Object.fromEntries(
-  sections.map((e) => [e.kind, e.title])
-);
-
 type Props = {
   renderIndex: number;
   setIsExpanded(e: boolean): void;
   replace: boolean;
   kind: Kinds;
   setKind(e: Kinds): void;
+  section: string;
 };
 function ListOfKinds({
   renderIndex,
@@ -55,49 +52,50 @@ function ListOfKinds({
   replace,
   setKind,
   kind,
+  section,
 }: Props) {
   const dispatch = useDispatch();
-  function handleAddNewSection(section: { title: string; kind: Kinds }) {
+  function handleAddNewSection(kind: Kinds) {
     const newId = crypto.randomUUID();
-    switch (section.title) {
-      case "Experience":
+    switch (kind) {
+      case "prevJob":
         const experienceData = getPrevJobProps(newId);
         dispatch(addPrevJobData(experienceData));
         break;
-      case "Education":
+      case "education":
         const educationData = getEducationProps(newId);
         dispatch(addEducationData(educationData));
         break;
-      case "Bullet":
+      case "bulletPoint":
         const bulletData = getBulletPointProps(newId);
         dispatch(addBulletData(bulletData));
         break;
-      case "List":
+      case "skill":
         const listData = getSkillProps(newId);
         dispatch(addSkillData(listData));
         break;
-      case "Contact":
+      case "userInfo":
         const userInfoData = getUserInfoProps(newId);
         const { userLink1, userLink2 } = userInfoData;
         dispatch(addUserLink(userLink1));
         dispatch(addUserLink(userLink2));
         dispatch(addUserInfoData(userInfoData));
         break;
-      case "Header":
+      case "sectionHeader":
         const headerData = getSectionHeaderProps(newId);
         dispatch(addSectionHeaderData(headerData));
         break;
-      case "Text Block":
+      case "summary":
         const textBlockData = getSummaryProps(newId);
         dispatch(addSummaryData(textBlockData));
         break;
-      case "Project":
+      case "project":
         const projectData = getProjectProps(newId);
         const userLinkId = projectData.website;
         dispatch(addUserLink(userLinkId));
         dispatch(addProjectData(projectData));
         break;
-      case "Divider":
+      case "divider":
         const dividerData = getDividerProps(newId);
         dispatch(addDividerData(dividerData));
     }
@@ -108,7 +106,7 @@ function ListOfKinds({
           renderIndex,
           data: {
             id: crypto.randomUUID(),
-            kind: section.kind,
+            kind,
             elementId: newId,
           },
         })
@@ -119,7 +117,7 @@ function ListOfKinds({
           renderIndex,
           data: {
             id: crypto.randomUUID(),
-            kind: section.kind,
+            kind,
             elementId: newId,
           },
         })
@@ -137,30 +135,35 @@ function ListOfKinds({
         Or start with a default:
       </div> */}
       <div className="px-1 flex gap-3 justify-center bg-slate-400 py-2">
-        <div className="flex items-center">
-          <button className="bg-sky-600 hover:bg-sky-500 rounded-sm px-2 text-white cursor-pointer transition-all duration-200 h-full w-12">
+        {/* <div className="flex items-center">
+          <button
+            className="bg-sky-600 hover:bg-sky-500 rounded-sm px-2 text-white cursor-pointer transition-all duration-200 h-full w-12"
+            onClick={() => handleAddNewSection(kind)}
+          >
             +
           </button>
-        </div>
+        </div> */}
         {sections.map((e: { title: string; kind: Kinds }, i) => (
           <div className="" key={i}>
             <button
               className={`${
                 e.kind === kind ? " outline-3" : ""
-              } bg-slate-700 hover:bg-slate-800 text-slate-100 h-10 rounded-sm w-max px-1 cursor-pointer transition-colors duration-200`}
+              } bg-slate-700 hover:bg-slate-800 text-slate-100 h-10 rounded-sm w-max px-2 cursor-pointer transition-colors duration-200`}
               onClick={() => setKind(e.kind)}
-              // onClick={() => handleAddNewSection(e)}
             >
               {e.title}
             </button>
           </div>
         ))}
       </div>
-      {/* <div className="h-12 flex justify-center my-2">
-        <button className="bg-emerald-600 hover:bg-emerald-500 rounded-sm px-2 text-white cursor-pointer transition-all duration-200">
-          Add New {kindToSection[kind]} Section
+      <div className="flex flex-col items-center justify-center w-full py-2 border-b">
+        <button
+          className="bg-emerald-600 text-white hover:bg-emerald-500 px-2 cursor-pointer transition-all duration-200 h-10 w-1/2 font-bold rounded-sm"
+          onClick={() => handleAddNewSection(kind)}
+        >
+          {replace ? `New ${section} Section` : `Add new ${section} section`}
         </button>
-      </div> */}
+      </div>
     </div>
   );
 }

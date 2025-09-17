@@ -72,6 +72,7 @@ function Draggable({
         {isExpanded && !addIsExpanded ? (
           <ComponentDropdown
             kind={kind}
+            text="Replace section with..."
             renderIndex={renderIndex}
             setIsExpanded={setIsExpanded}
             isExpanded={isExpanded}
@@ -81,6 +82,7 @@ function Draggable({
         {addIsExpanded && !isExpanded ? (
           <ComponentDropdown
             kind={kind}
+            text="Add new section"
             renderIndex={renderIndex}
             setIsExpanded={setAddIsExpanded}
             isExpanded={addIsExpanded}
@@ -104,7 +106,9 @@ function Draggable({
           ) : (
             <RxCaretDown
               className="text-xl"
-              onClick={() => setIsExpanded(true)}
+              onClick={() =>
+                !addIsExpanded ? setIsExpanded(true) : setAddIsExpanded(false)
+              }
             />
           )}
         </RelativeAbsLeft>
@@ -113,7 +117,11 @@ function Draggable({
         </RelativeAbsLeft>
         <RelativeAbsRight hPosition="normal">
           <div className="flex gap-[1px]">
-            <AddBelowButton handleOnClick={() => setAddIsExpanded(true)} />
+            <AddBelowButton
+              handleOnClick={() =>
+                !isExpanded ? setAddIsExpanded(true) : setIsExpanded(false)
+              }
+            />
             <DeleteElementButton renderIndex={renderIndex} />
           </div>
         </RelativeAbsRight>
