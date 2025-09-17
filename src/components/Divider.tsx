@@ -23,7 +23,7 @@ function Divider({
   }
 
   //TODO 9/17/2025: add in builder column button to show the dividers regardless of hover
-  const renderStyle = !renderUI ? "" : "hover:opacity-100 opacity-0 bg-sky-200";
+  const renderStyle = !renderUI ? "" : "hover:opacity-100 opacity-0 bg-sky-100";
 
   return (
     <div
@@ -36,6 +36,7 @@ function Divider({
         divWidth="full"
         textAlign="center"
         handleOnSubmit={(e) => handleOnChange(e)}
+        key={height}
         placeholderText={height.toString()}
       />
       <input

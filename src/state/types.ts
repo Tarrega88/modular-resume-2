@@ -96,7 +96,15 @@ export type DividerProps = {
     height: number;
 }
 
+export type ResumeNameId = {
+    resumeName: string;
+    resumeId: string;
+}
+
 export type ResumeState = {
+    resumeNames: Record<ID, ResumeNameId>;
+    showDividers: boolean;
+    overlayMarginGuides: boolean;
     scale: number;
     dropdownIsReplace: boolean;
     currentResumeId: string;

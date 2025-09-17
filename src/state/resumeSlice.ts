@@ -12,12 +12,11 @@ function ensurePrevJob(state: ResumeState, id: ID): PrevJobProps {
 
 export const locationDefault: string = "City, ST";
 export const prevJobDefault: PrevJobProps = { id: "0", kind: "prevJob", companyName: "Company Name", location: locationDefault, jobTitle: "Job Title", monthStarted: 0, yearStarted: 2024, monthEnded: 11, yearEnded: 2025 }
-// export const personalInfoDefault: PersonalInfoProps = { id: "0", kind: "personalInfo", fullName: "Full Name", email: "email@email.com", phoneNumber: "(123) 456-7890", location: locationDefault }
-
-//data will store all data across multiple resumes - might add a "hidden" boolean to everything,
-//which would start as false, but the user could mark anything to be hidden from not being an option to pick for that resume.
 
 const initialState: ResumeState = {
+    resumeNames: {},
+    showDividers: false,
+    overlayMarginGuides: false,
     scale: 75,
     dropdownIsReplace: false,
     currentResumeId: "",
@@ -256,10 +255,16 @@ const resumeSlice = createSlice({
         },
         toggleDropdownIsReplace(state, action: PayloadAction<boolean>) {
             state.dropdownIsReplace = action.payload;
-        }
+        },
+        toggleShowDividers(state, action: PayloadAction<boolean>) {
+            state.showDividers = action.payload;
+        },
+        toggleOverlayMarginGuides(state, action: PayloadAction<boolean>) {
+            state.overlayMarginGuides = action.payload;
+        },
 
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace, toggleOverlayMarginGuides, toggleShowDividers } = resumeSlice.actions;
 export default resumeSlice.reducer;
