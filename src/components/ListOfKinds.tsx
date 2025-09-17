@@ -1,30 +1,4 @@
-import {
-  addBulletData,
-  addDividerData,
-  addEducationData,
-  addPrevJobData,
-  addProjectData,
-  addResumeItemAt,
-  addSectionHeaderData,
-  addSkillData,
-  addSummaryData,
-  addUserInfoData,
-  addUserLink,
-  replaceResumeItem,
-} from "@/state/resumeSlice";
 import { Kinds } from "@/state/types";
-import {
-  getBulletPointProps,
-  getDividerProps,
-  getEducationProps,
-  getPrevJobProps,
-  getProjectProps,
-  getSectionHeaderProps,
-  getSkillProps,
-  getSummaryProps,
-  getUserInfoProps,
-} from "@/utils/getProps";
-import { useDispatch } from "react-redux";
 
 const sections = [
   { title: "Bullet", kind: "bulletPoint" },
