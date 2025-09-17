@@ -5,18 +5,21 @@ import FontPicker from "./FontPicker";
 import FontScaleSlider from "./FontScaleSlider";
 import Slider from "./Slider";
 import GeneratePDFButton from "./GeneratePDFButton";
+import IconHelper from "./IconHelper";
+import { useState } from "react";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
-
   const { scale } = useSelector((state: RootState) => state.resume);
+  const [iconHelperExpanded, setIconHelperExpanded] = useState(false);
 
   function handleSetScale(num: number) {
     dispatch(setScale(num));
   }
   return (
-    <div className="w-64 bg-blue-500 border-r">
+    <div className="w-90 bg-blue-500 border-r overflow-y-auto overflow-x-hidden">
       <div className="flex flex-col">
+        <GeneratePDFButton onPrint={onPrint} />
         <FontPicker />
         <Slider
           title="Zoom"
@@ -29,7 +32,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
           displayMult={1}
         />
         <FontScaleSlider />
-        <GeneratePDFButton onPrint={onPrint} />
+        <IconHelper />
       </div>
     </div>
   );
