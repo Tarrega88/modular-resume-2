@@ -9,6 +9,7 @@ import { replaceResumeItem } from "@/state/resumeSlice";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { getFilterPlaceholders } from "@/utils/getProps";
+import ListOfKinds from "./ListOfKinds";
 
 type Props = {
   kind: Kinds;
@@ -101,7 +102,7 @@ function ComponentDropdown({
       {isExpanded ? (
         <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
           <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
-            <div className="">Select a previously made section:</div>
+            <div className="">Select a previously made section</div>
             <div className="flex gap-2 items-center">
               <HiMagnifyingGlass />
               <input
@@ -119,6 +120,10 @@ function ComponentDropdown({
             </div>
           </div>
           <div className="flex-col bg-white h-28 overflow-y-scroll overflow-x-hidden">
+            <ListOfKinds
+              renderIndex={renderIndex}
+              setIsExpanded={setIsExpanded}
+            />
             {renderArr.map((e, i) => (
               <div
                 key={i}

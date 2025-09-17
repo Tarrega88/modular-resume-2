@@ -26,7 +26,7 @@ export function getEducationProps(id: string): EducationProps {
 }
 
 export function getSkillProps(id: string): SkillProps {
-    return { id, kind: "skill", list: ["List skills here and separate them with commas"], showCategory: true, category: "Category" }
+    return { id, kind: "skill", list: ["Separate items in the list with commas"], showCategory: true, category: "Category" }
 }
 
 export function getSectionHeaderProps(id: string): SectionHeaderProps {
