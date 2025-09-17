@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import RelativeAbsLeft from "./wrappers/RelativeAbsLeft";
-import { RxCaretDown } from "react-icons/rx";
 import { Kinds, ResumeItemProps } from "@/state/types";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/state/store";
@@ -14,6 +12,7 @@ import {
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { getFilterPlaceholders } from "@/utils/getProps";
 import ListOfKinds from "./ListOfKinds";
+import addDataFromKind from "@/utils/addDataFromKind";
 
 type Props = {
   kind: Kinds;
@@ -74,6 +73,34 @@ function ComponentDropdown({
 
   const entries = Object.entries(options);
 
+  function handleSelectDefault(kind: Kinds) {
+    const newId = addDataFromKind(kind, dispatch);
+    if (replace) {
+      dispatch(
+        replaceResumeItem({
+          renderIndex,
+          data: {
+            id: crypto.randomUUID(),
+            kind,
+            elementId: newId,
+          },
+        })
+      );
+    } else {
+      dispatch(
+        addResumeItemAt({
+          renderIndex,
+          data: {
+            id: crypto.randomUUID(),
+            kind,
+            elementId: newId,
+          },
+        })
+      );
+    }
+    setIsExpanded(false);
+  }
+
   function handleSelectOption(data: ResumeItemProps) {
     if (replace) {
       dispatch(replaceResumeItem({ renderIndex, data }));
@@ -125,10 +152,6 @@ function ComponentDropdown({
   }, [isExpanded]);
 
   const height = isMaximized ? "h-116" : "h-38";
-
-  function handleAddNewSection() {
-    //TODO 9/17/2025: hook this up to the default section and then consider removing the add button and tying everything into one dropdown instead of two
-  }
 
   return (
     <div
@@ -188,14 +211,7 @@ function ComponentDropdown({
           </div>
           <div
             className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer"
-
-            // onClick={() =>
-            //   handleSelectOption({
-            //     id: crypto.randomUUID(),
-            //     kind: selectedKind,
-            //     elementId: e,
-            //   })
-            // }
+            onClick={() => handleSelectDefault(selectedKind)}
           >
             <div className="pointer-events-none">
               <ResumeItemRenderer
