@@ -30,16 +30,19 @@ export default function SideResume({
   const wrapperW = PAGE_W * s;
   const wrapperH = rawH * s;
 
+  //todo 9/16/2025: add button in builder column to set zStyle to z-50 or nothing
+  //const zStyle = ""
+
   return (
     <div className="relative" style={{ width: wrapperW, height: wrapperH }}>
       <div
         aria-hidden
-        className="absolute left-[-12px] top-0 w-8 h-full pointer-events-none print:hidden rounded-sm"
+        className="absolute left-[-12px] top-0 w-[105%] h-full pointer-events-none print:hidden rounded-sm"
         style={{
           backgroundImage: `linear-gradient(
       to bottom,
-      rgba(0,0,100,0.35) 0,
-      rgba(0,0,100,0.35) ${96 * s}px,
+      rgba(0,0,100,0.2) 0,
+      rgba(0,0,100,0.2) ${96 * s}px,
       transparent ${96 * s}px
     )`,
           backgroundSize: `100% ${1100 * s}px`,
