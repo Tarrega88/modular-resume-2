@@ -9,6 +9,8 @@ type Props = {
   placeholderText?: string;
 };
 
+//TODO 9/16/2025: add tooltips (title)
+
 function DynamicInput({
   text,
   handleOnSubmit,
@@ -34,6 +36,7 @@ function DynamicInput({
   return showInput ? (
     <input
       autoFocus
+      // onFocus={(e) => e.target.select()}
       className="outline-1 rounded-xs"
       value={tempText}
       onChange={(e) => setTempText(e.target.value)}

@@ -31,6 +31,18 @@ const kindToData = {
   divider: "dividers",
 };
 
+const sections = [
+  { title: "Bullet", kind: "bulletPoint" },
+  { title: "Contact", kind: "userInfo" },
+  { title: "Education", kind: "education" },
+  { title: "Experience", kind: "prevJob" },
+  { title: "Header", kind: "sectionHeader" },
+  { title: "List", kind: "skill" },
+  { title: "Project", kind: "project" },
+  { title: "Text Block", kind: "summary" },
+  { title: "Divider", kind: "divider" },
+];
+
 function ComponentDropdown({
   kind,
   renderIndex,
@@ -38,12 +50,14 @@ function ComponentDropdown({
   setIsExpanded,
   replace,
 }: Props) {
+  const [selectedKind, setSelectedKind] = useState(kind);
+
   const searchRef = useRef<HTMLInputElement>(null);
 
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
   const { data } = useSelector((state: RootState) => state.resume);
-  const dataType = kindToData[kind];
+  const dataType = kindToData[selectedKind];
   const options = data[dataType];
 
   const entries = Object.entries(options);
@@ -56,10 +70,9 @@ function ComponentDropdown({
     }
   }
 
-  const placeholderEntries = Object.entries(getFilterPlaceholders(kind)!) as [
-    string,
-    any
-  ][];
+  const placeholderEntries = Object.entries(
+    getFilterPlaceholders(selectedKind)!
+  ) as [string, any][];
   const q = searchText.trim().toLowerCase();
 
   const norm = (v: unknown) => String(v ?? "").toLowerCase();
@@ -102,31 +115,33 @@ function ComponentDropdown({
   return (
     <div
       tabIndex={-1}
-      onBlur={(e) => {
-        const next = e.relatedTarget as Node | null;
-        if (next && e.currentTarget.contains(next)) return;
-        setIsExpanded(false);
-      }}
+      // onBlur={(e) => {
+      //   const next = e.relatedTarget as Node | null;
+      //   if (next && e.currentTarget.contains(next)) return;
+      //   setIsExpanded(false);
+      // }}
       className="text-base w-[754px]"
     >
       <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
         <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
-          <div className="">Select a previously made section</div>
-          <div className="flex gap-2 items-center">
-            <HiMagnifyingGlass />
-            <input
-              ref={searchRef}
-              className="bg-slate-200 text-slate-950 outline-1 h-6 px-1"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              placeholder="filter by keyword"
-            />
-          </div>
-          <div
-            className="hover:outline cursor-pointer size-5 flex justify-center"
-            onClick={() => setIsExpanded(false)}
-          >
-            <FaRegWindowMinimize />
+          <div className="">Section types</div>
+          <div className="flex gap-12">
+            <div className="flex gap-2 items-center">
+              <HiMagnifyingGlass />
+              <input
+                ref={searchRef}
+                className="bg-slate-200 text-slate-950 outline-1 h-6 px-1"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                placeholder="filter by keyword"
+              />
+            </div>
+            <div
+              className="hover:outline cursor-pointer size-5 flex justify-center"
+              onClick={() => setIsExpanded(false)}
+            >
+              <FaRegWindowMinimize />
+            </div>
           </div>
         </div>
         <div className="flex-col bg-white h-36 overflow-y-scroll overflow-x-hidden">
@@ -134,6 +149,8 @@ function ComponentDropdown({
             renderIndex={renderIndex}
             setIsExpanded={setIsExpanded}
             replace={replace}
+            kind={selectedKind}
+            setKind={(e: Kinds) => setSelectedKind(e)}
           />
           {renderArr.map((e, i) => (
             <div
@@ -142,7 +159,7 @@ function ComponentDropdown({
               onClick={() =>
                 handleSelectOption({
                   id: crypto.randomUUID(),
-                  kind,
+                  kind: selectedKind,
                   elementId: e,
                 })
               }
@@ -150,7 +167,7 @@ function ComponentDropdown({
               <div className="pointer-events-none">
                 <ResumeItemRenderer
                   id={crypto.randomUUID()}
-                  kind={kind}
+                  kind={selectedKind}
                   elementId={e}
                   renderIndex={i + 1}
                   renderUI={false}

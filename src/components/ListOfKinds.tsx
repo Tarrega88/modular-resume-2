@@ -34,16 +34,28 @@ const sections = [
   { title: "Header", kind: "sectionHeader" },
   { title: "List", kind: "skill" },
   { title: "Project", kind: "project" },
-  { title: "Text Block", kind: "summary" },
+  { title: "Text", kind: "summary" },
   { title: "Divider", kind: "divider" },
 ];
+
+const kindToSection = Object.fromEntries(
+  sections.map((e) => [e.kind, e.title])
+);
 
 type Props = {
   renderIndex: number;
   setIsExpanded(e: boolean): void;
   replace: boolean;
+  kind: Kinds;
+  setKind(e: Kinds): void;
 };
-function ListOfKinds({ renderIndex, setIsExpanded, replace }: Props) {
+function ListOfKinds({
+  renderIndex,
+  setIsExpanded,
+  replace,
+  setKind,
+  kind,
+}: Props) {
   const dispatch = useDispatch();
   function handleAddNewSection(section: { title: string; kind: Kinds }) {
     const newId = crypto.randomUUID();
@@ -116,23 +128,39 @@ function ListOfKinds({ renderIndex, setIsExpanded, replace }: Props) {
     setIsExpanded(false);
   }
 
+  // const buttonStyle = kind ===
+  //bg-slate-700 hover:bg-slate-800 text-slate-100
+
   return (
     <div>
-      <div className="px-4 bg-slate-800 text-slate-50 pb-1">
+      {/* <div className="px-4 bg-slate-800 text-slate-50 pb-1">
         Or start with a default:
-      </div>
+      </div> */}
       <div className="px-1 flex gap-3 justify-center bg-slate-400 py-2">
+        <div className="flex items-center">
+          <button className="bg-sky-600 hover:bg-sky-500 rounded-sm px-2 text-white cursor-pointer transition-all duration-200 h-full w-12">
+            +
+          </button>
+        </div>
         {sections.map((e: { title: string; kind: Kinds }, i) => (
           <div className="" key={i}>
             <button
-              className="bg-slate-700 hover:bg-slate-800 text-slate-100 h-10 rounded-sm w-max px-1 cursor-pointer transition-all duration-200"
-              onClick={() => handleAddNewSection(e)}
+              className={`${
+                e.kind === kind ? " outline-3" : ""
+              } bg-slate-700 hover:bg-slate-800 text-slate-100 h-10 rounded-sm w-max px-1 cursor-pointer transition-colors duration-200`}
+              onClick={() => setKind(e.kind)}
+              // onClick={() => handleAddNewSection(e)}
             >
               {e.title}
             </button>
           </div>
         ))}
       </div>
+      {/* <div className="h-12 flex justify-center my-2">
+        <button className="bg-emerald-600 hover:bg-emerald-500 rounded-sm px-2 text-white cursor-pointer transition-all duration-200">
+          Add New {kindToSection[kind]} Section
+        </button>
+      </div> */}
     </div>
   );
 }
