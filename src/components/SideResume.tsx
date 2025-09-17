@@ -37,8 +37,9 @@ export default function SideResume({
     <div className="relative" style={{ width: wrapperW, height: wrapperH }}>
       <div
         aria-hidden
-        className="absolute left-[-12px] top-0 w-[105%] h-full pointer-events-none print:hidden rounded-sm"
+        className={`absolute left-[-12px] top-0 h-full pointer-events-none print:hidden rounded-sm`}
         style={{
+          width: `${wrapperW + 24}px`,
           backgroundImage: `linear-gradient(
       to bottom,
       rgba(0,0,100,0.2) 0,

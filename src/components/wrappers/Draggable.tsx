@@ -14,6 +14,7 @@ import DuplicateButton from "../DuplicateButton";
 import { Kinds } from "../../state/types";
 import ComponentDropdown from "../ComponentDropdown";
 import { useState } from "react";
+import { RxCaretDown, RxCaretUp } from "react-icons/rx";
 
 function Draggable({
   children,
@@ -29,6 +30,7 @@ function Draggable({
   );
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [addIsExpanded, setAddIsExpanded] = useState(false);
   const dispatch = useDispatch();
 
   const dragDirection = dragHigher
@@ -66,12 +68,26 @@ function Draggable({
 
   return (
     <div className="group">
-      <ComponentDropdown
-        kind={kind}
-        renderIndex={renderIndex}
-        isExpanded={isExpanded}
-        setIsExpanded={setIsExpanded}
-      />
+      <>
+        {isExpanded && !addIsExpanded ? (
+          <ComponentDropdown
+            kind={kind}
+            renderIndex={renderIndex}
+            setIsExpanded={setIsExpanded}
+            isExpanded={isExpanded}
+            replace={true}
+          />
+        ) : null}
+        {addIsExpanded && !isExpanded ? (
+          <ComponentDropdown
+            kind={kind}
+            renderIndex={renderIndex}
+            setIsExpanded={setAddIsExpanded}
+            isExpanded={addIsExpanded}
+            replace={false}
+          />
+        ) : null}
+      </>
       <div
         draggable
         className={`${outerDragStyle} ${dragStyle} hover:outline-2 outline-sky-200 cursor-pointer rounded group transition-all duration-150 text-base`}
@@ -79,12 +95,25 @@ function Draggable({
         onDragEnd={handleDragEnd}
         onDragEnter={handleDragEnter}
       >
+        <RelativeAbsLeft hPosition="far" vPosition="high">
+          {isExpanded ? (
+            <RxCaretUp
+              className="text-xl"
+              onClick={() => setIsExpanded(false)}
+            />
+          ) : (
+            <RxCaretDown
+              className="text-xl"
+              onClick={() => setIsExpanded(true)}
+            />
+          )}
+        </RelativeAbsLeft>
         <RelativeAbsLeft hPosition="normal">
           <DuplicateButton kind={kind} renderIndex={renderIndex} />
         </RelativeAbsLeft>
         <RelativeAbsRight hPosition="normal">
           <div className="flex gap-[1px]">
-            <AddBelowButton />
+            <AddBelowButton handleOnClick={() => setAddIsExpanded(true)} />
             <DeleteElementButton renderIndex={renderIndex} />
           </div>
         </RelativeAbsRight>

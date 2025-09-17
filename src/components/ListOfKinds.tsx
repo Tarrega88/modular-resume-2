@@ -10,6 +10,7 @@ import {
   addSummaryData,
   addUserInfoData,
   addUserLink,
+  replaceResumeItem,
 } from "@/state/resumeSlice";
 import { Kinds } from "@/state/types";
 import {
@@ -36,13 +37,13 @@ const sections = [
   { title: "Text Block", kind: "summary" },
   { title: "Divider", kind: "divider" },
 ];
-function ListOfKinds({
-  renderIndex,
-  setIsExpanded,
-}: {
+
+type Props = {
   renderIndex: number;
   setIsExpanded(e: boolean): void;
-}) {
+  replace: boolean;
+};
+function ListOfKinds({ renderIndex, setIsExpanded, replace }: Props) {
   const dispatch = useDispatch();
   function handleAddNewSection(section: { title: string; kind: Kinds }) {
     const newId = crypto.randomUUID();
@@ -89,12 +90,29 @@ function ListOfKinds({
         dispatch(addDividerData(dividerData));
     }
 
-    dispatch(
-      addResumeItemAt({
-        renderIndex,
-        data: { id: crypto.randomUUID(), kind: section.kind, elementId: newId },
-      })
-    );
+    if (replace) {
+      dispatch(
+        replaceResumeItem({
+          renderIndex,
+          data: {
+            id: crypto.randomUUID(),
+            kind: section.kind,
+            elementId: newId,
+          },
+        })
+      );
+    } else {
+      dispatch(
+        addResumeItemAt({
+          renderIndex,
+          data: {
+            id: crypto.randomUUID(),
+            kind: section.kind,
+            elementId: newId,
+          },
+        })
+      );
+    }
     setIsExpanded(false);
   }
 
