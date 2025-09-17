@@ -3,6 +3,8 @@ import { setScale } from "../../state/resumeSlice";
 import { RootState } from "../../state/store";
 import FontPicker from "./FontPicker";
 import FontScaleSlider from "./FontScaleSlider";
+import Slider from "./Slider";
+import GeneratePDFButton from "./GeneratePDFButton";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -13,25 +15,21 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
     dispatch(setScale(num));
   }
   return (
-    <div className="w-64 bg-blue-500">
-      <div className="flex flex-col gap-2">
-        <input
-          type="range"
+    <div className="w-64 bg-blue-500 border-r">
+      <div className="flex flex-col">
+        <FontPicker />
+        <Slider
+          title="Zoom"
           min={50}
           max={125}
-          value={scale}
-          onChange={(e) => handleSetScale(Number(e.target.value))}
           step={1}
+          value={scale}
+          onChange={(e: any) => handleSetScale(Number(e.target.value))}
+          oddOrEven="odd"
+          displayMult={1}
         />
-        <div>{scale}%</div>
-        <button
-          className="rounded px-3 py-1 bg-black/80 text-white"
-          onClick={onPrint}
-        >
-          PDF
-        </button>
-        <FontPicker />
         <FontScaleSlider />
+        <GeneratePDFButton onPrint={onPrint} />
       </div>
     </div>
   );

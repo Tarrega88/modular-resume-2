@@ -53,7 +53,7 @@ const sections = [
 const kindToSection = Object.fromEntries(
   sections.map((e) => [e.kind, e.title])
 );
-
+//TODO 9/17/2025: consider adding a checkbox to allow user to choose whether to close on adding/replacing section
 function ComponentDropdown({
   kind,
   text,
@@ -111,6 +111,7 @@ function ComponentDropdown({
     } else {
       dispatch(addResumeItemAt({ renderIndex, data }));
     }
+    setIsExpanded(false);
   }
 
   const placeholderEntries = Object.entries(
@@ -166,11 +167,11 @@ function ComponentDropdown({
   return (
     <div
       tabIndex={-1}
-      // onBlur={(e) => {
-      //   const next = e.relatedTarget as Node | null;
-      //   if (next && e.currentTarget.contains(next)) return;
-      //   setIsExpanded(false);
-      // }}
+      onBlur={(e) => {
+        const next = e.relatedTarget as Node | null;
+        if (next && e.currentTarget.contains(next)) return;
+        setIsExpanded(false);
+      }}
       className="text-base w-[754px]"
     >
       <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">

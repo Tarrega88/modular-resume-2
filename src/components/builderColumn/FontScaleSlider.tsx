@@ -1,12 +1,12 @@
-// src/components/FontScaleSlider.tsx
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import Slider from "./Slider";
 
 type Props = {
   containerSelector?: string; // defaults to '#resume-root'
-  min?: number; // 0.8
-  max?: number; // 1.2
-  step?: number; // 0.01
-  storageKey?: string; // 'resume-font-scale'
+  min?: number;
+  max?: number;
+  step?: number;
+  storageKey?: string;
 };
 
 const clamp = (n: number, lo: number, hi: number) =>
@@ -44,7 +44,6 @@ export default function FontScaleSlider({
     start = round2(clamp(start, min, max));
     setValue(start);
     apply(start);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -52,26 +51,18 @@ export default function FontScaleSlider({
     localStorage.setItem(storageKey, String(value));
   }, [value]);
 
-  const pct = useMemo(() => Math.round(value * 100), [value]);
-
   return (
-    <div className="flex flex-col items-center gap-3 text-sm">
-      <div className="flex gap-4">
-        <label className="">Text scale</label>
-        <input
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(e) =>
-            setValue(clamp(parseFloat(e.target.value), min, max))
-          }
-          className="w-38 accent-current"
-          aria-label="Text scale"
-        />
-      </div>
-      <span className="tabular-nums w-12 text-right">{pct}%</span>
-    </div>
+    <Slider
+      title="Scale Text"
+      min={min}
+      max={max}
+      step={step}
+      value={value}
+      onChange={(e: any) =>
+        setValue(clamp(parseFloat(e.target.value), min, max))
+      }
+      oddOrEven="even"
+      displayMult={100}
+    />
   );
 }
