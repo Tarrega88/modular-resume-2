@@ -12,7 +12,7 @@ function SideLinkButton({ id, handleOnClick, active }: Props) {
     : "text-gray-400 hover:text-blue-400";
 
   return (
-    <button className="text-xl" onClick={handleOnClick}>
+    <button className="text-xl" onClick={handleOnClick} tabIndex={-1}>
       <IoIosLink
         className={`${color} cursor-pointer transition-all duration-200`}
       />

@@ -6,7 +6,6 @@ import RelativeAbsLeft from "../wrappers/RelativeAbsLeft";
 type Props = {
   text: string;
   id: string;
-  options?: any[];
   kind: Kinds;
   renderIndex: number;
   editData(id: string, text: string): void;
@@ -16,7 +15,6 @@ type Props = {
 function BPDisplayAndInput({
   text = "",
   id,
-  options,
   kind,
   renderIndex,
   editData,
@@ -45,6 +43,7 @@ function BPDisplayAndInput({
     <div
       className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full"
       onClick={setDisplayToInput}
+      tabIndex={0}
     >
       <p className="flex">
         <span

@@ -53,6 +53,7 @@ function DynamicInput({
       }
       className="group hover:bg-sky-50 transition-all duration-150"
       onClick={() => setShowInput(true)}
+      tabIndex={0}
     >
       {text.length > 0 ? (
         text

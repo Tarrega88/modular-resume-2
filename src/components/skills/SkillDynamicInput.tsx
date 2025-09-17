@@ -60,6 +60,7 @@ function SkillDynamicInput({
     <div
       className="hover:bg-sky-50 transition-all duration-150 w-full"
       onClick={() => setShowInput(true)}
+      tabIndex={0}
     >
       <ul className="flex flex-wrap">
         {list.length > 0 ? (

@@ -112,6 +112,7 @@ UserInfoProps & {
           </RelativeAbsLeft>
           <RelativeAbsRight hPosition="close" vPosition="low">
             <FiUnderline
+              tabIndex={-1}
               className={`text-xl translate-y-0.5 ${underlineButtonStyle} transition-all duration-200`}
               onClick={() =>
                 dispatch(

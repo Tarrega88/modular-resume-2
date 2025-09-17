@@ -67,7 +67,7 @@ function Draggable({
       : "";
 
   return (
-    <div className="group">
+    <div className="group" tabIndex={-1}>
       <>
         {isExpanded && !addIsExpanded ? (
           <ComponentDropdown

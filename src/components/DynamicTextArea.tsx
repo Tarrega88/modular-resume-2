@@ -48,6 +48,7 @@ function DynamicTextArea({
     />
   ) : (
     <div
+      tabIndex={0}
       style={
         divWidth
           ? { width: `${widths[divWidth]}`, textAlign }

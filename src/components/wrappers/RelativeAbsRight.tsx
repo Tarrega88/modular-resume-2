@@ -26,6 +26,7 @@ function RelativeAbsRight({
     <div
       style={{ width: pageWidth }}
       className="relative"
+      tabIndex={-1}
       // className="-translate-x-[48px]"
     >
       <div

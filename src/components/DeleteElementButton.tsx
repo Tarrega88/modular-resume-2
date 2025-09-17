@@ -10,6 +10,7 @@ function DeleteElementButton({ renderIndex }: { renderIndex: number }) {
   }
   return (
     <button
+      tabIndex={-1}
       className="text-red-600 text-xl cursor-pointer hover:text-red-500 duration-200"
       onClick={handleRemove}
     >

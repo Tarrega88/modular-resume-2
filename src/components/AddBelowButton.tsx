@@ -7,6 +7,7 @@ type Props = {
 function AddBelowButton({ handleOnClick }) {
   return (
     <button
+      tabIndex={-1}
       className="text-xl text-emerald-600 hover:text-emerald-500 cursor-pointer duration-200"
       onClick={handleOnClick}
     >

@@ -87,6 +87,7 @@ function DuplicateButton({
 
   return (
     <button
+      tabIndex={-1}
       onClick={handleDuplicate}
       className="text-xl cursor-pointer text-sky-600 transition-all duration-200 hover:text-sky-500"
     >

@@ -41,6 +41,7 @@ function SectionHeader({
           <FiUnderline
             className={`text-xl translate-y-1 ${underlineButtonStyle} transition-all duration-200`}
             onClick={handleToggleUnderline}
+            tabIndex={-1}
           />
         </RelativeAbsRight>
       ) : null}

@@ -45,6 +45,7 @@ SkillProps & { renderIndex: number; renderUI: boolean }) {
         <RelativeAbsRight hPosition="over">
           <div className="text-lg">
             <button
+              tabIndex={-1}
               className={`cursor-pointer ${labelColor} transition-all duration-150`}
               onClick={() =>
                 dispatch(setShowCategory({ id, showCategory: !showCategory }))

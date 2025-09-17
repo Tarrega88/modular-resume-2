@@ -12,7 +12,7 @@ function MonthDropdown({
   handleShowDropdown(e: boolean): void;
 }) {
   return showDropdown ? (
-    <div onMouseLeave={() => handleShowDropdown(false)}>
+    <div onMouseLeave={() => handleShowDropdown(false)} tabIndex={0}>
       <select
         className="outline-none"
         value={month}
@@ -27,7 +27,7 @@ function MonthDropdown({
       </select>
     </div>
   ) : (
-    <div onMouseEnter={() => handleShowDropdown(true)}>
+    <div onMouseEnter={() => handleShowDropdown(true)} tabIndex={0}>
       {monthDisplay[month]}
     </div>
   );
