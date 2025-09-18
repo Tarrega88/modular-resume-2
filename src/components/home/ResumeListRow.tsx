@@ -10,7 +10,7 @@ function ResumeListRow({ id }: Props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <div className="flex justify-between">
+    <div className="bg-slate-200">
       {/* <Link className="underline" to={`/builder/${id}`}>
         {id}
       </Link> */}
