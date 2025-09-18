@@ -7,7 +7,7 @@ const sections = [
   { title: "Experience", kind: "prevJob" },
   { title: "Header", kind: "sectionHeader" },
   { title: "Info", kind: "userInfo" },
-  { title: "List", kind: "skill" },
+  { title: "Skill", kind: "skill" },
   { title: "Project", kind: "project" },
   { title: "Text", kind: "summary" },
 ];

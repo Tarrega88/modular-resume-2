@@ -17,6 +17,11 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import { getFilterPlaceholders } from "@/utils/getProps";
 import ListOfKinds from "./ListOfKinds";
 import addDataFromKind from "@/utils/addDataFromKind";
+import {
+  kindToData,
+  kindToSection,
+  sections,
+} from "@/utils/getKindDisplayInfo";
 
 type Props = {
   kind: Kinds;
@@ -26,33 +31,6 @@ type Props = {
   isExpanded: boolean;
 };
 
-const kindToData = {
-  prevJob: "prevJobs",
-  education: "education",
-  project: "projects",
-  summary: "summaries",
-  bulletPoint: "bulletPoints",
-  userInfo: "userInfo",
-  sectionHeader: "sectionHeaders",
-  skill: "skills",
-  divider: "dividers",
-};
-
-const sections = [
-  { title: "Bullet", kind: "bulletPoint" },
-  { title: "Info", kind: "userInfo" },
-  { title: "Education", kind: "education" },
-  { title: "Experience", kind: "prevJob" },
-  { title: "Header", kind: "sectionHeader" },
-  { title: "List", kind: "skill" },
-  { title: "Project", kind: "project" },
-  { title: "Text", kind: "summary" },
-  { title: "Divider", kind: "divider" },
-];
-
-const kindToSection = Object.fromEntries(
-  sections.map((e) => [e.kind, e.title])
-);
 //TODO 9/17/2025: consider adding a checkbox to allow user to choose whether to close on adding/replacing section
 function ComponentDropdown({
   kind,
