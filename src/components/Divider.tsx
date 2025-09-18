@@ -11,8 +11,6 @@ function Divider({
   renderUI,
 }: DividerProps & { renderUI: boolean }) {
   const dispatch = useDispatch();
-  //TODO: 9/16/2025: allow the custom dropdown to see these (opacity needs to be changed in dropdown)
-
   const { showDividers } = useSelector((state: RootState) => state.resume);
 
   const min = 48;
@@ -25,7 +23,6 @@ function Divider({
     dispatch(editDividerNumber({ field: "height", val: num, id }));
   }
 
-  //TODO 9/17/2025: add in builder column button to show the dividers regardless of hover
   const renderStyle = !renderUI
     ? ""
     : showDividers && renderUI

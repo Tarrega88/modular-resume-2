@@ -11,6 +11,7 @@ import MarginOverlayToggle from "./MarginOverlayToggle";
 import SimpleAddSection from "./SimpleAddSection";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import ShowDividerToggle from "./ShowDividerToggle";
+import BuilderColumnTitle from "./BuilderColumnTitle";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   return (
     <div className="w-90 bg-blue-500 border-r overflow-y-auto overflow-x-hidden pb-16">
       <div className="flex flex-col">
+        <BuilderColumnTitle title="Modular Resume" />
         <GeneratePDFButton onPrint={onPrint} />
         <Slider
           title=""

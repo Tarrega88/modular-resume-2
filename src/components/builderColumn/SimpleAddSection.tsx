@@ -35,7 +35,7 @@ function SimpleAddSection() {
         />
       </div>
       {isExpanded ? (
-        <div className="flex flex-col gap-3 items-center pb-6">
+        <div className="flex flex-col gap-3 items-center pb-6 pt-4">
           <SimpleAddButton
             text="Bullet Point"
             kind="bulletPoint"
