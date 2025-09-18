@@ -7,10 +7,11 @@ type Props = {
   onChange(e: any): void;
   oddOrEven: "odd" | "even";
   displayMult: number;
+  children?: React.ReactNode;
 };
 
 function Slider({
-  title,
+  title = "",
   min,
   max,
   step,
@@ -18,7 +19,8 @@ function Slider({
   onChange,
   oddOrEven,
   displayMult,
-}) {
+  children,
+}: Props) {
   const colors = {
     odd: "bg-blue-400",
     even: "bg-blue-500",
@@ -27,9 +29,9 @@ function Slider({
   const wrapperColor = colors[oddOrEven];
   return (
     <div
-      className={`w-full flex items-center flex-col gap-2 ${wrapperColor} text-slate-950 py-2 border-b`}
+      className={`w-full flex items-center flex-col gap-2 ${wrapperColor} text-slate-950 pb-2 border-b pt-6`}
     >
-      <div className="w-full text-center py-1">{title}</div>
+      {title ? <div className="w-full text-center py-1">{title}</div> : null}
       <input
         className="accent-slate-800 cursor-pointer w-5/6"
         type="range"
@@ -39,7 +41,10 @@ function Slider({
         step={step}
         value={value}
       />
-      <div>{Math.floor(value * displayMult)}%</div>
+      <div className="flex items-center gap-2">
+        {children ? <div>{children}</div> : null}
+        <div>{Math.floor(value * displayMult)}%</div>
+      </div>
     </div>
   );
 }

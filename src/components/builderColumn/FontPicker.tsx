@@ -5,6 +5,7 @@ import {
   DEFAULT_SANS,
   type FontOption,
 } from "@/config/fonts";
+import FontScaleSlider from "./FontScaleSlider";
 
 const TARGET = "#resume-root";
 function applyToResume(stack: string) {
@@ -29,8 +30,8 @@ export default function FontPicker() {
   }, [sans]);
 
   return (
-    <div className="gap-2 text-sm py-6 border-b">
-      <div className="text-center pb-2 font-bold">Resume Font</div>
+    <div className="gap-2 text-sm pb-1 pt-4 bg-blue-400">
+      <div className="text-center pb-2 font-bold">Font</div>
       <div className="flex justify-center">
         <select
           className="rounded border px-2 py-1 bg-white text-black"

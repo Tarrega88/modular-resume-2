@@ -9,6 +9,7 @@ import IconHelper from "./IconHelper";
 import { useState } from "react";
 import MarginOverlayToggle from "./MarginOverlayToggle";
 import SimpleAddSection from "./SimpleAddSection";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -19,23 +20,25 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
     dispatch(setScale(num));
   }
   return (
-    <div className="w-90 bg-blue-500 border-r overflow-y-auto overflow-x-hidden">
+    <div className="w-90 bg-blue-500 border-r overflow-y-auto overflow-x-hidden pb-16">
       <div className="flex flex-col">
         <GeneratePDFButton onPrint={onPrint} />
-        <FontPicker />
         <Slider
-          title="Zoom"
+          title=""
           min={50}
           max={125}
           step={1}
           value={scale}
           onChange={(e: any) => handleSetScale(Number(e.target.value))}
-          oddOrEven="odd"
+          oddOrEven="even"
           displayMult={1}
-        />
+        >
+          <FaMagnifyingGlass />
+        </Slider>
+        <FontPicker />
         <FontScaleSlider />
-        <SimpleAddSection />
         <MarginOverlayToggle />
+        <SimpleAddSection />
         <IconHelper />
       </div>
     </div>

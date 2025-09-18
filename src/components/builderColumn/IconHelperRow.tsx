@@ -6,7 +6,7 @@ type Props = {
 
 function IconHelperRow({ iconName, children, description }: Props) {
   return (
-    <div className="flex flex-col px-1 gap-3 border-b pt-2 pb-3 select-none">
+    <div className="w-full flex flex-col px-1 gap-3 border-b pt-2 pb-3 select-none">
       <div className="flex items-center justify-between">
         <div className="font-semibold">{iconName}</div>
         <div className="text-2xl">{children}</div>

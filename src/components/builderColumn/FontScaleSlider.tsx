@@ -53,7 +53,7 @@ export default function FontScaleSlider({
 
   return (
     <Slider
-      title="Scale Font"
+      title=""
       min={min}
       max={max}
       step={step}
@@ -61,7 +61,7 @@ export default function FontScaleSlider({
       onChange={(e: any) =>
         setValue(clamp(parseFloat(e.target.value), min, max))
       }
-      oddOrEven="even"
+      oddOrEven="odd"
       displayMult={100}
     />
   );
