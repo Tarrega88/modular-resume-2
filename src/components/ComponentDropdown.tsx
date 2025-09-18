@@ -141,11 +141,11 @@ function ComponentDropdown({
   return (
     <div
       tabIndex={-1}
-      onBlur={(e) => {
-        const next = e.relatedTarget as Node | null;
-        if (next && e.currentTarget.contains(next)) return;
-        setIsExpanded(false);
-      }}
+      // onBlur={(e) => {
+      //   const next = e.relatedTarget as Node | null;
+      //   if (next && e.currentTarget.contains(next)) return;
+      //   setIsExpanded(false);
+      // }}
       className="text-base w-[754px]"
     >
       <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">

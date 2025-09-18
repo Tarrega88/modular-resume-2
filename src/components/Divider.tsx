@@ -26,10 +26,11 @@ function Divider({
   }
 
   //TODO 9/17/2025: add in builder column button to show the dividers regardless of hover
-  const renderStyle =
-    !renderUI || showDividers
-      ? "bg-sky-100"
-      : "hover:opacity-100 opacity-0 bg-sky-100";
+  const renderStyle = !renderUI
+    ? ""
+    : showDividers && renderUI
+    ? "bg-sky-100"
+    : "hover:opacity-100 opacity-0 bg-sky-100";
 
   return (
     <div
