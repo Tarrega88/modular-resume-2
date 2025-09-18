@@ -10,6 +10,7 @@ import { useState } from "react";
 import MarginOverlayToggle from "./MarginOverlayToggle";
 import SimpleAddSection from "./SimpleAddSection";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import ShowDividerToggle from "./ShowDividerToggle";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
         </Slider>
         <FontPicker />
         <FontScaleSlider />
+        <ShowDividerToggle />
         <MarginOverlayToggle />
         <SimpleAddSection />
         <IconHelper />

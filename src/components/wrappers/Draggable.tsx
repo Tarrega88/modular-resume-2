@@ -29,7 +29,6 @@ function Draggable({
   );
 
   const [isExpanded, setIsExpanded] = useState(false);
-  const [addIsExpanded, setAddIsExpanded] = useState(false);
   const dispatch = useDispatch();
 
   const dragDirection = dragHigher
@@ -92,9 +91,7 @@ function Draggable({
           ) : (
             <RxCaretDown
               className="text-xl"
-              onClick={() =>
-                !addIsExpanded ? setIsExpanded(true) : setAddIsExpanded(false)
-              }
+              onClick={() => setIsExpanded(true)}
             />
           )}
         </RelativeAbsLeft>

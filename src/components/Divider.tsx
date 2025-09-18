@@ -1,7 +1,8 @@
 import { editDividerNumber } from "@/state/resumeSlice";
 import { DividerProps } from "@/state/types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DynamicInput from "./DynamicInput";
+import { RootState } from "@/state/store";
 
 function Divider({
   id,
@@ -11,6 +12,8 @@ function Divider({
 }: DividerProps & { renderUI: boolean }) {
   const dispatch = useDispatch();
   //TODO: 9/16/2025: allow the custom dropdown to see these (opacity needs to be changed in dropdown)
+
+  const { showDividers } = useSelector((state: RootState) => state.resume);
 
   const min = 48;
   const max = 550;
@@ -23,12 +26,15 @@ function Divider({
   }
 
   //TODO 9/17/2025: add in builder column button to show the dividers regardless of hover
-  const renderStyle = !renderUI ? "" : "hover:opacity-100 opacity-0 bg-sky-100";
+  const renderStyle =
+    !renderUI || showDividers
+      ? "bg-sky-100"
+      : "hover:opacity-100 opacity-0 bg-sky-100";
 
   return (
     <div
-      style={{ height: `${height}px` }}
-      className={`w-full flex flex-col items-center transition-all duration-200 gap-1 ${renderStyle}`}
+      style={{ height: `${renderUI ? height : 100}px` }}
+      className={`w-full flex flex-col items-center transition-all duration-200 gap-1 ${renderStyle} print:invisible`}
     >
       <DynamicInput
         text={height.toString()}
@@ -44,7 +50,7 @@ function Divider({
         value={height}
         min={min}
         max={max}
-        className="w-4/5"
+        className="w-4/5 cursor-pointer"
         onChange={(e) => handleOnChange(e.target.value)}
       />
     </div>

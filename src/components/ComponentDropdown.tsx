@@ -17,11 +17,7 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import { getFilterPlaceholders } from "@/utils/getProps";
 import ListOfKinds from "./ListOfKinds";
 import addDataFromKind from "@/utils/addDataFromKind";
-import {
-  kindToData,
-  kindToSection,
-  sections,
-} from "@/utils/getKindDisplayInfo";
+import { kindToData, kindToSection } from "@/utils/getKindDisplayInfo";
 
 type Props = {
   kind: Kinds;

@@ -1,7 +1,6 @@
 import GenerateResumeButton from "@/components/GenerateResumeButton";
 import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
-import { Link } from "react-router-dom";
 import ResumeListRow from "@/components/ResumeListRow";
 
 export default function HomePage() {
