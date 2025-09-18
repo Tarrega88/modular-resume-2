@@ -12,7 +12,7 @@ function ShowDividerToggle() {
 
   return (
     <div
-      className="py-4 bg-blue-500 border-b select-none"
+      className="py-3 bg-sky-100 border-b select-none"
       title="Dividers are used to create spacing, particularly for page margins"
     >
       <div className="flex justify-center items-center gap-2">
