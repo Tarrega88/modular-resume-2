@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import HomeListRow from "./HomeListRow";
 import HomeSelectButton from "./HomeSelectButton";
 import ResumeListRow from "./ResumeListRow";
+import { RootState } from "@/state/store";
 
 const dummyList = [
   { title: "Resume 1", id: "" },
@@ -10,6 +12,12 @@ const dummyList = [
 ];
 
 function HomeSelect() {
+  const resumeData = useSelector((state: RootState) => state.resume);
+
+  const entries = Object.values(resumeData.resumeMetaData);
+
+  console.log(entries);
+
   return (
     <div className="bg-slate-800 h-full px-8 pt-2">
       {/* <HomeSelectButton text="New Resume" />
@@ -21,8 +29,8 @@ function HomeSelect() {
       </div>
       <div className="bg-slate-600 rounded-md p-4 flex flex-col gap-2">
         <div className="text-emerald-400 font-bold">Past Resumes</div>
-        {dummyList.map((e, i) => (
-          <HomeListRow key={i} text={e.title} />
+        {entries.map((e, i) => (
+          <HomeListRow key={i} text={e.resumeName} createdAt={e.createdAt} />
         ))}
       </div>
     </div>

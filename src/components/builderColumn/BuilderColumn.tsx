@@ -13,6 +13,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import ShowDividerToggle from "./ShowDividerToggle";
 import BuilderColumnTitle from "./BuilderColumnTitle";
 import ResumeNamer from "./ResumeNamer";
+import ToggleMonthDisplay from "./ToggleMonthType";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
           <FaMagnifyingGlass />
         </Slider>
         <FontPicker />
+        <ToggleMonthDisplay />
         <ShowDividerToggle />
         <MarginOverlayToggle />
         <SimpleAddSection />
