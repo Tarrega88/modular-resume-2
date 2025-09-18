@@ -22,14 +22,14 @@ function Slider({
   children,
 }: Props) {
   const colors = {
-    odd: "bg-blue-400",
-    even: "bg-blue-500",
+    odd: "bg-blue-50",
+    even: "bg-blue-50",
   };
 
   const wrapperColor = colors[oddOrEven];
   return (
     <div
-      className={`w-full flex items-center flex-col gap-2 ${wrapperColor} text-slate-950 pb-2 border-b pt-6`}
+      className={`w-full flex items-center flex-col gap-2 ${wrapperColor} text-slate-950 pb-2 pt-6`}
     >
       {title ? <div className="w-full text-center py-1">{title}</div> : null}
       <input

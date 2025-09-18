@@ -30,7 +30,7 @@ export default function FontPicker() {
   }, [sans]);
 
   return (
-    <div className="gap-2 text-sm pb-1 pt-4 bg-blue-400">
+    <div className="gap-2 text-sm pt-4 bg-blue-50">
       <div className="text-center pb-2 font-bold">Font</div>
       <div className="flex justify-center">
         <select
@@ -47,6 +47,7 @@ export default function FontPicker() {
           ))}
         </select>
       </div>
+      <FontScaleSlider />
     </div>
   );
 }

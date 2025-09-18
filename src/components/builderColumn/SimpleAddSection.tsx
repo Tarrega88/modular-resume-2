@@ -22,9 +22,9 @@ function SimpleAddSection() {
 
   const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className="bg-sky-100 border-b">
+    <div className="bg-blue-50">
       <div
-        className="h-10 flex items-center justify-center gap-2 px-2 transition-all duration-200 cursor-pointer hover:bg-sky-200"
+        className="h-10 flex items-center justify-center gap-2 px-2 transition-all duration-200 cursor-pointer hover:bg-blue-100"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="font-semibold select-none">Add Section</div>

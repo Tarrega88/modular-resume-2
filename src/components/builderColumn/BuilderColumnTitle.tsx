@@ -6,7 +6,7 @@ type Props = {
 
 function BuilderColumnTitle({ title }: Props) {
   return (
-    <div className="flex justify-center items-center bg-blue-500 border-b">
+    <div className="flex justify-center items-center bg-blue-50">
       <Logo />
       <div className="text-2xl tracking-wide font-semibold text-slate-800">
         {title}

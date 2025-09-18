@@ -22,8 +22,8 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
     dispatch(setScale(num));
   }
   return (
-    <div className="w-90 bg-blue-500 border-r overflow-y-auto overflow-x-hidden pb-16">
-      <div className="flex flex-col">
+    <div className="w-90 bg-slate-700 border-r overflow-y-auto overflow-x-hidden pb-16">
+      <div className="flex flex-col gap-[1px]">
         <BuilderColumnTitle title="Modular Resume" />
         <GeneratePDFButton onPrint={onPrint} />
         <Slider
@@ -39,7 +39,6 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
           <FaMagnifyingGlass />
         </Slider>
         <FontPicker />
-        <FontScaleSlider />
         <ShowDividerToggle />
         <MarginOverlayToggle />
         <SimpleAddSection />

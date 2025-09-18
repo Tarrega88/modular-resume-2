@@ -14,7 +14,7 @@ function MarginOverlayToggle() {
 
   return (
     <div
-      className="py-3 bg-sky-100 border-b select-none"
+      className="py-3 bg-blue-50 select-none"
       title="Shows the margin guides, which are recommended areas for the divider section"
     >
       <div className="flex justify-center items-center gap-2">
