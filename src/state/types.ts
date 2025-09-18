@@ -96,13 +96,14 @@ export type DividerProps = {
     height: number;
 }
 
-export type ResumeNameId = {
+export type ResumeMetaDataProps = {
     resumeName: string;
     resumeId: string;
+    createdAt: number;
 }
 
 export type ResumeState = {
-    resumeNames: Record<ID, ResumeNameId>;
+    resumeMetaData: Record<ID, ResumeMetaDataProps>;
     showDividers: boolean;
     overlayMarginGuides: boolean;
     scale: number;

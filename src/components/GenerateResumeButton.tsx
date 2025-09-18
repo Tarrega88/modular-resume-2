@@ -12,6 +12,7 @@ import {
   addUserInfoData,
   addUserLink,
   createEmptyResume,
+  generateMetaData,
   setCurrentResume,
 } from "../state/resumeSlice";
 import { Kinds } from "../state/types";
@@ -57,6 +58,7 @@ export default function GenerateResumeButton() {
     const newResumeId = crypto.randomUUID();
 
     dispatch(setCurrentResume(newResumeId));
+    dispatch(generateMetaData(newResumeId));
     dispatch(createEmptyResume());
 
     for (const item of newResumeRenderItems) {

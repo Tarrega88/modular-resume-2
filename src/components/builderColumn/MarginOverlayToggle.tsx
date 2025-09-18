@@ -26,7 +26,7 @@ function MarginOverlayToggle() {
           type="checkbox"
           name="marginOverlay"
           checked={overlayMarginGuides}
-          onClick={() =>
+          onChange={() =>
             dispatch(toggleOverlayMarginGuides(!overlayMarginGuides))
           }
           className="cursor-pointer"

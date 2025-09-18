@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BulletPointProps, DividerProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
+import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
+import { BulletPointProps, DividerProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeMetaDataProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
 
 function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
     (obj as Record<K, T[K]>)[key] = value; //obj as any is an option for testing
@@ -14,7 +14,7 @@ export const locationDefault: string = "City, ST";
 export const prevJobDefault: PrevJobProps = { id: "0", kind: "prevJob", companyName: "Company Name", location: locationDefault, jobTitle: "Job Title", monthStarted: 0, yearStarted: 2024, monthEnded: 11, yearEnded: 2025 }
 
 const initialState: ResumeState = {
-    resumeNames: {},
+    resumeMetaData: {},
     showDividers: false,
     overlayMarginGuides: false,
     scale: 75,
@@ -262,9 +262,19 @@ const resumeSlice = createSlice({
         toggleOverlayMarginGuides(state, action: PayloadAction<boolean>) {
             state.overlayMarginGuides = action.payload;
         },
+        changeResumeName(state, action: PayloadAction<string>) {
+            const { currentResumeId } = state;
+            state.resumeMetaData[currentResumeId].resumeName = action.payload;
+        },
+        generateMetaData(state, action: PayloadAction<string>) {
+            const now = Date.now();
+            state.resumeMetaData[action.payload] = {
+                resumeName: "", resumeId: action.payload, createdAt: now,
+            }
+        }
 
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace, toggleOverlayMarginGuides, toggleShowDividers } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace, toggleOverlayMarginGuides, toggleShowDividers, changeResumeName, generateMetaData } = resumeSlice.actions;
 export default resumeSlice.reducer;

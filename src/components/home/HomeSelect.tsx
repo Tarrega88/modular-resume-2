@@ -14,10 +14,17 @@ function HomeSelect() {
     <div className="bg-slate-800 h-full px-8 pt-2">
       {/* <HomeSelectButton text="New Resume" />
       <HomeSelectButton text=""/> */}
-      <div>Test</div>
-      {dummyList.map((e) => (
-        <HomeListRow text={e.title} />
-      ))}
+      <div className="pt-8 pb-8">
+        <button className="bg-emerald-600 shadow-lg text-white font-semibold px-2 py-1 rounded-sm outline-1 outline-emerald-100 hover:bg-emerald-500 transiton-all duration-200 cursor-pointer">
+          Create New Resume
+        </button>
+      </div>
+      <div className="bg-slate-600 rounded-md p-4 flex flex-col gap-2">
+        <div className="text-emerald-400 font-bold">Past Resumes</div>
+        {dummyList.map((e, i) => (
+          <HomeListRow key={i} text={e.title} />
+        ))}
+      </div>
     </div>
   );
 }

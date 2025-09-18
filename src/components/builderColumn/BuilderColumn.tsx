@@ -12,6 +12,7 @@ import SimpleAddSection from "./SimpleAddSection";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import ShowDividerToggle from "./ShowDividerToggle";
 import BuilderColumnTitle from "./BuilderColumnTitle";
+import ResumeNamer from "./ResumeNamer";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
     <div className="w-90 bg-slate-700 border-r overflow-y-auto overflow-x-hidden pb-16">
       <div className="flex flex-col gap-[1px]">
         <BuilderColumnTitle title="Modular Resume" />
+        <ResumeNamer />
         <GeneratePDFButton onPrint={onPrint} />
         <Slider
           title=""

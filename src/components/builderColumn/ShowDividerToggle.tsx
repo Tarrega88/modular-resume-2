@@ -24,7 +24,7 @@ function ShowDividerToggle() {
           type="checkbox"
           name="marginOverlay"
           checked={showDividers}
-          onClick={() => dispatch(toggleShowDividers(!showDividers))}
+          onChange={() => dispatch(toggleShowDividers(!showDividers))}
           className="cursor-pointer"
         />
       </div>
