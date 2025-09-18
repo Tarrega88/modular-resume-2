@@ -56,6 +56,7 @@ function DynamicTextArea({
       }
       className="group hover:bg-sky-50 transition-all duration-150 whitespace-pre-wrap"
       onClick={() => setShowInput(true)}
+      onKeyDown={(e) => e.key === "Enter" && setShowInput(true)}
     >
       {text.length > 0 ? (
         text

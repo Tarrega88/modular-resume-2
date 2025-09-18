@@ -46,6 +46,7 @@ function DynamicInput({
     />
   ) : (
     <div
+      onKeyDown={(e) => e.key === "Enter" && setShowInput(true)}
       style={
         divWidth
           ? { width: `${widths[divWidth]}`, textAlign }

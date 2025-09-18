@@ -2,6 +2,7 @@ import { changeResumeName } from "@/state/resumeSlice";
 import { RootState } from "@/state/store";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 
 function ResumeNamer() {
   const { currentResumeId, resumeMetaData } = useSelector(
@@ -15,11 +16,23 @@ function ResumeNamer() {
 
   function handleNameChange() {
     if (tempText.length > 50) {
-      //TODO 9/18/2025: show toast?
-      return;
+      toast.error("Resume name must be 50 chars or less");
     } else {
       dispatch(changeResumeName(tempText));
-      setIsInput(false);
+      if (tempText.length === 0) {
+        setIsInput(false);
+      } else {
+        toast.success(`Resume renamed to ${tempText}`);
+        setIsInput(false);
+      }
+    }
+  }
+
+  function handleOnChange(text: string) {
+    if (text.length > 50) {
+      toast.error("Resume name must be 50 characters or less");
+    } else {
+      setTempText(text);
     }
   }
 
@@ -31,7 +44,7 @@ function ResumeNamer() {
           className="px-1"
           value={tempText}
           autoFocus
-          onChange={(e) => setTempText(e.target.value)}
+          onChange={(e) => handleOnChange(e.target.value)}
           onBlur={handleNameChange}
           onKeyDown={(e) => e.key === "Enter" && handleNameChange()}
         />

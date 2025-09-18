@@ -43,6 +43,7 @@ function BPDisplayAndInput({
       className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full"
       onClick={setDisplayToInput}
       tabIndex={0}
+      onKeyDown={() => setDisplayMode("input")}
     >
       <p className="flex">
         <span

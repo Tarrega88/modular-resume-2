@@ -18,6 +18,7 @@ import { getFilterPlaceholders } from "@/utils/getProps";
 import ListOfKinds from "./ListOfKinds";
 import addDataFromKind from "@/utils/addDataFromKind";
 import { kindToData, kindToSection } from "@/utils/getKindDisplayInfo";
+// import { toast } from "sonner";
 
 type Props = {
   kind: Kinds;
@@ -64,6 +65,7 @@ function ComponentDropdown({
           },
         })
       );
+      // toast.success("Replaced Section");
     } else {
       dispatch(
         addResumeItemAt({

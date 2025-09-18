@@ -27,7 +27,11 @@ function MonthDropdown({
       </select>
     </div>
   ) : (
-    <div onMouseEnter={() => handleShowDropdown(true)} tabIndex={0}>
+    <div
+      onMouseEnter={() => handleShowDropdown(true)}
+      tabIndex={0}
+      onKeyDown={(e) => e.key === "Enter" && handleShowDropdown(true)}
+    >
       {monthDisplay[month]}
     </div>
   );
