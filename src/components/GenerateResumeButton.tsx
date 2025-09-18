@@ -110,5 +110,13 @@ export default function GenerateResumeButton() {
     navigate(`/builder/${newResumeId}`);
   }
 
-  return <button onClick={handleClick}>Generate New Resume</button>;
+  return (
+    <button
+      onClick={handleClick}
+      className="bg-emerald-600 shadow-lg text-white font-semibold px-2 py-1 rounded-sm outline-1 outline-emerald-100 hover:bg-emerald-500 transiton-all duration-200 cursor-pointer"
+    >
+      Create New Resume
+    </button>
+  );
+  // return <button onClick={handleClick}>Generate New Resume</button>;
 }

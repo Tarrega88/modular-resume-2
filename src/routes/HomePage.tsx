@@ -13,10 +13,8 @@ export default function HomePage() {
     <div className="h-screen bg-slate-800">
       <HomeHeader title="Modular Resume" />
       <HomeSelect />
-      <GenerateResumeButton />
       {ids.length > 0 && (
         <div>
-          <h2 className="mt-4 font-medium">Existing resumes</h2>
           <ul className="list-disc pl-6">
             {ids.map((id) => (
               <li key={id}>
