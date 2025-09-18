@@ -11,8 +11,8 @@ function ResumeNamer() {
   const [isInput, setIsInput] = useState(false);
   const dispatch = useDispatch();
 
-  const name = resumeMetaData[currentResumeId].resumeName;
-  const [tempText, setTempText] = useState(name);
+  const resumeName = resumeMetaData[currentResumeId].resumeName;
+  const [tempText, setTempText] = useState(resumeName);
 
   function handleNameChange() {
     if (tempText.length > 50) {
@@ -49,8 +49,13 @@ function ResumeNamer() {
           onKeyDown={(e) => e.key === "Enter" && handleNameChange()}
         />
       ) : (
-        <button onClick={() => setIsInput(true)} className="cursor-pointer">
-          {resumeMetaData[currentResumeId].resumeName || "Name Resume"}
+        <button
+          onClick={() => setIsInput(true)}
+          className={`cursor-pointer ${
+            resumeName.length ? "" : "text-gray-800 opacity-50 cursor-text"
+          }`}
+        >
+          {resumeName || "Name Resume"}
         </button>
       )}
     </div>

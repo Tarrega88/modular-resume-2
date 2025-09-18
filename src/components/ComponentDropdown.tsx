@@ -20,6 +20,13 @@ import addDataFromKind from "@/utils/addDataFromKind";
 import { kindToData, kindToSection } from "@/utils/getKindDisplayInfo";
 // import { toast } from "sonner";
 
+const moreSectionHeaderDefaults = [
+  "Experience",
+  "Education",
+  "Skills",
+  "Projects",
+];
+
 type Props = {
   kind: Kinds;
   text: string;
@@ -104,8 +111,14 @@ function ComponentDropdown({
       const a = (item.list ?? []) as string[];
       const b = (defVal ?? []) as string[];
       return !arraysEqual(a, b);
+    } else if (selectedKind === "sectionHeader") {
+      return (
+        norm(item[k]) !== norm(defVal) &&
+        !moreSectionHeaderDefaults.includes(item[k])
+      );
+    } else {
+      return norm(item[k]) !== norm(defVal);
     }
-    return norm(item[k]) !== norm(defVal);
   }
 
   function matchesForKey(k: string, item: any, q: string) {
@@ -143,11 +156,11 @@ function ComponentDropdown({
   return (
     <div
       tabIndex={-1}
-      // onBlur={(e) => {
-      //   const next = e.relatedTarget as Node | null;
-      //   if (next && e.currentTarget.contains(next)) return;
-      //   setIsExpanded(false);
-      // }}
+      onBlur={(e) => {
+        const next = e.relatedTarget as Node | null;
+        if (next && e.currentTarget.contains(next)) return;
+        setIsExpanded(false);
+      }}
       className="text-base w-[754px]"
     >
       <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
