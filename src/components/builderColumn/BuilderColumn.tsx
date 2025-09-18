@@ -7,6 +7,7 @@ import Slider from "./Slider";
 import GeneratePDFButton from "./GeneratePDFButton";
 import IconHelper from "./IconHelper";
 import { useState } from "react";
+import MarginOverlayToggle from "./MarginOverlayToggle";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -32,6 +33,8 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
           displayMult={1}
         />
         <FontScaleSlider />
+        <MarginOverlayToggle />
+
         <IconHelper />
       </div>
     </div>

@@ -14,11 +14,10 @@ function IconHelper() {
   const [isExpanded, setIsExpanded] = useState(true);
   return (
     <div className="bg-blue-100">
-      <div className="pb-2 font-bold border-b py-2 flex items-center justify-center gap-2 px-2">
-        <div>Icon Legend</div>
-        <IoMdArrowDropdown className={`${isExpanded ? "" : "rotate-180"}`} />
+      <div className="pb-2 font-bold border-b py-2 flex items-center justify-center gap-2 px-2 hover:bg-sky-200 transition-all duration-200 cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+        <div className="select-none">Icon Legend</div>
+        <IoMdArrowDropdown className={`${isExpanded ? "rotate-360" : "rotate-270"} transition-all duration-200`} />
       </div>
-      <div className="h-full transition-all duration-200">
         {isExpanded ? (
           <div className="flex flex-col bg-blue-100 items-center">
             <IconHelperRow
@@ -71,7 +70,6 @@ function IconHelper() {
             </IconHelperRow>
           </div>
         ) : null}
-      </div>
     </div>
   );
 }

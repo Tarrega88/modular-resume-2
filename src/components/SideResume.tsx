@@ -8,7 +8,9 @@ export default function SideResume({
 }: {
   contentRef: React.RefObject<HTMLDivElement>;
 }) {
-  const { scale } = useSelector((s: RootState) => s.resume);
+  const { scale, overlayMarginGuides } = useSelector(
+    (s: RootState) => s.resume
+  );
   const s = scale / 100;
 
   const PAGE_W = 850;
@@ -33,11 +35,13 @@ export default function SideResume({
   //todo 9/16/2025: add button in builder column to set zStyle to z-50 or nothing
   //const zStyle = ""
 
+  const zStyle = overlayMarginGuides ? "z-50" : "";
+
   return (
     <div className="relative" style={{ width: wrapperW, height: wrapperH }}>
       <div
         aria-hidden
-        className={`absolute left-[-12px] top-0 h-full pointer-events-none print:hidden rounded-sm`}
+        className={`absolute left-[-12px] top-0 h-full pointer-events-none print:hidden rounded-sm ${zStyle}`}
         style={{
           width: `${wrapperW + 24}px`,
           backgroundImage: `linear-gradient(
