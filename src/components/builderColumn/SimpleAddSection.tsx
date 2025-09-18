@@ -24,7 +24,7 @@ function SimpleAddSection() {
   return (
     <div className="bg-sky-100 border-b">
       <div
-        className="h-10 font-bold flex items-center justify-center gap-2 px-2 transition-all duration-200 cursor-pointer hover:bg-sky-200"
+        className="h-10 flex items-center justify-center gap-2 px-2 transition-all duration-200 cursor-pointer hover:bg-sky-200"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="font-semibold select-none">Add Section</div>

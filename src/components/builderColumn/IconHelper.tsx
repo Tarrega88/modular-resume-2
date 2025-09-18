@@ -15,7 +15,7 @@ function IconHelper() {
   return (
     <div className="bg-sky-100">
       <div
-        className="pb-2 font-bold py-2 flex items-center justify-center gap-2 px-2 hover:bg-sky-200 transition-all duration-200 cursor-pointer"
+        className="pb-2 font-semibold py-2 flex items-center justify-center gap-2 px-2 hover:bg-sky-200 transition-all duration-200 cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="select-none">Icon Legend</div>
