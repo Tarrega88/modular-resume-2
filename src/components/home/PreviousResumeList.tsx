@@ -16,7 +16,12 @@ function PreviousResumeList({ values }) {
         </div>
       </div>
       {values.map((e: ResumeMetaDataProps, i: number) => (
-        <HomeListRow key={i} text={e.resumeName} createdAt={e.createdAt} />
+        <HomeListRow
+          key={i}
+          text={e.resumeName}
+          createdAt={e.createdAt}
+          id={e.resumeId}
+        />
       ))}
     </div>
   );

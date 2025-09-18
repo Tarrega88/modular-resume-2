@@ -1,25 +1,24 @@
+import { useDispatch } from "react-redux";
 import HomeListRowButton from "./HomeListRowButton";
+import { copyResume } from "@/state/resumeSlice";
+import { formatDate } from "@/utils/formatDate";
 
-function HomeListRow({ text, createdAt }) {
+function HomeListRow({ text, createdAt, id }) {
   const date = new Date(createdAt);
-  const dateString = date.toLocaleString();
 
-  const fmt = new Intl.DateTimeFormat(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const formattedDate = formatDate(date);
+  const dispatch = useDispatch();
 
-  const formattedDate = fmt.format(date);
+  function handleCopyResume() {
+    dispatch(copyResume({ originalId: id, newId: crypto.randomUUID() }));
+  }
 
   return (
     <div className="text-slate-100 flex justify-between items-center px-1">
       <div>{formattedDate}</div>
       <div>{text}</div>
       <div className="flex gap-4">
-        <HomeListRowButton text="Copy" />
+        <HomeListRowButton text="Copy" onClick={handleCopyResume} />
       </div>
     </div>
   );

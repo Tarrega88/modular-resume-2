@@ -1,5 +1,6 @@
 import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
 import { BulletPointProps, DividerProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeMetaDataProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
+import { formatDate } from "@/utils/formatDate";
 
 function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
     (obj as Record<K, T[K]>)[key] = value; //obj as any is an option for testing
@@ -244,6 +245,15 @@ const resumeSlice = createSlice({
         copyResume(state, action: PayloadAction<{ originalId: string; newId: string; }>) {
             const { originalId, newId } = action.payload;
             state.resumes[newId] = [];
+            const now = Date.now();
+
+            const originalName = state.resumeMetaData[originalId].resumeName;
+            const originalTime = new Date(state.resumeMetaData[originalId].createdAt);
+            const newName = originalName.length ? `Copy of ${originalName}` : `Copy of resume created at ${formatDate(originalTime)}`
+
+            state.resumeMetaData[newId] = {
+                resumeName: newName, resumeId: newId, createdAt: now,
+            }
 
             for (const item of state.resumes[originalId]) {
                 state.resumes[newId].push(item);
