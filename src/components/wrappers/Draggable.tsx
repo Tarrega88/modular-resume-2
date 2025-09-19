@@ -19,10 +19,12 @@ function Draggable({
   children,
   renderIndex,
   kind,
+  setReplaceIsOpen,
 }: {
   children: React.ReactNode;
   renderIndex: number;
   kind: Kinds;
+  setReplaceIsOpen(e: boolean): void;
 }) {
   const { dragFromIndex, dragToIndex, dragHigher } = useSelector(
     (state: RootState) => state.resume
@@ -56,6 +58,11 @@ function Draggable({
     dispatch(setDragToIndex(renderIndex));
   }
 
+  function handleOpenReplace(bool: boolean) {
+    setIsExpanded(bool);
+    setReplaceIsOpen(bool);
+  }
+
   const outerDragStyle =
     dragFromIndex === renderIndex ? "hover:opacity-25" : "hover:opacity-100";
 
@@ -71,7 +78,7 @@ function Draggable({
           kind={kind}
           text="Replace section with..."
           renderIndex={renderIndex}
-          setIsExpanded={setIsExpanded}
+          setIsExpanded={handleOpenReplace}
           isExpanded={isExpanded}
         />
       ) : null}
@@ -86,12 +93,12 @@ function Draggable({
           {isExpanded ? (
             <RxCaretUp
               className="text-xl"
-              onClick={() => setIsExpanded(false)}
+              onClick={() => handleOpenReplace(false)}
             />
           ) : (
             <RxCaretDown
               className="text-xl"
-              onClick={() => setIsExpanded(true)}
+              onClick={() => handleOpenReplace(true)}
             />
           )}
         </RelativeAbsLeft>

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
@@ -19,6 +19,10 @@ export default function SideResumeInner() {
     if (!ref.current) return;
   }, []);
 
+  const [replaceIsOpen, setReplaceIsOpen] = useState(false);
+
+  console.log(replaceIsOpen);
+
   return (
     <div
       id="resume-root"
@@ -32,13 +36,18 @@ export default function SideResumeInner() {
         lineHeight: 1.4,
         paddingLeft: `${pageMargin}px`,
         paddingRight: `${pageMargin}px`,
-        paddingBottom: `${pageMargin * 3}px`,
+        paddingBottom: `${replaceIsOpen ? pageMargin * 12 : 0}px`,
         overflow: "hidden",
       }}
     >
       <div className="h-[48px]" />
       {renderOrder.map((e: any, i: number) => (
-        <Draggable key={e.id} renderIndex={i} kind={e.kind}>
+        <Draggable
+          key={e.id}
+          renderIndex={i}
+          kind={e.kind}
+          setReplaceIsOpen={setReplaceIsOpen}
+        >
           <ResumeItemRenderer
             renderIndex={i}
             id={e.id}
