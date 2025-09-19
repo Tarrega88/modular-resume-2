@@ -54,25 +54,6 @@ export default function MobileNotification() {
             Dismiss
           </button>
         </div>
-
-        <div className="mt-2 flex gap-2">
-          <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="rounded-md px-3 py-1.5 text-xs font-medium
-                       bg-slate-700 hover:bg-slate-600"
-          >
-            Continue anyway
-          </a>
-          <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="rounded-md px-3 py-1.5 text-xs font-medium
-                       border border-slate-600 hover:bg-slate-700"
-          >
-            Learn more
-          </a>
-        </div>
       </div>
     </div>
   );
