@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import GenerateResumeButton from "../GenerateResumeButton";
 import PreviousResumeList from "./PreviousResumeList";
-import AboutMeWindow from "./AboutWindow";
+import AboutWindow from "./AboutWindow";
 import { useState } from "react";
 
 function HomeSelect() {
@@ -10,7 +10,7 @@ function HomeSelect() {
 
   const values = Object.values(resumeData.resumeMetaData).reverse();
 
-  const [aboutMeIsOpen, setAboutMeIsOpen] = useState(false);
+  const [aboutIsOpen, setAboutIsOpen] = useState(false);
 
   return (
     <div className="bg-slate-800 h-full px-10 pt-2 overflow-auto flex flex-col">
@@ -23,15 +23,15 @@ function HomeSelect() {
         <div className="pb-8">
           <button
             className="text-slate-200 p-2 bg-slate-500 rounded-sm"
-            onClick={() => setAboutMeIsOpen(!aboutMeIsOpen)}
+            onClick={() => setAboutIsOpen(!aboutIsOpen)}
           >
             About
           </button>
         </div>
       </div>
-      <AboutMeWindow
-        isOpen={aboutMeIsOpen}
-        setIsOpen={() => setAboutMeIsOpen(false)}
+      <AboutWindow
+        isOpen={aboutIsOpen}
+        setIsOpen={() => setAboutIsOpen(false)}
       />
       {/* {values.length ? <PreviousResumeList values={values} /> : null} */}
     </div>
