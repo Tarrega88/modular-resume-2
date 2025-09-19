@@ -16,16 +16,21 @@ import ToggleMonthDisplay from "./ToggleMonthType";
 import BuilderColumnMainButton from "./BuilderColumnMainButton";
 import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import HelpWindow from "./HelpWindow";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
   const { scale } = useSelector((state: RootState) => state.resume);
 
+  const [helpIsOpen, setHelpIsOpen] = useState(false);
+
   function handleSetScale(num: number) {
     dispatch(setScale(num));
   }
 
-  function handleOpenHelper() {}
+  function handleOpenHelper() {
+    setHelpIsOpen(!helpIsOpen);
+  }
 
   const navigate = useNavigate();
 
@@ -60,6 +65,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
         <SimpleAddSection />
         <IconHelper />
       </div>
+      <HelpWindow isOpen={helpIsOpen} />
     </div>
   );
 }
