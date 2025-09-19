@@ -6,6 +6,7 @@ function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
     (obj as Record<K, T[K]>)[key] = value; //obj as any is an option for testing
 }
 
+//
 //TODO 9/16/2025: look into whether or not this is still needed, along with the two defaults
 function ensurePrevJob(state: ResumeState, id: ID): PrevJobProps {
     return (state.data.prevJobs[id] ??= { ...prevJobDefault, id });
