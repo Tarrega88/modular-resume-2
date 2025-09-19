@@ -44,7 +44,7 @@ function ResumeNamer() {
     <div className="flex bg-blue-50 flex-col items-center">
       {isInput ? (
         <input
-          className="px-1 w-full"
+          className="px-1 w-full text-center"
           value={tempText}
           autoFocus
           onChange={(e) => handleOnChange(e.target.value)}
