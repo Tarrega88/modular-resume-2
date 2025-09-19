@@ -42,7 +42,9 @@ function Slider({
         value={value}
       />
       <div className="flex items-center gap-2 relative w-full justify-center">
-        {children ? <div className="absolute left-1/3">{children}</div> : null}
+        {children ? (
+          <div className="absolute left-3/12 sm:left-1/3">{children}</div>
+        ) : null}
         <div>{Math.floor(value * displayMult)}%</div>
       </div>
     </div>

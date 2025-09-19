@@ -23,7 +23,7 @@ function MarginOverlayToggle() {
     >
       <div className="flex justify-center items-center gap-2">
         <label className="cursor-pointer" htmlFor={id}>
-          Show Margin Overlay
+          Margin Overlay
         </label>
         <input
           id={id}

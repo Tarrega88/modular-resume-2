@@ -10,7 +10,7 @@ type Props = {
 function SimpleAddButton({ text, children, handleOnClick, kind }: Props) {
   return (
     <div
-      className="text-sky-950 bg-sky-50 relative w-4/5 rounded-sm select-none cursor-pointer transition-all duration-100 border border-sky-500 hover:outline-2"
+      className="text-sky-950 bg-sky-50 relative w-4/5 rounded-sm select-none cursor-pointer transition-all duration-100 border border-sky-500 hover:outline-2 h-10"
       onClick={() => handleOnClick(kind)}
       onKeyDown={(e) => e.key === "Enter" && handleOnClick(kind)}
       tabIndex={0}
@@ -18,7 +18,7 @@ function SimpleAddButton({ text, children, handleOnClick, kind }: Props) {
       <div className="font-semibold text-center h-10 flex items-center justify-center">
         {text}
       </div>
-      <div className="text-sky-950 absolute right-3 top-1/2 -translate-y-1/2">
+      <div className="text-sky-950 absolute right-3 top-1/2 -translate-y-1/2 sm:block hidden">
         {children}
       </div>
     </div>
