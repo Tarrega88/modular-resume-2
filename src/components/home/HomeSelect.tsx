@@ -5,6 +5,7 @@ import PreviousResumeList from "./PreviousResumeList";
 import { useState } from "react";
 import LastWorkedOn from "./LastWorkedOn";
 import ModalWindow from "../builderColumn/ModalWindow";
+import AboutContainer from "./AboutContainer";
 
 function HomeSelect() {
   const resumeData = useSelector((state: RootState) => state.resume);
@@ -41,9 +42,7 @@ function HomeSelect() {
           </button>
         </div>
       </div>
-      <ModalWindow isOpen={aboutIsOpen} setIsOpen={() => setAboutIsOpen(false)}>
-        <div>About</div>
-      </ModalWindow>
+      <AboutContainer isOpen={aboutIsOpen} setIsOpen={setAboutIsOpen} />
     </div>
   );
 }
