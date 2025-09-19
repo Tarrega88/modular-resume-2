@@ -44,7 +44,7 @@ function ResumeNamer() {
     <div className="flex bg-blue-50 flex-col items-center">
       {isInput ? (
         <input
-          className="px-1 w-full text-center"
+          className="px-1 text-center w-4/5"
           value={tempText}
           autoFocus
           onChange={(e) => handleOnChange(e.target.value)}
@@ -56,7 +56,7 @@ function ResumeNamer() {
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && setIsInput(true)}
           onClick={() => setIsInput(true)}
-          className={`cursor-pointer ${
+          className={`w-4/5 cursor-pointer ${
             resumeName.length ? "" : "text-gray-800 opacity-50 cursor-text"
           }`}
         >
