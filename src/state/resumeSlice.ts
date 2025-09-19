@@ -289,6 +289,7 @@ const resumeSlice = createSlice({
         },
         deleteResume(state, action: PayloadAction<string>) {
             const id = action.payload;
+            if (state.currentResumeId === id) state.currentResumeId = "";
             delete state.resumeMetaData[id];
             delete state.resumes[id];
         }
