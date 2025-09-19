@@ -43,7 +43,10 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
           <BuilderColumnMainButton onClick={() => navigate("/")}>
             <IoMdHome className="text-2xl" />
           </BuilderColumnMainButton>
-          <BuilderColumnMainButton text="Help" onClick={handleOpenHelper} />
+          <BuilderColumnMainButton
+            text="Help"
+            onClick={() => handleOpenHelper()}
+          />
         </div>
         <GeneratePDFButton onPrint={onPrint} />
         <Slider
