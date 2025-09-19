@@ -7,7 +7,6 @@ import { RootState } from "@/state/store";
 function Divider({
   id,
   height,
-  kind,
   renderUI,
 }: DividerProps & { renderUI: boolean }) {
   const dispatch = useDispatch();

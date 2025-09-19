@@ -9,7 +9,6 @@ import SideLinkButton from "../absoluteUI/SideLinkButton";
 
 function ProjectSection({
   id,
-  kind,
   title,
   description,
   hasWebsite,
@@ -27,7 +26,6 @@ function ProjectSection({
       {renderUI ? (
         <RelativeAbsRight vPosition="med" hPosition="close">
           <SideLinkButton
-            id={website}
             handleOnClick={() => handleShowLink(!hasWebsite)}
             active={hasWebsite}
           />

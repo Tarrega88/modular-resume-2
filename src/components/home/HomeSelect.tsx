@@ -4,7 +4,6 @@ import GenerateResumeButton from "../GenerateResumeButton";
 import PreviousResumeList from "./PreviousResumeList";
 import { useState } from "react";
 import LastWorkedOn from "./LastWorkedOn";
-import ModalWindow from "../builderColumn/ModalWindow";
 import AboutContainer from "./AboutContainer";
 
 function HomeSelect() {
@@ -13,16 +12,6 @@ function HomeSelect() {
   const values = Object.values(resumeData.resumeMetaData).reverse();
 
   const [aboutIsOpen, setAboutIsOpen] = useState(false);
-
-  /*
-         <HomeListRow
-          key={i}
-          text={e.resumeName}
-          createdAt={e.createdAt}
-          id={e.resumeId}
-          odd={i % 2 === 1}
-        />
-  */
 
   return (
     <div className="bg-slate-800 h-full px-10 pt-2 overflow-auto flex flex-col">

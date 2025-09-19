@@ -1,15 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { editBulletPoint } from "../../state/resumeSlice";
-import { RootState } from "../../state/store";
 import BPDisplayAndInput from "./BPDisplayAndInput";
 import { BulletPointProps } from "../../state/types";
 
-function BulletPoint({
-  id,
-  text,
-  kind,
-  renderIndex,
-}: BulletPointProps & { renderIndex: number }) {
+function BulletPoint({ id, text }: BulletPointProps) {
   const dispatch = useDispatch();
 
   function editData(id: string, text: string) {
@@ -18,9 +12,7 @@ function BulletPoint({
 
   return (
     <BPDisplayAndInput
-      kind={kind}
       id={id}
-      renderIndex={renderIndex}
       text={text}
       editData={editData}
       placeholderText="Enter bullet point"

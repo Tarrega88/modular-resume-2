@@ -42,7 +42,6 @@ function ResumeNamer() {
 
   return (
     <div className="flex bg-blue-50 flex-col items-center">
-      {/* <div>Resume Name</div> */}
       {isInput ? (
         <input
           className="px-1 w-full"

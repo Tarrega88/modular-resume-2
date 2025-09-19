@@ -8,7 +8,6 @@ import { updatePrevJobField } from "../../state/resumeSlice";
 
 function JobSection({
   id,
-  // kind,
   companyName,
   jobTitle,
   location,
@@ -16,8 +15,7 @@ function JobSection({
   yearStarted,
   monthEnded,
   yearEnded,
-}: // renderIndex,
-PrevJobProps & { renderIndex: number }) {
+}: PrevJobProps) {
   const state = useSelector((state: RootState) => state.resume);
   const { monthType } = state;
 

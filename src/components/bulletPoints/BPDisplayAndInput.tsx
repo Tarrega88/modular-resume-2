@@ -1,12 +1,8 @@
 import { useState } from "react";
-import { Kinds } from "../../state/types";
-import RelativeAbsLeft from "../wrappers/RelativeAbsLeft";
 
 type Props = {
   text: string;
   id: string;
-  kind: Kinds;
-  renderIndex: number;
   editData(id: string, text: string): void;
   placeholderText?: string;
 };
@@ -14,8 +10,6 @@ type Props = {
 function BPDisplayAndInput({
   text = "",
   id,
-  kind,
-  renderIndex,
   editData,
   placeholderText,
 }: Props) {

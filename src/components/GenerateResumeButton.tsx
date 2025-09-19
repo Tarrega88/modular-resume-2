@@ -118,5 +118,4 @@ export default function GenerateResumeButton() {
       Create New Resume
     </button>
   );
-  // return <button onClick={handleClick}>Generate New Resume</button>;
 }

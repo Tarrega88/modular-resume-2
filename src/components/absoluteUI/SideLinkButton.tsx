@@ -1,12 +1,11 @@
 import { IoIosLink } from "react-icons/io";
 
 type Props = {
-  id: string;
   handleOnClick(): void;
   active: boolean;
 };
 
-function SideLinkButton({ id, handleOnClick, active }: Props) {
+function SideLinkButton({ handleOnClick, active }: Props) {
   const color = active
     ? "text-blue-600 hover:text-blue-700"
     : "text-gray-400 hover:text-blue-400";

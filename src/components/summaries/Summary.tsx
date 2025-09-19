@@ -9,8 +9,6 @@ function Summary({ id, text }: SummaryProps) {
     dispatch(editSummary({ id, text: e }));
   }
 
-  //TODO 9/11/2025: consider string literal interpretation of summary.
-
   return (
     <div className="mb-6">
       <DynamicTextArea

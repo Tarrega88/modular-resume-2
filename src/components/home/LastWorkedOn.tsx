@@ -1,14 +1,9 @@
 import { useSelector } from "react-redux";
-import HomeListRow from "./HomeListRow";
 import { RootState } from "@/state/store";
 import { useNavigate } from "react-router-dom";
 
 function LastWorkedOn() {
-  const { currentResumeId, resumeMetaData } = useSelector(
-    (state: RootState) => state.resume
-  );
-
-  const metaData = resumeMetaData[currentResumeId];
+  const { currentResumeId } = useSelector((state: RootState) => state.resume);
 
   const navigate = useNavigate();
 

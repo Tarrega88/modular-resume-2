@@ -16,8 +16,6 @@ import ToggleMonthDisplay from "./ToggleMonthType";
 import BuilderColumnMainButton from "./BuilderColumnMainButton";
 import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import ModalWindow from "./ModalWindow";
-import HelpSection from "./HelpSection";
 import HelpContainer from "./HelpContainer";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {

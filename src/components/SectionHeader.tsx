@@ -10,10 +10,8 @@ import RelativeAbsRight from "./wrappers/RelativeAbsRight";
 
 function SectionHeader({
   text,
-  kind,
   id,
   underline,
-  renderIndex,
   renderUI,
 }: SectionHeaderProps & { renderIndex: number; renderUI: boolean }) {
   const dispatch = useDispatch();

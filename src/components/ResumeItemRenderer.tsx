@@ -24,7 +24,6 @@ import {
 } from "@/utils/getProps";
 
 function ResumeItemRenderer({
-  id,
   kind,
   elementId,
   renderIndex,
@@ -47,7 +46,6 @@ function ResumeItemRenderer({
           email={info.email}
           phoneNumber={info.phoneNumber}
           location={info.location}
-          renderIndex={renderIndex}
           userLink1={info.userLink1}
           userLink2={info.userLink2}
           showLink1={elementId ? info.showLink1 : false}
@@ -78,7 +76,6 @@ function ResumeItemRenderer({
           yearStarted={yearStarted}
           monthEnded={monthEnded}
           yearEnded={yearEnded}
-          renderIndex={renderIndex}
         />
       );
     case "bulletPoint":
@@ -86,13 +83,7 @@ function ResumeItemRenderer({
         ? data?.bulletPoints[elementId]
         : getBulletPointProps("");
       return (
-        <BulletPoint
-          key={bp.text}
-          id={bp.id}
-          kind={bp.kind}
-          text={bp.text}
-          renderIndex={renderIndex}
-        />
+        <BulletPoint key={bp.text} id={bp.id} kind={bp.kind} text={bp.text} />
       );
     case "sectionHeader": {
       const sectionHeaderData = elementId
@@ -118,7 +109,6 @@ function ResumeItemRenderer({
           showCategory={skillData.showCategory}
           category={skillData.category}
           list={skillData.list}
-          renderIndex={renderIndex}
           renderUI={renderUI}
         />
       );

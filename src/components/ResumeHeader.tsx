@@ -19,7 +19,6 @@ import RelativeAbsLeft from "./wrappers/RelativeAbsLeft";
 import { MdOutlineTitle } from "react-icons/md";
 
 function ResumeHeader({
-  kind,
   id,
   fullName = "Full Name",
   showIcons,
@@ -29,15 +28,12 @@ function ResumeHeader({
   email = "email@email.com",
   phoneNumber = "(123) 123-4567",
   location = locationDefault,
-  renderIndex,
   userLink1,
   userLink2,
   showLink1,
   showLink2,
   renderUI,
-}: // children,
-UserInfoProps & {
-  renderIndex: number;
+}: UserInfoProps & {
   renderUI: boolean;
 }) {
   const dispatch = useDispatch();
@@ -72,14 +68,12 @@ UserInfoProps & {
         <>
           <RelativeAbsRight vPosition="med" hPosition="normal">
             <SideLinkButton
-              id={userLink1}
               handleOnClick={() =>
                 handleShowLink({ field: "showLink1", show: !showLink1 })
               }
               active={showLink1}
             />
             <SideLinkButton
-              id={userLink2}
               handleOnClick={() =>
                 handleShowLink({ field: "showLink2", show: !showLink2 })
               }

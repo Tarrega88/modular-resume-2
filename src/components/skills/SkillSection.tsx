@@ -10,20 +10,13 @@ import {
 import { MdLabel } from "react-icons/md";
 import RelativeAbsRight from "../wrappers/RelativeAbsRight";
 
-//Also, I think I want to allow for creation of categories, like:
-//Technologies, Software, etc.
-
-//I don't know if there should be any special consideration for grouping those with skills in the data or not
-
 function SkillSection({
   id,
   category,
   showCategory,
-  // kind,
   list,
   renderUI,
-}: // renderIndex,
-SkillProps & { renderIndex: number; renderUI: boolean }) {
+}: SkillProps & { renderUI: boolean }) {
   const dispatch = useDispatch();
   function handleOnSubmit(text: string) {
     dispatch(editSkills({ id, text }));
@@ -57,7 +50,6 @@ SkillProps & { renderIndex: number; renderUI: boolean }) {
         </RelativeAbsRight>
       ) : null}
       <div className="flex mb-1">
-        {/* <span className="mx-2">•</span> */}
         {showCategory ? (
           <div className="flex font-semibold mr-1">
             <DynamicInput

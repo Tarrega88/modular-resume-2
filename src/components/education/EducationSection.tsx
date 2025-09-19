@@ -6,7 +6,6 @@ import { editEducationString } from "../../state/resumeSlice";
 
 function EducationSection({
   id,
-  kind,
   schoolName,
   degree,
   monthEnded,
