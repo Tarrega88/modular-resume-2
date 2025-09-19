@@ -1,4 +1,4 @@
-import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BulletPointProps, DividerProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeMetaDataProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
 import { formatDate } from "@/utils/formatDate";
 
