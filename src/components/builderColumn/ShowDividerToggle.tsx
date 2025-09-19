@@ -12,6 +12,9 @@ function ShowDividerToggle() {
 
   return (
     <div
+      onKeyDown={(e) =>
+        e.key === "Enter" && dispatch(toggleShowDividers(!showDividers))
+      }
       className="py-3 bg-blue-50 select-none"
       title="Dividers are used to create spacing, particularly for page margins"
     >

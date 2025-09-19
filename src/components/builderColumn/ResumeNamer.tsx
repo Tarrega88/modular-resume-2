@@ -54,6 +54,8 @@ function ResumeNamer() {
         />
       ) : (
         <button
+          tabIndex={0}
+          onKeyDown={(e) => e.key === "Enter" && setIsInput(true)}
           onClick={() => setIsInput(true)}
           className={`cursor-pointer ${
             resumeName.length ? "" : "text-gray-800 opacity-50 cursor-text"

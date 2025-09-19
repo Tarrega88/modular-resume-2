@@ -22,7 +22,11 @@ function SimpleAddSection() {
 
   const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className="bg-blue-50">
+    <div
+      className="bg-blue-50"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === "Enter" && setIsExpanded(!isExpanded)}
+    >
       <div
         className="h-10 flex items-center justify-center gap-2 px-2 transition-all duration-200 cursor-pointer hover:bg-blue-100"
         onClick={() => setIsExpanded(!isExpanded)}

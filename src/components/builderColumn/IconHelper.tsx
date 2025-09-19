@@ -13,7 +13,11 @@ import { useState } from "react";
 function IconHelper() {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className="bg-blue-50">
+    <div
+      className="bg-blue-50"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === "Enter" && setIsExpanded(!isExpanded)}
+    >
       <div
         className="pb-2 font-semibold py-2 flex items-center justify-center gap-2 px-2 hover:bg-blue-100 transition-all duration-200 cursor-pointer"
         onClick={() => setIsExpanded(!isExpanded)}

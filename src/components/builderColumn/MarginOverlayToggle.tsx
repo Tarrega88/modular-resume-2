@@ -14,6 +14,10 @@ function MarginOverlayToggle() {
 
   return (
     <div
+      onKeyDown={(e) =>
+        e.key === "Enter" &&
+        dispatch(toggleOverlayMarginGuides(!overlayMarginGuides))
+      }
       className="py-3 bg-blue-50 select-none"
       title="Shows the margin guides, which are recommended areas for the divider section"
     >

@@ -16,7 +16,7 @@ export const prevJobDefault: PrevJobProps = { id: "0", kind: "prevJob", companyN
 
 const initialState: ResumeState = {
     resumeMetaData: {},
-    showDividers: false,
+    showDividers: true,
     overlayMarginGuides: false,
     scale: 75,
     dropdownIsReplace: true,
