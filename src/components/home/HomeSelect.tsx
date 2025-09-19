@@ -4,6 +4,7 @@ import GenerateResumeButton from "../GenerateResumeButton";
 import PreviousResumeList from "./PreviousResumeList";
 import AboutWindow from "./AboutWindow";
 import { useState } from "react";
+import LastWorkedOn from "./LastWorkedOn";
 
 function HomeSelect() {
   const resumeData = useSelector((state: RootState) => state.resume);
@@ -12,10 +13,21 @@ function HomeSelect() {
 
   const [aboutIsOpen, setAboutIsOpen] = useState(false);
 
+  /*
+         <HomeListRow
+          key={i}
+          text={e.resumeName}
+          createdAt={e.createdAt}
+          id={e.resumeId}
+          odd={i % 2 === 1}
+        />
+  */
+
   return (
     <div className="bg-slate-800 h-full px-10 pt-2 overflow-auto flex flex-col">
-      <div className="pt-8 pb-8">
+      <div className="pt-8 pb-6 flex gap-8 items-center">
         <GenerateResumeButton />
+        {resumeData.currentResumeId ? <LastWorkedOn /> : null}
       </div>
 
       <PreviousResumeList values={values} />
