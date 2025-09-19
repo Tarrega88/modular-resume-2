@@ -59,6 +59,8 @@ function ComponentDropdown({
   const displayKindOriginal = kindToSection[kind];
   const displayKind = kindToSection[selectedKind];
 
+  const [addToIndex, setAddToIndex] = useState(renderIndex);
+
   function handleSelectDefault(kind: Kinds) {
     const newId = addDataFromKind(kind, dispatch);
     if (dropdownIsReplace) {
@@ -79,7 +81,7 @@ function ComponentDropdown({
     } else {
       dispatch(
         addResumeItemAt({
-          renderIndex,
+          renderIndex: addToIndex,
           data: {
             id: crypto.randomUUID(),
             kind,
@@ -87,6 +89,7 @@ function ComponentDropdown({
           },
         })
       );
+      setAddToIndex(addToIndex + 1);
       toast.success(`Added default ${displayKind} section.`);
     }
   }
@@ -99,7 +102,8 @@ function ComponentDropdown({
       );
       setIsExpanded(false);
     } else {
-      dispatch(addResumeItemAt({ renderIndex, data }));
+      dispatch(addResumeItemAt({ renderIndex: addToIndex, data }));
+      setAddToIndex(addToIndex + 1);
       toast.success(`Added custom ${displayKind} section.`);
     }
   }
