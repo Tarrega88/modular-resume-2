@@ -21,7 +21,7 @@ function DynamicTextArea({
   const [tempText, setTempText] = useState(text);
 
   function changeDisplay() {
-    handleOnSubmit(tempText.trimEnd());
+    handleOnSubmit(tempText);
     setShowInput(false);
   }
 

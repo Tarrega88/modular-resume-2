@@ -48,7 +48,6 @@ const newResumeRenderItems: RenderProps[] = [
   { kind: "skill" },
   { kind: "sectionHeader", text: "Projects" },
   { kind: "project" },
-  { kind: "divider" },
 ];
 
 export default function GenerateResumeButton() {
