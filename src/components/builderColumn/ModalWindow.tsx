@@ -8,7 +8,7 @@ type Props = {
 function ModalWindow({ isOpen, setIsOpen, children, title }: Props) {
   const position = isOpen
     ? "left-1/2 -translate-x-1/2 outline-2"
-    : "-translate-x-full left-0";
+    : "-translate-x-[110%] left-0";
 
   return (
     <div
