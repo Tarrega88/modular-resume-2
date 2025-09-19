@@ -35,7 +35,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const navigate = useNavigate();
 
   return (
-    <div className="w-90 bg-slate-700 border-r overflow-y-auto overflow-x-hidden pb-16">
+    <div className="w-90 bg-slate-700 border-r overflow-y-auto overflow-x-hidden pb-16 z-50">
       <div className="flex flex-col gap-[1px]">
         <BuilderColumnTitle title="Modular Resume" />
         <ResumeNamer />

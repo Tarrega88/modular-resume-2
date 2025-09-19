@@ -2,6 +2,7 @@ import { useLayoutEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import SideResumeInner from "./SideResumeInner";
+import AbsoluteDropdown from "./absoluteUI/AbsoluteDropdown";
 
 export default function SideResume({
   contentRef,
@@ -35,10 +36,20 @@ export default function SideResume({
   //todo 9/16/2025: add button in builder column to set zStyle to z-50 or nothing
   //const zStyle = ""
 
-  const zStyle = overlayMarginGuides ? "z-50" : "";
+  const zStyle = overlayMarginGuides ? "z-30" : "";
+  function testSet() {}
 
   return (
     <div className="relative" style={{ width: wrapperW, height: wrapperH }}>
+      {/* <div style={{ transform: `scale(${s})` }} className="z-50"> */}
+      <AbsoluteDropdown
+        kind="bulletPoint"
+        renderIndex={0}
+        isExpanded={true}
+        setIsExpanded={testSet}
+        scale={s}
+      />
+      {/* </div> */}
       <div
         aria-hidden
         className={`absolute left-[-12px] top-0 h-[115%] pointer-events-none print:hidden rounded-sm ${zStyle}`}
