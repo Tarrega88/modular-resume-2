@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import BuilderColumn from "@/components/builderColumn/BuilderColumn";
 import SideResume from "@/components/SideResume";
+import MobileNotification from "./components/absoluteUI/MobileNotification";
 
 export default function MainView() {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -9,6 +10,7 @@ export default function MainView() {
 
   return (
     <div>
+      <MobileNotification />
       <div className="flex w-full h-[100dvh]">
         <BuilderColumn onPrint={handlePrint} />
         <div className="overflow-auto w-full bg-gray-500 pt-5 px-5 grid items-start justify-items-center">
