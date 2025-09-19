@@ -13,6 +13,7 @@ function HomeSelect() {
       <div className="pt-8 pb-8">
         <GenerateResumeButton />
       </div>
+
       <PreviousResumeList values={values} />
     </div>
   );

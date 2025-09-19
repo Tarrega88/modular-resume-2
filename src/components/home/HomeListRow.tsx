@@ -7,8 +7,9 @@ import {
 } from "@/state/resumeSlice";
 import { FaTrash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { IoDuplicate } from "react-icons/io5";
 
-function HomeListRow({ text, createdAt, id }) {
+function HomeListRow({ text, createdAt, id, odd }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -25,17 +26,25 @@ function HomeListRow({ text, createdAt, id }) {
     navigate(`/builder/${id}`);
   }
 
+  const colorStyle = odd
+    ? "outline-slate-800"
+    : "bg-slate-700 outline-slate-700";
+
   return (
-    <div className="text-slate-100 flex justify-between items-center px-1">
+    <div
+      className={`text-slate-100 grid grid-cols-[200px_5fr_1fr] items-center p-2 ${colorStyle} rounded-sm outline-3`}
+    >
       <div>{createdAt}</div>
       <div>{text}</div>
       <div className="flex gap-4">
         <HomeListRowButton
           text="Continue"
-          color="sky"
+          color="emerald"
           onClick={handleContine}
         />
-        <HomeListRowButton text="Copy" onClick={handleCopyResume} color="sky" />
+        <HomeListRowButton text="Copy" onClick={handleCopyResume} color="sky">
+          <IoDuplicate />
+        </HomeListRowButton>
         <HomeListRowButton text="Delete" onClick={handleDelete} color="red">
           <FaTrash />
         </HomeListRowButton>
