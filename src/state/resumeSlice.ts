@@ -249,7 +249,7 @@ const resumeSlice = createSlice({
 
             const originalName = state.resumeMetaData[originalId].resumeName;
             const originalTime = state.resumeMetaData[originalId].createdAt;
-            const newName = originalName.length ? `Copy of ${originalName}` : `Copy of resume created on ${(originalTime)}`
+            const newName = originalName.length && !originalName.includes("Copy") ? `Copy of ${originalName}` : `Copy of resume created on ${(originalTime)}`
 
             state.resumeMetaData[newId] = {
                 resumeName: newName, resumeId: newId, createdAt: now,
