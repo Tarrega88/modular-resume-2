@@ -32,11 +32,11 @@ function HomeListRow({ text, createdAt, id, odd }) {
 
   return (
     <div
-      className={`text-slate-100 grid grid-cols-[200px_5fr_1fr] items-center p-2 ${colorStyle} rounded-sm outline-3`}
+      className={`text-slate-100 flex justify-between sm:grid sm:grid-cols-[200px_5fr_1fr] items-center p-2 ${colorStyle} rounded-sm outline-3`}
     >
       <div>{createdAt}</div>
       <div>{text}</div>
-      <div className="flex gap-4 justify-end">
+      <div className="flex gap-4 justify-end flex-wrap sm:flex-nowrap">
         <HomeListRowButton
           text="Continue"
           color="emerald"

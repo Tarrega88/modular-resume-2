@@ -15,12 +15,12 @@ function HomeSelect() {
 
   return (
     <div className="bg-slate-800 h-full px-10 pt-2 overflow-auto flex flex-col">
-      <div className="flex justify-between pt-8 pb-6">
-        <div className="flex gap-8 items-center">
+      <div className="flex justify-between items-start pt-8 pb-6 gap-2">
+        <div className="flex sm:flex-row flex-col sm:gap-8 gap-4 sm:items-center">
           <GenerateResumeButton />
           {resumeData.currentResumeId ? <LastWorkedOn /> : null}
         </div>
-        <div className="flex items-center">
+        <div className="flex sm:items-center self-end">
           <button
             onClick={() => setAboutIsOpen(!aboutIsOpen)}
             className="bg-slate-500 outline-gray-100 hover:bg-slate-600 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1  transiton-all duration-200 cursor-pointer h-10"

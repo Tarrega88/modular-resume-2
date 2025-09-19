@@ -30,7 +30,7 @@ function PreviousResumeList({ values }) {
         <div className="flex items-center relative">
           <input
             placeholder="Search Resumes"
-            className="text-white placeholder:text-slate-300 bg-slate-500 rounded-sm pl-8 pr-2"
+            className="text-white placeholder:text-slate-300 bg-slate-500 rounded-sm pl-8 pr-2 w-36 sm:w-full"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
@@ -38,7 +38,7 @@ function PreviousResumeList({ values }) {
         </div>
       </div>
       <PageTurner length={length} page={page} setPage={setPage} />
-      <div className="text-slate-100 grid grid-cols-[200px_5fr_1fr] items-center p-2 font-semibold">
+      <div className="text-slate-100 flex justify-between sm:grid sm:grid-cols-[200px_5fr_1fr] items-center p-2 font-semibold">
         <div>Created At</div>
         <div>Resume Title</div>
         <div className="text-right">Options</div>

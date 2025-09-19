@@ -23,7 +23,7 @@ const links: AboutLink[] = [
 
 function AboutList() {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 pb-4">
       {links.map((e, i) => (
         <AboutListRow key={i} title={e.title} url={e.url} icon={e.icon} />
       ))}
