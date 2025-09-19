@@ -36,7 +36,7 @@ function HomeListRow({ text, createdAt, id, odd }) {
     >
       <div>{createdAt}</div>
       <div>{text}</div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 justify-end">
         <HomeListRowButton
           text="Continue"
           color="emerald"
