@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import GenerateResumeButton from "../GenerateResumeButton";
 import PreviousResumeList from "./PreviousResumeList";
-import AboutWindow from "./AboutWindow";
 import { useState } from "react";
 import LastWorkedOn from "./LastWorkedOn";
+import ModalWindow from "../builderColumn/ModalWindow";
 
 function HomeSelect() {
   const resumeData = useSelector((state: RootState) => state.resume);
@@ -30,7 +30,7 @@ function HomeSelect() {
         {resumeData.currentResumeId ? <LastWorkedOn /> : null}
       </div>
 
-      <PreviousResumeList values={values} />
+      {values.length ? <PreviousResumeList values={values} /> : null}
       <div className="h-full flex justify-end items-end">
         <div className="pb-8">
           <button
@@ -41,11 +41,9 @@ function HomeSelect() {
           </button>
         </div>
       </div>
-      <AboutWindow
-        isOpen={aboutIsOpen}
-        setIsOpen={() => setAboutIsOpen(false)}
-      />
-      {/* {values.length ? <PreviousResumeList values={values} /> : null} */}
+      <ModalWindow isOpen={aboutIsOpen} setIsOpen={() => setAboutIsOpen(false)}>
+        <div>About</div>
+      </ModalWindow>
     </div>
   );
 }

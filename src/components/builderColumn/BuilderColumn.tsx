@@ -16,7 +16,8 @@ import ToggleMonthDisplay from "./ToggleMonthType";
 import BuilderColumnMainButton from "./BuilderColumnMainButton";
 import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import HelpWindow from "./HelpWindow";
+import HelpWindow from "./ModalWindow";
+import ModalWindow from "./ModalWindow";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -65,7 +66,9 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
         <SimpleAddSection />
         <IconHelper />
       </div>
-      <HelpWindow isOpen={helpIsOpen} />
+      <ModalWindow isOpen={helpIsOpen} setIsOpen={setHelpIsOpen}>
+        <div>Test</div>
+      </ModalWindow>
     </div>
   );
 }
