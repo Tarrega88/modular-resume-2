@@ -232,7 +232,6 @@ function ComponentDropdown({
               <ResumeItemRenderer
                 id={crypto.randomUUID()}
                 kind={selectedKind}
-                renderIndex={renderIndex}
                 renderUI={false}
               />
             </div>
@@ -257,7 +256,6 @@ function ComponentDropdown({
                   id={crypto.randomUUID()}
                   kind={selectedKind}
                   elementId={e}
-                  renderIndex={i + 1}
                   renderUI={false}
                 />
               </div>
