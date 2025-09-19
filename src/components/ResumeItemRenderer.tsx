@@ -26,9 +26,8 @@ import {
 function ResumeItemRenderer({
   kind,
   elementId,
-  renderIndex,
   renderUI,
-}: ResumeItemProps & { renderIndex: number; renderUI: boolean }) {
+}: ResumeItemProps & { renderUI: boolean }) {
   const { data } = useSelector((state: RootState) => state.resume);
 
   switch (kind) {
@@ -95,7 +94,6 @@ function ResumeItemRenderer({
           kind="sectionHeader"
           text={sectionHeaderData.text}
           underline={sectionHeaderData.underline}
-          renderIndex={renderIndex}
           renderUI={renderUI}
         />
       );

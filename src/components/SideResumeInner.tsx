@@ -47,7 +47,6 @@ export default function SideResumeInner() {
           setReplaceIsOpen={setReplaceIsOpen}
         >
           <ResumeItemRenderer
-            renderIndex={i}
             id={e.id}
             kind={e.kind}
             elementId={e.elementId}

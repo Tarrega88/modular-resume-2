@@ -13,7 +13,7 @@ function SectionHeader({
   id,
   underline,
   renderUI,
-}: SectionHeaderProps & { renderIndex: number; renderUI: boolean }) {
+}: SectionHeaderProps & { renderUI: boolean }) {
   const dispatch = useDispatch();
   function handleOnSubmit(text: string) {
     dispatch(editSectionHeader({ id, text }));
