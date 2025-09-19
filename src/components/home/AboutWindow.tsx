@@ -1,4 +1,4 @@
-function AboutMeWindow({
+function AboutWindow({
   isOpen,
   setIsOpen,
 }: {
@@ -19,4 +19,4 @@ function AboutMeWindow({
   );
 }
 
-export default AboutMeWindow;
+export default AboutWindow;

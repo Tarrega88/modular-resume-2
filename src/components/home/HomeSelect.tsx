@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import GenerateResumeButton from "../GenerateResumeButton";
 import PreviousResumeList from "./PreviousResumeList";
-import AboutMeWindow from "./AboutMeWindow";
+import AboutMeWindow from "./AboutWindow";
 import { useState } from "react";
 
 function HomeSelect() {
@@ -25,7 +25,7 @@ function HomeSelect() {
             className="text-slate-200 p-2 bg-slate-500 rounded-sm"
             onClick={() => setAboutMeIsOpen(!aboutMeIsOpen)}
           >
-            About Me
+            About
           </button>
         </div>
       </div>

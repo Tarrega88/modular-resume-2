@@ -45,7 +45,7 @@ function ResumeNamer() {
       {/* <div>Resume Name</div> */}
       {isInput ? (
         <input
-          className="px-1"
+          className="px-1 w-full"
           value={tempText}
           autoFocus
           onChange={(e) => handleOnChange(e.target.value)}
