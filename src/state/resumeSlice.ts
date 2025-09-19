@@ -18,7 +18,7 @@ const initialState: ResumeState = {
     resumeMetaData: {},
     showDividers: true,
     overlayMarginGuides: false,
-    scale: 75,
+    scale: 100,
     dropdownIsReplace: true,
     currentResumeId: "",
     dragFromIndex: -1,

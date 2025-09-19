@@ -15,21 +15,24 @@ function HomeSelect() {
 
   return (
     <div className="bg-slate-800 h-full px-10 pt-2 overflow-auto flex flex-col">
-      <div className="pt-8 pb-6 flex gap-8 items-center">
-        <GenerateResumeButton />
-        {resumeData.currentResumeId ? <LastWorkedOn /> : null}
-      </div>
-
-      {values.length ? <PreviousResumeList values={values} /> : null}
-      <div className="h-full flex justify-end items-end">
-        <div className="pb-8">
+      <div className="flex justify-between pt-8 pb-6">
+        <div className="flex gap-8 items-center">
+          <GenerateResumeButton />
+          {resumeData.currentResumeId ? <LastWorkedOn /> : null}
+        </div>
+        <div className="flex items-center">
           <button
-            className="text-slate-200 p-2 bg-slate-500 rounded-sm"
             onClick={() => setAboutIsOpen(!aboutIsOpen)}
+            className="bg-slate-500 outline-gray-100 hover:bg-slate-600 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1  transiton-all duration-200 cursor-pointer h-10"
           >
             About
           </button>
         </div>
+      </div>
+
+      {values.length ? <PreviousResumeList values={values} /> : null}
+      <div className="h-full flex justify-end items-end">
+        <div className="pb-8"></div>
       </div>
       <AboutContainer isOpen={aboutIsOpen} setIsOpen={setAboutIsOpen} />
     </div>
