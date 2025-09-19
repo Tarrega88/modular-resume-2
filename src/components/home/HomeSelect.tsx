@@ -6,7 +6,7 @@ import PreviousResumeList from "./PreviousResumeList";
 function HomeSelect() {
   const resumeData = useSelector((state: RootState) => state.resume);
 
-  const values = Object.values(resumeData.resumeMetaData);
+  const values = Object.values(resumeData.resumeMetaData).reverse();
 
   return (
     <div className="bg-slate-800 h-full px-8 pt-2">

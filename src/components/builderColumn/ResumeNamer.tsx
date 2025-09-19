@@ -15,6 +15,10 @@ function ResumeNamer() {
   const [tempText, setTempText] = useState(resumeName);
 
   function handleNameChange() {
+    if (tempText === resumeName) {
+      setIsInput(false);
+      return;
+    }
     if (tempText.length > 50) {
       toast.error("Resume name must be 50 chars or less");
     } else {

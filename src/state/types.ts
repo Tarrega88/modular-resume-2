@@ -99,7 +99,7 @@ export type DividerProps = {
 export type ResumeMetaDataProps = {
     resumeName: string;
     resumeId: string;
-    createdAt: number;
+    createdAt: string;
 }
 
 export type ResumeState = {

@@ -245,11 +245,11 @@ const resumeSlice = createSlice({
         copyResume(state, action: PayloadAction<{ originalId: string; newId: string; }>) {
             const { originalId, newId } = action.payload;
             state.resumes[newId] = [];
-            const now = Date.now();
+            const now = formatDate(new Date(Date.now()));
 
             const originalName = state.resumeMetaData[originalId].resumeName;
-            const originalTime = new Date(state.resumeMetaData[originalId].createdAt);
-            const newName = originalName.length ? `Copy of ${originalName}` : `Copy of resume created at ${formatDate(originalTime)}`
+            const originalTime = state.resumeMetaData[originalId].createdAt;
+            const newName = originalName.length ? `Copy of ${originalName}` : `Copy of resume created on ${(originalTime)}`
 
             state.resumeMetaData[newId] = {
                 resumeName: newName, resumeId: newId, createdAt: now,
@@ -277,17 +277,23 @@ const resumeSlice = createSlice({
             state.resumeMetaData[currentResumeId].resumeName = action.payload;
         },
         generateMetaData(state, action: PayloadAction<string>) {
-            const now = Date.now();
+            const now = new Date(Date.now());
+
             state.resumeMetaData[action.payload] = {
-                resumeName: "", resumeId: action.payload, createdAt: now,
+                resumeName: "", resumeId: action.payload, createdAt: formatDate(now),
             }
         },
         changeMonthType(state, action: PayloadAction<"short" | "long">) {
             state.monthType = action.payload;
+        },
+        deleteResume(state, action: PayloadAction<string>) {
+            const id = action.payload;
+            delete state.resumeMetaData[id];
+            delete state.resumes[id];
         }
 
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace, toggleOverlayMarginGuides, toggleShowDividers, changeResumeName, generateMetaData, changeMonthType } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace, toggleOverlayMarginGuides, toggleShowDividers, changeResumeName, generateMetaData, changeMonthType, deleteResume } = resumeSlice.actions;
 export default resumeSlice.reducer;

@@ -1,8 +1,25 @@
-function HomeListRowButton({ text, onClick }) {
+type Props = {
+  text: string;
+  onClick(): void;
+  color: "red" | "sky";
+  children?: React.ReactNode;
+};
+
+function HomeListRowButton({ text, onClick, color, children }: Props) {
+  const colors = {
+    red: "bg-red-700",
+    sky: "bg-sky-600",
+  };
+
+  const colorStyle = colors[color];
+
   return (
-    <div className="bg-sky-600 px-2 py-1 rounded-sm" onClick={onClick}>
-      {text}
-    </div>
+    <button
+      className={`${colorStyle} px-2 py-1 rounded-sm cursor-pointer`}
+      onClick={onClick}
+    >
+      {children ? children : text}
+    </button>
   );
 }
 
