@@ -18,7 +18,7 @@ import { getFilterPlaceholders } from "@/utils/getProps";
 import ListOfKinds from "./ListOfKinds";
 import addDataFromKind from "@/utils/addDataFromKind";
 import { kindToData, kindToSection } from "@/utils/getKindDisplayInfo";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 
 const moreSectionHeaderDefaults = [
   "Experience",
@@ -29,16 +29,13 @@ const moreSectionHeaderDefaults = [
 
 type Props = {
   kind: Kinds;
-  text: string;
   renderIndex: number;
   setIsExpanded(e: boolean): void;
   isExpanded: boolean;
 };
 
-//TODO 9/17/2025: consider adding a checkbox to allow user to choose whether to close on adding/replacing section
 function ComponentDropdown({
   kind,
-  text,
   renderIndex,
   isExpanded,
   setIsExpanded,
@@ -59,6 +56,9 @@ function ComponentDropdown({
 
   const { dropdownIsReplace } = useSelector((state: RootState) => state.resume);
 
+  const displayKindOriginal = kindToSection[kind];
+  const displayKind = kindToSection[selectedKind];
+
   function handleSelectDefault(kind: Kinds) {
     const newId = addDataFromKind(kind, dispatch);
     if (dropdownIsReplace) {
@@ -72,7 +72,10 @@ function ComponentDropdown({
           },
         })
       );
-      // toast.success("Replaced Section");
+      toast.success(
+        `Replaced ${displayKindOriginal} section with default ${displayKind} section.`
+      );
+      setIsExpanded(false);
     } else {
       dispatch(
         addResumeItemAt({
@@ -84,17 +87,21 @@ function ComponentDropdown({
           },
         })
       );
+      toast.success(`Added default ${displayKind} section.`);
     }
-    setIsExpanded(false);
   }
 
   function handleSelectOption(data: ResumeItemProps) {
     if (dropdownIsReplace) {
       dispatch(replaceResumeItem({ renderIndex, data }));
+      toast.success(
+        `Replaced ${displayKindOriginal} section with custom ${displayKind} section.`
+      );
+      setIsExpanded(false);
     } else {
       dispatch(addResumeItemAt({ renderIndex, data }));
+      toast.success(`Added custom ${displayKind} section.`);
     }
-    setIsExpanded(false);
   }
 
   const placeholderEntries = Object.entries(
@@ -165,7 +172,6 @@ function ComponentDropdown({
     >
       <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
         <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
-          {/* <div className="font-semibold">{text}</div> */}
           <div className="flex gap-6">
             <div className="font-bold">Mode:</div>
             <button
@@ -215,13 +221,8 @@ function ComponentDropdown({
             kind={selectedKind}
             setKind={(e: Kinds) => setSelectedKind(e)}
           />
-          <div className="text-lg border-b text-center">
-            {/* {renderArr.length > 0
-              ? `Previously Made ${kindToSection[selectedKind]} Sections:`
-              : `No ${kindToSection[selectedKind]} sections found`} */}
-          </div>
           <div className="font-bold p-1 border-b bg-slate-200">
-            Default {kindToSection[selectedKind]} section:
+            Default {displayKind} section:
           </div>
           <div
             className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer overflow-auto"
@@ -237,7 +238,7 @@ function ComponentDropdown({
             </div>
           </div>
           <div className="font-bold p-1 border-b bg-slate-200">
-            Previously made {kindToSection[selectedKind]} sections:
+            Previously made {displayKind} sections:
           </div>
           {renderArr.map((e, i) => (
             <div

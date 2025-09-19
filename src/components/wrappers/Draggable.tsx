@@ -76,7 +76,6 @@ function Draggable({
       {isExpanded ? (
         <ComponentDropdown
           kind={kind}
-          text="Replace section with..."
           renderIndex={renderIndex}
           setIsExpanded={handleOpenReplace}
           isExpanded={isExpanded}

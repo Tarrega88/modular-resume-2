@@ -1,7 +1,7 @@
 type Props = {
   text: string;
   onClick(): void;
-  color: "red" | "sky" | "emerald";
+  color: "red" | "sky" | "emerald" | "pdf";
   children?: React.ReactNode;
 };
 
@@ -10,6 +10,7 @@ function HomeListRowButton({ text, onClick, color, children }: Props) {
     red: "bg-red-700 hover:bg-red-600",
     sky: "bg-sky-600 hover:bg-sky-500",
     emerald: "bg-emerald-600 hover:bg-emerald-500",
+    pdf: "bg-transparent text-slate-200 outline-1 hover:bg-slate-500",
   };
 
   const colorStyle = colors[color];

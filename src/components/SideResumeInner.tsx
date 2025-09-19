@@ -21,8 +21,6 @@ export default function SideResumeInner() {
 
   const [replaceIsOpen, setReplaceIsOpen] = useState(false);
 
-  console.log(replaceIsOpen);
-
   return (
     <div
       id="resume-root"
