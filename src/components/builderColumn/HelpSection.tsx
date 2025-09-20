@@ -34,6 +34,7 @@ function HelpSection({
       <div className="pl-2 pt-3">{text}</div>
       {children ? (
         <div
+          inert
           style={{ height: `${contentHeight}px` }}
           className={`${scaleStyle} pointer-events-none origin-top-left pt-12`}
         >

@@ -31,6 +31,7 @@ function SectionHeader({
 
   return (
     <div
+      inert={!renderUI}
       className={`text-lg font-semibold mt-4 mb-3 border-b-neutral-400 group ${underlineStyle}`}
     >
       {renderUI ? (

@@ -33,7 +33,7 @@ function SkillSection({
   }
 
   return (
-    <div className="group w-full">
+    <div className="group w-full" inert={!renderUI}>
       {renderUI ? (
         <RelativeAbsRight hPosition="over">
           <div className="text-lg">

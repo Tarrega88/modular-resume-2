@@ -5,6 +5,7 @@ type Props = {
   id: string;
   editData(id: string, text: string): void;
   placeholderText?: string;
+  renderUI: boolean;
 };
 
 function BPDisplayAndInput({
@@ -12,6 +13,7 @@ function BPDisplayAndInput({
   id,
   editData,
   placeholderText,
+  renderUI,
 }: Props) {
   const [tempText, setTempText] = useState(text);
   const [displayMode, setDisplayMode] = useState<"div" | "input">("div");
@@ -34,6 +36,7 @@ function BPDisplayAndInput({
 
   return displayMode === "div" ? (
     <div
+      inert={!renderUI}
       className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full"
       onClick={setDisplayToInput}
       tabIndex={0}

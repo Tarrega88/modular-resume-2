@@ -10,11 +10,12 @@ function EducationSection({
   degree,
   monthEnded,
   yearEnded,
-}: EducationProps) {
+  renderUI,
+}: EducationProps & { renderUI: boolean }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full mb-3">
+    <div className="w-full mb-3" inert={!renderUI}>
       <div className="flex justify-between mb-1">
         <div className="w-full font-bold">
           <DynamicInput

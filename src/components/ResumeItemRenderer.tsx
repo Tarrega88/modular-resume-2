@@ -75,6 +75,7 @@ function ResumeItemRenderer({
           yearStarted={yearStarted}
           monthEnded={monthEnded}
           yearEnded={yearEnded}
+          renderUI={renderUI}
         />
       );
     case "bulletPoint":
@@ -82,7 +83,13 @@ function ResumeItemRenderer({
         ? data?.bulletPoints[elementId]
         : getBulletPointProps("");
       return (
-        <BulletPoint key={bp.text} id={bp.id} kind={bp.kind} text={bp.text} />
+        <BulletPoint
+          key={bp.text}
+          id={bp.id}
+          kind={bp.kind}
+          text={bp.text}
+          renderUI={renderUI}
+        />
       );
     case "sectionHeader": {
       const sectionHeaderData = elementId
@@ -120,6 +127,7 @@ function ResumeItemRenderer({
           id={summaryData.id}
           text={summaryData.text}
           kind={summaryData.kind}
+          renderUI={renderUI}
         />
       );
     }
@@ -135,6 +143,7 @@ function ResumeItemRenderer({
           degree={educationData.degree}
           monthEnded={educationData.monthEnded}
           yearEnded={educationData.yearEnded}
+          renderUI={renderUI}
         />
       );
     case "project": {

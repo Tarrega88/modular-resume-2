@@ -30,6 +30,7 @@ function Divider({
 
   return (
     <div
+      inert={!renderUI}
       style={{ height: `${renderUI ? height : 100}px` }}
       className={`w-full flex flex-col items-center transition-all duration-200 gap-1 ${renderStyle} print:invisible`}
     >

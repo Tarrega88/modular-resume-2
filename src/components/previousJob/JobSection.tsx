@@ -15,14 +15,15 @@ function JobSection({
   yearStarted,
   monthEnded,
   yearEnded,
-}: PrevJobProps) {
+  renderUI,
+}: PrevJobProps & { renderUI: boolean }) {
   const state = useSelector((state: RootState) => state.resume);
   const { monthType } = state;
 
   const dispatch = useDispatch();
 
   return (
-    <div className="my-3">
+    <div className="my-3" inert={!renderUI}>
       <div className="flex justify-between">
         <div className="font-semibold pb-1 w-full">
           <DynamicInput

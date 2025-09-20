@@ -63,7 +63,7 @@ function ResumeHeader({
     : "text-neutral-300 hover:text-neutral-500";
 
   return (
-    <div className="mb-8 group">
+    <div className="mb-8 group" inert={!renderUI}>
       {renderUI ? (
         <>
           <RelativeAbsRight vPosition="med" hPosition="normal">
