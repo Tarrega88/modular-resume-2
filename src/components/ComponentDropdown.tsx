@@ -174,7 +174,7 @@ function ComponentDropdown({
       }}
       className="text-base w-[754px]"
     >
-      <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50">
+      <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50 translate-x-[28px]">
         <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
           <div className="flex gap-6">
             <div className="font-bold">Mode:</div>
