@@ -20,7 +20,7 @@ const initialState: ResumeState = {
     showDividers: true,
     overlayMarginGuides: false,
     scale: 100,
-    dropdownIsReplace: true,
+    dropdownIsReplace: false,
     currentResumeId: "",
     dragFromIndex: -1,
     dragToIndex: -1,
