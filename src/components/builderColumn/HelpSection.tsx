@@ -19,7 +19,7 @@ function HelpSection({
   const scaleStyle = scale ? scales[scale] : "";
 
   return (
-    <div className="flex flex-col text-slate-950 pr-5 pl-2">
+    <div className="flex flex-col text-slate-950 pr-5">
       <div className="flex justify-between">
         <div className="font-semibold underline">{topic}</div>
         <a
