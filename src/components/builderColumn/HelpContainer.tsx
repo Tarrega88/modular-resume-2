@@ -18,9 +18,9 @@ const helpTopics: HelpTopic[] = [
     text: "E-mail me at michaelseedev@gmail.com with any suggestions or questions. I'm currently building out the help section and it helps to hear which parts of the application are confusing and which are not.",
   },
   {
-    topic: "Tutorials",
-    text: "Tutorials will soon be found on my YouTube channel at the link above.",
-    link: "https://www.youtube.com/@anotherMichaelDev/playlists",
+    topic: "Tutorial",
+    text: "I have a video walkthrough covering the core features here.",
+    link: "https://www.youtube.com/playlist?list=PLSiq_4XHIWlYXdJUIDhepLgl7HrMiWGeQ",
     linkName: "YouTube",
   },
   {
