@@ -17,6 +17,7 @@ import BuilderColumnMainButton from "./BuilderColumnMainButton";
 import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import HelpContainer from "./HelpContainer";
+import HintBox from "./HintBox";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
         <MarginOverlayToggle />
         <SimpleAddSection />
         <IconHelper />
+        <HintBox />
       </div>
       <HelpContainer isOpen={helpIsOpen} setIsOpen={setHelpIsOpen} />
     </div>
