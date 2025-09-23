@@ -25,7 +25,7 @@ const hints = [
   },
   {
     topic: "Dropdown Window",
-    text: "The dropdown window, accessible by clicking the arrow to the left of every section on the resume, can be used to add or replace sections to the resume at exactly that position. The dropdown window also allows you to view (and use!) anything you've made in the past, including bullet points and work experience.",
+    text: "The dropdown window, accessible by clicking the arrow to the left of every section on the resume, can be used to add or replace resume sections at exactly that position. The dropdown window also allows you to view (and use!) anything you've made in the past, including bullet points and work experience.",
   },
   {
     topic: "Questions & Comments",
@@ -45,7 +45,7 @@ const hints = [
   },
   {
     topic: "Duplication",
-    text: "You can duplicate your resume on the home page. Take note that changing data that is shared between them will affect both resumes. What is not shared between them though is any new data entered, and changes to layout will also only occur per resume.",
+    text: "You can duplicate your resume on the home page. Changing data that is shared between them will affect both resumes. New data entered in either resume will not affect the other, and layout differences don't affect the other either.",
   },
 ];
 
@@ -102,7 +102,7 @@ function HintBox() {
               )}
             </div>
           </div>
-          <div className="px-3 font-semibold underline">{hint.topic}:</div>
+          <div className="px-3 font-semibold underline py-2">{hint.topic}</div>
           <div className="px-3 pb-6">{hint.text}</div>
         </>
       ) : null}
