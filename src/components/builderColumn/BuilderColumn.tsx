@@ -18,6 +18,7 @@ import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import HelpContainer from "./HelpContainer";
 import HintBox from "./HintBox";
+import LastSaved from "./LastSaved";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
       <div className="flex flex-col gap-[1px]">
         <BuilderColumnTitle title="Modular Resume" />
         <ResumeNamer />
+        <LastSaved />
         <div className="flex w-full bg-blue-50 h-16 items-center px-3 justify-evenly">
           <BuilderColumnMainButton onClick={() => navigate("/")}>
             <IoMdHome className="text-2xl" />
