@@ -31,7 +31,7 @@ function ProjectSection({
           />
         </RelativeAbsRight>
       ) : null}
-      <div className="flex mb-1 justify-between">
+      <div className="flex mb-2 justify-between">
         <div className="font-bold w-full">
           <DynamicInput
             text={title}
