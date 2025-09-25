@@ -22,7 +22,7 @@ function ProjectSection({
   }
 
   return (
-    <div className="mb-2" inert={!renderUI}>
+    <div className="mb-3" inert={!renderUI}>
       {renderUI ? (
         <RelativeAbsRight vPosition="med" hPosition="close">
           <SideLinkButton

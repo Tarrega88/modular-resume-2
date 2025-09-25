@@ -23,7 +23,7 @@ function JobSection({
   const dispatch = useDispatch();
 
   return (
-    <div className="my-3" inert={!renderUI}>
+    <div className="mt-3 mb-1" inert={!renderUI}>
       <div className="flex justify-between">
         <div className="font-semibold pb-1 w-full">
           <DynamicInput
