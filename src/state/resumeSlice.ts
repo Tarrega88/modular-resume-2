@@ -282,7 +282,7 @@ const resumeSlice = createSlice({
             const now = new Date(Date.now());
 
             state.resumeMetaData[action.payload] = {
-                resumeName: "", resumeId: action.payload, createdAt: formatDate(now), margin: 48,
+                resumeName: "", resumeId: action.payload, createdAt: formatDate(now), margin: 72,
             }
         },
         changeMonthType(state, action: PayloadAction<"short" | "long">) {
