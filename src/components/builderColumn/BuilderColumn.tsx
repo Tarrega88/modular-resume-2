@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import HelpContainer from "./HelpContainer";
 import HintBox from "./HintBox";
 import LastSaved from "./LastSaved";
+import MarginSlider from "./MarginSlider";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
           <FaMagnifyingGlass />
         </Slider>
         <FontPicker />
+        <MarginSlider />
         <ToggleMonthDisplay />
         <ShowDividerToggle />
         <MarginOverlayToggle />

@@ -48,7 +48,10 @@ function ComponentDropdown({
 
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
-  const { data } = useSelector((state: RootState) => state.resume);
+  const { data, resumeMetaData, currentResumeId } = useSelector(
+    (state: RootState) => state.resume
+  );
+  const { margin } = resumeMetaData[currentResumeId];
   const dataType = kindToData[selectedKind];
   const options = data[dataType];
 
@@ -164,6 +167,8 @@ function ComponentDropdown({
   const addButtonStyle = dropdownIsReplace ? offStyle : onStyle;
   const replaceButtonStyle = dropdownIsReplace ? onStyle : offStyle;
 
+  const widthStyle = { 48: 754, 72: 706, 96: 658 };
+
   return (
     <div
       tabIndex={-1}
@@ -172,9 +177,13 @@ function ComponentDropdown({
         if (next && e.currentTarget.contains(next)) return;
         setIsExpanded(false);
       }}
-      className="text-base w-[754px]"
+      className="text-base"
+      style={{ width: widthStyle[margin] }}
     >
-      <div className="w-[754px] bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50 translate-x-[28px]">
+      <div
+        className=" bg-slate-800 overflow-scroll p-1 rounded-sm absolute z-50"
+        style={{ width: widthStyle[margin] }}
+      >
         <div className="flex justify-between px-2 text-slate-50 h-10 items-center">
           <div className="flex gap-6">
             <div className="font-bold">Mode:</div>

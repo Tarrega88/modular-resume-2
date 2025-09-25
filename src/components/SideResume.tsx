@@ -8,13 +8,19 @@ export default function SideResume({
 }: {
   contentRef: React.RefObject<HTMLDivElement>;
 }) {
-  const { scale, overlayMarginGuides } = useSelector(
-    (s: RootState) => s.resume
-  );
+  const { scale, overlayMarginGuides, resumeMetaData, currentResumeId } =
+    useSelector((s: RootState) => s.resume);
   const s = scale / 100;
 
   const PAGE_W = 850;
   const PAGE_H = 1100;
+
+  const MARGIN = resumeMetaData[currentResumeId].margin;
+
+  //TODO 9/25/2025: add page margin to types & slice per resume
+  //temp for testing:
+
+  const overlaySize = MARGIN * 2;
 
   const [rawH, setRawH] = useState(PAGE_H);
 
@@ -47,11 +53,11 @@ export default function SideResume({
           backgroundImage: `linear-gradient(
       to bottom,
       rgba(0,0,100,0.2) 0,
-      rgba(0,0,100,0.2) ${96 * s}px,
-      transparent ${96 * s}px
+      rgba(0,0,100,0.2) ${overlaySize * s}px,
+      transparent ${overlaySize * s}px
     )`,
           backgroundSize: `100% ${1100 * s}px`,
-          backgroundPosition: `0 ${1052 * s}px`,
+          backgroundPosition: `0 ${(1100 - MARGIN) * s}px`,
           backgroundRepeat: "repeat-y",
         }}
       />
