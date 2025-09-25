@@ -29,28 +29,31 @@ function Divider({
     : "hover:opacity-100 opacity-0 bg-sky-100";
 
   return (
-    <div
-      inert={!renderUI}
-      style={{ height: `${renderUI ? height : 100}px` }}
-      className={`w-full flex flex-col items-center transition-all duration-200 gap-1 ${renderStyle} print:invisible`}
-    >
-      <DynamicInput
-        text={height.toString()}
-        inputWidth="full"
-        divWidth="full"
-        textAlign="center"
-        handleOnSubmit={(e) => handleOnChange(e)}
-        key={height}
-        placeholderText={height.toString()}
-      />
-      <input
-        type="range"
-        value={height}
-        min={min}
-        max={max}
-        className="w-4/5 cursor-pointer"
-        onChange={(e) => handleOnChange(e.target.value)}
-      />
+    <div>
+      <div
+        inert={!renderUI}
+        style={{ height: `${renderUI ? height : 100}px` }}
+        className={`w-full flex flex-col items-center transition-all duration-200 gap-1 ${renderStyle} print:invisible`}
+      >
+        <DynamicInput
+          text={height.toString()}
+          inputWidth="full"
+          divWidth="full"
+          textAlign="center"
+          handleOnSubmit={(e) => handleOnChange(e)}
+          key={height}
+          placeholderText={height.toString()}
+        />
+        <input
+          type="range"
+          value={height}
+          min={min}
+          max={max}
+          className="w-4/5 cursor-pointer"
+          onChange={(e) => handleOnChange(e.target.value)}
+        />
+      </div>
+      <div className="h-0 text-white">.</div>
     </div>
   );
 }
