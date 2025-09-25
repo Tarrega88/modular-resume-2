@@ -25,7 +25,7 @@ function JobSection({
   return (
     <div className="mt-3 mb-1" inert={!renderUI}>
       <div className="flex justify-between">
-        <div className="font-semibold pb-1 w-full">
+        <div className="font-semibold w-full">
           <DynamicInput
             text={companyName}
             handleOnSubmit={(text: string) =>
