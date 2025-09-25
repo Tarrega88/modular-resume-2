@@ -14,7 +14,7 @@ function JobEnd({
   month: number;
 }) {
   const monthDisplay =
-    monthType === "short" ? [...months, "Current"] : [...longMonths, "Current"];
+    monthType === "short" ? [...months, "Present"] : [...longMonths, "Present"];
   const [showDropdown, setShowDropdown] = useState(false);
   const dispatch = useDispatch();
   function handleOnChange(month: number) {
