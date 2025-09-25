@@ -35,6 +35,7 @@ type RenderProps = {
 };
 
 const newResumeRenderItems: RenderProps[] = [
+  { kind: "divider" },
   { kind: "userInfo" },
   { kind: "summary" },
   { kind: "sectionHeader", text: "Experience" },

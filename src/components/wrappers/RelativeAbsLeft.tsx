@@ -25,7 +25,7 @@ function RelativeAbsLeft({
   return (
     <div
       style={{ width: pageWidth }}
-      className="-translate-x-[48px] relative"
+      className="-translate-x-[48px] relative print:hidden"
       onClick={(e) => e.stopPropagation()}
     >
       <div

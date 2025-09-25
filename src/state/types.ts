@@ -100,6 +100,7 @@ export type ResumeMetaDataProps = {
     resumeName: string;
     resumeId: string;
     createdAt: string;
+    margin: 48 | 72 | 96;
 }
 
 export type ResumeState = {

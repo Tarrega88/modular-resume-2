@@ -1,4 +1,6 @@
 import { pageWidth } from "@/components/SideResumeInner";
+import { RootState } from "@/state/store";
+import { useSelector } from "react-redux";
 //Note: add the className "group" to any parent of this
 function RelativeAbsRight({
   children,
@@ -22,12 +24,24 @@ function RelativeAbsRight({
     low: 60,
   };
 
+  const { resumeMetaData, currentResumeId } = useSelector(
+    (state: RootState) => state.resume
+  );
+
+  const { margin } = resumeMetaData[currentResumeId];
+
+  const marginStyle =
+    margin === 96
+      ? "-translate-x-[96px]"
+      : margin === 72
+      ? "-translate-x-[48px]"
+      : "";
+
   return (
     <div
       style={{ width: pageWidth }}
-      className="relative"
+      className={`relative ${marginStyle} print:hidden`}
       tabIndex={-1}
-      // className="-translate-x-[48px]"
     >
       <div
         style={{
