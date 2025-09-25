@@ -37,7 +37,7 @@ function BPDisplayAndInput({
   return displayMode === "div" ? (
     <div
       inert={!renderUI}
-      className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full"
+      className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full mb-1"
       onClick={setDisplayToInput}
       tabIndex={0}
       onKeyDown={() => setDisplayMode("input")}
