@@ -42,4 +42,4 @@ export const SANS_OPTIONS: FontOption[] = [
 export const VAR_SANS = "--font-sans";
 export const STORE_SANS = "font-sans-stack";
 export const DEFAULT_SANS =
-    SANS_OPTIONS.find((o) => o.label === "Noto Sans") ?? SANS_OPTIONS[1];
+    SANS_OPTIONS.find((o) => o.label === "Noto Sans") ?? SANS_OPTIONS[0];
