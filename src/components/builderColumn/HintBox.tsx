@@ -12,6 +12,10 @@ const hints = [
     text: "Did you know that you can drag anything on the resume that's outlined in blue when you hover over it?",
   },
   {
+    topic: "Saving",
+    text: "Changes auto-save to your device using your browser's IndexedDB. Any changes you make will remain unless you clear the site data or use your browser's Incognito Mode",
+  },
+  {
     topic: "New Sections",
     text: "Add new sections to the template to make it your own. Don't be afraid to use bullet points or the skills list in other areas - for example, bullet points or the skills list may be useful to list certifications under your own Certifications header.",
   },
