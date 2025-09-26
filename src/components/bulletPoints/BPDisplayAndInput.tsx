@@ -44,7 +44,7 @@ function BPDisplayAndInput({
     >
       <p className="flex">
         <span
-          className="mx-2 pointer-events-none"
+          className="ml-1 mr-2 pointer-events-none"
           onClick={(e) => e.stopPropagation()}
         >
           •
