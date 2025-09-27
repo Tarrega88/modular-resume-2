@@ -29,7 +29,7 @@ function HomeListRow({
 
   function handleDelete() {
     dispatch(deleteResume(id));
-    if ((length - 1) / pageLength === maxPages - 1) {
+    if ((length - 1) / pageLength === maxPages - 1 && page + 1 === maxPages) {
       setPage(page - 1);
     }
   }
