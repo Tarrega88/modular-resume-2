@@ -1,4 +1,4 @@
-import { sections } from "@/utils/getKindDisplayInfo";
+import { kindToSection, sections } from "@/utils/getKindDisplayInfo";
 import SimpleAddButton from "./SimpleAddButton";
 import { GoDotFill } from "react-icons/go";
 import { RxDividerHorizontal } from "react-icons/rx";
@@ -12,12 +12,14 @@ import addDataFromKind from "@/utils/addDataFromKind";
 import { addResumeItem } from "@/state/resumeSlice";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useState } from "react";
+import { toast } from "sonner";
 
 function SimpleAddSection() {
   const dispatch = useDispatch();
   function handleOnClick(kind: Kinds) {
     const elementId = addDataFromKind(kind, dispatch);
     dispatch(addResumeItem({ kind, elementId }));
+    toast.success(`Added default ${kindToSection[kind]} section.`);
   }
 
   const [isExpanded, setIsExpanded] = useState(false);
