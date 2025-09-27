@@ -8,7 +8,6 @@ function LastSaved() {
   const [updated, setUpdated] = useState(formatDate(new Date()));
 
   useEffect(() => {
-    console.log("Saving");
     setUpdated(formatDate(new Date()));
   }, [data, resumeMetaData]);
 
