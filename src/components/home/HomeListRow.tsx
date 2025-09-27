@@ -9,7 +9,17 @@ import { FaTrash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { IoDuplicate } from "react-icons/io5";
 
-function HomeListRow({ text, createdAt, id, odd }) {
+function HomeListRow({
+  text,
+  createdAt,
+  id,
+  odd,
+  page,
+  length,
+  pageLength,
+  setPage,
+  maxPages,
+}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -19,6 +29,9 @@ function HomeListRow({ text, createdAt, id, odd }) {
 
   function handleDelete() {
     dispatch(deleteResume(id));
+    if ((length - 1) / pageLength === maxPages - 1) {
+      setPage(page - 1);
+    }
   }
 
   function handleContine() {
