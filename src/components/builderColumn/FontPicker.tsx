@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
-import {
-  SANS_OPTIONS,
-  STORE_SANS,
-  DEFAULT_SANS,
-  type FontOption,
-} from "@/config/fonts";
+import { useEffect } from "react";
+import { SANS_OPTIONS, DEFAULT_SANS } from "@/config/fonts";
 import FontScaleSlider from "./FontScaleSlider";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/state/store";
+import { editFont } from "@/state/resumeSlice";
 
 const TARGET = "#resume-root";
 function applyToResume(stack: string) {
@@ -14,20 +12,22 @@ function applyToResume(stack: string) {
 }
 
 export default function FontPicker() {
-  const [sans, setSans] = useState<FontOption>(
-    () =>
-      SANS_OPTIONS.find((o) => o.stack === localStorage.getItem(STORE_SANS)) ??
-      DEFAULT_SANS
+  const dispatch = useDispatch();
+
+  const { resumeMetaData, currentResumeId } = useSelector(
+    (state: RootState) => state.resume
   );
 
-  useEffect(() => {
-    applyToResume(sans.stack);
-  }, []);
+  const { font } = resumeMetaData[currentResumeId];
+  const sans = SANS_OPTIONS.find((e) => e.label === font) ?? DEFAULT_SANS;
+
+  function changeFont(e: string) {
+    dispatch(editFont({ font: e }));
+  }
 
   useEffect(() => {
     applyToResume(sans.stack);
-    localStorage.setItem(STORE_SANS, sans.stack);
-  }, [sans]);
+  }, [font]);
 
   return (
     <div className="gap-2 text-sm pt-4 bg-blue-50">
@@ -35,14 +35,12 @@ export default function FontPicker() {
       <div className="flex justify-center">
         <select
           className="rounded border px-2 py-1 bg-white text-black"
-          value={sans.stack}
-          onChange={(e) =>
-            setSans(SANS_OPTIONS.find((o) => o.stack === e.target.value)!)
-          }
+          value={font}
+          onChange={(e) => changeFont(e.target.value)}
         >
-          {SANS_OPTIONS.map((o) => (
-            <option key={o.label} value={o.stack}>
-              {o.label}
+          {SANS_OPTIONS.map((e) => (
+            <option key={e.label} value={e.label}>
+              {e.label}
             </option>
           ))}
         </select>
