@@ -1,3 +1,4 @@
+import { FontOption } from "@/config/fonts";
 import { PayloadAction } from "@reduxjs/toolkit";
 export type ID = string;
 export type PrevJobEditable = Omit<PrevJobProps, "id" | "kind">;
@@ -98,6 +99,7 @@ export type DividerProps = {
 
 export type ResumeMetaDataProps = {
     resumeName: string;
+    font: string;
     resumeId: string;
     createdAt: string;
     margin: 48 | 72 | 96;

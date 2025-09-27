@@ -248,13 +248,15 @@ const resumeSlice = createSlice({
             state.resumes[newId] = [];
             const now = formatDate(new Date(Date.now()));
 
-            const originalName = state.resumeMetaData[originalId].resumeName;
-            const originalTime = state.resumeMetaData[originalId].createdAt;
-            const originalMargin = state.resumeMetaData[originalId].margin;
-            const newName = originalName.length && !originalName.includes("Copy") ? `Copy of ${originalName}` : `Copy of resume created on ${(originalTime)}`
+            // const originalName = state.resumeMetaData[originalId].resumeName;
+            // const originalTime = state.resumeMetaData[originalId].createdAt;
+            // const originalMargin = state.resumeMetaData[originalId].margin;
+            const { resumeName, createdAt, margin, font } = state.resumeMetaData[originalId];
+
+            const newName = resumeName.length && !resumeName.includes("Copy") ? `Copy of ${resumeName}` : `Copy of resume created on ${(createdAt)}`
 
             state.resumeMetaData[newId] = {
-                resumeName: newName, resumeId: newId, createdAt: now, margin: originalMargin
+                resumeName: newName, resumeId: newId, createdAt: now, margin, font
             }
 
             for (const item of state.resumes[originalId]) {
@@ -282,7 +284,7 @@ const resumeSlice = createSlice({
             const now = new Date(Date.now());
 
             state.resumeMetaData[action.payload] = {
-                resumeName: "", resumeId: action.payload, createdAt: formatDate(now), margin: 72,
+                resumeName: "", resumeId: action.payload, createdAt: formatDate(now), margin: 72, font: "Noto Sans"
             }
         },
         changeMonthType(state, action: PayloadAction<"short" | "long">) {
@@ -297,10 +299,14 @@ const resumeSlice = createSlice({
         editMargin(state, action: PayloadAction<{ margin: 48 | 72 | 96 }>) {
             const { currentResumeId } = state;
             state.resumeMetaData[currentResumeId].margin = action.payload.margin;
+        },
+        editFont(state, action: PayloadAction<{ font: string }>) {
+            const { currentResumeId } = state;
+            state.resumeMetaData[currentResumeId].font = action.payload.font;
         }
 
     },
 });
 
-export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace, toggleOverlayMarginGuides, toggleShowDividers, changeResumeName, generateMetaData, changeMonthType, deleteResume, editMargin } = resumeSlice.actions;
+export const { hydrate, setCurrentResume, editBulletPoint, changeBulletPoint, removeResumeItem, setDragToIndex, setDragFromIndex, dragResumeItem, setDragHigher, addResumeItem, addBulletData, addEducationData, addPrevJobData, createEmptyResume, updatePrevJobField, setScale, editUserInfo, editSkills, dragSkill, editSkillCategory, setShowCategory, editSectionHeader, addSkillData, duplicateSection, addSectionHeaderData, addSummaryData, editSummary, editUserLink, toggleUserBool, toggleSectionHeaderUnderline, editEducationDate, editEducationString, addUserLink, copyResume, addProjectData, editProjectString, editProjectBool, replaceResumeItem, addUserInfoData, addResumeItemAt, editDividerNumber, addDividerData, toggleDropdownIsReplace, toggleOverlayMarginGuides, toggleShowDividers, changeResumeName, generateMetaData, changeMonthType, deleteResume, editMargin, editFont } = resumeSlice.actions;
 export default resumeSlice.reducer;
