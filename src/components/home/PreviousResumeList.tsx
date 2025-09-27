@@ -20,8 +20,13 @@ function PreviousResumeList({ values }) {
       : values;
 
   const length = filteredValues.length;
+  const pageLength = 5;
+  const maxPages = Math.ceil(length / pageLength);
 
-  const paginatedValues = filteredValues.slice(page * 10, page * 10 + 10);
+  const paginatedValues = filteredValues.slice(
+    page * pageLength,
+    page * pageLength + pageLength
+  );
 
   return (
     <div className="bg-slate-600 rounded-md p-4 flex flex-col gap-3">
@@ -37,7 +42,7 @@ function PreviousResumeList({ values }) {
           <FaMagnifyingGlass className="text-slate-300 absolute left-2" />
         </div>
       </div>
-      <PageTurner length={length} page={page} setPage={setPage} />
+      <PageTurner page={page} setPage={setPage} maxPages={maxPages} />
       <div className="text-slate-100 flex justify-between sm:grid sm:grid-cols-[200px_5fr_1fr] items-center p-2 font-semibold">
         <div>Created At</div>
         <div>Resume Title</div>
@@ -50,6 +55,11 @@ function PreviousResumeList({ values }) {
           createdAt={e.createdAt}
           id={e.resumeId}
           odd={i % 2 === 1}
+          page={page}
+          length={length}
+          pageLength={pageLength}
+          setPage={setPage}
+          maxPages={maxPages}
         />
       ))}
     </div>
