@@ -29,7 +29,7 @@ export default function MainView() {
   return (
     <div>
       <MobileNotification />
-      <div className="grid grid-cols-[280px_1fr] w-full h-[100dvh]">
+      <div className="grid grid-cols-[280px_1fr] w-full h-full bg-slate-700">
         <BuilderColumn onPrint={handlePrint} />
         <div className="w-full bg-gray-500 flex flex-col items-center">
           <TopMenu expanded={expanded} setExpanded={setExpanded} />
