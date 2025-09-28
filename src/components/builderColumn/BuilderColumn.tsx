@@ -22,7 +22,7 @@ export default function BuilderColumn({
   const navigate = useNavigate();
 
   return (
-    <div className="w-full bg-slate-700 border-r overflow-y-auto overflow-x-hidden pb-16 h-max sm:sticky top-0">
+    <div className="w-full bg-slate-700 border-r pb-16 sticky top-0 overflow-auto">
       <div className="flex flex-col gap-[1px]">
         <BuilderColumnTitle title="Modular Resume" />
         <ResumeNamer />

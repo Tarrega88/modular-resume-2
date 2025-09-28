@@ -35,7 +35,7 @@ export default function MainView() {
   return (
     <div>
       <MobileNotification />
-      <div className="grid grid-cols-[280px_1fr] w-full bg-slate-700 h-[dvh-100]">
+      <div className="grid grid-cols-[280px_1fr] w-full bg-slate-700 h-screen">
         <BuilderColumn
           onPrint={handlePrint}
           handleOpenHelper={handleOpenHelper}
