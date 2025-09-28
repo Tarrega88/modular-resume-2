@@ -9,13 +9,8 @@ export default function SideResume({
 }: {
   contentRef: React.RefObject<HTMLDivElement>;
 }) {
-  const {
-    scale,
-    overlayMarginGuides,
-    resumeMetaData,
-    currentResumeId,
-    measurementStyle,
-  } = useSelector((s: RootState) => s.resume);
+  const { scale, overlayMarginGuides, resumeMetaData, currentResumeId } =
+    useSelector((s: RootState) => s.resume);
   const s = scale / 100;
 
   const { pageStyle } = resumeMetaData[currentResumeId];
@@ -65,7 +60,7 @@ export default function SideResume({
   //todo 9/16/2025: add button in builder column to set zStyle to z-50 or nothing
   //const zStyle = ""
 
-  const zStyle = overlayMarginGuides ? "z-50" : "";
+  const zStyle = overlayMarginGuides ? "z-40" : "z-0";
 
   return (
     <div className="relative" style={{ width: wrapperW, height: wrapperH }}>
