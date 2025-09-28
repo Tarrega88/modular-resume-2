@@ -53,7 +53,7 @@ export default function FontScaleSlider({
 
   return (
     <Slider
-      title=""
+      title="Font Scale"
       min={min}
       max={max}
       step={step}

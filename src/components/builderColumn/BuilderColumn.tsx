@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setScale } from "../../state/resumeSlice";
 import { RootState } from "../../state/store";
-import FontPicker from "./FontPicker";
 import Slider from "./Slider";
 import GeneratePDFButton from "./GeneratePDFButton";
 import IconHelper from "./IconHelper";
@@ -19,10 +18,8 @@ import { useNavigate } from "react-router-dom";
 import HelpContainer from "./HelpContainer";
 import HintBox from "./HintBox";
 import LastSaved from "./LastSaved";
-import MarginSlider from "./MarginSlider";
-import PageStyle from "./PageStyle";
-import MeasurementToggle from "./MeasurementToggle";
 import ExpandableContainer from "./ExpandableContainer";
+import FontScaleSlider from "./FontScaleSlider";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -68,14 +65,9 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
         >
           <FaMagnifyingGlass />
         </Slider>
-        <ExpandableContainer title="Document Formatting" startExpanded={true}>
-          <PageStyle />
-          <FontPicker />
-          <MeasurementToggle />
-          <MarginSlider />
+        <FontScaleSlider />
+        <ExpandableContainer title="Toggles" startExpanded={false}>
           <ToggleMonthDisplay />
-        </ExpandableContainer>
-        <ExpandableContainer title="Margins & Spacing" startExpanded={false}>
           <ShowDividerToggle />
           <MarginOverlayToggle />
         </ExpandableContainer>

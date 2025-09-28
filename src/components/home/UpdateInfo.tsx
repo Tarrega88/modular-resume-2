@@ -15,6 +15,14 @@ type Info = {
 
 const updates: Info[] = [
   {
+    title: "Top Menu & Side Column Declutter",
+    date: "9/28/2025",
+    textArr: [
+      "Traditional top menu bar introduced",
+      "Left column is in the process of being decluttered and cleaned up",
+    ],
+  },
+  {
     title: "A4 & Metric",
     date: "9/28/2025",
     textArr: [
@@ -23,6 +31,8 @@ const updates: Info[] = [
       "Changed original margins to be their exact measurements (they were ~4% off the first time)",
       "If any strangeness occurs on this update then adjust your margins and measurement choice once and you'll be good to go.",
     ],
+    url: "https://github.com/Tarrega88/modular-resume-2/commit/9ec90501cddf59fd046da40ed9817202220c4029",
+    urlText: "GitHub",
   },
   {
     title: "Notification Toasts",

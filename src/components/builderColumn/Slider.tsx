@@ -31,7 +31,7 @@ function Slider({
     <div
       className={`w-full flex items-center flex-col gap-2 ${wrapperColor} text-slate-950 pb-2 pt-6`}
     >
-      {title ? <div className="w-full text-center py-1">{title}</div> : null}
+      {title ? <div className="w-full text-center">{title}</div> : null}
       <input
         className="accent-slate-800 cursor-pointer w-5/6"
         type="range"
