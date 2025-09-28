@@ -16,7 +16,7 @@ export default function SideResume({
 
   const [replaceIsOpen, setReplaceIsOpen] = useState(false);
 
-  const { pageStyle } = resumeMetaData[currentResumeId];
+  const pageStyle = resumeMetaData[currentResumeId]?.pageStyle || "Letter";
 
   const PAGE_W = pageStyle === "A4" ? 827 : 850;
   const PAGE_H = pageStyle === "A4" ? 1169 : 1100;
