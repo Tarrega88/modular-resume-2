@@ -4,7 +4,12 @@ import { RootState } from "../state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
 import Draggable from "./wrappers/Draggable";
 
-export default function SideResumeInner({ PAGE_H, PAGE_W }) {
+export default function SideResumeInner({
+  PAGE_H,
+  PAGE_W,
+  replaceIsOpen,
+  setReplaceIsOpen,
+}) {
   const resumeState = useSelector((s: RootState) => s.resume);
   const currentResume = resumeState.currentResumeId;
   const renderOrder = resumeState.resumes[currentResume] ?? [];
@@ -14,8 +19,6 @@ export default function SideResumeInner({ PAGE_H, PAGE_W }) {
   useLayoutEffect(() => {
     if (!ref.current) return;
   }, []);
-
-  const [replaceIsOpen, setReplaceIsOpen] = useState(false);
 
   return (
     <div

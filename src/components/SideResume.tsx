@@ -13,6 +13,8 @@ export default function SideResume({
     useSelector((s: RootState) => s.resume);
   const s = scale / 100;
 
+  const [replaceIsOpen, setReplaceIsOpen] = useState(false);
+
   const { pageStyle } = resumeMetaData[currentResumeId];
 
   const PAGE_W = pageStyle === "A4" ? 827 : 850;
@@ -36,9 +38,6 @@ export default function SideResume({
     }
   }
 
-  //TODO 9/25/2025: add page margin to types & slice per resume
-  //temp for testing:
-
   const overlaySize = MARGIN * 2;
 
   const [rawH, setRawH] = useState(PAGE_H);
@@ -56,18 +55,15 @@ export default function SideResume({
 
   const wrapperW = PAGE_W * s;
   const wrapperH = rawH * s;
-
-  //todo 9/16/2025: add button in builder column to set zStyle to z-50 or nothing
-  //const zStyle = ""
-
-  const zStyle = overlayMarginGuides ? "z-40" : "z-0";
+  const zStyle = overlayMarginGuides && !replaceIsOpen ? 50 : 0;
 
   return (
     <div className="relative" style={{ width: wrapperW, height: wrapperH }}>
       <div
         aria-hidden
-        className={`absolute left-[-12px] top-0 h-[115%] pointer-events-none print:hidden rounded-sm ${zStyle}`}
+        className={`absolute left-[-12px] top-0 h-[115%] pointer-events-none print:hidden rounded-sm`}
         style={{
+          zIndex: zStyle,
           width: `${wrapperW + 24}px`,
           backgroundImage: `linear-gradient(
       to bottom,
@@ -85,7 +81,12 @@ export default function SideResume({
         style={{ transform: `scale(${s})`, transformOrigin: "top left" }}
       >
         <div ref={contentRef} data-print-root>
-          <SideResumeInner PAGE_W={PAGE_W} PAGE_H={PAGE_H} />
+          <SideResumeInner
+            PAGE_W={PAGE_W}
+            PAGE_H={PAGE_H}
+            replaceIsOpen={replaceIsOpen}
+            setReplaceIsOpen={setReplaceIsOpen}
+          />
         </div>
       </div>
     </div>
