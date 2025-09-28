@@ -21,7 +21,7 @@ export default function SideResume({
   const PAGE_W = pageStyle === "A4" ? 827 : 850;
   const PAGE_H = pageStyle === "A4" ? 1169 : 1100;
 
-  const MARGIN = resumeMetaData[currentResumeId].margin || 75;
+  const MARGIN = resumeMetaData[currentResumeId]?.margin || 75;
 
   const overlaySize = MARGIN * 2;
 
