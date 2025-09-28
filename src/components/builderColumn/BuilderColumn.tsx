@@ -36,7 +36,6 @@ export default function BuilderColumn({
           />
         </div>
         <GeneratePDFButton onPrint={onPrint} />
-
         <ExpandableContainer title="Toggles" startExpanded={false}>
           <ToggleMonthDisplay />
           <ShowDividerToggle />
@@ -46,7 +45,6 @@ export default function BuilderColumn({
         <IconHelper />
         <HintBox />
       </div>
-      {/* <HelpContainer isOpen={helpIsOpen} setIsOpen={setHelpIsOpen} /> */}
     </div>
   );
 }

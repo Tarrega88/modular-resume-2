@@ -40,7 +40,7 @@ export default function MainView() {
           onPrint={handlePrint}
           handleOpenHelper={handleOpenHelper}
         />
-        <div className="w-full bg-gray-500 flex flex-col items-center">
+        <div className="w-full bg-gray-500 flex flex-col items-center overflow-auto">
           <TopMenu expanded={expanded} setExpanded={setExpanded} />
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
             <SideResume contentRef={contentRef} expanded={expanded} />

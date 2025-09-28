@@ -17,7 +17,7 @@ function LastSaved() {
     hour12: true,
   });
 
-  return <div>Last Saved: {timeString}</div>;
+  return <div className="w-full pl-6 pr-4">Last Saved: {timeString}</div>;
 }
 
 export default LastSaved;

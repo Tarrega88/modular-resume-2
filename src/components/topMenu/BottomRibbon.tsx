@@ -17,7 +17,7 @@ function BottomRibbon() {
   return (
     <div className="sticky bottom-0 w-full bg-neutral-700 text-white py-4 z-50">
       <div className="flex justify-between w-full flex-wrap">
-        <div className="flex gap-6 pl-6">
+        <div className="flex pl-6">
           <RibbonSlider
             min={50}
             max={150}
@@ -31,7 +31,7 @@ function BottomRibbon() {
           </RibbonSlider>
           <RibbonFontScaleSlider />
         </div>
-        <div className="px-6">
+        <div className="">
           <LastSaved />
         </div>
       </div>
