@@ -25,7 +25,7 @@ export default function MobileNotification() {
       role="alert"
       aria-live="polite"
       className="
-        fixed inset-x-0 top-0 z-50 sm:hidden
+        fixed inset-x-0 top-8 z-50 sm:hidden
         bg-slate-800 text-slate-50
         shadow-md
       "
