@@ -15,7 +15,7 @@ function BottomRibbon() {
   }
 
   return (
-    <div className="sticky bottom-0 w-full bg-neutral-700 text-white py-4 z-50">
+    <div className="sm:sticky bottom-0 w-full bg-neutral-700 text-white py-4 z-50">
       <div className="flex justify-between w-full flex-wrap">
         <div className="flex gap-6 pl-6">
           <RibbonSlider

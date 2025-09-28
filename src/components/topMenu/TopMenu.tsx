@@ -43,7 +43,7 @@ function TopMenu({ expanded, setExpanded }: Props) {
   }, [setExpanded]);
 
   return (
-    <div className="sticky top-0 w-full z-50 bg-neutral-700 text-white h-10">
+    <div className="sm:sticky top-0 w-full z-50 bg-neutral-700 text-white h-10">
       <div className="flex flex-col gap-2">
         <div className="flex justify-between">
           <div ref={barRef} className="flex bg-neutral-700 text-white w-full">
