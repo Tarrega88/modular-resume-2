@@ -67,7 +67,7 @@ function UpdateInfo() {
   const currentInfo = updates[infoSelection];
 
   return (
-    <div className="text-slate-50 bg-slate-500 rounded-sm p-3 mb-36 mt-4">
+    <div className="text-slate-50 bg-slate-500 rounded-sm p-3 mb-16 mt-4 w-full sm:w-3/4 md:w-1/2 xl:w-2/5 self-end">
       <div className="flex justify-between">
         <div className="text-lg pl-1">Update Info</div>
         <div className="flex items-center gap-1">
