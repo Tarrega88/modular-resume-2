@@ -5,18 +5,19 @@ import { useSelector } from "react-redux";
 
 function LastSaved() {
   const { data, resumeMetaData } = useSelector((s: RootState) => s.resume);
-  const [updated, setUpdated] = useState(formatDate(new Date()));
+  const [updated, setUpdated] = useState(new Date());
 
   useEffect(() => {
-    setUpdated(formatDate(new Date()));
+    setUpdated(new Date());
   }, [data, resumeMetaData]);
 
-  return (
-    <div className="bg-blue-50 flex flex-col items-center py-1">
-      <div>Last Saved</div>
-      <div>{updated}</div>
-    </div>
-  );
+  let timeString = updated.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
+  return <div>Last Saved: {timeString}</div>;
 }
 
 export default LastSaved;

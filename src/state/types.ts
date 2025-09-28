@@ -101,6 +101,7 @@ export type ResumeMetaDataProps = {
     resumeName: string;
     pageStyle: "Letter" | "A4";
     font: string;
+    fontScale: number;
     resumeId: string;
     createdAt: string;
     margin: 50 | 75 | 100;

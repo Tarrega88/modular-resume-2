@@ -58,7 +58,7 @@ export default function SideResume({
   const wrapperW = PAGE_W * s;
   const wrapperH = rawH * s;
   const zStyle =
-    !overlayMarginGuides || replaceIsOpen || expanded !== -1 ? 0 : 50;
+    !overlayMarginGuides || replaceIsOpen || expanded !== -1 ? 0 : 40;
   return (
     <div className="relative" style={{ width: wrapperW, height: wrapperH }}>
       <div

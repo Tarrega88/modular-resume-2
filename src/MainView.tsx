@@ -6,6 +6,7 @@ import MobileNotification from "./components/absoluteUI/MobileNotification";
 import { useSelector } from "react-redux";
 import { RootState } from "./state/store";
 import TopMenu from "./components/topMenu/TopMenu";
+import BottomRibbon from "./components/topMenu/BottomRibbon";
 
 export default function MainView() {
   const { currentResumeId, resumeMetaData } = useSelector(
@@ -28,13 +29,16 @@ export default function MainView() {
   return (
     <div>
       <MobileNotification />
-      <div className="flex w-full h-[100dvh]">
+      <div className="grid grid-cols-[280px_1fr] w-full h-[100dvh]">
         <BuilderColumn onPrint={handlePrint} />
-        <div className="overflow-auto w-full bg-gray-500 flex flex-col items-center relative">
+        <div className="w-full bg-gray-500 flex flex-col items-center">
           <TopMenu expanded={expanded} setExpanded={setExpanded} />
-          <div className="px-5 pt-5">
+          <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
             <SideResume contentRef={contentRef} expanded={expanded} />
           </div>
+          {/* <div className="absolute bottom-0"> */}
+          <BottomRibbon />
+          {/* </div> */}
         </div>
       </div>
     </div>

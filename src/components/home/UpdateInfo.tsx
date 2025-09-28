@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  IoIosArrowBack,
-  IoIosArrowDown,
-  IoIosArrowForward,
-} from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 type Info = {
   title: string;
@@ -15,12 +11,22 @@ type Info = {
 
 const updates: Info[] = [
   {
+    title: "App Layout Upgrades",
+    date: "9/28/2025",
+    textArr: [
+      "Brought Zoom, Font Scaling, and Last Saved into lower sticky bar",
+      "Decluttered the left column, allowing it to stay more focused in its intent as a main function container",
+    ],
+  },
+  {
     title: "Top Menu & Side Column Declutter",
     date: "9/28/2025",
     textArr: [
       "Traditional top menu bar introduced",
       "Left column is in the process of being decluttered and cleaned up",
     ],
+    url: "https://github.com/Tarrega88/modular-resume-2/commit/0532e7c1a1f99579de9bdd4ca38877c27207fb28",
+    urlText: "GitHub",
   },
   {
     title: "A4 & Metric",

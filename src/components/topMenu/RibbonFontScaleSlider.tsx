@@ -1,26 +1,22 @@
-import { useEffect, useState } from "react";
-import Slider from "./Slider";
-
-type Props = {
-  containerSelector?: string; // defaults to '#resume-root'
-  min?: number;
-  max?: number;
-  step?: number;
-  storageKey?: string;
-};
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/state/store";
+import { useEffect } from "react";
+import { editFontScale } from "@/state/resumeSlice";
+import { RxFontSize } from "react-icons/rx";
+import RibbonSlider from "./RibbonSlider";
 
 const clamp = (n: number, lo: number, hi: number) =>
   Math.min(hi, Math.max(lo, n));
 const round2 = (n: number) => Math.round(n * 100) / 100;
+const containerSelector = "#resume-root";
+const storageKey = "resume-font-scale";
 
-export default function FontScaleSlider({
-  containerSelector = "#resume-root",
-  min = 0.9,
-  max = 1.1,
-  step = 0.01,
-  storageKey = "resume-font-scale",
-}: Props) {
-  const [value, setValue] = useState(1.0);
+function RibbonFontScaleSlider() {
+  const dispatch = useDispatch();
+  const { currentResumeId, resumeMetaData } = useSelector(
+    (state: RootState) => state.resume
+  );
+  const { fontScale } = resumeMetaData[currentResumeId];
 
   const apply = (v: number) => {
     const el = document.querySelector(containerSelector) as HTMLElement | null;
@@ -42,27 +38,35 @@ export default function FontScaleSlider({
       start = isFinite(parsed) ? parsed : 1.0;
     }
     start = round2(clamp(start, min, max));
-    setValue(start);
+    dispatch(editFontScale(start));
     apply(start);
   }, []);
 
   useEffect(() => {
-    apply(value);
-    localStorage.setItem(storageKey, String(value));
-  }, [value]);
+    apply(fontScale);
+    localStorage.setItem(storageKey, String(fontScale));
+  }, [fontScale]);
+
+  const min = 0.8;
+  const max = 1.2;
+  const mult = 100;
+  const step = 0.01;
 
   return (
-    <Slider
-      title="Font Scale"
+    <RibbonSlider
       min={min}
       max={max}
       step={step}
-      value={value}
+      value={fontScale}
       onChange={(e: any) =>
-        setValue(clamp(parseFloat(e.target.value), min, max))
+        dispatch(editFontScale(clamp(parseFloat(e.target.value), min, max)))
       }
-      oddOrEven="odd"
-      displayMult={100}
-    />
+      mult={mult}
+      textAdd="%"
+    >
+      <RxFontSize />
+    </RibbonSlider>
   );
 }
+
+export default RibbonFontScaleSlider;
