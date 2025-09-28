@@ -1,6 +1,5 @@
 import GeneratePDFButton from "./GeneratePDFButton";
 import IconHelper from "./IconHelper";
-import { useState } from "react";
 import MarginOverlayToggle from "./MarginOverlayToggle";
 import SimpleAddSection from "./SimpleAddSection";
 import ShowDividerToggle from "./ShowDividerToggle";
@@ -10,9 +9,7 @@ import ToggleMonthDisplay from "./ToggleMonthType";
 import BuilderColumnMainButton from "./BuilderColumnMainButton";
 import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import HelpContainer from "./HelpContainer";
 import HintBox from "./HintBox";
-import LastSaved from "./LastSaved";
 import ExpandableContainer from "./ExpandableContainer";
 
 export default function BuilderColumn({
@@ -22,12 +19,6 @@ export default function BuilderColumn({
   onPrint: () => void;
   handleOpenHelper: () => void;
 }) {
-  // const [helpIsOpen, setHelpIsOpen] = useState(false);
-
-  // function handleOpenHelper() {
-  //   setHelpIsOpen(!helpIsOpen);
-  // }
-
   const navigate = useNavigate();
 
   return (
