@@ -11,7 +11,7 @@ function ResumeNamer() {
   const [isInput, setIsInput] = useState(false);
   const dispatch = useDispatch();
 
-  const resumeName = resumeMetaData[currentResumeId].resumeName;
+  const resumeName = resumeMetaData[currentResumeId]?.resumeName;
   const [tempText, setTempText] = useState(resumeName);
 
   function handleNameChange() {

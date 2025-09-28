@@ -248,10 +248,6 @@ const resumeSlice = createSlice({
             const { originalId, newId } = action.payload;
             state.resumes[newId] = [];
             const now = formatDate(new Date(Date.now()));
-
-            // const originalName = state.resumeMetaData[originalId].resumeName;
-            // const originalTime = state.resumeMetaData[originalId].createdAt;
-            // const originalMargin = state.resumeMetaData[originalId].margin;
             const { resumeName, createdAt, margin, font, pageStyle, fontScale } = state.resumeMetaData[originalId];
 
             const newName = resumeName.length && !resumeName.includes("Copy") ? `Copy of ${resumeName}` : `Copy of resume created on ${(createdAt)}`
