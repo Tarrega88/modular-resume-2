@@ -14,9 +14,9 @@ const storageKey = "resume-font-scale";
 function RibbonFontScaleSlider() {
   const dispatch = useDispatch();
   const { currentResumeId, resumeMetaData } = useSelector(
-    (state: RootState) => state.resume
+    (state: RootState) => state?.resume
   );
-  const { fontScale } = resumeMetaData[currentResumeId];
+  const fontScale = resumeMetaData[currentResumeId]?.fontScale || 1;
 
   const apply = (v: number) => {
     const el = document.querySelector(containerSelector) as HTMLElement | null;

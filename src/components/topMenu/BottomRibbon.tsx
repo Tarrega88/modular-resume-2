@@ -8,7 +8,7 @@ import LastSaved from "../builderColumn/LastSaved";
 
 function BottomRibbon() {
   const dispatch = useDispatch();
-  const { scale } = useSelector((state: RootState) => state.resume);
+  const { scale } = useSelector((state: RootState) => state?.resume);
 
   function handleSetScale(num: number) {
     dispatch(setScale(num));

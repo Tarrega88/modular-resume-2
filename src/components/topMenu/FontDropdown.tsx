@@ -22,7 +22,7 @@ function FontDropdown({
   const dispatch = useDispatch();
 
   const { resumeMetaData, currentResumeId } = useSelector(
-    (state: RootState) => state.resume
+    (state: RootState) => state?.resume
   );
 
   const { font } = resumeMetaData[currentResumeId];
