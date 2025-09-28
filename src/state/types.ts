@@ -99,14 +99,16 @@ export type DividerProps = {
 
 export type ResumeMetaDataProps = {
     resumeName: string;
+    pageStyle: "Letter" | "A4";
     font: string;
     resumeId: string;
     createdAt: string;
-    margin: 48 | 72 | 96;
+    margin: 50 | 75 | 100;
 }
 
 export type ResumeState = {
     resumeMetaData: Record<ID, ResumeMetaDataProps>;
+    measurementStyle: "imperial" | "metric";
     showDividers: boolean;
     overlayMarginGuides: boolean;
     scale: number;

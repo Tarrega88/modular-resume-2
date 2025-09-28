@@ -1,21 +1,45 @@
-import { useLayoutEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useLayoutEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import SideResumeInner from "./SideResumeInner";
+import { editMargin } from "@/state/resumeSlice";
 
 export default function SideResume({
   contentRef,
 }: {
   contentRef: React.RefObject<HTMLDivElement>;
 }) {
-  const { scale, overlayMarginGuides, resumeMetaData, currentResumeId } =
-    useSelector((s: RootState) => s.resume);
+  const {
+    scale,
+    overlayMarginGuides,
+    resumeMetaData,
+    currentResumeId,
+    measurementStyle,
+  } = useSelector((s: RootState) => s.resume);
   const s = scale / 100;
 
-  const PAGE_W = 850;
-  const PAGE_H = 1100;
+  const { pageStyle } = resumeMetaData[currentResumeId];
+
+  const PAGE_W = pageStyle === "A4" ? 827 : 850;
+  const PAGE_H = pageStyle === "A4" ? 1169 : 1100;
+  const dispatch = useDispatch();
+
+  /*
+    A4: 8.27 x 11.69 inches
+    827 x 1169
+  */
 
   const MARGIN = resumeMetaData[currentResumeId].margin;
+
+  if (MARGIN !== 50 && MARGIN !== 75 && MARGIN !== 100) {
+    if (MARGIN === 48) {
+      dispatch(editMargin({ margin: 50 }));
+    } else if (MARGIN === 96) {
+      dispatch(editMargin({ margin: 100 }));
+    } else {
+      dispatch(editMargin({ margin: 75 }));
+    }
+  }
 
   //TODO 9/25/2025: add page margin to types & slice per resume
   //temp for testing:
@@ -56,8 +80,8 @@ export default function SideResume({
       rgba(0,0,100,0.2) ${overlaySize * s}px,
       transparent ${overlaySize * s}px
     )`,
-          backgroundSize: `100% ${1100 * s}px`,
-          backgroundPosition: `0 ${(1100 - MARGIN) * s}px`,
+          backgroundSize: `100% ${PAGE_H * s}px`,
+          backgroundPosition: `0 ${(PAGE_H - MARGIN) * s}px`,
           backgroundRepeat: "repeat-y",
         }}
       />
@@ -66,7 +90,7 @@ export default function SideResume({
         style={{ transform: `scale(${s})`, transformOrigin: "top left" }}
       >
         <div ref={contentRef} data-print-root>
-          <SideResumeInner />
+          <SideResumeInner PAGE_W={PAGE_W} PAGE_H={PAGE_H} />
         </div>
       </div>
     </div>

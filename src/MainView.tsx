@@ -3,10 +3,24 @@ import { useReactToPrint } from "react-to-print";
 import BuilderColumn from "@/components/builderColumn/BuilderColumn";
 import SideResume from "@/components/SideResume";
 import MobileNotification from "./components/absoluteUI/MobileNotification";
+import { useSelector } from "react-redux";
+import { RootState } from "./state/store";
 
 export default function MainView() {
+  const { currentResumeId, resumeMetaData } = useSelector(
+    (state: RootState) => state.resume
+  );
+
+  const { pageStyle } = resumeMetaData[currentResumeId];
+
   const contentRef = useRef<HTMLDivElement>(null);
-  const handlePrint = useReactToPrint({ contentRef });
+
+  const formattedPageStyle = `@page { size: ${pageStyle} portrait; margin: 0 }`;
+
+  const handlePrint = useReactToPrint({
+    contentRef,
+    pageStyle: formattedPageStyle,
+  });
 
   return (
     <div>

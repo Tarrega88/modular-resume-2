@@ -43,7 +43,7 @@ export function getProjectProps(id: string): ProjectProps {
 }
 
 export function getDividerProps(id: string): DividerProps {
-    return { id, kind: "divider", height: 72 }
+    return { id, kind: "divider", height: 75 }
 }
 
 

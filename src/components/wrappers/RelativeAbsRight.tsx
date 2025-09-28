@@ -1,4 +1,3 @@
-import { pageWidth } from "@/components/SideResumeInner";
 import { RootState } from "@/state/store";
 import { useSelector } from "react-redux";
 //Note: add the className "group" to any parent of this
@@ -31,11 +30,14 @@ function RelativeAbsRight({
   const { margin } = resumeMetaData[currentResumeId];
 
   const marginStyle =
-    margin === 96
-      ? "-translate-x-[96px]"
-      : margin === 72
-      ? "-translate-x-[48px]"
+    margin === 100
+      ? "-translate-x-[100px]"
+      : margin === 75
+      ? "-translate-x-[50px]"
       : "";
+
+  const pageWidth =
+    resumeMetaData[currentResumeId].pageStyle === "A4" ? 827 : 850;
 
   return (
     <div

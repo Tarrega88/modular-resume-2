@@ -12,7 +12,7 @@ function Divider({
   const dispatch = useDispatch();
   const { showDividers } = useSelector((state: RootState) => state.resume);
 
-  const min = 48;
+  const min = 50;
   const max = 550;
 
   function handleOnChange(e: string) {
@@ -33,7 +33,7 @@ function Divider({
       <div
         inert={!renderUI}
         style={{ height: `${renderUI ? height : 100}px` }}
-        className={`w-full flex flex-col items-center transition-all duration-200 gap-1 ${renderStyle} print:invisible`}
+        className={`w-full flex flex-col items-center transition-colors duration-200 gap-1 ${renderStyle} print:invisible`}
       >
         <DynamicInput
           text={height.toString()}

@@ -4,10 +4,7 @@ import { RootState } from "../state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
 import Draggable from "./wrappers/Draggable";
 
-export const pageWidth = 850;
-export const pageHeight = 1100;
-
-export default function SideResumeInner() {
+export default function SideResumeInner({ PAGE_H, PAGE_W }) {
   const resumeState = useSelector((s: RootState) => s.resume);
   const currentResume = resumeState.currentResumeId;
   const renderOrder = resumeState.resumes[currentResume] ?? [];
@@ -28,8 +25,8 @@ export default function SideResumeInner() {
       style={{
         position: "relative",
         backgroundColor: "white",
-        width: `${pageWidth}px`,
-        minHeight: `${pageHeight}px`,
+        width: `${PAGE_W}px`,
+        minHeight: `${PAGE_H}px`,
         lineHeight: 1.4,
         paddingLeft: `${MARGIN}px`,
         paddingRight: `${MARGIN}px`,

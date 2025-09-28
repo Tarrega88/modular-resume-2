@@ -15,6 +15,16 @@ type Info = {
 
 const updates: Info[] = [
   {
+    title: "A4 & Metric",
+    date: "9/28/2025",
+    textArr: [
+      "Added a choice between A4 & Letter page sizes under Document Formatting",
+      "Added a choice  between Metric & Imperial measurements under Document Formatting",
+      "Changed original margins to be their exact measurements (they were ~4% off the first time)",
+      "If any strangeness occurs on this update then adjust your margins and measurement choice once and you'll be good to go.",
+    ],
+  },
+  {
     title: "Notification Toasts",
     date: "9/26/2025",
     textArr: ["Added notification toasts to the Add Section buttons"],

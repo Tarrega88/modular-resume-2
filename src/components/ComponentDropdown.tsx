@@ -167,7 +167,7 @@ function ComponentDropdown({
   const addButtonStyle = dropdownIsReplace ? offStyle : onStyle;
   const replaceButtonStyle = dropdownIsReplace ? onStyle : offStyle;
 
-  const widthStyle = { 48: 754, 72: 706, 96: 658 };
+  const widthStyle = { 50: 754, 75: 706, 100: 658 };
 
   return (
     <div

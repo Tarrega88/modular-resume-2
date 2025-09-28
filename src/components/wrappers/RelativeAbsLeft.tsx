@@ -1,4 +1,5 @@
-import { pageWidth } from "../SideResumeInner";
+import { RootState } from "@/state/store";
+import { useSelector } from "react-redux";
 
 function RelativeAbsLeft({
   children,
@@ -22,10 +23,17 @@ function RelativeAbsLeft({
     vLow: 50,
   };
 
+  const { resumeMetaData, currentResumeId } = useSelector(
+    (state: RootState) => state.resume
+  );
+
+  const pageWidth =
+    resumeMetaData[currentResumeId].pageStyle === "A4" ? 827 : 850;
+
   return (
     <div
       style={{ width: pageWidth }}
-      className="-translate-x-[48px] relative print:hidden"
+      className="-translate-x-[50px] relative print:hidden"
       onClick={(e) => e.stopPropagation()}
     >
       <div

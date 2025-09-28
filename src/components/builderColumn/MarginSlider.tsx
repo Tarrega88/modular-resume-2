@@ -3,22 +3,32 @@ import { RootState } from "@/state/store";
 import { editMargin } from "@/state/resumeSlice";
 
 export default function MarginSlider() {
-  const { resumeMetaData, currentResumeId } = useSelector(
+  const { resumeMetaData, currentResumeId, measurementStyle } = useSelector(
     (state: RootState) => state.resume
   );
   const { margin } = resumeMetaData[currentResumeId];
+
   const dispatch = useDispatch();
 
   function handleSetMargin(e: number) {
-    if (e !== 48 && e !== 72 && e !== 96) return;
+    if (e !== 50 && e !== 75 && e !== 100) return;
     dispatch(editMargin({ margin: e }));
   }
 
   const inches = {
-    48: '1/2"',
-    72: '3/4"',
-    96: '1"',
+    50: '1/2"',
+    75: '3/4"',
+    100: '1"',
   };
+
+  const cms = {
+    50: "1.27 cm",
+    75: "1.905 cm",
+    100: "2.54 cm",
+  };
+
+  const measureDisplay =
+    measurementStyle === "metric" ? cms[margin] : inches[margin];
 
   return (
     <div className="bg-blue-50">
@@ -30,13 +40,13 @@ export default function MarginSlider() {
           className="accent-slate-800 cursor-pointer w-5/6"
           type="range"
           onChange={(e) => handleSetMargin(Number(e.target.value))}
-          min={48}
-          max={96}
-          step={24}
+          min={50}
+          max={100}
+          step={25}
           value={margin}
         />
         <div className="flex items-center gap-2 relative w-full justify-center">
-          <div>{inches[margin]}</div>
+          <div>{measureDisplay}</div>
         </div>
       </div>
     </div>

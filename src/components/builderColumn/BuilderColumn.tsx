@@ -20,6 +20,9 @@ import HelpContainer from "./HelpContainer";
 import HintBox from "./HintBox";
 import LastSaved from "./LastSaved";
 import MarginSlider from "./MarginSlider";
+import PageStyle from "./PageStyle";
+import MeasurementToggle from "./MeasurementToggle";
+import ExpandableContainer from "./ExpandableContainer";
 
 export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
   const dispatch = useDispatch();
@@ -65,11 +68,17 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
         >
           <FaMagnifyingGlass />
         </Slider>
-        <FontPicker />
-        <MarginSlider />
-        <ToggleMonthDisplay />
-        <ShowDividerToggle />
-        <MarginOverlayToggle />
+        <ExpandableContainer title="Document Formatting" startExpanded={true}>
+          <PageStyle />
+          <FontPicker />
+          <MeasurementToggle />
+          <MarginSlider />
+          <ToggleMonthDisplay />
+        </ExpandableContainer>
+        <ExpandableContainer title="Margins & Spacing" startExpanded={false}>
+          <ShowDividerToggle />
+          <MarginOverlayToggle />
+        </ExpandableContainer>
         <SimpleAddSection />
         <IconHelper />
         <HintBox />

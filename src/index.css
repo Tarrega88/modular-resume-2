@@ -57,10 +57,6 @@
   }
 }
 
-@page {
-  size: Letter;
-}
-
 @media print {
   h1,
   h2,
