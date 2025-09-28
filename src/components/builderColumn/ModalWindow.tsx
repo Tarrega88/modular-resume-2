@@ -26,7 +26,7 @@ function ModalWindow({ isOpen, setIsOpen, children, title }: Props) {
         <div className="flex justify-between pb-4">
           <div className="text-lg font-semibold">{title}</div>
         </div>
-        <div className="flex flex-col gap-4">{children}</div>
+        <div className="flex flex-col gap-4 h-full">{children}</div>
       </div>
     </div>
   );

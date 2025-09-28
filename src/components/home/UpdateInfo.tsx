@@ -67,9 +67,8 @@ function UpdateInfo() {
   const currentInfo = updates[infoSelection];
 
   return (
-    <div className="text-slate-50 bg-slate-500 rounded-sm p-3 mb-16 mt-4 w-full sm:w-3/4 md:w-1/2 xl:w-2/5 self-end">
+    <div className="text-slate-50 bg-slate-500 rounded-sm p-3 h-4/5">
       <div className="flex justify-between">
-        <div className="text-lg pl-1">Update Info</div>
         <div className="flex items-center gap-1">
           <button
             onClick={() =>
@@ -93,11 +92,12 @@ function UpdateInfo() {
             <IoIosArrowForward className="cursor-pointer" />
           </button>
         </div>
+        <div>{currentInfo.date}</div>
       </div>
       <div>
         <div className="flex justify-between p-1">
           <div>{currentInfo.title}</div>
-          <div>{currentInfo.date}</div>
+          {/* <div>{currentInfo.date}</div> */}
         </div>
         {currentInfo.url ? (
           <a

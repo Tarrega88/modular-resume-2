@@ -6,6 +6,7 @@ import { useState } from "react";
 import LastWorkedOn from "./LastWorkedOn";
 import AboutContainer from "./AboutContainer";
 import UpdateInfo from "./UpdateInfo";
+import UpdateContainer from "./UpdateContainer";
 
 function HomeSelect() {
   const resumeData = useSelector((state: RootState) => state.resume);
@@ -13,6 +14,7 @@ function HomeSelect() {
   const values = Object.values(resumeData.resumeMetaData).reverse();
 
   const [aboutIsOpen, setAboutIsOpen] = useState(false);
+  const [updatesAreOpen, setUpdatesAreOpen] = useState(false);
 
   return (
     <div className="bg-slate-800 h-full px-10 pt-2 overflow-auto flex flex-col">
@@ -22,10 +24,16 @@ function HomeSelect() {
             <GenerateResumeButton />
             {resumeData.currentResumeId ? <LastWorkedOn /> : null}
           </div>
-          <div className="flex sm:items-center self-end">
+          <div className="flex sm:items-center self-end gap-4">
+            <button
+              onClick={() => setUpdatesAreOpen(!updatesAreOpen)}
+              className="bg-slate-700 outline-gray-100 hover:bg-slate-600 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1  transiton-all duration-200 cursor-pointer h-10"
+            >
+              Updates
+            </button>
             <button
               onClick={() => setAboutIsOpen(!aboutIsOpen)}
-              className="bg-slate-500 outline-gray-100 hover:bg-slate-600 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1  transiton-all duration-200 cursor-pointer h-10"
+              className="bg-slate-500 outline-gray-100 hover:bg-slate-400 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1  transiton-all duration-200 cursor-pointer h-10"
             >
               About
             </button>
@@ -34,7 +42,8 @@ function HomeSelect() {
 
         {values.length ? <PreviousResumeList values={values} /> : null}
       </div>
-      <UpdateInfo />
+      {/* <UpdateInfo /> */}
+      <UpdateContainer isOpen={updatesAreOpen} setIsOpen={setUpdatesAreOpen} />
       <AboutContainer isOpen={aboutIsOpen} setIsOpen={setAboutIsOpen} />
     </div>
   );
