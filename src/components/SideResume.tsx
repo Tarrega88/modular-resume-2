@@ -6,8 +6,10 @@ import { editMargin } from "@/state/resumeSlice";
 
 export default function SideResume({
   contentRef,
+  expanded,
 }: {
   contentRef: React.RefObject<HTMLDivElement>;
+  expanded: number;
 }) {
   const { scale, overlayMarginGuides, resumeMetaData, currentResumeId } =
     useSelector((s: RootState) => s.resume);
@@ -55,8 +57,8 @@ export default function SideResume({
 
   const wrapperW = PAGE_W * s;
   const wrapperH = rawH * s;
-  const zStyle = overlayMarginGuides && !replaceIsOpen ? 50 : 0;
-
+  const zStyle =
+    !overlayMarginGuides || replaceIsOpen || expanded !== -1 ? 0 : 50;
   return (
     <div className="relative" style={{ width: wrapperW, height: wrapperH }}>
       <div

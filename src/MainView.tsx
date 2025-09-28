@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import BuilderColumn from "@/components/builderColumn/BuilderColumn";
 import SideResume from "@/components/SideResume";
@@ -23,15 +23,17 @@ export default function MainView() {
     pageStyle: formattedPageStyle,
   });
 
+  const [expanded, setExpanded] = useState(-1);
+
   return (
     <div>
       <MobileNotification />
       <div className="flex w-full h-[100dvh]">
         <BuilderColumn onPrint={handlePrint} />
         <div className="overflow-auto w-full bg-gray-500 flex flex-col items-center relative">
-          <TopMenu />
+          <TopMenu expanded={expanded} setExpanded={setExpanded} />
           <div className="px-5 pt-5">
-            <SideResume contentRef={contentRef} />
+            <SideResume contentRef={contentRef} expanded={expanded} />
           </div>
         </div>
       </div>

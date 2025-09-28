@@ -28,8 +28,7 @@ import FontDropdown from "./FontDropdown";
 //Builder Column:
 //View PDF, Zoom
 
-function TopMenu() {
-  const [expanded, setExpanded] = useState(-1);
+function TopMenu({ expanded, setExpanded }) {
   const [expandedBranch, setExpandedBranch] = useState(-1);
 
   useEffect(() => {
