@@ -40,7 +40,7 @@ function HomeSelect() {
           </div>
         </div>
 
-        {values.length ? <PreviousResumeList values={values} /> : null}
+        {values?.length ? <PreviousResumeList values={values} /> : null}
       </div>
       {/* <UpdateInfo /> */}
       <UpdateContainer isOpen={updatesAreOpen} setIsOpen={setUpdatesAreOpen} />
