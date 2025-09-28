@@ -15,12 +15,18 @@ import HintBox from "./HintBox";
 import LastSaved from "./LastSaved";
 import ExpandableContainer from "./ExpandableContainer";
 
-export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
-  const [helpIsOpen, setHelpIsOpen] = useState(false);
+export default function BuilderColumn({
+  onPrint,
+  handleOpenHelper,
+}: {
+  onPrint: () => void;
+  handleOpenHelper: () => void;
+}) {
+  // const [helpIsOpen, setHelpIsOpen] = useState(false);
 
-  function handleOpenHelper() {
-    setHelpIsOpen(!helpIsOpen);
-  }
+  // function handleOpenHelper() {
+  //   setHelpIsOpen(!helpIsOpen);
+  // }
 
   const navigate = useNavigate();
 
@@ -49,7 +55,7 @@ export default function BuilderColumn({ onPrint }: { onPrint: () => void }) {
         <IconHelper />
         <HintBox />
       </div>
-      <HelpContainer isOpen={helpIsOpen} setIsOpen={setHelpIsOpen} />
+      {/* <HelpContainer isOpen={helpIsOpen} setIsOpen={setHelpIsOpen} /> */}
     </div>
   );
 }

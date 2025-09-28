@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./state/store";
 import TopMenu from "./components/topMenu/TopMenu";
 import BottomRibbon from "./components/topMenu/BottomRibbon";
+import HelpContainer from "./components/builderColumn/HelpContainer";
 
 export default function MainView() {
   const { currentResumeId, resumeMetaData } = useSelector(
@@ -25,12 +26,20 @@ export default function MainView() {
   });
 
   const [expanded, setExpanded] = useState(-1);
+  const [helpIsOpen, setHelpIsOpen] = useState(false);
+
+  function handleOpenHelper() {
+    setHelpIsOpen(!helpIsOpen);
+  }
 
   return (
     <div>
       <MobileNotification />
       <div className="grid grid-cols-[280px_1fr] w-full h-full bg-slate-700">
-        <BuilderColumn onPrint={handlePrint} />
+        <BuilderColumn
+          onPrint={handlePrint}
+          handleOpenHelper={handleOpenHelper}
+        />
         <div className="w-full bg-gray-500 flex flex-col items-center">
           <TopMenu expanded={expanded} setExpanded={setExpanded} />
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
@@ -38,6 +47,7 @@ export default function MainView() {
           </div>
           {/* <div className="absolute bottom-0"> */}
           <BottomRibbon />
+          <HelpContainer isOpen={helpIsOpen} setIsOpen={setHelpIsOpen} />
           {/* </div> */}
         </div>
       </div>
