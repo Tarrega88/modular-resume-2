@@ -37,7 +37,7 @@ function RelativeAbsRight({
       : "";
 
   const pageWidth =
-    resumeMetaData[currentResumeId].pageStyle === "A4" ? 827 : 850;
+    resumeMetaData[currentResumeId]?.pageStyle === "A4" ? 827 : 850;
 
   return (
     <div

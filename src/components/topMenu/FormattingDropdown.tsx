@@ -24,7 +24,8 @@ function FormattingDropdown({
     (state: RootState) => state.resume
   );
 
-  const { pageStyle, margin } = resumeMetaData[currentResumeId];
+  const pageStyle = resumeMetaData[currentResumeId]?.pageStyle || "Letter";
+  const margin = resumeMetaData[currentResumeId]?.margin || 75;
 
   const dispatch = useDispatch();
 
