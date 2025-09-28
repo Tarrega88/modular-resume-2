@@ -1,8 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import SideResumeInner from "./SideResumeInner";
-import { editMargin } from "@/state/resumeSlice";
 
 export default function SideResume({
   contentRef,
@@ -21,24 +20,8 @@ export default function SideResume({
 
   const PAGE_W = pageStyle === "A4" ? 827 : 850;
   const PAGE_H = pageStyle === "A4" ? 1169 : 1100;
-  const dispatch = useDispatch();
 
-  /*
-    A4: 8.27 x 11.69 inches
-    827 x 1169
-  */
-
-  const MARGIN = resumeMetaData[currentResumeId].margin;
-
-  if (MARGIN !== 50 && MARGIN !== 75 && MARGIN !== 100) {
-    if (MARGIN === 48) {
-      dispatch(editMargin({ margin: 50 }));
-    } else if (MARGIN === 96) {
-      dispatch(editMargin({ margin: 100 }));
-    } else {
-      dispatch(editMargin({ margin: 75 }));
-    }
-  }
+  const MARGIN = resumeMetaData[currentResumeId].margin || 75;
 
   const overlaySize = MARGIN * 2;
 
