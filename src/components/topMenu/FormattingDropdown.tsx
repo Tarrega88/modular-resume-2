@@ -20,9 +20,10 @@ function FormattingDropdown({
   expandedBranch,
   setExpandedBranch,
 }) {
-  const { resumeMetaData, currentResumeId, measurementStyle } = useSelector(
-    (state: RootState) => state.resume
-  );
+  const state = useSelector((state: RootState) => state.resume);
+  const { resumeMetaData, currentResumeId } = state;
+
+  const measurementStyle = state?.measurementStyle || "imperial";
 
   const pageStyle = resumeMetaData[currentResumeId]?.pageStyle || "Letter";
   const margin = resumeMetaData[currentResumeId]?.margin || 75;
