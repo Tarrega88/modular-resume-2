@@ -11,10 +11,10 @@ import HelpContainer from "./components/builderColumn/HelpContainer";
 
 export default function MainView() {
   const { currentResumeId, resumeMetaData } = useSelector(
-    (state: RootState) => state.resume
+    (state: RootState) => state?.resume
   );
 
-  const { pageStyle } = resumeMetaData[currentResumeId];
+  const pageStyle = resumeMetaData[currentResumeId]?.pageStyle || "Letter";
 
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -45,14 +45,10 @@ export default function MainView() {
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
             <SideResume contentRef={contentRef} expanded={expanded} />
           </div>
-          {/* <div className="absolute bottom-0"> */}
           <BottomRibbon />
           <HelpContainer isOpen={helpIsOpen} setIsOpen={setHelpIsOpen} />
-          {/* </div> */}
         </div>
       </div>
     </div>
   );
 }
-
-//h-[100dvh]
