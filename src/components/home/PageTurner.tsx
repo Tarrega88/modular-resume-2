@@ -1,4 +1,3 @@
-import { FaCaretLeft, FaCaretRight } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function PageTurner({ page, setPage, maxPages }) {
