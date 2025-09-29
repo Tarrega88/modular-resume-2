@@ -5,7 +5,6 @@ import SimpleAddSection from "./SimpleAddSection";
 import ShowDividerToggle from "./ShowDividerToggle";
 import BuilderColumnTitle from "./BuilderColumnTitle";
 import ResumeNamer from "./ResumeNamer";
-import ToggleMonthDisplay from "./ToggleMonthType";
 import BuilderColumnMainButton from "./BuilderColumnMainButton";
 import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +36,6 @@ export default function BuilderColumn({
         </div>
         <GeneratePDFButton onPrint={onPrint} />
         <ExpandableContainer title="Toggles" startExpanded={false}>
-          <ToggleMonthDisplay />
           <ShowDividerToggle />
           <MarginOverlayToggle />
         </ExpandableContainer>

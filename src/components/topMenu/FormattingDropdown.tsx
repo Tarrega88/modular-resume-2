@@ -3,6 +3,7 @@ import DropdownBranch from "./DropdownBranch";
 import TopMenuDropdown from "./TopMenuDropdown";
 import TopMenuOption from "./TopMenuOption";
 import {
+  changeMonthType,
   editMargin,
   editMeasurementStyle,
   editPageStyle,
@@ -21,7 +22,7 @@ function FormattingDropdown({
   setExpandedBranch,
 }) {
   const state = useSelector((state: RootState) => state.resume);
-  const { resumeMetaData, currentResumeId } = state;
+  const { resumeMetaData, currentResumeId, monthType } = state;
 
   const measurementStyle = state?.measurementStyle || "imperial";
 
@@ -103,6 +104,23 @@ function FormattingDropdown({
           text={measurements[measurementStyle][100]}
           onClick={() => handleSetMargin(100)}
           checked={margin === 100}
+        />
+      </DropdownBranch>
+      <DropdownBranch
+        title="Months"
+        i={3}
+        expanded={expandedBranch}
+        setExpanded={setExpandedBranch}
+      >
+        <TopMenuOption
+          text="Abbreviated"
+          onClick={() => dispatch(changeMonthType("short"))}
+          checked={monthType === "short"}
+        />
+        <TopMenuOption
+          text="Full"
+          onClick={() => dispatch(changeMonthType("long"))}
+          checked={monthType === "long"}
         />
       </DropdownBranch>
     </TopMenuDropdown>
