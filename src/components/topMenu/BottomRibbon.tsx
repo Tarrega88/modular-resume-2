@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setScale } from "@/state/resumeSlice";
 import { RootState } from "@/state/store";
 import LastSaved from "../builderColumn/LastSaved";
+import LowerTier2 from "../lowerTier2/LowerTier2";
 
 function BottomRibbon() {
   const dispatch = useDispatch();
@@ -15,8 +16,9 @@ function BottomRibbon() {
   }
 
   return (
-    <div className="sticky bottom-0 w-full bg-neutral-700 text-white py-4 z-50">
-      <div className="flex justify-between w-full flex-wrap">
+    <div className="sticky bottom-0 w-full bg-neutral-700 text-white pb-4 z-50">
+      <LowerTier2 />
+      <div className="flex justify-between w-full flex-wrap pt-4 bg-neutral-700">
         <div className="flex pl-6 flex-wrap pb-2 sm:pb-0">
           <RibbonSlider
             min={50}
@@ -31,7 +33,7 @@ function BottomRibbon() {
           </RibbonSlider>
           <RibbonFontScaleSlider />
         </div>
-        <div>
+        <div className="bg-neutral-700">
           <LastSaved />
         </div>
       </div>

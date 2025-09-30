@@ -1,15 +1,11 @@
 import GeneratePDFButton from "./GeneratePDFButton";
 import IconHelper from "./IconHelper";
-import MarginOverlayToggle from "./MarginOverlayToggle";
-import SimpleAddSection from "./SimpleAddSection";
-import ShowDividerToggle from "./ShowDividerToggle";
 import BuilderColumnTitle from "./BuilderColumnTitle";
 import ResumeNamer from "./ResumeNamer";
 import BuilderColumnMainButton from "./BuilderColumnMainButton";
 import { IoMdHome } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import HintBox from "./HintBox";
-import ExpandableContainer from "./ExpandableContainer";
 
 export default function BuilderColumn({
   onPrint,
@@ -35,11 +31,6 @@ export default function BuilderColumn({
           />
         </div>
         <GeneratePDFButton onPrint={onPrint} />
-        <ExpandableContainer title="Toggles" startExpanded={false}>
-          <ShowDividerToggle />
-          <MarginOverlayToggle />
-        </ExpandableContainer>
-        <SimpleAddSection />
         <IconHelper />
         <HintBox />
       </div>

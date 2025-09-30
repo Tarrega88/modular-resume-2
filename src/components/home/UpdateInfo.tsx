@@ -11,12 +11,23 @@ type Info = {
 
 const updates: Info[] = [
   {
+    title: "",
+    date: "9/30/2025",
+    textArr: [
+      "Brought Add Sections into Lower Ribbon",
+      "Brought Visible Divider and Margin Guide toggle into lower ribbon",
+      "Prepping for eventual removal of left column to allow for more space on both desktop and the eventual mobile design",
+    ],
+  },
+  {
     title: "App Layout Upgrades",
     date: "9/28/2025",
     textArr: [
       "Brought Zoom, Font Scaling, and Last Saved into lower sticky bar",
       "Decluttered the left column, allowing it to stay more focused in its intent as a main function container",
     ],
+    url: "https://github.com/Tarrega88/modular-resume-2/commit/1606bb267f76ef8e3dfeb0e830e06da29063f525",
+    urlText: "GitHub",
   },
   {
     title: "Top Menu & Side Column Declutter",

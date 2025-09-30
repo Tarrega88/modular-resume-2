@@ -15,7 +15,7 @@ function Summary({ id, text, renderUI }: SummaryProps & { renderUI: boolean }) {
         text={text}
         handleOnSubmit={handleOnSubmit}
         inputWidth="full"
-        placeholderText="Enter summary text..."
+        placeholderText="Enter text..."
       />
     </div>
   );

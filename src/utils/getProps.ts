@@ -34,7 +34,7 @@ export function getSectionHeaderProps(id: string): SectionHeaderProps {
 }
 
 export function getSummaryProps(id: string): SummaryProps {
-    return { id, kind: "summary", text: "Enter summary text..." }
+    return { id, kind: "summary", text: "Enter text..." }
 }
 
 export function getProjectProps(id: string): ProjectProps {
