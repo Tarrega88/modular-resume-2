@@ -71,6 +71,7 @@ export default function SideResume({
             PAGE_H={PAGE_H}
             replaceIsOpen={replaceIsOpen}
             setReplaceIsOpen={setReplaceIsOpen}
+            isMobile={false}
           />
         </div>
       </div>

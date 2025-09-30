@@ -9,11 +9,14 @@ export default function SideResumeInner({
   PAGE_W,
   replaceIsOpen,
   setReplaceIsOpen,
+  isMobile,
 }) {
   const resumeState = useSelector((s: RootState) => s.resume);
   const currentResume = resumeState.currentResumeId;
   const renderOrder = resumeState.resumes[currentResume] ?? [];
-  const MARGIN = resumeState.resumeMetaData[currentResume].margin;
+  const MARGIN = isMobile
+    ? 0
+    : resumeState.resumeMetaData[currentResume].margin;
 
   const ref = useRef<HTMLDivElement | null>(null);
   useLayoutEffect(() => {
