@@ -5,7 +5,6 @@ import PreviousResumeList from "./PreviousResumeList";
 import { useState } from "react";
 import LastWorkedOn from "./LastWorkedOn";
 import AboutContainer from "./AboutContainer";
-import UpdateInfo from "./UpdateInfo";
 import UpdateContainer from "./UpdateContainer";
 
 function HomeSelect() {
@@ -42,7 +41,6 @@ function HomeSelect() {
 
         {values?.length ? <PreviousResumeList values={values} /> : null}
       </div>
-      {/* <UpdateInfo /> */}
       <UpdateContainer isOpen={updatesAreOpen} setIsOpen={setUpdatesAreOpen} />
       <AboutContainer isOpen={aboutIsOpen} setIsOpen={setAboutIsOpen} />
     </div>

@@ -109,7 +109,9 @@ function UpdateInfo() {
         <div className="flex items-center gap-1">
           <button
             onClick={() =>
-              setInfoSelection(infoSelection > 0 ? infoSelection - 1 : 0)
+              setInfoSelection(
+                infoSelection > 0 ? infoSelection - 1 : updates.length - 1
+              )
             }
           >
             <IoIosArrowBack className="cursor-pointer" />
@@ -120,9 +122,7 @@ function UpdateInfo() {
           <button
             onClick={() =>
               setInfoSelection(
-                infoSelection < updates.length - 1
-                  ? infoSelection + 1
-                  : updates.length - 1
+                infoSelection < updates.length - 1 ? infoSelection + 1 : 0
               )
             }
           >
