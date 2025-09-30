@@ -13,7 +13,7 @@ function Toggles() {
   );
 
   return (
-    <div className="flex flex-col gap-2 pt-2">
+    <div className="flex flex-col gap-2 py-2">
       <Toggle
         text="Visible Dividers"
         checked={showDividers}
