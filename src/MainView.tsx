@@ -17,9 +17,15 @@ export default function MainView() {
   const pageStyle = resumeMetaData[currentResumeId]?.pageStyle || "Letter";
   const contentRef = useRef<HTMLDivElement>(null);
   const formattedPageStyle = `@page { size: ${pageStyle} portrait; margin: 0 }`;
-  const handlePrintDesktop = useReactToPrint({
+
+  const desktopPrint = useReactToPrint({
     contentRef,
     pageStyle: formattedPageStyle,
+    preserveAfterPrint: true,
+  });
+
+  const mobilePrint = useReactToPrint({
+    contentRef,
     preserveAfterPrint: true,
   });
 
@@ -31,7 +37,11 @@ export default function MainView() {
   }
 
   function handlePrint() {
-    handlePrintDesktop();
+    desktopPrint();
+  }
+
+  function handlePrintMobile() {
+    mobilePrint();
   }
 
   return (
@@ -44,6 +54,7 @@ export default function MainView() {
             expanded={expanded}
             setExpanded={setExpanded}
             handlePrintDesktop={handlePrint}
+            handlePrintMobile={handlePrintMobile}
           />
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
             <SideResume contentRef={contentRef} expanded={expanded} />

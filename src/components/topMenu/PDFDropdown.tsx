@@ -5,11 +5,22 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 
-function PDFDropdown({ expanded, setExpanded, handlePrintDesktop }) {
-  function handleClick() {
+function PDFDropdown({
+  expanded,
+  setExpanded,
+  handlePrintDesktop,
+  handlePrintMobile,
+}) {
+  function handleDesktopClick() {
     setExpanded(-1);
     toast("Generating PDF...");
     handlePrintDesktop();
+  }
+
+  function handleMobileClick() {
+    setExpanded(-1);
+    toast("Generating PDF...");
+    handlePrintMobile();
   }
 
   const navigate = useNavigate();
@@ -35,8 +46,8 @@ function PDFDropdown({ expanded, setExpanded, handlePrintDesktop }) {
       expanded={expanded}
       setExpanded={setExpanded}
     >
-      <TopMenuButton text="Desktop PDF" onClick={handleClick} />
-      <TopMenuButton text="Mobile (Testing)" onClick={handleClick} />
+      <TopMenuButton text="Desktop PDF" onClick={handleDesktopClick} />
+      <TopMenuButton text="Mobile (Testing)" onClick={handleMobileClick} />
     </TopMenuDropdown>
   );
 }
