@@ -7,10 +7,8 @@ import { useNavigate } from "react-router-dom";
 import HintBox from "./HintBox";
 
 export default function BuilderColumn({
-  onPrint,
   handleOpenHelper,
 }: {
-  onPrint: () => void;
   handleOpenHelper: () => void;
 }) {
   const navigate = useNavigate();

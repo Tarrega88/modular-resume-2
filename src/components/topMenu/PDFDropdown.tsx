@@ -24,7 +24,7 @@ function PDFDropdown({ expanded, setExpanded, handlePrintDesktop }) {
       setExpanded={setExpanded}
     >
       <TopMenuButton text="Desktop PDF" onClick={handleClick} />
-      <TopMenuButton text="Mobile PDF" onClick={handleMobilePDF} />
+      <TopMenuButton text="Mobile (Testing)" onClick={handleMobilePDF} />
     </TopMenuDropdown>
   );
 }

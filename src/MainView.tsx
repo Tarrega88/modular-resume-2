@@ -37,10 +37,7 @@ export default function MainView() {
     <div>
       <MobileNotification />
       <div className="grid grid-cols-[280px_1fr] w-full bg-slate-700 h-screen">
-        <BuilderColumn
-          onPrint={handlePrint}
-          handleOpenHelper={handleOpenHelper}
-        />
+        <BuilderColumn handleOpenHelper={handleOpenHelper} />
         <div className="w-full bg-gray-500 flex flex-col items-center overflow-auto">
           <TopMenu
             expanded={expanded}
