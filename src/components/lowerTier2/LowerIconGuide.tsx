@@ -62,10 +62,10 @@ function LowerIconGuide() {
   const activeIcon = iconData[activeIconIndex];
 
   return (
-    <div className="flex w-full bg-neutral-200 text-neutral-950">
-      <div className="size-40 flex flex-col justify-between p-3 text-2xl">
+    <div className="flex w-full bg-neutral-200 text-neutral-950 min-h-28">
+      <div className="w-50 flex flex-col justify-evenly p-3 text-2xl gap-3">
         <div className="flex justify-between">
-          {iconData.slice(0, 3).map((e, i) => (
+          {iconData.slice(0, 4).map((e, i) => (
             <button
               className="cursor-pointer"
               onClick={() => setActiveIconIndex(i)}
@@ -76,21 +76,10 @@ function LowerIconGuide() {
           ))}
         </div>
         <div className="flex justify-between">
-          {iconData.slice(3, 6).map((e, i) => (
+          {iconData.slice(4).map((e, i) => (
             <button
               className="cursor-pointer"
-              onClick={() => setActiveIconIndex(i + 3)}
-              key={i}
-            >
-              {e.icon}
-            </button>
-          ))}
-        </div>
-        <div className="flex justify-between">
-          {iconData.slice(6).map((e, i) => (
-            <button
-              className="cursor-pointer"
-              onClick={() => setActiveIconIndex(i + 6)}
+              onClick={() => setActiveIconIndex(i + 4)}
               key={i}
             >
               {e.icon}
