@@ -20,19 +20,21 @@ export default function PrintPage() {
     });
   }, []);
 
-  const css = `
-    @page {
-      size: ${pageStyle === "A4" ? "A4" : "Letter"} portrait;
-      margin: 0;
-    }
+  useEffect(() => {
+    const css = `
+    @page { size: ${pageStyle === "A4" ? "A4" : "Letter"} portrait; margin: 0; }
     @media print {
+      html, body { margin: 0 !important; padding: 0 !important; height: auto !important; overflow: visible !important; }
+      #resume-pages { margin: 0 !important; }
       body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   `;
-  const tag = document.createElement("style");
-  tag.setAttribute("data-print-page", "1");
-  tag.textContent = css;
-  document.head.appendChild(tag);
+    const tag = document.createElement("style");
+    tag.setAttribute("data-print-page", "1");
+    tag.textContent = css;
+    document.head.appendChild(tag);
+    return () => tag.remove();
+  }, [pageStyle]);
 
   return (
     <main id="print-root">
