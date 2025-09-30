@@ -23,6 +23,8 @@ export default function SideResumeInner({
     if (!ref.current) return;
   }, []);
 
+  const height = isMobile ? PAGE_H - 100 : PAGE_H;
+
   return (
     <div
       id="resume-root"
@@ -32,7 +34,7 @@ export default function SideResumeInner({
         position: "relative",
         backgroundColor: "white",
         width: `${PAGE_W}px`,
-        minHeight: `${PAGE_H}px`,
+        minHeight: `${height}px`,
         lineHeight: 1.4,
         paddingLeft: `${MARGIN}px`,
         paddingRight: `${MARGIN}px`,
