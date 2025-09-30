@@ -3,7 +3,8 @@ import HomePage from "@/routes/HomePage";
 import BuilderPage from "@/routes/BuilderPage";
 import DevToolbar from "./components/DevToolbar";
 import { Toaster } from "sonner";
-import PrintPage from "./routes/PrinterPage";
+import PrinterPageA4 from "./routes/PrinterPageA4";
+import PrinterPageLetter from "./routes/PrinterPageLetter";
 
 export default function App() {
   return (
@@ -13,7 +14,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/builder/:resumeId" element={<BuilderPage />} />
-        <Route path="/print" element={<PrintPage />} /> {/* new */}
+        <Route path="/print/a4" element={<PrinterPageA4 />} />
+        <Route path="/print/letter" element={<PrinterPageLetter />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

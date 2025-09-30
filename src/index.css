@@ -51,6 +51,22 @@
   }
 }
 
+@media print {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .paper-letter #resume-pages {
+    width: 8.5in;
+    min-height: 11in;
+  }
+  .paper-a4 #resume-pages {
+    width: 8.27in;
+    min-height: 11.69in;
+  }
+}
+
 @layer components {
   .resume-root {
     --font-scale: 1;

@@ -2,6 +2,8 @@ import { toast } from "sonner";
 import TopMenuButton from "./TopMenuButton";
 import TopMenuDropdown from "./TopMenuDropdown";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "@/state/store";
 
 function PDFDropdown({ expanded, setExpanded, handlePrintDesktop }) {
   function handleClick() {
@@ -12,8 +14,18 @@ function PDFDropdown({ expanded, setExpanded, handlePrintDesktop }) {
 
   const navigate = useNavigate();
 
+  const { currentResumeId, resumeMetaData } = useSelector(
+    (state: RootState) => state.resume
+  );
+
+  const pageStyle = resumeMetaData[currentResumeId].pageStyle || "Letter";
+
   function handleMobilePDF() {
-    navigate("/print");
+    if (pageStyle === "A4") {
+      navigate("/print/a4");
+    } else {
+      navigate("/print/letter");
+    }
   }
 
   return (
