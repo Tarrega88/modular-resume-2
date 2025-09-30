@@ -11,9 +11,12 @@ export default function PrinterPageLetter() {
 
     const tag = document.createElement("style");
     tag.id = "page-size";
-    tag.textContent = `@page { size: ${
-      cls === "paper-letter" ? "Letter" : "A4"
-    }; margin: 0; }`;
+    tag.textContent = `
+    @page { size: Letter; margin: 0; }
+    @media print {
+        html, body { margin: 0 !important; padding: 0 !important; }
+    }
+    `;
     document.head.appendChild(tag);
 
     (document as any).fonts?.ready?.finally(() =>
