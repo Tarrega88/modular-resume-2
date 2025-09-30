@@ -3,6 +3,7 @@ import LowerAddRow from "./LowerAddRow";
 import LowerTab from "./LowerTab";
 import ActiveContainer from "./ActiveContainer";
 import LowerIconGuide from "./LowerIconGuide";
+import LowerHints from "./LowerHints";
 
 function LowerTier2() {
   const [activeTab, setActiveTab] = useState(-1);
@@ -22,6 +23,12 @@ function LowerTier2() {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
+        <LowerTab
+          i={2}
+          text="Hints"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
       </div>
       <div className="w-full">
         <ActiveContainer i={0} activeTab={activeTab} width="100%">
@@ -29,6 +36,9 @@ function LowerTier2() {
         </ActiveContainer>
         <ActiveContainer i={1} activeTab={activeTab} width="100%">
           <LowerIconGuide />
+        </ActiveContainer>
+        <ActiveContainer i={2} activeTab={activeTab} width="100%">
+          <LowerHints />
         </ActiveContainer>
       </div>
     </div>

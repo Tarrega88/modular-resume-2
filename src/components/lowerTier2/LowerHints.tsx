@@ -1,10 +1,5 @@
-import { useEffect, useState } from "react";
-import { FaPause, FaPlay } from "react-icons/fa6";
-import {
-  IoIosArrowBack,
-  IoIosArrowForward,
-  IoMdArrowDropdown,
-} from "react-icons/io";
+import { useState } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const hints = [
   {
@@ -53,65 +48,34 @@ const hints = [
   },
 ];
 
-function HintBox() {
-  const [i, setI] = useState(0);
-  const [running, setRunning] = useState(true);
-  const interval = 15000;
+function LowerHints() {
+  const [hintIndex, setHintIndex] = useState(0);
 
-  const [isExpanded, setIsExpanded] = useState(true);
-
-  useEffect(() => {
-    if (!running || !isExpanded) return;
-    const id = setInterval(() => setI((n) => (n + 1) % hints.length), interval);
-    return () => clearInterval(id);
-  }, [running, isExpanded]);
-
-  if (!hints.length) return null;
-
-  const hint = hints[i];
+  const activeHint = hints[hintIndex];
 
   return (
-    <div className="bg-blue-50 border-b">
-      <div
-        className="flex justify-center items-center gap-2 font-semibold py-2 px-2 hover:bg-blue-100 transition-all duration-200 cursor-pointer"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <div>Hints</div>
-        <IoMdArrowDropdown
-          className={`${
-            isExpanded ? "rotate-360" : "rotate-270"
-          } transition-all duration-200`}
-        />
+    <div className="bg-neutral-200 text-neutral-950 px-4 py-2 min-h-28">
+      <div className="flex justify-between">
+        <div className="font-semibold">{activeHint.topic}</div>
+        <div className="flex gap-1 items-center">
+          <button
+            onClick={() =>
+              setHintIndex(hintIndex > 0 ? hintIndex - 1 : hints.length - 1)
+            }
+          >
+            <IoIosArrowBack />
+          </button>
+          <span>
+            {hintIndex + 1} / {hints.length}
+          </span>
+          <button onClick={() => setHintIndex((hintIndex + 1) % hints.length)}>
+            <IoIosArrowForward />
+          </button>
+        </div>
       </div>
-      {isExpanded ? (
-        <>
-          <div className="relative">
-            <div className="flex justify-center items-center gap-2">
-              <IoIosArrowBack
-                className="cursor-pointer"
-                onClick={() => setI(i === 0 ? hints.length - 1 : i - 1)}
-              />
-              <div className="">{i + 1}</div>
-              <IoIosArrowForward
-                className="cursor-pointer"
-                onClick={() => setI(i === hints.length - 1 ? 0 : i + 1)}
-              />
-            </div>
-
-            <div className="absolute right-2 top-1 cursor-pointer">
-              {running ? (
-                <FaPause onClick={() => setRunning(false)} />
-              ) : (
-                <FaPlay onClick={() => setRunning(true)} />
-              )}
-            </div>
-          </div>
-          <div className="px-3 font-semibold underline py-2">{hint.topic}</div>
-          <div className="px-3 pb-6">{hint.text}</div>
-        </>
-      ) : null}
+      <div>{activeHint.text}</div>
     </div>
   );
 }
 
-export default HintBox;
+export default LowerHints;
