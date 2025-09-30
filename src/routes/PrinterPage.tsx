@@ -22,7 +22,9 @@ export default function PrintPage() {
 
   useEffect(() => {
     const css = `
-    @page { size: ${pageStyle === "A4" ? "A4" : "Letter"} portrait; margin: 0; }
+    @page { size: ${
+      pageStyle === "A4" ? "A4" : "Letter"
+    } portrait; margin: 0; padding: 0; }
     @media print {
       html, body { margin: 0 !important; padding: 0 !important; height: auto !important; overflow: visible !important; }
       #resume-pages { margin: 0 !important; }
