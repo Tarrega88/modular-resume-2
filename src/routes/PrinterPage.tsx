@@ -28,6 +28,7 @@ export default function PrintPage() {
           PAGE_H={PAGE_H}
           replaceIsOpen={false}
           setReplaceIsOpen={() => null}
+          isMobile={true}
         />
       </div>
     </main>

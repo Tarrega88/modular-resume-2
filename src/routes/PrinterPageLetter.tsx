@@ -7,7 +7,7 @@ export default function PrinterPageLetter() {
 
   useEffect(() => {
     // const cls = "paper-letter";
-    // document.body.classList.add("paper-letter");
+    document.body.classList.add("paper-letter");
 
     const tag = document.createElement("style");
     tag.id = "page-size";
@@ -24,7 +24,7 @@ export default function PrinterPageLetter() {
     );
 
     return () => {
-      //   document.body.classList.remove("paper-letter");
+      document.body.classList.remove("paper-letter");
       tag.remove();
     };
   }, []);
