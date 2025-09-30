@@ -21,12 +21,6 @@ export default function MainView() {
   const desktopPrint = useReactToPrint({
     contentRef,
     pageStyle: formattedPageStyle,
-    preserveAfterPrint: true,
-  });
-
-  const mobilePrint = useReactToPrint({
-    contentRef,
-    preserveAfterPrint: true,
   });
 
   const [expanded, setExpanded] = useState(-1);
@@ -40,10 +34,6 @@ export default function MainView() {
     desktopPrint();
   }
 
-  function handlePrintMobile() {
-    mobilePrint();
-  }
-
   return (
     <div>
       <MobileNotification />
@@ -54,7 +44,6 @@ export default function MainView() {
             expanded={expanded}
             setExpanded={setExpanded}
             handlePrintDesktop={handlePrint}
-            handlePrintMobile={handlePrintMobile}
           />
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
             <SideResume contentRef={contentRef} expanded={expanded} />

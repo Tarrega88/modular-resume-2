@@ -7,15 +7,9 @@ type Props = {
   expanded: number;
   setExpanded: (v: number) => void;
   handlePrintDesktop(): void;
-  handlePrintMobile(): void;
 };
 
-function TopMenu({
-  expanded,
-  setExpanded,
-  handlePrintDesktop,
-  handlePrintMobile,
-}: Props) {
+function TopMenu({ expanded, setExpanded, handlePrintDesktop }: Props) {
   const barRef = useRef<HTMLDivElement>(null);
   const [expandedBranch, setExpandedBranch] = useState(-1);
 
@@ -59,7 +53,6 @@ function TopMenu({
               expanded={expanded}
               setExpanded={setExpanded}
               handlePrintDesktop={handlePrintDesktop}
-              handlePrintMobile={handlePrintMobile}
             />
             <FormattingDropdown
               expanded={expanded}

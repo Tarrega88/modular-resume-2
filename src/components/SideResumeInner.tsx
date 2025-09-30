@@ -9,21 +9,16 @@ export default function SideResumeInner({
   PAGE_W,
   replaceIsOpen,
   setReplaceIsOpen,
-  isMobile,
 }) {
   const resumeState = useSelector((s: RootState) => s.resume);
   const currentResume = resumeState.currentResumeId;
   const renderOrder = resumeState.resumes[currentResume] ?? [];
-  const MARGIN = isMobile
-    ? 0
-    : resumeState.resumeMetaData[currentResume].margin;
+  const MARGIN = resumeState.resumeMetaData[currentResume].margin;
 
   const ref = useRef<HTMLDivElement | null>(null);
   useLayoutEffect(() => {
     if (!ref.current) return;
   }, []);
-
-  const height = isMobile ? PAGE_H - 100 : PAGE_H;
 
   return (
     <div
@@ -34,7 +29,7 @@ export default function SideResumeInner({
         position: "relative",
         backgroundColor: "white",
         width: `${PAGE_W}px`,
-        minHeight: `${height}px`,
+        minHeight: `${PAGE_H}px`,
         lineHeight: 1.4,
         paddingLeft: `${MARGIN}px`,
         paddingRight: `${MARGIN}px`,
