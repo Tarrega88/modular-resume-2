@@ -21,6 +21,7 @@ export default function MainView() {
   const desktopPrint = useReactToPrint({
     contentRef,
     pageStyle: formattedPageStyle,
+    preserveAfterPrint: true,
   });
 
   const [expanded, setExpanded] = useState(-1);
@@ -38,12 +39,13 @@ export default function MainView() {
     <div>
       <MobileNotification />
       <div className="grid grid-cols-[280px_1fr] w-full bg-slate-700 h-screen">
-        <BuilderColumn handleOpenHelper={handleOpenHelper} />
+        <BuilderColumn />
         <div className="w-full bg-gray-500 flex flex-col items-center overflow-auto">
           <TopMenu
             expanded={expanded}
             setExpanded={setExpanded}
             handlePrintDesktop={handlePrint}
+            handleOpenHelper={handleOpenHelper}
           />
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
             <SideResume contentRef={contentRef} expanded={expanded} />

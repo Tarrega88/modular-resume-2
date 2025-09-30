@@ -20,6 +20,7 @@ function FormattingDropdown({
   setExpanded,
   expandedBranch,
   setExpandedBranch,
+  i,
 }) {
   const state = useSelector((state: RootState) => state.resume);
   const { resumeMetaData, currentResumeId, monthType } = state;
@@ -45,7 +46,7 @@ function FormattingDropdown({
 
   return (
     <TopMenuDropdown
-      i={1}
+      i={i}
       expanded={expanded}
       setExpanded={setExpanded}
       title="Formatting"

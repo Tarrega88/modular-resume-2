@@ -2,7 +2,7 @@ import { toast } from "sonner";
 import TopMenuButton from "./TopMenuButton";
 import TopMenuDropdown from "./TopMenuDropdown";
 
-function PDFDropdown({ expanded, setExpanded, handlePrintDesktop }) {
+function PDFDropdown({ expanded, setExpanded, handlePrintDesktop, i }) {
   function handleDesktopClick() {
     setExpanded(-1);
     toast("Generating PDF...");
@@ -12,7 +12,7 @@ function PDFDropdown({ expanded, setExpanded, handlePrintDesktop }) {
   return (
     <TopMenuDropdown
       title="PDF"
-      i={0}
+      i={i}
       expanded={expanded}
       setExpanded={setExpanded}
     >

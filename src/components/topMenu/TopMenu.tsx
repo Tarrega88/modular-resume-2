@@ -2,14 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import FormattingDropdown from "./FormattingDropdown";
 import FontDropdown from "./FontDropdown";
 import PDFDropdown from "./PDFDropdown";
+import MenuDropdown from "./MenuDropdown";
+import HelpDropdown from "./HelpDropdown";
 
 type Props = {
   expanded: number;
   setExpanded: (v: number) => void;
   handlePrintDesktop(): void;
+  handleOpenHelper(): void;
 };
 
-function TopMenu({ expanded, setExpanded, handlePrintDesktop }: Props) {
+function TopMenu({
+  expanded,
+  setExpanded,
+  handlePrintDesktop,
+  handleOpenHelper,
+}: Props) {
   const barRef = useRef<HTMLDivElement>(null);
   const [expandedBranch, setExpandedBranch] = useState(-1);
 
@@ -49,22 +57,34 @@ function TopMenu({ expanded, setExpanded, handlePrintDesktop }: Props) {
       <div className="flex flex-col gap-2">
         <div className="flex justify-between">
           <div ref={barRef} className="flex bg-neutral-700 text-white w-full">
+            <MenuDropdown expanded={expanded} setExpanded={setExpanded} i={0} />
             <PDFDropdown
               expanded={expanded}
               setExpanded={setExpanded}
               handlePrintDesktop={handlePrintDesktop}
+              i={1}
             />
             <FormattingDropdown
               expanded={expanded}
               setExpanded={setExpanded}
               expandedBranch={expandedBranch}
               setExpandedBranch={setExpandedBranch}
+              i={2}
             />
             <FontDropdown
               expanded={expanded}
               setExpanded={setExpanded}
               expandedBranch={expandedBranch}
               setExpandedBranch={setExpandedBranch}
+              i={3}
+            />
+            <HelpDropdown
+              expanded={expanded}
+              setExpanded={setExpanded}
+              expandedBranch={expandedBranch}
+              setExpandedBranch={setExpandedBranch}
+              i={4}
+              handleOpenHelp={handleOpenHelper}
             />
           </div>
         </div>

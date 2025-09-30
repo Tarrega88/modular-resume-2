@@ -18,6 +18,7 @@ function FontDropdown({
   setExpanded,
   expandedBranch,
   setExpandedBranch,
+  i,
 }) {
   const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ function FontDropdown({
 
   return (
     <TopMenuDropdown
-      i={2}
+      i={i}
       expanded={expanded}
       setExpanded={setExpanded}
       title="Font"

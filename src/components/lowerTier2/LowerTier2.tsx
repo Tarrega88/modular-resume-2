@@ -2,6 +2,7 @@ import { useState } from "react";
 import LowerAddRow from "./LowerAddRow";
 import LowerTab from "./LowerTab";
 import ActiveContainer from "./ActiveContainer";
+import LowerIconGuide from "./LowerIconGuide";
 
 function LowerTier2() {
   const [activeTab, setActiveTab] = useState(-1);
@@ -15,20 +16,20 @@ function LowerTier2() {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        {/* <LowerTab
+        <LowerTab
           i={1}
-          text="Toggles"
+          text="Icon Guide"
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-        /> */}
+        />
       </div>
-      <div className="flex">
-        <ActiveContainer i={0} activeTab={activeTab}>
+      <div className="w-full">
+        <ActiveContainer i={0} activeTab={activeTab} width="100%">
           <LowerAddRow />
         </ActiveContainer>
-        {/* <ActiveContainer i={1} activeTab={activeTab}>
-          <div>Test</div>
-        </ActiveContainer> */}
+        <ActiveContainer i={1} activeTab={activeTab} width="100%">
+          <LowerIconGuide />
+        </ActiveContainer>
       </div>
     </div>
   );
