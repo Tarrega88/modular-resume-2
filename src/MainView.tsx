@@ -20,6 +20,7 @@ export default function MainView() {
   const handlePrintDesktop = useReactToPrint({
     contentRef,
     pageStyle: formattedPageStyle,
+    preserveAfterPrint: true,
   });
 
   const [expanded, setExpanded] = useState(-1);
