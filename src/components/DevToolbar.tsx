@@ -16,7 +16,7 @@ export default function DevToolbar() {
   }
 
   return (
-    <div className="fixed bottom-3 left-3 z-50 rounded-lg bg-black/70 text-white px-3 py-2 shadow">
+    <div className="fixed bottom-3 left-3 z-50 rounded-lg bg-black/70 text-white px-3 py-2 shadow print:hidden">
       <button className="text-sm font-medium" onClick={purge}>
         Purge DB
       </button>

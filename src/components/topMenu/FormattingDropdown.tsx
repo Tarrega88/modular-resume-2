@@ -45,7 +45,7 @@ function FormattingDropdown({
 
   return (
     <TopMenuDropdown
-      i={0}
+      i={1}
       expanded={expanded}
       setExpanded={setExpanded}
       title="Formatting"

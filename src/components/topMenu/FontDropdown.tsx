@@ -38,7 +38,7 @@ function FontDropdown({
 
   return (
     <TopMenuDropdown
-      i={1}
+      i={2}
       expanded={expanded}
       setExpanded={setExpanded}
       title="Font"

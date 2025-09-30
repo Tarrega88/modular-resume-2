@@ -1,4 +1,3 @@
-import GeneratePDFButton from "./GeneratePDFButton";
 import IconHelper from "./IconHelper";
 import BuilderColumnTitle from "./BuilderColumnTitle";
 import ResumeNamer from "./ResumeNamer";
@@ -30,7 +29,6 @@ export default function BuilderColumn({
             onClick={() => handleOpenHelper()}
           />
         </div>
-        <GeneratePDFButton onPrint={onPrint} />
         <IconHelper />
         <HintBox />
       </div>

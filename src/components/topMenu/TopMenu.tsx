@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import FormattingDropdown from "./FormattingDropdown";
 import FontDropdown from "./FontDropdown";
+import PDFDropdown from "./PDFDropdown";
 
 type Props = {
   expanded: number;
   setExpanded: (v: number) => void;
+  handlePrintDesktop(): void;
 };
 
-function TopMenu({ expanded, setExpanded }: Props) {
+function TopMenu({ expanded, setExpanded, handlePrintDesktop }: Props) {
   const barRef = useRef<HTMLDivElement>(null);
   const [expandedBranch, setExpandedBranch] = useState(-1);
 
@@ -47,6 +49,11 @@ function TopMenu({ expanded, setExpanded }: Props) {
       <div className="flex flex-col gap-2">
         <div className="flex justify-between">
           <div ref={barRef} className="flex bg-neutral-700 text-white w-full">
+            <PDFDropdown
+              expanded={expanded}
+              setExpanded={setExpanded}
+              handlePrintDesktop={handlePrintDesktop}
+            />
             <FormattingDropdown
               expanded={expanded}
               setExpanded={setExpanded}

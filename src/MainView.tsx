@@ -15,12 +15,9 @@ export default function MainView() {
   );
 
   const pageStyle = resumeMetaData[currentResumeId]?.pageStyle || "Letter";
-
   const contentRef = useRef<HTMLDivElement>(null);
-
   const formattedPageStyle = `@page { size: ${pageStyle} portrait; margin: 0 }`;
-
-  const handlePrint = useReactToPrint({
+  const handlePrintDesktop = useReactToPrint({
     contentRef,
     pageStyle: formattedPageStyle,
   });
@@ -32,6 +29,10 @@ export default function MainView() {
     setHelpIsOpen(!helpIsOpen);
   }
 
+  function handlePrint() {
+    handlePrintDesktop();
+  }
+
   return (
     <div>
       <MobileNotification />
@@ -41,7 +42,11 @@ export default function MainView() {
           handleOpenHelper={handleOpenHelper}
         />
         <div className="w-full bg-gray-500 flex flex-col items-center overflow-auto">
-          <TopMenu expanded={expanded} setExpanded={setExpanded} />
+          <TopMenu
+            expanded={expanded}
+            setExpanded={setExpanded}
+            handlePrintDesktop={handlePrint}
+          />
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
             <SideResume contentRef={contentRef} expanded={expanded} />
           </div>
