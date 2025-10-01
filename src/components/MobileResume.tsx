@@ -1,8 +1,9 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
 import Draggable from "./wrappers/Draggable";
+import { useReactToPrint } from "react-to-print";
 
 export default function MobileResume({
   PAGE_H,
@@ -19,6 +20,13 @@ export default function MobileResume({
   useLayoutEffect(() => {
     if (!ref.current) return;
   }, []);
+
+  const handlePrint = useReactToPrint({
+    print: async (printIframe: HTMLIFrameElement) => {
+      // Do whatever you want here, including asynchronous work
+      // await generateAndSavePDF(printIframe);
+    },
+  });
 
   return (
     <div
