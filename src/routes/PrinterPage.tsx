@@ -1,3 +1,4 @@
+import MobileResume from "@/components/MobileResume";
 import SideResumeInner from "@/components/SideResumeInner";
 import { RootState } from "@/state/store";
 import { useEffect } from "react";
@@ -39,13 +40,12 @@ export default function PrintPage() {
       <div
         id="resume-pages"
         style={{ width: PAGE_W, minHeight: PAGE_H, margin: 0 }}
-        inert
       >
-        <SideResumeInner
+        <MobileResume
           PAGE_W={PAGE_W}
           PAGE_H={PAGE_H}
           replaceIsOpen={false}
-          setReplaceIsOpen={() => null}
+          setReplaceIsOpen={null}
         />
       </div>
     </main>
