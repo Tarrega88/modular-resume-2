@@ -33,6 +33,7 @@ export default function SideResumeInner({
         lineHeight: 1.4,
         paddingLeft: `${MARGIN}px`,
         paddingRight: `${MARGIN}px`,
+        margin: 0,
         paddingBottom: `${replaceIsOpen ? MARGIN * 10 : 0}px`,
         overflow: "hidden",
       }}
