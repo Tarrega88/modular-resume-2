@@ -23,7 +23,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/builder/:resumeId" element={<BuilderPage />} />
-        <Route path="/print" element={<PrinterPage />} />
+        {/* <Route path="/print" element={<PrinterPage />} /> */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
