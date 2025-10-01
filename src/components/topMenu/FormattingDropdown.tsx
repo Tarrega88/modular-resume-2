@@ -4,16 +4,25 @@ import TopMenuDropdown from "./TopMenuDropdown";
 import TopMenuOption from "./TopMenuOption";
 import {
   changeMonthType,
+  editFont,
   editMargin,
   editMeasurementStyle,
   editPageStyle,
 } from "@/state/resumeSlice";
 import { RootState } from "@/state/store";
+import { DEFAULT_SANS, SANS_OPTIONS } from "@/config/fonts";
+import { useEffect } from "react";
 
 const measurements = {
   imperial: { 50: '1/2"', 75: '3/4"', 100: '1"' },
   metric: { 50: "1.27 cm", 75: "1.905 cm", 100: "2.54 cm" },
 };
+
+const TARGET = "#resume-root";
+function applyToResume(stack: string) {
+  const el = document.querySelector(TARGET) as HTMLElement | null;
+  if (el) el.style.setProperty("--font-sans", stack);
+}
 
 function FormattingDropdown({
   expanded,
@@ -44,6 +53,17 @@ function FormattingDropdown({
     dispatch(editMargin({ margin }));
   }
 
+  const { font } = resumeMetaData[currentResumeId];
+  const sans = SANS_OPTIONS.find((e) => e.label === font) ?? DEFAULT_SANS;
+
+  function changeFont(e: string) {
+    dispatch(editFont({ font: e }));
+  }
+
+  useEffect(() => {
+    applyToResume(sans.stack);
+  }, [font]);
+
   return (
     <TopMenuDropdown
       i={i}
@@ -69,8 +89,23 @@ function FormattingDropdown({
         />
       </DropdownBranch>
       <DropdownBranch
-        title="Measurement"
+        title="Fonts"
         i={1}
+        expanded={expandedBranch}
+        setExpanded={setExpandedBranch}
+      >
+        {SANS_OPTIONS.map((e, i) => (
+          <TopMenuOption
+            key={i}
+            text={e.label}
+            onClick={() => changeFont(e.label)}
+            checked={e.label === font}
+          />
+        ))}
+      </DropdownBranch>
+      <DropdownBranch
+        title="Measurement"
+        i={2}
         expanded={expandedBranch}
         setExpanded={setExpandedBranch}
       >
@@ -87,7 +122,7 @@ function FormattingDropdown({
       </DropdownBranch>
       <DropdownBranch
         title="Margins"
-        i={2}
+        i={3}
         expanded={expandedBranch}
         setExpanded={setExpandedBranch}
       >
@@ -109,7 +144,7 @@ function FormattingDropdown({
       </DropdownBranch>
       <DropdownBranch
         title="Months"
-        i={3}
+        i={4}
         expanded={expandedBranch}
         setExpanded={setExpandedBranch}
       >

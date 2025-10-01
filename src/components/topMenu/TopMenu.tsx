@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import FormattingDropdown from "./FormattingDropdown";
-import FontDropdown from "./FontDropdown";
 import PDFDropdown from "./PDFDropdown";
 import MenuDropdown from "./MenuDropdown";
 import HelpDropdown from "./HelpDropdown";
@@ -71,19 +70,12 @@ function TopMenu({
               setExpandedBranch={setExpandedBranch}
               i={2}
             />
-            <FontDropdown
-              expanded={expanded}
-              setExpanded={setExpanded}
-              expandedBranch={expandedBranch}
-              setExpandedBranch={setExpandedBranch}
-              i={3}
-            />
             <HelpDropdown
               expanded={expanded}
               setExpanded={setExpanded}
               expandedBranch={expandedBranch}
               setExpandedBranch={setExpandedBranch}
-              i={4}
+              i={3}
               handleOpenHelp={handleOpenHelper}
             />
           </div>

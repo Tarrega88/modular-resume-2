@@ -21,8 +21,8 @@ function BottomRibbon() {
       <div className="flex justify-between w-full flex-wrap pt-4 bg-neutral-700">
         <div className="flex pl-6 flex-wrap pb-2 sm:pb-0">
           <RibbonSlider
-            min={30}
-            max={100}
+            min={40}
+            max={110}
             step={1}
             value={scale}
             mult={1}

@@ -11,7 +11,17 @@ type Info = {
 
 const updates: Info[] = [
   {
-    title: "",
+    title: "Left Column Removal",
+    date: "9/30/2025",
+    textArr: [
+      "All logic that was in the left column has now been brought into the upper and lower ribbons.",
+      "The Font menu has been brought into Formatting",
+      "Hints may end up in Help at some point, but it's a stop gap for teaching how this program works for now.",
+      "New tutorial video coming soon",
+    ],
+  },
+  {
+    title: "Lower Ribbon Logic",
     date: "9/30/2025",
     textArr: [
       "Brought Add Sections into Lower Ribbon",
