@@ -57,7 +57,7 @@ app.get('/render', async (c) => {
     let browser: Browser | undefined;
     try {
         // IMPORTANT: pass the browser binding from wrangler.toml
-        browser = await playwright.chromium.launch(c.env.MYBROWSER as any);
+        browser = await playwright.launch(c.env.MYBROWSER as any);
 
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle', timeout: 90_000 });
