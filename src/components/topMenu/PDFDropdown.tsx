@@ -4,7 +4,13 @@ import TopMenuButton from "./TopMenuButton";
 import TopMenuDropdown from "./TopMenuDropdown";
 import { useCloudPdf } from "@/hooks/useCloudPdf";
 
-function PDFDropdown({ expanded, setExpanded, handlePrintDesktop, i }) {
+function PDFDropdown({
+  expanded,
+  setExpanded,
+  handlePrintDesktop,
+  i,
+  handleOpenPDFInfo,
+}) {
   const cloudPdf = useCloudPdf();
 
   const COOLDOWN_MS = 15_000;
@@ -54,6 +60,10 @@ function PDFDropdown({ expanded, setExpanded, handlePrintDesktop, i }) {
         onClick={handleCloudPdf}
         disabled={cooling}
         countdownSec={remainingSec}
+      />
+      <TopMenuButton
+        text="View vs Cloud Explained"
+        onClick={handleOpenPDFInfo}
       />
     </TopMenuDropdown>
   );

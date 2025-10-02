@@ -8,6 +8,7 @@ import TopMenu from "./components/topMenu/TopMenu";
 import BottomRibbon from "./components/topMenu/BottomRibbon";
 import HelpContainer from "./components/builderColumn/HelpContainer";
 import NameResumeWindow from "./components/NameResumeWindow";
+import PDFInformation from "./components/modals/PDFInformation";
 
 export default function MainView() {
   const { currentResumeId, resumeMetaData } = useSelector(
@@ -26,6 +27,7 @@ export default function MainView() {
 
   const [expanded, setExpanded] = useState(-1);
   const [helpIsOpen, setHelpIsOpen] = useState(false);
+  const [pdfIsOpen, setPdfIsOpen] = useState(false);
 
   function handleOpenHelper() {
     setHelpIsOpen(!helpIsOpen);
@@ -33,6 +35,10 @@ export default function MainView() {
 
   function handlePrint() {
     desktopPrint();
+  }
+
+  function handleOpenPDFInfo() {
+    setPdfIsOpen(!pdfIsOpen);
   }
 
   return (
@@ -45,12 +51,14 @@ export default function MainView() {
             setExpanded={setExpanded}
             handlePrintDesktop={handlePrint}
             handleOpenHelper={handleOpenHelper}
+            handleOpenPDFInfo={handleOpenPDFInfo}
           />
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
             <SideResume contentRef={contentRef} expanded={expanded} />
           </div>
           <BottomRibbon />
           <HelpContainer isOpen={helpIsOpen} setIsOpen={setHelpIsOpen} />
+          <PDFInformation isOpen={pdfIsOpen} setIsOpen={handleOpenPDFInfo} />
         </div>
       </div>
     </div>

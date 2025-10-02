@@ -19,7 +19,7 @@ function TopMenuButton({
       aria-disabled={disabled}
       disabled={disabled}
       className={[
-        "transition-all duration-150 flex items-center justify-between px-4 py-1 w-full rounded",
+        "transition-all duration-150 flex items-center justify-between px-4 py-1 w-full",
         disabled
           ? "bg-neutral-500 cursor-not-allowed opacity-70"
           : "bg-neutral-700 hover:bg-neutral-600",
