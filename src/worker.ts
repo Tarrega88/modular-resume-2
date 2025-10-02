@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
-import playwright from '@cloudflare/playwright';
+import playwright, { type Browser } from '@cloudflare/playwright';
 import { nanoid } from 'nanoid';
 import type { KVNamespace } from '@cloudflare/workers-types';
 
@@ -52,7 +52,7 @@ app.get('/render', async (c) => {
 
     const url = `${base}?token=${encodeURIComponent(token)}`;
 
-    let browser: playwright.Browser | undefined;
+    let browser: Browser | undefined;
     try {
         browser = await playwright.chromium.launch();
         const page = await browser.newPage();
