@@ -8,6 +8,7 @@ type Env = {
     STATE_KV: KVNamespace;
     RENDER_BASE_URL: string;
 };
+
 const app = new Hono<{ Bindings: Env }>();
 
 app.use('/*', cors({
@@ -17,7 +18,8 @@ app.use('/*', cors({
     maxAge: 600,
 }));
 
-app.get('/', c => c.text('OK'));
+app.get('/', (c) => c.text('OK'));
+
 app.post('/create-token', async (c) => {
     try {
         const body = await c.req.json<{ state: unknown }>();
@@ -43,18 +45,26 @@ app.get('/state', async (c) => {
 
 app.get('/render', async (c) => {
     const token = c.req.query('token') ?? '';
-    if (!token) return c.text('missing token', 400);
-
     const base = c.env.RENDER_BASE_URL?.replace(/\/+$/, '') ?? '';
+
+    if (!token) return c.text('missing token', 400);
     if (!base) return c.text('RENDER_BASE_URL not set', 500);
 
     const url = `${base}?token=${encodeURIComponent(token)}`;
-    const browser = await playwright.chromium.launch();
+
+    let browser: playwright.Browser | undefined;
     try {
+        browser = await playwright.chromium.launch();
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'networkidle' });
-        await page.waitForSelector('[data-print-root]', { timeout: 60000 });
-        await page.waitForFunction(() => (globalThis as any).__renderReady === true, { timeout: 60000 });
+
+        // Navigate and wait for app readiness
+        await page.goto(url, { waitUntil: 'networkidle', timeout: 90_000 });
+        await page.waitForSelector('[data-print-root]', { timeout: 90_000 });
+        await page.waitForFunction(
+            () => (globalThis as any).__renderReady === true,
+            { timeout: 90_000 }
+        );
+
         await page.evaluate(async () => {
             if ('fonts' in document) {
                 await (document as any).fonts.ready;
@@ -63,10 +73,13 @@ app.get('/render', async (c) => {
 
         const pdf = await page.pdf({
             printBackground: true,
-            preferCSSPageSize: true, // honors @page { size: ...; margin: 0; } if you set it
-            // If you prefer explicit size instead of @page:
+            preferCSSPageSize: true, // honors @page { size: ...; margin: 0 }
+            // If you ever need explicit size instead of CSS:
             // width: '8.5in', height: '11in', margin: { top: '0', right: '0', bottom: '0', left: '0' },
         });
+
+        // (Optional) one-time use cleanup:
+        // await c.env.STATE_KV.delete(`render:${token}`);
 
         return new Response(pdf, {
             headers: {
@@ -75,8 +88,14 @@ app.get('/render', async (c) => {
                 'Cache-Control': 'no-store',
             },
         });
+    } catch (err: any) {
+        console.error('render error:', err?.stack || err);
+        const msg = typeof err?.message === 'string' ? err.message : String(err);
+        return new Response(`Render failed:\n${msg}`, { status: 500 });
     } finally {
-        await browser.close();
+        if (browser) {
+            try { await browser.close(); } catch { }
+        }
     }
 });
 
