@@ -23,16 +23,16 @@ function HomeSelect() {
             <GenerateResumeButton />
             {resumeData.currentResumeId ? <LastWorkedOn /> : null}
           </div>
-          <div className="flex sm:flex-row flex-col sm:items-center self-end gap-4">
+          <div className="flex md:flex-row flex-col sm:items-center self-end gap-4">
             <button
               onClick={() => setUpdatesAreOpen(!updatesAreOpen)}
-              className="bg-slate-700 outline-gray-100 hover:bg-slate-600 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1  transiton-all duration-200 cursor-pointer h-10"
+              className="bg-slate-700 outline-gray-100 hover:bg-slate-600 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1 transiton-all duration-200 cursor-pointer h-10 w-22"
             >
               Updates
             </button>
             <button
               onClick={() => setAboutIsOpen(!aboutIsOpen)}
-              className="bg-slate-500 outline-gray-100 hover:bg-slate-400 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1  transiton-all duration-200 cursor-pointer h-10"
+              className="bg-slate-500 outline-gray-100 hover:bg-slate-400 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1 transiton-all duration-200 cursor-pointer h-10 w-22"
             >
               About
             </button>
