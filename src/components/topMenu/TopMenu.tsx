@@ -59,19 +59,19 @@ function TopMenu({
         <div className="flex justify-between">
           <div ref={barRef} className="flex bg-neutral-700 text-white w-full">
             <MenuDropdown expanded={expanded} setExpanded={setExpanded} i={0} />
-            <PDFDropdown
-              expanded={expanded}
-              setExpanded={setExpanded}
-              handlePrintDesktop={handlePrintDesktop}
-              i={1}
-              handleOpenPDFInfo={handleOpenPDFInfo}
-            />
             <FormattingDropdown
               expanded={expanded}
               setExpanded={setExpanded}
               expandedBranch={expandedBranch}
               setExpandedBranch={setExpandedBranch}
+              i={1}
+            />
+            <PDFDropdown
+              expanded={expanded}
+              setExpanded={setExpanded}
+              handlePrintDesktop={handlePrintDesktop}
               i={2}
+              handleOpenPDFInfo={handleOpenPDFInfo}
             />
             <HelpDropdown
               expanded={expanded}

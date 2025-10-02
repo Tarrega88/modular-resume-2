@@ -10,7 +10,7 @@ function TopMenuDropdown({ title, i, expanded, setExpanded, children }) {
 
   return (
     <div
-      className={`relative ${style} rounded-md w-30 sm:w-38`}
+      className={`relative ${style} rounded-md w-full sm:w-38`}
       onMouseEnter={handleMouseEnter}
     >
       <button
@@ -20,7 +20,7 @@ function TopMenuDropdown({ title, i, expanded, setExpanded, children }) {
       >
         <span>{title}</span>
       </button>
-      <div className="absolute w-full pt-[2px]">
+      <div className="absolute w-full pt-[2px] text-sm sm:text-base">
         {isExpanded ? children : null}
       </div>
     </div>
