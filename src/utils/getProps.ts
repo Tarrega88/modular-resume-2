@@ -3,11 +3,12 @@ import { DividerProps, Kinds } from "@/state/types";
 //todo 9/14/2025: consider tweaking how UserLinks are handled in generation - right now there's no way to create a new one
 
 import { PrevJobProps, BulletPointProps, UserInfoProps, EducationProps, SkillProps, SectionHeaderProps, SummaryProps, ProjectProps } from "@/state/types";
+import { makeId } from "./makeId";
 
 
 export function getUserInfoProps(id: string): UserInfoProps {
-    const userLinkId1 = crypto.randomUUID();
-    const userLinkId2 = crypto.randomUUID();
+    const userLinkId1 = makeId();
+    const userLinkId2 = makeId();
     return { id, fullName: "Full Name", showIcons: true, professionTitle: "Profession", showProfession: true, hasUnderline: true, kind: "userInfo", email: "email@gmail.com", phoneNumber: "(123) 456-7890", location: "City, ST", userLink1: userLinkId1, userLink2: userLinkId2, showLink1: true, showLink2: true }
 }
 
@@ -38,7 +39,7 @@ export function getSummaryProps(id: string): SummaryProps {
 }
 
 export function getProjectProps(id: string): ProjectProps {
-    const newUserLinkId = crypto.randomUUID();
+    const newUserLinkId = makeId();
     return { id, kind: "project", title: "Project Name", description: "Description of project", hasWebsite: true, website: newUserLinkId }
 }
 

@@ -8,7 +8,7 @@ import PrintView from "./components/PrintView";
 export default function App() {
   return (
     <>
-      <DevToolbar />
+      {/* <DevToolbar /> */}
       <Toaster position="top-center" richColors />
       <Routes>
         <Route path="/" element={<HomePage />} />

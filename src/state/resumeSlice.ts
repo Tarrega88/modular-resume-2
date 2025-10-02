@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BulletPointProps, DividerProps, EducationProps, ID, Kinds, PrevJobEditable, PrevJobKey, PrevJobProps, ProjectProps, ResumeItemProps, ResumeMetaDataProps, ResumeState, SectionHeaderProps, SkillProps, SummaryProps, TextEdit, UserInfoProps } from "./types";
 import { formatDate } from "@/utils/formatDate";
+import { makeId } from "@/utils/makeId";
 
 function setField<T, K extends keyof T>(obj: T, key: K, value: T[K]) {
     (obj as Record<K, T[K]>)[key] = value; //obj as any is an option for testing
@@ -73,9 +74,9 @@ const resumeSlice = createSlice({
             const { kind, elementId } = action.payload;
             //Note: May consider removing the null check and instead making elementId optional, but this is probably safer
             if (elementId === null) {
-                state.resumes[currentResumeId].push({ id: crypto.randomUUID(), kind, elementId: crypto.randomUUID() })
+                state.resumes[currentResumeId].push({ id: makeId(), kind, elementId: makeId() })
             } else {
-                state.resumes[currentResumeId].push({ id: crypto.randomUUID(), kind, elementId })
+                state.resumes[currentResumeId].push({ id: makeId(), kind, elementId })
             }
 
         },
@@ -117,7 +118,7 @@ const resumeSlice = createSlice({
         },
         addProjectData(state, action: PayloadAction<ProjectProps>) {
             const { id } = action.payload;
-            // const userLinkId = crypto.randomUUID();
+            // const userLinkId = makeId();
             // state.data.userLinks[userLinkId] = { id: userLinkId, text: "Link Name", url: "URL" };
             // getProjectProps(id);
             // const newProjectData: ProjectProps = { id, kind: "project", title:   }
@@ -138,7 +139,7 @@ const resumeSlice = createSlice({
         changeBulletPoint(state, action: PayloadAction<{ renderIndex: number; id: string; }>) {
             const currentResume = state.currentResumeId;
             const { renderIndex, id } = action.payload;
-            state.resumes[currentResume][renderIndex] = { id: crypto.randomUUID(), kind: "bulletPoint", elementId: id }
+            state.resumes[currentResume][renderIndex] = { id: makeId(), kind: "bulletPoint", elementId: id }
         },
         removeResumeItem(state, action: PayloadAction<{ renderIndex: number }>) {
             const { renderIndex } = action.payload;
@@ -215,7 +216,7 @@ const resumeSlice = createSlice({
         duplicateSection(state, action: PayloadAction<{ kind: Kinds, index: number, elementId: string; }>) {
             const { currentResumeId } = state;
             const { kind, index, elementId } = action.payload;
-            const id = crypto.randomUUID();
+            const id = makeId();
 
             state.resumes[currentResumeId].splice(index + 1, 0, { kind, id, elementId });
         },

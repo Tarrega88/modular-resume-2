@@ -28,6 +28,7 @@ import {
   getSummaryProps,
   getUserInfoProps,
 } from "@/utils/getProps";
+import { makeId } from "@/utils/makeId";
 
 type RenderProps = {
   kind: Kinds;
@@ -64,7 +65,7 @@ export default function GenerateResumeButton() {
   const navigate = useNavigate();
 
   function handleClick() {
-    const newResumeId = crypto.randomUUID();
+    const newResumeId = makeId();
 
     dispatch(setCurrentResume(newResumeId));
     dispatch(generateMetaData(newResumeId));
@@ -72,7 +73,7 @@ export default function GenerateResumeButton() {
 
     for (const item of newResumeRenderItems) {
       const kind = item.kind;
-      const id = crypto.randomUUID();
+      const id = makeId();
 
       switch (kind) {
         case "userInfo":
@@ -121,6 +122,7 @@ export default function GenerateResumeButton() {
 
   return (
     <button
+      onTouchEnd={handleClick}
       onClick={handleClick}
       className="bg-emerald-600 shadow-lg text-white font-semibold px-3 py-1 rounded-sm outline-1 outline-emerald-100 hover:bg-emerald-500 transiton-all duration-200 cursor-pointer h-10"
     >

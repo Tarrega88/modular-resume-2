@@ -8,6 +8,7 @@ import {
 import { FaTrash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { IoDuplicate } from "react-icons/io5";
+import { makeId } from "@/utils/makeId";
 
 function HomeListRow({
   text,
@@ -24,7 +25,7 @@ function HomeListRow({
   const dispatch = useDispatch();
 
   function handleCopyResume() {
-    dispatch(copyResume({ originalId: id, newId: crypto.randomUUID() }));
+    dispatch(copyResume({ originalId: id, newId: makeId() }));
   }
 
   function handleDelete() {

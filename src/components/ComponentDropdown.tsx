@@ -19,6 +19,7 @@ import ListOfKinds from "./ListOfKinds";
 import addDataFromKind from "@/utils/addDataFromKind";
 import { kindToData, kindToSection } from "@/utils/getKindDisplayInfo";
 import { toast } from "sonner";
+import { makeId } from "@/utils/makeId";
 
 const moreSectionHeaderDefaults = [
   "Experience",
@@ -71,7 +72,7 @@ function ComponentDropdown({
         replaceResumeItem({
           renderIndex,
           data: {
-            id: crypto.randomUUID(),
+            id: makeId(),
             kind,
             elementId: newId,
           },
@@ -86,7 +87,7 @@ function ComponentDropdown({
         addResumeItemAt({
           renderIndex: addToIndex,
           data: {
-            id: crypto.randomUUID(),
+            id: makeId(),
             kind,
             elementId: newId,
           },
@@ -243,7 +244,7 @@ function ComponentDropdown({
           >
             <div className="pointer-events-none px-1">
               <ResumeItemRenderer
-                id={crypto.randomUUID()}
+                id={makeId()}
                 kind={selectedKind}
                 renderUI={false}
               />
@@ -258,7 +259,7 @@ function ComponentDropdown({
               className="border-b hover:bg-sky-100 transition-all duration-200 cursor-pointer overflow-auto"
               onClick={() =>
                 handleSelectOption({
-                  id: crypto.randomUUID(),
+                  id: makeId(),
                   kind: selectedKind,
                   elementId: e,
                 })
@@ -266,7 +267,7 @@ function ComponentDropdown({
             >
               <div className="pointer-events-none px-1">
                 <ResumeItemRenderer
-                  id={crypto.randomUUID()}
+                  id={makeId()}
                   kind={selectedKind}
                   elementId={e}
                   renderUI={false}

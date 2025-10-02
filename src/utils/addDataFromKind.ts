@@ -1,9 +1,10 @@
 import { Kinds } from "@/state/types";
 import { getBulletPointProps, getDividerProps, getEducationProps, getPrevJobProps, getProjectProps, getSectionHeaderProps, getSkillProps, getSummaryProps, getUserInfoProps } from "./getProps";
 import { addBulletData, addDividerData, addEducationData, addPrevJobData, addProjectData, addSectionHeaderData, addSkillData, addSummaryData, addUserInfoData, addUserLink } from "@/state/resumeSlice";
+import { makeId } from "./makeId";
 
 export default function addDataFromKind(kind: Kinds, dispatch: any) {
-    const newId = crypto.randomUUID();
+    const newId = makeId();
     switch (kind) {
         case "prevJob":
             const experienceData = getPrevJobProps(newId);
