@@ -1,0 +1,15 @@
+name = "modular-resume-pdf"
+main = "src/worker.ts"
+compatibility_date = "2025-09-23"
+compatibility_flags = ["nodejs_compat"] 
+
+[browser]
+binding = "MYBROWSER"
+
+[[kv_namespaces]]
+binding = "STATE_KV"
+id = "b36886f81f3c44c69a8ff536379f13e7"
+preview_id = "dc5822bc1f874a8bafaf2ee9c2ba519c"
+
+[vars]
+RENDER_BASE_URL = "https://modularresume.com/print"

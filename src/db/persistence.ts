@@ -1,7 +1,7 @@
 import { db, STATE_KEY } from "./db";
 import type { ResumeState } from "../state/types";
 
-function sanitizeForSave(s: ResumeState): ResumeState {
+export function sanitizeForSave(s: ResumeState): ResumeState {
     return {
         ...s,
         dragFromIndex: -1,

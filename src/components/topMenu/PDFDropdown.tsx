@@ -2,9 +2,11 @@ import { toast } from "sonner";
 import TopMenuButton from "./TopMenuButton";
 import TopMenuDropdown from "./TopMenuDropdown";
 import { useNavigate } from "react-router-dom";
+import { useCloudPdf } from "@/hooks/useCloudPdf";
 
 function PDFDropdown({ expanded, setExpanded, handlePrintDesktop, i }) {
   const navigate = useNavigate();
+  const cloudPdf = useCloudPdf();
 
   function handleDesktopClick() {
     setExpanded(-1);
@@ -24,7 +26,7 @@ function PDFDropdown({ expanded, setExpanded, handlePrintDesktop, i }) {
       setExpanded={setExpanded}
     >
       <TopMenuButton text="View PDF" onClick={handleDesktopClick} />
-      {/* <TopMenuButton text="Mobile (Testing)" onClick={handleMobilePDF} /> */}
+      <TopMenuButton text="Cloud PDF (Testing)" onClick={cloudPdf} />
     </TopMenuDropdown>
   );
 }
