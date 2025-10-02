@@ -1,3 +1,4 @@
+// src/worker.ts
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import playwright, { type Browser } from '@cloudflare/playwright';
@@ -7,6 +8,7 @@ import type { KVNamespace } from '@cloudflare/workers-types';
 type Env = {
     STATE_KV: KVNamespace;
     RENDER_BASE_URL: string;
+    MYBROWSER: unknown;
 };
 
 const app = new Hono<{ Bindings: Env }>();
@@ -27,7 +29,7 @@ app.post('/create-token', async (c) => {
 
         const token = nanoid();
         await c.env.STATE_KV.put(`render:${token}`, JSON.stringify({ state: body.state }), {
-            expirationTtl: 600,
+            expirationTtl: 600, // 10 minutes
         });
         return c.json({ token });
     } catch {
@@ -45,7 +47,7 @@ app.get('/state', async (c) => {
 
 app.get('/render', async (c) => {
     const token = c.req.query('token') ?? '';
-    const base = c.env.RENDER_BASE_URL?.replace(/\/+$/, '') ?? '';
+    const base = (c.env.RENDER_BASE_URL || '').replace(/\/+$/, '');
 
     if (!token) return c.text('missing token', 400);
     if (!base) return c.text('RENDER_BASE_URL not set', 500);
@@ -54,16 +56,13 @@ app.get('/render', async (c) => {
 
     let browser: Browser | undefined;
     try {
-        browser = await playwright.chromium.launch();
-        const page = await browser.newPage();
+        // IMPORTANT: pass the browser binding from wrangler.toml
+        browser = await playwright.chromium.launch(c.env.MYBROWSER as any);
 
-        // Navigate and wait for app readiness
+        const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle', timeout: 90_000 });
         await page.waitForSelector('[data-print-root]', { timeout: 90_000 });
-        await page.waitForFunction(
-            () => (globalThis as any).__renderReady === true,
-            { timeout: 90_000 }
-        );
+        await page.waitForFunction(() => (globalThis as any).__renderReady === true, { timeout: 90_000 });
 
         await page.evaluate(async () => {
             if ('fonts' in document) {
@@ -74,11 +73,9 @@ app.get('/render', async (c) => {
         const pdf = await page.pdf({
             printBackground: true,
             preferCSSPageSize: true, // honors @page { size: ...; margin: 0 }
-            // If you ever need explicit size instead of CSS:
-            // width: '8.5in', height: '11in', margin: { top: '0', right: '0', bottom: '0', left: '0' },
         });
 
-        // (Optional) one-time use cleanup:
+        // Optional: one-time token cleanup
         // await c.env.STATE_KV.delete(`render:${token}`);
 
         return new Response(pdf, {
@@ -86,16 +83,14 @@ app.get('/render', async (c) => {
                 'Content-Type': 'application/pdf',
                 'Content-Disposition': 'attachment; filename="Resume.pdf"',
                 'Cache-Control': 'no-store',
+                'X-Render-URL': url,
             },
         });
     } catch (err: any) {
         console.error('render error:', err?.stack || err);
-        const msg = typeof err?.message === 'string' ? err.message : String(err);
-        return new Response(`Render failed:\n${msg}`, { status: 500 });
+        return new Response(`Render failed:\n${err?.message || err}`, { status: 500 });
     } finally {
-        if (browser) {
-            try { await browser.close(); } catch { }
-        }
+        if (browser) { try { await browser.close(); } catch { } }
     }
 });
 
