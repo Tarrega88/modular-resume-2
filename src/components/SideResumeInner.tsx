@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
 import Draggable from "./wrappers/Draggable";
+import { getFontStack } from "@/utils/getFontStack";
 
 export default function SideResumeInner({
   PAGE_H,
@@ -18,9 +19,8 @@ export default function SideResumeInner({
   const renderOrder = resumeState.resumes[currentResume] ?? [];
 
   const ref = useRef<HTMLDivElement | null>(null);
-  // useLayoutEffect(() => {
-  //   if (!ref.current) return;
-  // }, []);
+
+  const fontStack = getFontStack(meta?.font);
 
   return (
     <div
@@ -28,6 +28,7 @@ export default function SideResumeInner({
       className="resume-root text-base"
       ref={ref}
       style={{
+        fontFamily: fontStack,
         position: "relative",
         backgroundColor: "white",
         width: `${PAGE_W}px`,

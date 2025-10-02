@@ -1,3 +1,4 @@
+// src/config/fonts.ts
 export type FontOption = { label: string; stack: string };
 
 export const SANS_OPTIONS: FontOption[] = [
@@ -16,30 +17,12 @@ export const SANS_OPTIONS: FontOption[] = [
         stack:
             '"Helvetica Neue", Helvetica, Arial, "Noto Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Liberation Sans", sans-serif',
     },
+
+    // Static packages (classic family names)
     {
         label: "Lato",
         stack:
             'Lato, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
-    },
-    {
-        label: "Noto Sans",
-        stack:
-            '"Noto Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", sans-serif',
-    },
-    {
-        label: "Noto Serif",
-        stack:
-            '"Noto Serif", Georgia, "Times New Roman", "Liberation Serif", serif',
-    },
-    {
-        label: "Open Sans",
-        stack:
-            '"Open Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
-    },
-    {
-        label: "Roboto",
-        stack:
-            'Roboto, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
     },
     {
         label: "Ubuntu",
@@ -47,6 +30,25 @@ export const SANS_OPTIONS: FontOption[] = [
             'Ubuntu, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
     },
 
+    {
+        label: "Noto Sans",
+        stack:
+            '"Noto Sans Variable", "Noto Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", sans-serif',
+    },
+    {
+        label: "Noto Serif",
+        stack: '"Noto Serif", Georgia, "Times New Roman", "Liberation Serif", serif',
+    },
+    {
+        label: "Open Sans",
+        stack:
+            '"Open Sans Variable", "Open Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
+    },
+    {
+        label: "Roboto",
+        stack:
+            '"Roboto Variable", Roboto, ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif',
+    },
 ];
 
 export const VAR_SANS = "--font-sans";
