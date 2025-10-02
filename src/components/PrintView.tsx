@@ -12,16 +12,31 @@ export default function PrintView() {
   const PAGE_W = pageStyle === "A4" ? 827 : 850;
   const PAGE_H = pageStyle === "A4" ? 1169 : 1100;
 
+  const hasMeta = !!resumeMetaData[currentResumeId];
+
   return (
     <main id="print-root">
+      <style>
+        {pageStyle === "A4"
+          ? "@page { size: A4; margin: 0 }"
+          : "@page { size: Letter; margin: 0 }"}
+      </style>
+
       <CloudHydrator />
+
       <div data-print-root>
-        <SideResumeInner
-          PAGE_W={PAGE_W}
-          PAGE_H={PAGE_H}
-          replaceIsOpen={false}
-          setReplaceIsOpen={() => null}
-        />
+        {hasMeta ? (
+          <SideResumeInner
+            PAGE_W={PAGE_W}
+            PAGE_H={PAGE_H}
+            replaceIsOpen={false}
+            setReplaceIsOpen={() => null}
+          />
+        ) : (
+          <div
+            style={{ width: PAGE_W, minHeight: PAGE_H, background: "white" }}
+          />
+        )}
       </div>
     </main>
   );

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
@@ -18,9 +18,9 @@ export default function SideResumeInner({
   const renderOrder = resumeState.resumes[currentResume] ?? [];
 
   const ref = useRef<HTMLDivElement | null>(null);
-  useLayoutEffect(() => {
-    if (!ref.current) return;
-  }, []);
+  // useLayoutEffect(() => {
+  //   if (!ref.current) return;
+  // }, []);
 
   return (
     <div
