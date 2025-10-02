@@ -12,8 +12,10 @@ export default function SideResumeInner({
 }) {
   const resumeState = useSelector((s: RootState) => s.resume);
   const currentResume = resumeState.currentResumeId;
+  const meta = resumeState.resumeMetaData[currentResume];
+  const MARGIN = meta?.margin ?? 75;
+
   const renderOrder = resumeState.resumes[currentResume] ?? [];
-  const MARGIN = resumeState.resumeMetaData[currentResume].margin;
 
   const ref = useRef<HTMLDivElement | null>(null);
   useLayoutEffect(() => {
