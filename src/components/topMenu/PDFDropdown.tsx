@@ -14,8 +14,10 @@ function PDFDropdown({ expanded, setExpanded, handlePrintDesktop, i }) {
     handlePrintDesktop();
   }
 
-  function handleMobilePDF() {
-    navigate("/print");
+  function handleCloudPdf() {
+    setExpanded(-1);
+    toast("Preparing PDF...");
+    cloudPdf();
   }
 
   return (
@@ -26,7 +28,7 @@ function PDFDropdown({ expanded, setExpanded, handlePrintDesktop, i }) {
       setExpanded={setExpanded}
     >
       <TopMenuButton text="View PDF" onClick={handleDesktopClick} />
-      <TopMenuButton text="Cloud PDF (Testing)" onClick={cloudPdf} />
+      <TopMenuButton text="Cloud PDF (Testing)" onClick={handleCloudPdf} />
     </TopMenuDropdown>
   );
 }
