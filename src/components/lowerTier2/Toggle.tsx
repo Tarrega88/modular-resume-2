@@ -4,7 +4,7 @@ function Toggle({ text, checked, onChange }) {
   const id = useId();
 
   return (
-    <div className="flex justify-between gap-2 pr-4">
+    <div className="flex justify-between gap-2 pr-4 items-center">
       <label htmlFor={id} className="cursor-pointer w-max">
         {text}
       </label>
