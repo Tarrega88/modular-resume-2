@@ -41,7 +41,7 @@ function RelativeAbsLeft({
           left: `${hPositions[hPosition]}px`,
           top: `${vPositions[vPosition]}px`,
         }}
-        className="absolute group-hover:opacity-100 opacity-0 transition-all duration-150"
+        className="absolute group-hover:opacity-100 opacity-0 transition-all duration-150 hidden sm:block"
       >
         {children}
       </div>

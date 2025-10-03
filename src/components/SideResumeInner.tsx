@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
@@ -21,6 +21,8 @@ export default function SideResumeInner({
   const ref = useRef<HTMLDivElement | null>(null);
 
   const fontStack = getFontStack(meta?.font);
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div
@@ -47,6 +49,7 @@ export default function SideResumeInner({
           renderIndex={i}
           kind={e.kind}
           setReplaceIsOpen={setReplaceIsOpen}
+          active={activeIndex === i}
         >
           <ResumeItemRenderer
             id={e.id}

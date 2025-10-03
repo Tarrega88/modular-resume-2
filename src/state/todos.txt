@@ -1,17 +1,14 @@
-Look into react-to-print instead of playwright
+10/3/2025
 
-Main sections:
+Mobile Command strip ideas
 
-1. ResumeHeader - Change this to behave like the rest of the data
-2. Summary - Done
-3. Experience - Done
-4. Education - Done
-5. Skills - Done
-6. Projects - Done
+Strip should probably be incorporated into the lower ribbon.
+Left arrow and right arrow at positions of thumbs to change current section.
+Duplicate of section is shown between the buttons. Above this strip is the resume, taking up a smaller portion of the screen - primarily just there to show an outline around active section
+I think all UI buttons should exist in the command strip as well, with one possible exception being the dropdown, which might need a different approach for mobile
 
 
-9/15/2025: work on custom dropdown bugs - elements underneath it are still reacting to hover
-Hovering the dropdown is activating all versions of the absolutely positioned ui elements
+older todos:
 
 additional sections to consider:
 
@@ -21,5 +18,3 @@ additional sections to consider:
 4. Volunteer Experience
 5. Languages
 6. Interests
-
-

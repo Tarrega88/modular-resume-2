@@ -7,7 +7,6 @@ import { RootState } from "./state/store";
 import TopMenu from "./components/topMenu/TopMenu";
 import BottomRibbon from "./components/topMenu/BottomRibbon";
 import HelpContainer from "./components/builderColumn/HelpContainer";
-import NameResumeWindow from "./components/NameResumeWindow";
 import PDFInformation from "./components/modals/PDFInformation";
 
 export default function MainView() {

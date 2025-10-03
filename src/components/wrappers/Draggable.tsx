@@ -20,11 +20,13 @@ function Draggable({
   renderIndex,
   kind,
   setReplaceIsOpen,
+  active,
 }: {
   children: React.ReactNode;
   renderIndex: number;
   kind: Kinds;
   setReplaceIsOpen(e: boolean): void;
+  active: boolean;
 }) {
   const { dragFromIndex, dragToIndex, dragHigher } = useSelector(
     (state: RootState) => state.resume
