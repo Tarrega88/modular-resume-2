@@ -30,6 +30,7 @@ function MobileWrappedTopRow({ activeIndex, setActiveIndex, kind }) {
         <IoDuplicate className="text-sky-600" />
       </MobileButton>
       <MobileButton
+        text=""
         border="r"
         onClick={() => console.log("Under Construction")}
       >

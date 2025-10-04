@@ -3,7 +3,12 @@ import {
   setDragFromIndex,
   setDragToIndex,
 } from "@/state/resumeSlice";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import {
+  IoIosArrowBack,
+  IoIosArrowDown,
+  IoIosArrowForward,
+  IoIosArrowUp,
+} from "react-icons/io";
 import { TbArrowMoveDown, TbArrowMoveUp } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 
@@ -40,40 +45,46 @@ function MobileButtonWrapper({
       <div className="flex flex-col h-full justify-end border-r w-24">
         <button
           onClick={handleMoveBack}
-          className="size-full flex justify-center items-center border-b"
+          className="size-full flex justify-center items-center border-b relative"
         >
           <span className="text-3xl">
             <TbArrowMoveUp />
           </span>
+          <span className="absolute bottom-1 text-sm">Move</span>
         </button>
         <button
-          className="size-full flex justify-center items-center"
+          className="size-full flex justify-center items-center relative"
           onClick={() =>
             setActiveIndex(activeIndex === 0 ? length - 1 : activeIndex - 1)
           }
         >
+          <span className="absolute top-1 text-sm">Select</span>
           <span className="text-3xl">
-            <IoIosArrowBack />
+            <IoIosArrowUp />
           </span>
+          <span className="absolute bottom-1 text-sm">Prev</span>
         </button>
       </div>
       <div className="size-full">{children}</div>
       <div className="flex flex-col h-full justify-end border-l w-24">
         <button
-          className="size-full flex justify-center items-center border-b"
+          className="size-full flex justify-center items-center border-b relative"
           onClick={handleMoveForward}
         >
           <span className="text-3xl">
             <TbArrowMoveDown />
           </span>
+          <span className="absolute text-sm bottom-1">Move</span>
         </button>
         <button
-          className="size-full flex justify-center items-center"
+          className="size-full flex justify-center items-center relative"
           onClick={() => setActiveIndex((activeIndex + 1) % length)}
         >
+          <span className="absolute text-sm top-1">Select</span>
           <span className="text-3xl">
-            <IoIosArrowForward />
+            <IoIosArrowDown />
           </span>
+          <span className="absolute bottom-1 text-sm">Next</span>
         </button>
       </div>
     </div>
