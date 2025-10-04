@@ -46,12 +46,11 @@ export default function SideResumeInner({
     >
       {renderOrder.map((e: any, i: number) => (
         <Draggable
-          key={e.id}
+          key={`${e.id}${activeIndex}`}
           renderIndex={i}
           kind={e.kind}
           setReplaceIsOpen={setReplaceIsOpen}
           active={activeIndex === i}
-          setActiveIndex={setActiveIndex}
           expanded={expanded}
         >
           <ResumeItemRenderer

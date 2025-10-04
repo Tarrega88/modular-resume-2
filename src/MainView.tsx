@@ -8,6 +8,7 @@ import TopMenu from "./components/topMenu/TopMenu";
 import BottomRibbon from "./components/topMenu/BottomRibbon";
 import HelpContainer from "./components/builderColumn/HelpContainer";
 import PDFInformation from "./components/modals/PDFInformation";
+import { makeId } from "./utils/makeId";
 
 export default function MainView() {
   const { currentResumeId, resumeMetaData, resumes } = useSelector(
@@ -17,6 +18,7 @@ export default function MainView() {
   const length = resumes[currentResumeId].length;
 
   const [activeIndex, setActiveIndex] = useState(1); //should start as -1 probably, or 0?
+
   // const [prevActiveIndex, setPrevActiveIndex] = useState(1);
 
   useEffect(() => {
