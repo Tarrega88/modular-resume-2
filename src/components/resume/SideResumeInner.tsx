@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../state/store";
+import { RootState } from "../../state/store";
 import ResumeItemRenderer from "./ResumeItemRenderer";
-import Draggable from "./wrappers/Draggable";
+import Draggable from "../wrappers/Draggable";
 import { getFontStack } from "@/utils/getFontStack";
 
 export default function SideResumeInner({

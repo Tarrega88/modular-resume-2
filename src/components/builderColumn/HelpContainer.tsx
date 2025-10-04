@@ -1,4 +1,4 @@
-import ComponentDropdown from "../ComponentDropdown";
+import ComponentDropdown from "../sections/misc/ComponentDropdown";
 import ListOfKinds from "../ListOfKinds";
 import HelpSection from "./HelpSection";
 import ModalWindow from "./ModalWindow";

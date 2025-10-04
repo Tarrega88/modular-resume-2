@@ -1,7 +1,7 @@
-import { SummaryProps } from "../../state/types";
-import DynamicTextArea from "../DynamicTextArea";
+import { SummaryProps } from "@/state/types";
+import DynamicTextArea from "@/components/sections/misc/DynamicTextArea";
 import { useDispatch } from "react-redux";
-import { editSummary } from "../../state/resumeSlice";
+import { editSummary } from "@/state/resumeSlice";
 
 function Summary({ id, text, renderUI }: SummaryProps & { renderUI: boolean }) {
   const dispatch = useDispatch();

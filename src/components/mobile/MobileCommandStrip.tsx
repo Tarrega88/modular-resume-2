@@ -1,7 +1,7 @@
 import { RootState } from "@/state/store";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import ResumeItemRenderer from "./ResumeItemRenderer";
+import ResumeItemRenderer from "../resume/ResumeItemRenderer";
 import { IoAddCircle } from "react-icons/io5";
 import { removeResumeItem } from "@/state/resumeSlice";
 
@@ -24,7 +24,16 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
 
   return (
     <div className="w-full sm:hidden block">
-      <div>Mobile Layout Under Construction</div>
+      <div className="w-full overflow-auto flex flex-1 bg-white text-black h-[100px]">
+        <div className="min-w-max w-full">
+          <ResumeItemRenderer
+            id={id}
+            kind={kind}
+            elementId={elementId}
+            renderUI={true}
+          />
+        </div>
+      </div>
       <div
         className="bg-gray-500 w-full sm:hidden flex items-center"
         style={{ height: "200px" }}
@@ -40,7 +49,7 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
             </span>
           </button>
         </div>
-        <div className="w-full overflow-auto flex flex-1 bg-white text-black">
+        {/* <div className="w-full overflow-auto flex flex-1 bg-white text-black">
           <div className="min-w-max w-full">
             <ResumeItemRenderer
               id={id}
@@ -49,7 +58,7 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
               renderUI={true}
             />
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-col relative h-full justify-center">
           <div className="absolute top-2 right-1">
             <button onClick={handleDelete}>

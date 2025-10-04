@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import MonthDropdown from "../MonthDropdown";
-import { RootState } from "../../state/store";
-import { longMonths, months } from "../../utils/months";
+import MonthDropdown from "@/components/sections/misc/MonthDropdown";
+import { RootState } from "@/state/store";
+import { longMonths, months } from "@/utils/months";
 import { useState } from "react";
-import { editEducationDate } from "../../state/resumeSlice";
-import DynamicInput from "../DynamicInput";
+import { editEducationDate } from "@/state/resumeSlice";
+import DynamicInput from "@/components/sections/misc/DynamicInput";
 
 type Props = {
   id: string;

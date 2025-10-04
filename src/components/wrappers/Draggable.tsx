@@ -11,7 +11,7 @@ import RelativeAbsRight from "./RelativeAbsRight";
 import DeleteElementButton from "../absoluteUI/DeleteElementButton";
 import DuplicateButton from "../absoluteUI/DuplicateButton";
 import { Kinds } from "../../state/types";
-import ComponentDropdown from "../ComponentDropdown";
+import ComponentDropdown from "../sections/misc/ComponentDropdown";
 import { useState } from "react";
 import { RxCaretDown, RxCaretUp } from "react-icons/rx";
 

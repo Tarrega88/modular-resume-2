@@ -1,14 +1,14 @@
-import { SkillProps } from "../../state/types";
-import DynamicInput from "../DynamicInput";
+import { SkillProps } from "@/state/types";
+import DynamicInput from "@/components/sections/misc/DynamicInput";
 import SkillDynamicInput from "./SkillDynamicInput";
 import { useDispatch } from "react-redux";
 import {
   editSkillCategory,
   editSkills,
   setShowCategory,
-} from "../../state/resumeSlice";
+} from "@/state/resumeSlice";
 import { MdLabel } from "react-icons/md";
-import RelativeAbsRight from "../wrappers/RelativeAbsRight";
+import RelativeAbsRight from "@/components/wrappers/RelativeAbsRight";
 
 function SkillSection({
   id,

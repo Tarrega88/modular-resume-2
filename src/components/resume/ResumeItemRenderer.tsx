@@ -1,16 +1,15 @@
-import { locationDefault } from "../state/resumeSlice";
-import BulletPoint from "./bulletPoints/BulletPoint";
+import BulletPoint from "../sections/bulletPoints/BulletPoint";
 import { useSelector } from "react-redux";
-import { RootState } from "../state/store";
-import JobSection from "./previousJob/JobSection";
-import ResumeHeader from "./ResumeHeader";
-import SectionHeader from "./SectionHeader";
-import { ResumeItemProps } from "../state/types";
-import SkillSection from "./skills/SkillSection";
-import Summary from "./summaries/Summary";
-import EducationSection from "./education/EducationSection";
-import ProjectSection from "./projects/ProjectSection";
-import Divider from "./Divider";
+import { RootState } from "../../state/store";
+import JobSection from "../sections/previousJob/JobSection";
+import ResumeHeader from "../sections/userInfo/ResumeHeader";
+import SectionHeader from "../sections/header/SectionHeader";
+import { ResumeItemProps } from "../../state/types";
+import SkillSection from "../sections/skills/SkillSection";
+import Summary from "../sections/summaries/Summary";
+import EducationSection from "../sections/education/EducationSection";
+import ProjectSection from "../projects/ProjectSection";
+import Divider from "../sections/divider/Divider";
 import {
   getBulletPointProps,
   getDividerProps,

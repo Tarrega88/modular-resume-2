@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../state/store";
+import { RootState } from "@/state/store";
 import JobStart from "./JobStart";
 import JobEnd from "./JobEnd";
-import DynamicInput from "../DynamicInput";
-import { PrevJobProps } from "../../state/types";
-import { updatePrevJobField } from "../../state/resumeSlice";
+import DynamicInput from "@/components/sections/misc/DynamicInput";
+import { PrevJobProps } from "@/state/types";
+import { updatePrevJobField } from "@/state/resumeSlice";
 
 function JobSection({
   id,

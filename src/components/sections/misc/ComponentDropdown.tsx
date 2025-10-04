@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Kinds, ResumeItemProps } from "@/state/types";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/state/store";
-import ResumeItemRenderer from "./ResumeItemRenderer";
+import ResumeItemRenderer from "../../resume/ResumeItemRenderer";
 import {
   addResumeItemAt,
   replaceResumeItem,
@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { getFilterPlaceholders } from "@/utils/getProps";
-import ListOfKinds from "./ListOfKinds";
+import ListOfKinds from "../../ListOfKinds";
 import addDataFromKind from "@/utils/addDataFromKind";
 import { kindToData, kindToSection } from "@/utils/getKindDisplayInfo";
 import { toast } from "sonner";

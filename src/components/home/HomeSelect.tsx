@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
-import GenerateResumeButton from "../GenerateResumeButton";
+import GenerateResumeButton from "../resume/GenerateResumeButton";
 import PreviousResumeList from "./PreviousResumeList";
 import { useState } from "react";
 import LastWorkedOn from "./LastWorkedOn";

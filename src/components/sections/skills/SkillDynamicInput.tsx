@@ -1,4 +1,4 @@
-import { dragSkill } from "../../state/resumeSlice";
+import { dragSkill } from "@/state/resumeSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 

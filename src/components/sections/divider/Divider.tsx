@@ -1,7 +1,7 @@
 import { editDividerNumber } from "@/state/resumeSlice";
 import { DividerProps } from "@/state/types";
 import { useDispatch, useSelector } from "react-redux";
-import DynamicInput from "./DynamicInput";
+import DynamicInput from "../misc/DynamicInput";
 import { RootState } from "@/state/store";
 
 function Divider({

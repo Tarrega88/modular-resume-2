@@ -1,7 +1,7 @@
 import { ProjectProps } from "@/state/types";
-import UserLink from "../UserLink";
-import DynamicInput from "../DynamicInput";
-import DynamicTextArea from "../DynamicTextArea";
+import UserLink from "../sections/misc/UserLink";
+import DynamicInput from "../sections/misc/DynamicInput";
+import DynamicTextArea from "../sections/misc/DynamicTextArea";
 import { useDispatch } from "react-redux";
 import { editProjectBool, editProjectString } from "@/state/resumeSlice";
 import RelativeAbsRight from "../wrappers/RelativeAbsRight";

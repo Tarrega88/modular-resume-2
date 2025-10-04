@@ -1,8 +1,8 @@
-import { EducationProps } from "../../state/types";
-import DynamicInput from "../DynamicInput";
+import { EducationProps } from "@/state/types";
+import DynamicInput from "@/components/sections/misc/DynamicInput";
 import EducationDate from "./EducationDate";
 import { useDispatch } from "react-redux";
-import { editEducationString } from "../../state/resumeSlice";
+import { editEducationString } from "@/state/resumeSlice";
 
 function EducationSection({
   id,

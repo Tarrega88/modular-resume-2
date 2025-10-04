@@ -1,12 +1,12 @@
-import DynamicInput from "./DynamicInput";
+import DynamicInput from "../misc/DynamicInput";
 import { useDispatch } from "react-redux";
 import {
   editSectionHeader,
   toggleSectionHeaderUnderline,
-} from "../state/resumeSlice";
+} from "../../../state/resumeSlice";
 import { FiUnderline } from "react-icons/fi";
-import { SectionHeaderProps } from "../state/types";
-import RelativeAbsRight from "./wrappers/RelativeAbsRight";
+import { SectionHeaderProps } from "../../../state/types";
+import RelativeAbsRight from "../../wrappers/RelativeAbsRight";
 
 function SectionHeader({
   text,

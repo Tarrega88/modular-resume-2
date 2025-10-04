@@ -1,5 +1,5 @@
-import { editUserLink } from "../state/resumeSlice";
-import { RootState } from "../state/store";
+import { editUserLink } from "../../../state/resumeSlice";
+import { RootState } from "../../../state/store";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import MonthDropdown from "../MonthDropdown";
-import { longMonths, months } from "../../utils/months";
+import MonthDropdown from "@/components/sections/misc/MonthDropdown";
+import { longMonths, months } from "@/utils/months";
 import { useDispatch } from "react-redux";
-import { updatePrevJobField } from "../../state/resumeSlice";
+import { updatePrevJobField } from "@/state/resumeSlice";
 
 function JobEnd({
   id,

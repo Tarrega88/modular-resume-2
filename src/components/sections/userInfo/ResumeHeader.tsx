@@ -1,21 +1,21 @@
-import { UserInfoProps } from "../state/types";
-import UserLink from "./UserLink";
+import { UserInfoProps } from "../../../state/types";
+import UserLink from "../misc/UserLink";
 
 import {
   toggleUserBool,
   editUserInfo,
   locationDefault,
-} from "../state/resumeSlice";
-import DynamicInput from "./DynamicInput";
+} from "../../../state/resumeSlice";
+import DynamicInput from "../misc/DynamicInput";
 import { useDispatch } from "react-redux";
-import RelativeAbsRight from "./wrappers/RelativeAbsRight";
-import SideLinkButton from "./absoluteUI/SideLinkButton";
-import IconWrapper from "./wrappers/IconWrapper";
+import RelativeAbsRight from "../../wrappers/RelativeAbsRight";
+import SideLinkButton from "../../absoluteUI/SideLinkButton";
+import IconWrapper from "../../wrappers/IconWrapper";
 import { FaPhone } from "react-icons/fa";
 import { IoIosInformationCircle } from "react-icons/io";
 import { CiLocationOn, CiMail } from "react-icons/ci";
 import { FiUnderline } from "react-icons/fi";
-import RelativeAbsLeft from "./wrappers/RelativeAbsLeft";
+import RelativeAbsLeft from "../../wrappers/RelativeAbsLeft";
 import { MdOutlineTitle } from "react-icons/md";
 
 function ResumeHeader({

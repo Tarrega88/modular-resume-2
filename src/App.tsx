@@ -3,7 +3,7 @@ import HomePage from "@/routes/HomePage";
 import BuilderPage from "@/routes/BuilderPage";
 import DevToolbar from "./components/DevToolbar";
 import { Toaster } from "sonner";
-import PrintView from "./components/PrintView";
+import PrintView from "./components/pdf/PrintView";
 
 export default function App() {
   return (

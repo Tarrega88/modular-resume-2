@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
-import SideResume from "@/components/SideResume";
+import SideResume from "@/components/resume/SideResume";
 import MobileNotification from "./components/absoluteUI/MobileNotification";
 import { useSelector } from "react-redux";
 import { RootState } from "./state/store";

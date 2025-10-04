@@ -14,8 +14,8 @@ import {
   createEmptyResume,
   generateMetaData,
   setCurrentResume,
-} from "../state/resumeSlice";
-import { Kinds } from "../state/types";
+} from "../../state/resumeSlice";
+import { Kinds } from "../../state/types";
 import { useNavigate } from "react-router-dom";
 import {
   getBulletPointProps,

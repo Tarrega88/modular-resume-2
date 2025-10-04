@@ -1,5 +1,5 @@
 import CloudHydrator from "./CloudHydrator";
-import SideResumeInner from "./SideResumeInner";
+import SideResumeInner from "../resume/SideResumeInner";
 import { useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 
@@ -31,6 +31,9 @@ export default function PrintView() {
             PAGE_H={PAGE_H}
             replaceIsOpen={false}
             setReplaceIsOpen={() => null}
+            activeIndex={-1}
+            setActiveIndex={() => null}
+            expanded={true}
           />
         ) : (
           <div
