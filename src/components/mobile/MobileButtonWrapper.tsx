@@ -16,20 +16,22 @@ function MobileButtonWrapper({
   const dispatch = useDispatch();
 
   function handleMoveBack() {
-    return;
     dispatch(setDragFromIndex(activeIndex));
     const toIndex = activeIndex === 0 ? length - 1 : activeIndex - 1;
     dispatch(setDragToIndex(toIndex));
     dispatch(dragResumeItem());
+    dispatch(setDragFromIndex(-1));
+    dispatch(setDragToIndex(-1));
     setActiveIndex(toIndex);
   }
 
   function handleMoveForward() {
-    return;
     dispatch(setDragFromIndex(activeIndex));
     const toIndex = (activeIndex + 1) % length;
     dispatch(setDragToIndex(toIndex));
     dispatch(dragResumeItem());
+    dispatch(setDragFromIndex(-1));
+    dispatch(setDragToIndex(-1));
     setActiveIndex(toIndex);
   }
 
