@@ -1,38 +1,3 @@
-/*const iconData = [
-  {
-    iconName: "Icons",
-    description: "Toggle whether a contact information section will have icons",
-    icon: <IoIosInformationCircle className="text-sky-500" />,
-  },
-  {
-    iconName: "Profession",
-    description: "Toggle the professional title under your name",
-    icon: <MdOutlineTitle className="text-neutral-800" />,
-  },
-  {
-    iconName: "Underline",
-    description:
-      "Toggle the underline on section headers and contact info sections",
-    icon: <FiUnderline className="text-black" />,
-  },
-  {
-    iconName: "Link",
-    description:
-      "Toggle whether a section has a link, typically for showcasing a portfolio website or project",
-
-    icon: <IoIosLink className="text-blue-600" />,
-  },
-  {
-    iconName: "Label",
-    description:
-      "Toggles whether a list has a category, typically used to categorize skills into things like Programming Languages, Software, and soft skills",
-
-    icon: <MdLabel className="text-sky-500 outline-0" tabIndex={-1} />,
-  },
-];
-*/
-
-import { RxCaretDown } from "react-icons/rx";
 import MobileButton from "./MobileButton";
 import { IoAddCircle, IoDuplicate } from "react-icons/io5";
 import { useDispatch } from "react-redux";
@@ -69,7 +34,6 @@ function MobileWrappedTopRow({ activeIndex, setActiveIndex, kind }) {
         onClick={() => console.log("Under Construction")}
       >
         <div className="text-xs">Mobile Layout Under Construction</div>
-        {/* <RxCaretDown className="text-black" /> */}
       </MobileButton>
       <MobileButton onClick={handleDelete}>
         <IoAddCircle className="rotate-45 text-red-600 outline-0" />

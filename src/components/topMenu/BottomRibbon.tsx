@@ -11,11 +11,7 @@ import MobileCommandStrip from "../mobile/MobileCommandStrip";
 function BottomRibbon({ activeIndex, setActiveIndex }) {
   const dispatch = useDispatch();
 
-  const { scale, resumeMetaData, currentResumeId, resumes } = useSelector(
-    (state: RootState) => state?.resume
-  );
-  const resume = resumes[currentResumeId];
-  const length = resume.length;
+  const { scale } = useSelector((state: RootState) => state?.resume);
 
   function handleSetScale(num: number) {
     dispatch(setScale(num));

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import ResumeItemRenderer from "../resume/ResumeItemRenderer";
 import { removeResumeItem } from "@/state/resumeSlice";
 import MobileButtonWrapper from "./MobileButtonWrapper";
-import ComponentDropdown from "../sections/misc/ComponentDropdown";
 import { useState } from "react";
 import MobileWrappedTopRow from "./MobileWrappedTopRow";
 import MobileWrappedBottomRow from "./MobileWrappedBottomRow";
