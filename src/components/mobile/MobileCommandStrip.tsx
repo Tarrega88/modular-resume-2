@@ -23,8 +23,8 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
 
   return (
     <div className="w-full sm:hidden block">
-      <div className="w-full overflow-auto flex flex-1 bg-white text-black h-[100px]">
-        <div className="min-w-max w-full">
+      <div className="w-full overflow-auto flex flex-1 h-[140px] items-center">
+        <div className="min-w-max w-full h-max bg-white text-black">
           <ResumeItemRenderer
             id={id}
             kind={kind}

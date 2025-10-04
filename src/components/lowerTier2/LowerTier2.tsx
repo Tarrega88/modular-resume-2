@@ -4,8 +4,9 @@ import LowerTab from "./LowerTab";
 import ActiveContainer from "./ActiveContainer";
 import LowerIconGuide from "./LowerIconGuide";
 import LowerHints from "./LowerHints";
+import MobileCommandStrip from "../mobile/MobileCommandStrip";
 
-function LowerTier2() {
+function LowerTier2({ activeIndex, setActiveIndex }) {
   const [activeTab, setActiveTab] = useState(-1);
 
   return (
@@ -19,25 +20,37 @@ function LowerTier2() {
         />
         <LowerTab
           i={1}
-          text="Icon Guide"
+          text="Mobile"
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
         <LowerTab
           i={2}
+          text="Icon Guide"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+        <LowerTab
+          i={3}
           text="Hints"
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
       </div>
       <div className="w-full">
-        <ActiveContainer i={0} activeTab={activeTab} width="100%">
+        <ActiveContainer i={0} activeTab={activeTab}>
           <LowerAddRow />
         </ActiveContainer>
-        <ActiveContainer i={1} activeTab={activeTab} width="100%">
+        <ActiveContainer i={1} activeTab={activeTab}>
+          <MobileCommandStrip
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
+        </ActiveContainer>
+        <ActiveContainer i={2} activeTab={activeTab}>
           <LowerIconGuide />
         </ActiveContainer>
-        <ActiveContainer i={2} activeTab={activeTab} width="100%">
+        <ActiveContainer i={3} activeTab={activeTab}>
           <LowerHints />
         </ActiveContainer>
       </div>

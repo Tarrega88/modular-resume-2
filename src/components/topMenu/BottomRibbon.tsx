@@ -25,14 +25,14 @@ function BottomRibbon({ activeIndex, setActiveIndex }) {
 
   return (
     <div className="sticky bottom-0 w-full bg-neutral-700 text-white pb-4 z-50">
-      <LowerTier2 />
+      <LowerTier2 activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
       <div className="flex justify-between w-full flex-wrap pt-4 bg-neutral-700">
-        {activeIndex > -1 ? (
+        {/* {activeIndex > -1 ? (
           <MobileCommandStrip
             activeIndex={Math.min(activeIndex, length - 1)}
             setActiveIndex={setActiveIndex}
           />
-        ) : null}
+        ) : null} */}
         <div className="flex pl-6 flex-wrap pb-2 sm:pb-0">
           <RibbonSlider
             min={40}
