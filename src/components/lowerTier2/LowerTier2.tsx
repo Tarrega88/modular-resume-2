@@ -7,7 +7,7 @@ import LowerHints from "./LowerHints";
 import MobileCommandStrip from "../mobile/MobileCommandStrip";
 
 function LowerTier2({ activeIndex, setActiveIndex }) {
-  const [activeTab, setActiveTab] = useState(-1);
+  const [activeTab, setActiveTab] = useState(1);
 
   return (
     <div className="bg-neutral-600 w-full relative">
