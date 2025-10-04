@@ -10,6 +10,8 @@ type Props = {
   handlePrintDesktop(): void;
   handleOpenHelper(): void;
   handleOpenPDFInfo(): void;
+  activeIndex: number;
+  setActiveIndex(e: number): void;
 };
 
 function TopMenu({
@@ -18,6 +20,8 @@ function TopMenu({
   handlePrintDesktop,
   handleOpenHelper,
   handleOpenPDFInfo,
+  activeIndex,
+  setActiveIndex,
 }: Props) {
   const barRef = useRef<HTMLDivElement>(null);
   const [expandedBranch, setExpandedBranch] = useState(-1);
@@ -72,6 +76,8 @@ function TopMenu({
               handlePrintDesktop={handlePrintDesktop}
               i={2}
               handleOpenPDFInfo={handleOpenPDFInfo}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
             />
             <HelpDropdown
               expanded={expanded}

@@ -6,9 +6,13 @@ import SideResumeInner from "./SideResumeInner";
 export default function SideResume({
   contentRef,
   expanded,
+  activeIndex,
+  setActiveIndex,
 }: {
   contentRef: React.RefObject<HTMLDivElement>;
   expanded: number;
+  activeIndex: number;
+  setActiveIndex(e: number): void;
 }) {
   const { scale, overlayMarginGuides, resumeMetaData, currentResumeId } =
     useSelector((s: RootState) => s.resume);
@@ -71,6 +75,9 @@ export default function SideResume({
             PAGE_H={PAGE_H}
             replaceIsOpen={replaceIsOpen}
             setReplaceIsOpen={setReplaceIsOpen}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+            expanded={expanded}
           />
         </div>
       </div>

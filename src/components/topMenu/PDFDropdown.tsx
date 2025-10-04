@@ -10,6 +10,8 @@ function PDFDropdown({
   handlePrintDesktop,
   i,
   handleOpenPDFInfo,
+  activeIndex,
+  setActiveIndex,
 }) {
   const cloudPdf = useCloudPdf();
 

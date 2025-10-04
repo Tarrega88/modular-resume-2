@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import SideResume from "@/components/SideResume";
 import MobileNotification from "./components/absoluteUI/MobileNotification";
@@ -10,9 +10,18 @@ import HelpContainer from "./components/builderColumn/HelpContainer";
 import PDFInformation from "./components/modals/PDFInformation";
 
 export default function MainView() {
-  const { currentResumeId, resumeMetaData } = useSelector(
+  const { currentResumeId, resumeMetaData, resumes } = useSelector(
     (state: RootState) => state?.resume
   );
+
+  const length = resumes[currentResumeId].length;
+
+  const [activeIndex, setActiveIndex] = useState(1); //should start as -1 probably, or 0?
+  // const [prevActiveIndex, setPrevActiveIndex] = useState(1);
+
+  useEffect(() => {
+    if (activeIndex >= length) setActiveIndex(length - 1);
+  }, [length]);
 
   const pageStyle = resumeMetaData[currentResumeId]?.pageStyle || "Letter";
   const contentRef = useRef<HTMLDivElement>(null);
@@ -40,10 +49,17 @@ export default function MainView() {
     setPdfIsOpen(!pdfIsOpen);
   }
 
+  // function handleSetExpanded(e: number) {
+  //   // if ((e > -1 && activeIndex > -1) || (e === -1 && activeIndex < 0)) {
+  //   //   setActiveIndex(-activeIndex);
+  //   // }
+  //   setExpanded(e);
+  // }
+
   return (
-    <div>
+    <div className="h-dvh">
       <MobileNotification />
-      <div className="grid grid-cols-1 w-full bg-slate-700 h-screen">
+      <div className="grid grid-cols-1 w-full bg-slate-700">
         <div className="w-full bg-gray-500 flex flex-col items-center overflow-auto">
           <TopMenu
             expanded={expanded}
@@ -51,11 +67,21 @@ export default function MainView() {
             handlePrintDesktop={handlePrint}
             handleOpenHelper={handleOpenHelper}
             handleOpenPDFInfo={handleOpenPDFInfo}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
           />
           <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
-            <SideResume contentRef={contentRef} expanded={expanded} />
+            <SideResume
+              contentRef={contentRef}
+              expanded={expanded}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
           </div>
-          <BottomRibbon />
+          <BottomRibbon
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+          />
           <HelpContainer isOpen={helpIsOpen} setIsOpen={setHelpIsOpen} />
           <PDFInformation isOpen={pdfIsOpen} setIsOpen={handleOpenPDFInfo} />
         </div>

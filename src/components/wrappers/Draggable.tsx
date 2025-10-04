@@ -21,12 +21,16 @@ function Draggable({
   kind,
   setReplaceIsOpen,
   active,
+  setActiveIndex,
+  expanded,
 }: {
   children: React.ReactNode;
   renderIndex: number;
   kind: Kinds;
   setReplaceIsOpen(e: boolean): void;
   active: boolean;
+  setActiveIndex(e: number): void;
+  expanded: number;
 }) {
   const { dragFromIndex, dragToIndex, dragHigher } = useSelector(
     (state: RootState) => state.resume
@@ -38,6 +42,9 @@ function Draggable({
   const dragDirection = dragHigher
     ? dragToIndex < renderIndex
     : dragToIndex <= renderIndex;
+
+  const activeStyle =
+    expanded === -1 && active ? "outline-2 outline-sky-600 sm:outline-0" : "";
 
   function handleDragStart(e: React.DragEvent<HTMLDivElement>) {
     const a = document.activeElement as HTMLElement | null;
@@ -74,7 +81,11 @@ function Draggable({
       : "";
 
   return (
-    <div className="group" tabIndex={-1}>
+    <div
+      className={`group ${activeStyle}`}
+      tabIndex={-1}
+      // onClick={() => setActiveIndex(renderIndex)}
+    >
       {isExpanded ? (
         <ComponentDropdown
           kind={kind}

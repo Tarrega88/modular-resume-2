@@ -10,6 +10,9 @@ export default function SideResumeInner({
   PAGE_W,
   replaceIsOpen,
   setReplaceIsOpen,
+  activeIndex,
+  setActiveIndex,
+  expanded,
 }) {
   const resumeState = useSelector((s: RootState) => s.resume);
   const currentResume = resumeState.currentResumeId;
@@ -21,8 +24,6 @@ export default function SideResumeInner({
   const ref = useRef<HTMLDivElement | null>(null);
 
   const fontStack = getFontStack(meta?.font);
-
-  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div
@@ -50,6 +51,8 @@ export default function SideResumeInner({
           kind={e.kind}
           setReplaceIsOpen={setReplaceIsOpen}
           active={activeIndex === i}
+          setActiveIndex={setActiveIndex}
+          expanded={expanded}
         >
           <ResumeItemRenderer
             id={e.id}
