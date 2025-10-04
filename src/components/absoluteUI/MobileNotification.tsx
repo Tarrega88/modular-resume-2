@@ -36,7 +36,7 @@ export default function MobileNotification() {
           <div className="mt-0.5 shrink-0">📱</div>
           <div className="flex-1 text-sm">
             <div className="font-medium">
-              Heads up: mobile layout isn’t ready yet.
+              Heads Up! Mobile layout is functional but still being developed
             </div>
             <div className="opacity-90">
               For the best experience, please use a laptop or desktop.
