@@ -6,6 +6,7 @@ import MobileButtonWrapper from "./MobileButtonWrapper";
 import ComponentDropdown from "../sections/misc/ComponentDropdown";
 import { useState } from "react";
 import MobileWrappedTopRow from "./MobileWrappedTopRow";
+import MobileWrappedBottomRow from "./MobileWrappedBottomRow";
 
 function MobileCommandStrip({ activeIndex, setActiveIndex }) {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
   const [selectedKind, setSelectedKind] = useState(kind);
 
   return (
-    <div className="w-full block">
+    <div className="w-full block sm:hidden">
       <div className="w-full overflow-auto flex flex-1 h-[125px] items-center">
         <div className="min-w-max w-full h-max bg-white text-black">
           <ResumeItemRenderer
@@ -48,8 +49,8 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
           kind={kind}
-          elementId={elementId}
         />
+        <MobileWrappedBottomRow id={id} kind={kind} elementId={elementId} />
       </MobileButtonWrapper>
     </div>
   );

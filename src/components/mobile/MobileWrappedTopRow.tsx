@@ -1,18 +1,4 @@
 /*const iconData = [
-
-  {
-    iconName: "Duplicate Section",
-    description:
-      "Adds a default section of the same type underneath the current section",
-    icon: <IoDuplicate tabIndex={-1} className="text-sky-600 outline-0" />,
-  },
-  {
-    iconName: "Remove Section",
-    description: "Removes a section from the resume",
-    icon: (
-      <IoAddCircle className="rotate-45 text-red-600 outline-0" tabIndex={-1} />
-    ),
-  },
   {
     iconName: "Icons",
     description: "Toggle whether a contact information section will have icons",
@@ -52,8 +38,9 @@ import { IoAddCircle, IoDuplicate } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { duplicateSection, removeResumeItem } from "@/state/resumeSlice";
 import addDataFromKind from "@/utils/addDataFromKind";
+import MobileButtonRow from "./MobileButtonRow";
 
-function MobileWrappedTopRow({ activeIndex, setActiveIndex, kind, elementId }) {
+function MobileWrappedTopRow({ activeIndex, setActiveIndex, kind }) {
   const dispatch = useDispatch();
 
   function handleDelete() {
@@ -62,7 +49,6 @@ function MobileWrappedTopRow({ activeIndex, setActiveIndex, kind, elementId }) {
 
   function handleDuplicate() {
     const id = addDataFromKind(kind, dispatch);
-
     dispatch(
       duplicateSection({
         kind,
@@ -74,23 +60,21 @@ function MobileWrappedTopRow({ activeIndex, setActiveIndex, kind, elementId }) {
   }
 
   return (
-    <div className="h-1/2">
-      <div className="flex h-full border-b">
-        <MobileButton border="r" onClick={handleDuplicate}>
-          <IoDuplicate className="text-sky-600" />
-        </MobileButton>
-        <MobileButton
-          border="r"
-          onClick={() => console.log("Under Construction")}
-        >
-          <div className="text-xs">Mobile Layout Under Construction</div>
-          {/* <RxCaretDown className="text-black" /> */}
-        </MobileButton>
-        <MobileButton onClick={handleDelete}>
-          <IoAddCircle className="rotate-45 text-red-600 outline-0" />
-        </MobileButton>
-      </div>
-    </div>
+    <MobileButtonRow border="b">
+      <MobileButton border="r" onClick={handleDuplicate}>
+        <IoDuplicate className="text-sky-600" />
+      </MobileButton>
+      <MobileButton
+        border="r"
+        onClick={() => console.log("Under Construction")}
+      >
+        <div className="text-xs">Mobile Layout Under Construction</div>
+        {/* <RxCaretDown className="text-black" /> */}
+      </MobileButton>
+      <MobileButton onClick={handleDelete}>
+        <IoAddCircle className="rotate-45 text-red-600 outline-0" />
+      </MobileButton>
+    </MobileButtonRow>
   );
 }
 
