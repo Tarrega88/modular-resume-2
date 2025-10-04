@@ -59,10 +59,10 @@ export default function MainView() {
   // }
 
   return (
-    <div className="h-dvh">
+    <div>
       <MobileNotification />
       <div className="grid grid-cols-1 w-full bg-slate-700">
-        <div className="w-full bg-gray-500 flex flex-col items-center overflow-auto">
+        <div className="w-full bg-gray-500 flex flex-col items-center">
           <TopMenu
             expanded={expanded}
             setExpanded={setExpanded}
@@ -72,7 +72,7 @@ export default function MainView() {
             activeIndex={activeIndex}
             setActiveIndex={setActiveIndex}
           />
-          <div className="overflow-auto px-5 pt-5 w-full h-full flex justify-center">
+          <div className="overflow-auto px-5 pt-5 w-full flex justify-center">
             <SideResume
               contentRef={contentRef}
               expanded={expanded}
