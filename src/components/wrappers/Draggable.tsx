@@ -12,7 +12,7 @@ import DeleteElementButton from "../absoluteUI/DeleteElementButton";
 import DuplicateButton from "../absoluteUI/DuplicateButton";
 import { Kinds } from "../../state/types";
 import ComponentDropdown from "../sections/misc/ComponentDropdown";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RxCaretDown, RxCaretUp } from "react-icons/rx";
 
 function Draggable({
@@ -35,6 +35,13 @@ function Draggable({
   const { dragFromIndex, dragToIndex, dragHigher } = useSelector(
     (state: RootState) => state.resume
   );
+
+  const targetRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    active &&
+      targetRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [active]);
 
   const [isExpanded, setIsExpanded] = useState(false);
   const dispatch = useDispatch();
@@ -82,9 +89,10 @@ function Draggable({
 
   return (
     <div
-      className={`group ${activeStyle}`}
+      className={`group ${activeStyle} scroll-mt-16`}
       tabIndex={-1}
       onClick={() => setActiveIndex(renderIndex)}
+      ref={targetRef}
     >
       {isExpanded ? (
         <ComponentDropdown
