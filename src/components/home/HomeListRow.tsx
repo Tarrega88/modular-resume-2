@@ -35,7 +35,7 @@ function HomeListRow({
     }
   }
 
-  function handleContine() {
+  function handleContinue() {
     dispatch(setCurrentResume(id));
     navigate(`/builder/${id}`);
   }
@@ -54,7 +54,7 @@ function HomeListRow({
         <HomeListRowButton
           text="Continue"
           color="emerald"
-          onClick={handleContine}
+          onClick={handleContinue}
         />
         <HomeListRowButton text="Copy" onClick={handleCopyResume} color="sky">
           <IoDuplicate />
