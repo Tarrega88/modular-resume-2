@@ -22,6 +22,7 @@ function Draggable({
   setReplaceIsOpen,
   active,
   expanded,
+  setActiveIndex,
 }: {
   children: React.ReactNode;
   renderIndex: number;
@@ -29,6 +30,7 @@ function Draggable({
   setReplaceIsOpen(e: boolean): void;
   active: boolean;
   expanded: number;
+  setActiveIndex(e: number): void;
 }) {
   const { dragFromIndex, dragToIndex, dragHigher } = useSelector(
     (state: RootState) => state.resume
@@ -79,7 +81,11 @@ function Draggable({
       : "";
 
   return (
-    <div className={`group ${activeStyle}`} tabIndex={-1}>
+    <div
+      className={`group ${activeStyle}`}
+      tabIndex={-1}
+      onClick={() => setActiveIndex(renderIndex)}
+    >
       {isExpanded ? (
         <ComponentDropdown
           kind={kind}
