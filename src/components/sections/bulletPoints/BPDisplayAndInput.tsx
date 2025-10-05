@@ -37,7 +37,7 @@ function BPDisplayAndInput({
   return displayMode === "div" ? (
     <div
       inert={!renderUI}
-      className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full mb-1"
+      className="group hover:bg-sky-50 transition-all duration-150 cursor-pointer w-full mb-1 h-full"
       onClick={setDisplayToInput}
       tabIndex={0}
       onKeyDown={() => setDisplayMode("input")}
@@ -63,9 +63,10 @@ function BPDisplayAndInput({
       </p>
     </div>
   ) : (
-    <div className="w-full flex">
-      <span className="mx-2">•</span>
-      <input
+    <div className="w-full flex h-full mb-1">
+      <span className="ml-1 mr-2">•</span>
+      <textarea
+        rows={Math.ceil(tempText.length / 80)}
         className="w-full outline-1 rounded-xs"
         autoFocus
         value={tempText}
