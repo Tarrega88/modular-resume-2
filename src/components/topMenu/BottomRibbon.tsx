@@ -22,21 +22,18 @@ function BottomRibbon({ activeIndex, setActiveIndex }) {
   return (
     <div className="sticky bottom-0 w-full bg-neutral-700 text-white pb-4 z-50">
       <LowerTier2 activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
-      <div className="flex justify-between w-full flex-wrap pt-4 bg-neutral-700">
-        <div className="flex pl-4 sm:pl-6 flex-wrap pb-2 sm:pb-0">
-          <RibbonSlider
-            min={40}
-            max={110}
-            step={1}
-            value={scale}
-            mult={1}
-            textAdd="%"
-            onChange={(e: any) => handleSetScale(Number(e.target.value))}
-          >
-            <MdOutlineZoomIn />
-          </RibbonSlider>
-          <RibbonFontScaleSlider />
-        </div>
+      <div className="flex flex-wrap justify-between w-full pt-3 px-4 bg-neutral-700">
+        <RibbonSlider
+          min={40}
+          max={110}
+          step={1}
+          value={scale}
+          mult={1}
+          textAdd="%"
+          onChange={(e: any) => handleSetScale(Number(e.target.value))}
+        >
+          <MdOutlineZoomIn />
+        </RibbonSlider>
         <LastSaved />
       </div>
     </div>

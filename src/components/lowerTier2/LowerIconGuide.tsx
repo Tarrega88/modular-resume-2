@@ -62,7 +62,7 @@ function LowerIconGuide() {
   const activeIcon = iconData[activeIconIndex];
 
   return (
-    <div className="flex w-full bg-neutral-200 text-neutral-950 min-h-28">
+    <div className="hidden sm:flex w-full bg-neutral-200 text-neutral-950 min-h-28">
       <div className="w-50 flex flex-col justify-evenly p-3 text-2xl gap-3">
         <div className="flex justify-between">
           {iconData.slice(0, 4).map((e, i) => (

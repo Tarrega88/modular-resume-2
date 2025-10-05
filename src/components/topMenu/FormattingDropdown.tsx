@@ -5,6 +5,7 @@ import TopMenuOption from "./TopMenuOption";
 import {
   changeMonthType,
   editFont,
+  editFontScale,
   editMargin,
   editMeasurementStyle,
   editPageStyle,
@@ -12,6 +13,8 @@ import {
 import { RootState } from "@/state/store";
 import { DEFAULT_SANS, SANS_OPTIONS } from "@/config/fonts";
 import { useEffect } from "react";
+import TopMenuSlider from "./TopMenuSlider";
+import TopMenuFontScaler from "./TopMenuFontScaler";
 
 const measurements = {
   imperial: { 50: '1/2"', 75: '3/4"', 100: '1"' },
@@ -41,6 +44,8 @@ function FormattingDropdown({
 
   const dispatch = useDispatch();
 
+  const fontScale = resumeMetaData[currentResumeId].fontScale;
+
   function handleSetPageSize(size: "A4" | "Letter") {
     dispatch(editPageStyle(size));
   }
@@ -63,6 +68,11 @@ function FormattingDropdown({
   useEffect(() => {
     applyToResume(sans.stack);
   }, [font]);
+
+  function handleFontScaler(e: string) {
+    const num = Number(e);
+    dispatch(editFontScale(num));
+  }
 
   return (
     <TopMenuDropdown
@@ -102,10 +112,19 @@ function FormattingDropdown({
             checked={e.label === font}
           />
         ))}
+        {/* <TopMenuSlider /> */}
+      </DropdownBranch>
+      <DropdownBranch
+        title="Font Size"
+        i={2}
+        expanded={expandedBranch}
+        setExpanded={setExpandedBranch}
+      >
+        <TopMenuFontScaler />
       </DropdownBranch>
       <DropdownBranch
         title="Measurement"
-        i={2}
+        i={3}
         expanded={expandedBranch}
         setExpanded={setExpandedBranch}
       >
@@ -122,7 +141,7 @@ function FormattingDropdown({
       </DropdownBranch>
       <DropdownBranch
         title="Margins"
-        i={3}
+        i={4}
         expanded={expandedBranch}
         setExpanded={setExpandedBranch}
       >
@@ -144,7 +163,7 @@ function FormattingDropdown({
       </DropdownBranch>
       <DropdownBranch
         title="Months"
-        i={4}
+        i={5}
         expanded={expandedBranch}
         setExpanded={setExpandedBranch}
       >
