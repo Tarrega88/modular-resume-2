@@ -1,12 +1,10 @@
 import { MdOutlineZoomIn } from "react-icons/md";
 import RibbonSlider from "./RibbonSlider";
-import RibbonFontScaleSlider from "./RibbonFontScaleSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { setScale } from "@/state/resumeSlice";
 import { RootState } from "@/state/store";
 import LastSaved from "../builderColumn/LastSaved";
 import LowerTier2 from "../lowerTier2/LowerTier2";
-import MobileCommandStrip from "../mobile/MobileCommandStrip";
 
 function BottomRibbon({ activeIndex, setActiveIndex }) {
   const dispatch = useDispatch();

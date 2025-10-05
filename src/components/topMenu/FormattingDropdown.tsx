@@ -13,7 +13,6 @@ import {
 import { RootState } from "@/state/store";
 import { DEFAULT_SANS, SANS_OPTIONS } from "@/config/fonts";
 import { useEffect } from "react";
-import TopMenuSlider from "./TopMenuSlider";
 import TopMenuFontScaler from "./TopMenuFontScaler";
 
 const measurements = {
@@ -112,7 +111,6 @@ function FormattingDropdown({
             checked={e.label === font}
           />
         ))}
-        {/* <TopMenuSlider /> */}
       </DropdownBranch>
       <DropdownBranch
         title="Font Size"
