@@ -39,8 +39,13 @@ function Draggable({
   const targetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    active &&
+    if (!active) return;
+    if (typeof window === "undefined") return;
+
+    const isMobile = window.matchMedia("(max-width: 639.98px)").matches;
+    if (isMobile) {
       targetRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, [active]);
 
   const [isExpanded, setIsExpanded] = useState(false);
