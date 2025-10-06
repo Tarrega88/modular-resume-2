@@ -26,7 +26,7 @@ function MobileWrappedTopRow({ activeIndex, setActiveIndex, kind }) {
 
   return (
     <MobileButtonRow border="b">
-      <MobileButton border="r" onClick={handleDuplicate}>
+      <MobileButton text="Duplicate" border="r" onClick={handleDuplicate}>
         <IoDuplicate className="text-sky-600" />
       </MobileButton>
       <MobileButton
@@ -36,7 +36,7 @@ function MobileWrappedTopRow({ activeIndex, setActiveIndex, kind }) {
       >
         <div className="text-xs">Mobile Layout Under Construction</div>
       </MobileButton>
-      <MobileButton onClick={handleDelete}>
+      <MobileButton text="Delete" onClick={handleDelete}>
         <IoAddCircle className="rotate-45 text-red-600 outline-0" />
       </MobileButton>
     </MobileButtonRow>

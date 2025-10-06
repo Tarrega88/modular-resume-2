@@ -47,10 +47,11 @@ function MobileButtonWrapper({
           onClick={handleMoveBack}
           className="size-full flex justify-center items-center border-b relative"
         >
+          <span className="absolute top-1 text-sm">Move</span>
           <span className="text-3xl">
             <TbArrowMoveUp />
           </span>
-          <span className="absolute bottom-1 text-sm">Move</span>
+          <span className="absolute bottom-1 text-sm">Up</span>
         </button>
         <button
           className="size-full flex justify-center items-center relative"
@@ -71,10 +72,11 @@ function MobileButtonWrapper({
           className="size-full flex justify-center items-center border-b relative"
           onClick={handleMoveForward}
         >
+          <span className="absolute top-1 text-sm">Move</span>
           <span className="text-3xl">
             <TbArrowMoveDown />
           </span>
-          <span className="absolute text-sm bottom-1">Move</span>
+          <span className="absolute text-sm bottom-1">Down</span>
         </button>
         <button
           className="size-full flex justify-center items-center relative"

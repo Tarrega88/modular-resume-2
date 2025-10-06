@@ -6,14 +6,11 @@ import { GiGraduateCap, GiSkills } from "react-icons/gi";
 import { FaTools } from "react-icons/fa";
 import { TbCircleLetterHFilled } from "react-icons/tb";
 import { MdOutlineTextSnippet } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addResumeItem } from "@/state/resumeSlice";
 import { Kinds } from "@/state/types";
 import addDataFromKind from "@/utils/addDataFromKind";
 import { toast } from "sonner";
-import LowerTab from "./LowerTab";
-import Toggle from "./Toggle";
-import { RootState } from "@/state/store";
 import Toggles from "./Toggles";
 
 function LowerAddRow() {

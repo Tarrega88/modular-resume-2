@@ -22,6 +22,7 @@ function HeaderButtonRow({ elementId }) {
   return (
     <MobileButtonRow>
       <MobileButton
+        text="Toggle Underline"
         onClick={() =>
           dispatch(
             toggleSectionHeaderUnderline({

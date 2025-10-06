@@ -18,6 +18,7 @@ function ProjectButtonRow({ elementId }) {
   return (
     <MobileButtonRow>
       <MobileButton
+        text="Toggle Link"
         onClick={() =>
           dispatch(
             editProjectBool({

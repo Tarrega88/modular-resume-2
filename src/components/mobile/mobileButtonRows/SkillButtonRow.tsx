@@ -21,6 +21,7 @@ function SkillButtonRow({ elementId }) {
   return (
     <MobileButtonRow>
       <MobileButton
+        text="Toggle Category"
         onClick={() =>
           dispatch(
             setShowCategory({ id: elementId, showCategory: !showCategory })

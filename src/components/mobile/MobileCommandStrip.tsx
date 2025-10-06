@@ -7,6 +7,18 @@ import { useState } from "react";
 import MobileWrappedTopRow from "./MobileWrappedTopRow";
 import MobileWrappedBottomRow from "./MobileWrappedBottomRow";
 
+const kindDisplay = {
+  bulletPoint: "Bullet Point",
+  education: "Education",
+  divider: "Divider",
+  prevJob: "Experience",
+  project: "Project",
+  sectionHeader: "Section Header",
+  skill: "List / Skill",
+  summary: "Text Block",
+  userInfo: "Contact Info",
+};
+
 function MobileCommandStrip({ activeIndex, setActiveIndex }) {
   const dispatch = useDispatch();
 
@@ -28,15 +40,20 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
 
   return (
     <div className="w-full block sm:hidden">
-      <div className="w-full overflow-auto flex flex-1 h-[125px] items-center">
-        <div className="min-w-max w-full h-max bg-white text-black">
-          <ResumeItemRenderer
-            key={activeIndex}
-            id={id}
-            kind={kind}
-            elementId={elementId}
-            renderUI={true}
-          />
+      <div>
+        <div className="text-center py-1">
+          Editing <span className="font-semibold">{kindDisplay[kind]}</span>
+        </div>
+        <div className="w-full overflow-auto flex flex-1 h-[115px]">
+          <div className="min-w-max w-full h-max bg-white text-black">
+            <ResumeItemRenderer
+              key={activeIndex}
+              id={id}
+              kind={kind}
+              elementId={elementId}
+              renderUI={true}
+            />
+          </div>
         </div>
       </div>
       <MobileButtonWrapper

@@ -37,6 +37,7 @@ function UserInfoButtonRow({ elementId }) {
   return (
     <MobileButtonRow>
       <MobileButton
+        text="Icons"
         border="r"
         onClick={() =>
           dispatch(
@@ -53,6 +54,7 @@ function UserInfoButtonRow({ elementId }) {
         />
       </MobileButton>
       <MobileButton
+        text="Title"
         border="r"
         onClick={() =>
           dispatch(
@@ -69,6 +71,7 @@ function UserInfoButtonRow({ elementId }) {
         />
       </MobileButton>
       <MobileButton
+        text="Underline"
         border="r"
         onClick={() =>
           dispatch(
@@ -85,6 +88,7 @@ function UserInfoButtonRow({ elementId }) {
         />
       </MobileButton>
       <MobileButton
+        text="Link 1"
         border="r"
         onClick={() =>
           dispatch(
@@ -99,6 +103,7 @@ function UserInfoButtonRow({ elementId }) {
         <IoIosLink className={`${link1Style} transition-all duration-150`} />
       </MobileButton>
       <MobileButton
+        text="Link 2"
         onClick={() =>
           dispatch(
             toggleUserBool({
