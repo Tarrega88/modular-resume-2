@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import SideResume from "@/components/resume/SideResume";
-import MobileNotification from "./components/absoluteUI/MobileNotification";
 import { useSelector } from "react-redux";
 import { RootState } from "./state/store";
 import TopMenu from "./components/topMenu/TopMenu";
@@ -60,7 +59,6 @@ export default function MainView() {
 
   return (
     <div className="h-auto">
-      <MobileNotification />
       <div className="grid grid-cols-1 w-full bg-slate-700">
         <div className="w-full bg-gray-500 flex flex-col items-center">
           <TopMenu
