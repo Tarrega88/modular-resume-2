@@ -22,6 +22,7 @@ import {
   getUserInfoProps,
 } from "@/utils/getProps";
 
+//TODO 10/6/2025: consider adding "editMode" boolean to all of these sections, to allow for editing mode logic for mobile
 //TODO 10/4/2025: ID is passed down due to props but unused - might want to see if it's even needed
 function ResumeItemRenderer({
   kind,

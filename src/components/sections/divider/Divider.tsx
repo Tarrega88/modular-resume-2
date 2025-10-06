@@ -21,7 +21,7 @@ function Divider({
     if (num < min) num = min;
     dispatch(editDividerNumber({ field: "height", val: num, id }));
   }
-
+  //TODO 10/6/2025: consider adding an editing mode to the divider so it's always visible in the mobile editing window
   const renderStyle = !renderUI
     ? ""
     : showDividers && renderUI

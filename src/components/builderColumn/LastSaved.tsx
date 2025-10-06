@@ -16,7 +16,11 @@ function LastSaved() {
     hour12: true,
   });
 
-  return <div className="bg-neutral-700">Last Saved: {timeString}</div>;
+  return (
+    <div className="bg-neutral-700 text-sm sm:text-base">
+      Last Saved: {timeString}
+    </div>
+  );
 }
 
 export default LastSaved;
