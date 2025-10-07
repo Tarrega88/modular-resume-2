@@ -11,6 +11,16 @@ type Info = {
 
 const updates: Info[] = [
   {
+    title: "Mobile Update",
+    date: "10/7/2025",
+    textArr: [
+      "Cloud PDF option added in the PDF menu - this allows perfect PDF rendering even on mobile devices.",
+      "Mobile layout progress - not complete yet but it's functional enough to allow mobile users to build resumes",
+      "Some general styling and UX tweaks including autoscrolling to the active section on mobile",
+      "Text scale slider moved to Formatting dropdown in top menu",
+    ],
+  },
+  {
     title: "Left Column Removal",
     date: "9/30/2025",
     textArr: [
@@ -113,8 +123,10 @@ function UpdateInfo() {
 
   const currentInfo = updates[infoSelection];
 
+  //TODO: temp overflow fix added - only necessary if an update every gets long but should have a better fix at some point anyway
+
   return (
-    <div className="text-slate-50 bg-slate-500 rounded-sm p-3 h-4/5">
+    <div className="text-slate-50 bg-slate-500 rounded-sm p-3 h-4/5 overflow-auto">
       <div className="flex justify-between">
         <div className="flex items-center gap-1">
           <button

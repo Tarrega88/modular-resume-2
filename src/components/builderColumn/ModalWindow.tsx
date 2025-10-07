@@ -12,7 +12,7 @@ function ModalWindow({ isOpen, setIsOpen, children, title }: Props) {
 
   return (
     <div
-      className={`absolute bg-slate-50 size-3/5 ${position} transition-all duration-200 top-1/2 -translate-y-1/2 z-50 outline-3 outline-slate-900 overflow-auto`}
+      className={`absolute bg-slate-50 w-5/6 h-3/5 md:w-3/5 ${position} transition-all duration-200 top-1/2 -translate-y-1/2 z-50 outline-3 outline-slate-900 overflow-auto`}
     >
       <div className="inline">
         <button

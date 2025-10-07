@@ -18,6 +18,10 @@ function AboutContainer({ isOpen, setIsOpen }) {
         topic="About Modular Resume"
         text="Modular Resume is built in React using Vite, React-to-PDF, Sonner, Redux, and Router. I was getting tired of constantly tweaking resumes and having to play with formatting on word editors. The templating sites out there are nice but none of them allowed me to tweak things as much as I'd like. I built this to solve those problems!"
       />
+      <AboutTopic
+        topic="Why modular?"
+        text="Everything you enter is saved onto your device - these 'modules' of data can then be used and edited later, moved around anywhere on the resume, and even tweaked across multiple resumes at once."
+      />
     </ModalWindow>
   );
 }
