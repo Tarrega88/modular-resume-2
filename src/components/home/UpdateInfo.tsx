@@ -11,6 +11,14 @@ type Info = {
 
 const updates: Info[] = [
   {
+    title: "Moved Toggles",
+    date: "10/13/2025",
+    textArr: [
+      "The toggles for showing the divider slider and the margin overlays have been moved to the top left Menu.",
+      "Coming soon: Decoupled duplication. Currently, the resume data is coupled between the copy and the original on duplication, so updating the shared data on one will update the other. This option will still exist, but a decoupled duplicate will allow them to be completely separate.",
+    ],
+  },
+  {
     title: "Mobile Update",
     date: "10/7/2025",
     textArr: [

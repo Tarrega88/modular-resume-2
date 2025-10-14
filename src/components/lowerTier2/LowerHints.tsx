@@ -3,12 +3,16 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const hints = [
   {
+    topic: "Toggles",
+    text: "The Margin Guide and Show Divider toggles can be found in the top left Menu.",
+  },
+  {
     topic: "Dragging",
-    text: "Did you know that you can drag anything on the resume that's outlined in blue when you hover over it?",
+    text: "Did you know that you can drag anything on the resume that's outlined in blue when you hover over it? If you're on mobile, use the Move arrows in the Editing window instead.",
   },
   {
     topic: "Saving",
-    text: "Changes auto-save to your device using your browser's IndexedDB. Any changes you make will remain unless you clear the site data or use your browser's Incognito Mode",
+    text: "Changes auto-save to your device using your browser's IndexedDB. Any changes you make will remain unless you clear the site data or use your browser's Incognito Mode.",
   },
   {
     topic: "New Sections",

@@ -24,7 +24,7 @@ function LowerAddRow() {
 
   return (
     <div className="flex px-4 py-2 bg-neutral-600 flex-wrap">
-      <Toggles />
+      {/* <Toggles /> */}
       <div className="flex flex-wrap gap-2 p-2 bg-neutral-600 items-center">
         <LowerAddButton
           onClick={handleOnClick}

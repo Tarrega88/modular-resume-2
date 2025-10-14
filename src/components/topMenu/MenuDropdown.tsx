@@ -5,16 +5,20 @@ import TopMenuDynamicInput from "./TopMenuDynamicInput";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/state/store";
 import { toast } from "sonner";
-import { changeResumeName } from "@/state/resumeSlice";
+import {
+  changeResumeName,
+  toggleOverlayMarginGuides,
+  toggleShowDividers,
+} from "@/state/resumeSlice";
 import { useState } from "react";
+import TopMenuOption from "./TopMenuOption";
 
 function MenuDropdown({ expanded, setExpanded, i }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { resumeMetaData, currentResumeId } = useSelector(
-    (state: RootState) => state.resume
-  );
+  const { resumeMetaData, currentResumeId, showDividers, overlayMarginGuides } =
+    useSelector((state: RootState) => state.resume);
 
   const { resumeName } = resumeMetaData[currentResumeId];
 
@@ -38,6 +42,14 @@ function MenuDropdown({ expanded, setExpanded, i }) {
     }
   }
 
+  function handleToggleDividers() {
+    dispatch(toggleShowDividers(!showDividers));
+  }
+
+  function handleToggleMarginOverlay() {
+    dispatch(toggleOverlayMarginGuides(!overlayMarginGuides));
+  }
+
   return (
     <TopMenuDropdown
       title="Menu"
@@ -52,6 +64,16 @@ function MenuDropdown({ expanded, setExpanded, i }) {
         handleSubmit={handleChangeName}
         handleOnChange={handleOnChange}
         placeholder="Name Resume"
+      />
+      <TopMenuOption
+        text="Show Dividers"
+        checked={showDividers}
+        onClick={handleToggleDividers}
+      />
+      <TopMenuOption
+        text="Margin Guides"
+        checked={overlayMarginGuides}
+        onClick={handleToggleMarginOverlay}
       />
     </TopMenuDropdown>
   );

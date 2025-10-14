@@ -21,7 +21,7 @@ function LowerTier2({ activeIndex, setActiveIndex }) {
         <div className="sm:hidden block">
           <LowerTab
             i={1}
-            text="Mobile"
+            text="Editing"
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
