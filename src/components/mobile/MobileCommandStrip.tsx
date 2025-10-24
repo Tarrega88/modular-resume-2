@@ -20,23 +20,26 @@ const kindDisplay = {
 };
 
 function MobileCommandStrip({ activeIndex, setActiveIndex }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const { resumeMetaData, currentResumeId, resumes } = useSelector(
+  const { currentResumeId, resumes } = useSelector(
     (state: RootState) => state.resume
   );
 
   const resume = resumes[currentResumeId];
 
-  const { id, kind, elementId } = resume[activeIndex];
+  console.log(activeIndex);
+
+  const { id, kind, elementId } =
+    resume[Math.min(activeIndex, resume.length - 1)];
 
   const length = resume.length;
 
-  function handleDelete() {
-    dispatch(removeResumeItem({ renderIndex: activeIndex }));
-  }
+  // function handleDelete() {
+  //   dispatch(removeResumeItem({ renderIndex: activeIndex }));
+  // }
 
-  const [selectedKind, setSelectedKind] = useState(kind);
+  // const [selectedKind, setSelectedKind] = useState(kind);
 
   return (
     <div className="w-full block sm:hidden">

@@ -7,7 +7,6 @@ import TopMenu from "./components/topMenu/TopMenu";
 import BottomRibbon from "./components/topMenu/BottomRibbon";
 import HelpContainer from "./components/builderColumn/HelpContainer";
 import PDFInformation from "./components/modals/PDFInformation";
-import { makeId } from "./utils/makeId";
 
 export default function MainView() {
   const { currentResumeId, resumeMetaData, resumes } = useSelector(
@@ -20,6 +19,7 @@ export default function MainView() {
 
   // const [prevActiveIndex, setPrevActiveIndex] = useState(1);
 
+  //TODO 10/23/2025: Review this useEffect - it's not working properly for the activeIndex on deletion
   useEffect(() => {
     if (activeIndex >= length) setActiveIndex(length - 1);
   }, [length]);
