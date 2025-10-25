@@ -27,9 +27,6 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
   );
 
   const resume = resumes[currentResumeId];
-
-  console.log(activeIndex);
-
   const { id, kind, elementId } =
     resume[Math.min(activeIndex, resume.length - 1)];
 
