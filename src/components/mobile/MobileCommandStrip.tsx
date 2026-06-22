@@ -47,7 +47,7 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
         <div className="w-full overflow-auto flex flex-1 h-[115px]">
           <div className="min-w-max w-full h-max bg-white text-black">
             <ResumeItemRenderer
-              key={activeIndex}
+              key={id}
               id={id}
               kind={kind}
               elementId={elementId}
