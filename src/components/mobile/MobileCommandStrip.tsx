@@ -19,7 +19,13 @@ const kindDisplay = {
   userInfo: "Contact Info",
 };
 
-function MobileCommandStrip({ activeIndex, setActiveIndex }) {
+function MobileCommandStrip({
+  activeIndex,
+  setActiveIndex,
+}: {
+  activeIndex: number;
+  setActiveIndex(e: number): void;
+}) {
   // const dispatch = useDispatch();
 
   const { currentResumeId, resumes } = useSelector(
@@ -47,7 +53,7 @@ function MobileCommandStrip({ activeIndex, setActiveIndex }) {
         <div className="w-full overflow-auto flex flex-1 h-[115px]">
           <div className="min-w-max w-full h-max bg-white text-black">
             <ResumeItemRenderer
-              key={activeIndex}
+              key={id}
               id={id}
               kind={kind}
               elementId={elementId}
