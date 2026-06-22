@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   text: string;
@@ -19,6 +19,10 @@ function DynamicTextArea({
 }: Props) {
   const [showInput, setShowInput] = useState(false);
   const [tempText, setTempText] = useState(text);
+
+  useEffect(() => {
+    if (!showInput) setTempText(text);
+  }, [text, showInput]);
 
   function changeDisplay() {
     handleOnSubmit(tempText);
