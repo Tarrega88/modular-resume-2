@@ -10,15 +10,22 @@ import {
   toggleOverlayMarginGuides,
   toggleShowDividers,
 } from "@/state/resumeSlice";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import TopMenuOption from "./TopMenuOption";
+import {
+  downloadResumeExport,
+  importResumeFromFile,
+  isResumeExportFile,
+} from "@/utils/resumeIO";
 
 function MenuDropdown({ expanded, setExpanded, i }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const resumeState = useSelector((state: RootState) => state.resume);
   const { resumeMetaData, currentResumeId, showDividers, overlayMarginGuides } =
-    useSelector((state: RootState) => state.resume);
+    resumeState;
 
   const { resumeName } = resumeMetaData[currentResumeId];
 
@@ -50,6 +57,39 @@ function MenuDropdown({ expanded, setExpanded, i }) {
     dispatch(toggleOverlayMarginGuides(!overlayMarginGuides));
   }
 
+  function handleExport() {
+    downloadResumeExport(resumeState);
+    toast.success("Resume exported.");
+  }
+
+  function handleImportClick() {
+    fileInputRef.current?.click();
+  }
+
+  function handleImportFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(reader.result as string);
+        if (!isResumeExportFile(parsed)) {
+          toast.error("That file isn't a valid resume export.");
+          return;
+        }
+        const newResumeId = importResumeFromFile(parsed, dispatch);
+        toast.success("Resume imported.");
+        navigate(`/builder/${newResumeId}`);
+      } catch {
+        toast.error("Couldn't read that file as JSON.");
+      }
+    };
+    reader.onerror = () => toast.error("Couldn't read that file.");
+    reader.readAsText(file);
+  }
+
   return (
     <TopMenuDropdown
       title="Menu"
@@ -74,6 +114,15 @@ function MenuDropdown({ expanded, setExpanded, i }) {
         text="Margin Guides"
         checked={overlayMarginGuides}
         onClick={handleToggleMarginOverlay}
+      />
+      <TopMenuButton text="Export JSON" onClick={handleExport} />
+      <TopMenuButton text="Import JSON" onClick={handleImportClick} />
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="application/json,.json"
+        className="hidden"
+        onChange={handleImportFile}
       />
     </TopMenuDropdown>
   );

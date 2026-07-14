@@ -11,6 +11,14 @@ type Info = {
 
 const updates: Info[] = [
   {
+    title: "Bug Fix and Import/Export JSON",
+    date: "7/14/2026",
+    textArr: [
+      "Added import/export option on JSON.",
+      "Fixed bug in mobile where switching between sections in the input editor in the actual resume would cause reversion back to previous text.",
+    ],
+  },
+  {
     title: "Moved Toggles",
     date: "10/13/2025",
     textArr: [
@@ -140,7 +148,7 @@ function UpdateInfo() {
           <button
             onClick={() =>
               setInfoSelection(
-                infoSelection > 0 ? infoSelection - 1 : updates.length - 1
+                infoSelection > 0 ? infoSelection - 1 : updates.length - 1,
               )
             }
           >
@@ -152,7 +160,7 @@ function UpdateInfo() {
           <button
             onClick={() =>
               setInfoSelection(
-                infoSelection < updates.length - 1 ? infoSelection + 1 : 0
+                infoSelection < updates.length - 1 ? infoSelection + 1 : 0,
               )
             }
           >
